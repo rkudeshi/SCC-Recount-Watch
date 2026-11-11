@@ -2,7 +2,7 @@ import os, sys, unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import update
 
-T = {"recount_pct": 0.25, "very_close_votes": 100, "very_close_pct": 0.5, "watch_votes": 200, "watch_pct": 2.0}
+T = {"recount_votes": 25, "recount_pct": 0.25, "very_close_votes": 50, "very_close_pct": 0.5, "watch_votes": 150, "watch_pct": 1.5}
 
 XML = b"""<ElectionResult><Timestamp>11/10/2026 5:06:37 PM PST</Timestamp><ElectionName>Test</ElectionName>
 <Contest key="1" text="City Council" voteFor="2" isQuestion="false">
@@ -33,7 +33,14 @@ class Margins(unittest.TestCase):
         self.assertEqual(a["ballots_cast"], 750)        # (1300 + 180 + 20) / 2
         self.assertAlmostEqual(a["pct"], 100 * 10 / 750)
         self.assertAlmostEqual(a["site_pct"], 100 * 10 / 1300)
-        self.assertEqual(a["tier"], 2)
+        self.assertEqual(a["tier"], 1)              # 10 votes is under 25
+
+    def test_recount_line_is_strict(self):
+        self.assertEqual(update.tier_for(30, 0.2499, T), 1)
+        self.assertEqual(update.tier_for(30, 0.25, T), 2)
+        self.assertEqual(update.tier_for(25, 0.30, T), 2)
+        self.assertEqual(update.tier_for(150, 1.6, T), 3)
+        self.assertEqual(update.tier_for(151, 1.6, T), 0)
 
     def test_measure_two_thirds(self):
         a = [x for x in self.r["contests"] if x["type"] == "measure"][0]

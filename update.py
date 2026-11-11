@@ -123,7 +123,8 @@ def is_measure(c):
 
 
 def tier_for(margin, pct, t):
-    if pct <= t["recount_pct"]:
+    # Automatic recount is strictly less than the threshold; the other tiers are "within".
+    if margin < t["recount_votes"] or pct < t["recount_pct"]:
         return 1
     if margin <= t["very_close_votes"] or pct <= t["very_close_pct"]:
         return 2
@@ -210,6 +211,7 @@ def analyze(meta, contests, cfg):
         if a is None:
             skipped.append({"name": c["name"], "reason": "uncontested"})
             continue
+        a["key"] = c["key"]
         a["precincts_reporting"] = c["precincts_reporting"]
         a["precincts_total"] = c["precincts_total"]
         included.append(a)
@@ -219,11 +221,16 @@ def analyze(meta, contests, cfg):
 
 # ---------------------------------------------------------------- rendering
 
-TIER_INFO = {
-    1: ("Automatic recount", "Margin is 0.25% of ballots cast or less"),
-    2: ("Very close", "Within 100 votes or 0.5% of ballots cast"),
-    3: ("Keep an eye on", "Within 200 votes or 2% of ballots cast"),
-}
+def tier_info(t):
+    return {
+        1: ("Automatic recount", f"Margin under {t['recount_votes']} votes or under {t['recount_pct']:g}% of ballots cast"),
+        2: ("Very close", f"Within {t['very_close_votes']} votes or {t['very_close_pct']:g}% of ballots cast"),
+        3: ("Keep an eye on", f"Within {t['watch_votes']} votes or {t['watch_pct']:g}% of ballots cast"),
+    }
+
+
+TIER_INFO = {}
+PCT_LINES = []
 
 E = html.escape
 
@@ -234,6 +241,13 @@ def fmt_n(n):
 
 def fmt_pct(p, d=2):
     return f"{p:.{d}f}%"
+
+
+def fmt_margin_pct(p):
+    """Two decimals, but four when the value sits near a tier line (e.g. 0.2489%)."""
+    if any(abs(p - line) < 0.01 for line in PCT_LINES):
+        return f"{p:.4f}%"
+    return f"{p:.2f}%"
 
 
 def fmt_time(dt):
@@ -254,14 +268,14 @@ def render_contest(a):
     cls = f"contest t{tier}" if tier else "contest"
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']}"
-        margin_line = (f"Margin: {fmt_n(a['margin'])} votes, {fmt_pct(a['pct'])} of ballots cast")
+        margin_line = (f"Margin: {fmt_n(a['margin'])} votes, {fmt_margin_pct(a['pct'])} of ballots cast")
         compare = f"({fmt_pct(a['site_pct'])} of candidate votes only)"
         col_label, pv_label, total_label = "Candidate", "% of candidate votes", "Candidate votes"
     else:
         sub = f"Needs {a['threshold_label']} Yes · currently {'passing' if a['passing'] else 'failing'}"
         side = "No" if a["passing"] else "Yes"
         margin_line = (f"Margin: {fmt_n(a['margin'])} more {side} votes would flip it, "
-                       f"{fmt_pct(a['pct'])} of ballots cast")
+                       f"{fmt_margin_pct(a['pct'])} of ballots cast")
         compare = (f"(Yes at {fmt_pct(a['yes_share'])} of votes, needs "
                    f"{fmt_pct(100 * a['threshold'])})")
         col_label, pv_label, total_label = "Choice", "% of votes", "Total votes"
@@ -287,7 +301,7 @@ def render_contest(a):
     for j, (k, v) in enumerate(totals):
         rows.append(f'<tr class="tot{" first" if j == 0 else ""}"><td>{k}</td><td>{v}</td><td></td><td></td></tr>')
 
-    return f"""<div class="{cls}">
+    return f"""<div class="{cls}" id="c{E(str(a['key']))}">
 <h3>{E(a['name'])}</h3>
 <p class="muted">{E(sub)}</p>
 <div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">{E(compare)}</span></div>
@@ -298,8 +312,15 @@ def render_contest(a):
 </div>"""
 
 
-def render(results, state):
+def render(results, state, cfg):
+    t = cfg["tiers"]
+    TIER_INFO.update(tier_info(t))
+    PCT_LINES[:] = [t["recount_pct"], t["very_close_pct"], t["watch_pct"]]
+    # Re-tier from saved numbers so a config change applies without a new download.
     contests = results["contests"]
+    for a in contests:
+        a["tier"] = tier_for(a["margin"], a["pct"], t)
+    contests.sort(key=lambda a: (a["tier"] or 9, a["pct"], a["margin"]))
     counts = {k: sum(1 for a in contests if a["tier"] == k) for k in (1, 2, 3)}
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
     res_time_s = fmt_time(res_time) if res_time else E(results.get("results_timestamp", ""))
@@ -309,6 +330,11 @@ def render(results, state):
     tiles = "".join(
         f'<a class="tile t{k}" href="#tier{k}"><b>{counts[k]}</b><span>{TIER_INFO[k][0]}</span></a>'
         for k in (1, 2, 3))
+
+    recap_items = "".join(
+        f'<li><a href="#c{E(str(a["key"]))}">{E(a["name"])}</a>: {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
+        for a in contests if a["tier"] == 1)
+    recap = f"<ul>{recap_items}</ul>" if recap_items else "<p>None right now.</p>"
 
     sections = []
     for k in (1, 2, 3):
@@ -322,7 +348,7 @@ def render(results, state):
     others = [a for a in contests if a["tier"] == 0]
     others.sort(key=lambda a: a["pct"])
     other_rows = "".join(
-        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_pct(a["pct"])}</td></tr>'
+        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_margin_pct(a["pct"])}</td></tr>'
         for a in others)
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
                    for x in results["excluded"] + results["skipped"])
@@ -357,10 +383,14 @@ h2.sec small{{display:block;font-size:14px;font-weight:normal}}
 h2.t1{{background:var(--t1);border-color:var(--t1s)}} h2.t2{{background:var(--t2);border-color:var(--t2s)}} h2.t3{{background:var(--t3);border-color:var(--t3s)}}
 h3{{font-size:17px;margin:0}}
 .contest{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:12px;margin-bottom:12px}}
-.margin{{margin:8px 0 10px;padding:8px 10px;border-radius:4px}}
+.margin{{margin:6px 0 8px;padding:5px 8px;border-radius:4px}}
 .contest.t1 .margin{{background:var(--t1)}} .contest.t2 .margin{{background:var(--t2)}} .contest.t3 .margin{{background:var(--t3)}}
-.margin .big{{font-size:19px;font-weight:700}}
-.margin .cmp{{font-size:14px}}
+.margin .big{{font-size:15px;font-weight:600}}
+.margin .cmp{{font-size:13px;color:var(--muted)}}
+.recap{{background:var(--t1);border-radius:4px;padding:10px 12px;margin:12px 0}}
+.recap ul{{margin:4px 0 0;padding-left:20px}}
+.recap li{{margin:2px 0}}
+.recap p{{margin:4px 0 0}}
 .tbl{{overflow-x:auto}}
 table{{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}}
 th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
@@ -374,7 +404,7 @@ tr.first td{{border-top:1px solid var(--muted)}}
 details{{margin-top:24px}}
 summary{{cursor:pointer;font-weight:600}}
 a{{color:var(--link)}}
-@media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:12px}}.margin .big{{font-size:17px}}th,td{{padding:4px 3px}}}}
+@media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:12px}}.margin .big{{font-size:14px}}th,td{{padding:4px 3px}}}}
 </style>
 </head>
 <body>
@@ -388,6 +418,11 @@ a{{color:var(--link)}}
 </div>
 
 <div class="tiles">{tiles}</div>
+
+<div class="recap">
+<b>Automatic recount:</b>
+{recap}
+</div>
 
 <p class="muted">Margin = last winner minus first loser. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The county results site divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
 
@@ -443,10 +478,10 @@ def write_json(path, obj):
         f.write("\n")
 
 
-def write_site(results, state):
+def write_site(results, state, cfg):
     os.makedirs(SITE_DIR, exist_ok=True)
     with open(os.path.join(SITE_DIR, "index.html"), "w") as f:
-        f.write(render(results, state))
+        f.write(render(results, state, cfg))
     write_json(os.path.join(SITE_DIR, "results.json"), {"state": state, **results})
 
 
@@ -475,7 +510,7 @@ def main():
         results = load_json(RESULTS_PATH, None)
         if not results:
             sys.exit("no data/results.json to render")
-        write_site(results, state)
+        write_site(results, state, cfg)
         set_output(True)
         return
 
@@ -507,7 +542,7 @@ def main():
     }
     write_json(RESULTS_PATH, results)
     write_json(STATE_PATH, state)
-    write_site(results, state)
+    write_site(results, state, cfg)
     counts = {k: sum(1 for a in results["contests"] if a["tier"] == k) for k in (1, 2, 3)}
     print(f"version {version}: {len(results['contests'])} contests, tiers {counts}")
     set_output(True)

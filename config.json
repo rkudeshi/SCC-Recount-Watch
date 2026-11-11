@@ -3,11 +3,12 @@
   "report_path": "reports/detailxml.zip",
 
   "tiers": {
+    "recount_votes": 25,
     "recount_pct": 0.25,
-    "very_close_votes": 100,
+    "very_close_votes": 50,
     "very_close_pct": 0.5,
-    "watch_votes": 200,
-    "watch_pct": 2.0
+    "watch_votes": 150,
+    "watch_pct": 1.5
   },
 
   "include_ballot_measures": true,

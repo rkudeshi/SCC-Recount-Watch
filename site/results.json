@@ -1,7 +1,7 @@
 {
  "state": {
   "version": "from uploaded file",
-  "last_checked": "2026-11-11T23:38:15+00:00",
+  "last_checked": "2026-11-11T23:48:22+00:00",
   "source_url": "https://results.enr.clarityelections.com/CA/Santa_Clara/127570/"
  },
  "election_name": "November 3, 2026 General Election",
@@ -52,6 +52,7 @@
    "tier": 1,
    "last_winner": "Paul Pham",
    "first_loser": "Mer Curry Nuñez",
+   "key": "46",
    "precincts_reporting": "33",
    "precincts_total": "33"
   },
@@ -114,6 +115,7 @@
    "tier": 1,
    "last_winner": "Seema Kanani",
    "first_loser": "Garry Barbadillo",
+   "key": "80",
    "precincts_reporting": "14",
    "precincts_total": "14"
   },
@@ -155,6 +157,7 @@
    "tier": 1,
    "last_winner": "Jason Lin",
    "first_loser": "Rosa Kim",
+   "key": "48",
    "precincts_reporting": "33",
    "precincts_total": "33"
   },
@@ -188,91 +191,10 @@
    "margin": 74,
    "pct": 0.6711409395973155,
    "site_pct": 0.4761904761904816,
-   "tier": 2,
+   "tier": 3,
+   "key": "132",
    "precincts_reporting": "13",
    "precincts_total": "13"
-  },
-  {
-   "type": "candidate",
-   "name": "Sunnyvale SD, Trustee Area 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Rommy Kushner",
-     "votes": 1856,
-     "winner": true,
-     "pct_ballots": 40.25157232704402,
-     "pct_votes": 50.79365079365079
-    },
-    {
-     "name": "Michelle Maginot",
-     "votes": 1793,
-     "winner": false,
-     "pct_ballots": 38.8852743439601,
-     "pct_votes": 49.069512862616314
-    },
-    {
-     "name": "Write-in",
-     "votes": 5,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.10843634786380395,
-     "pct_votes": 0.13683634373289547
-    }
-   ],
-   "candidate_votes": 3654,
-   "undervotes": 952,
-   "overvotes": 5,
-   "ballots_cast": 4611,
-   "margin": 63,
-   "pct": 1.3662979830839297,
-   "site_pct": 1.7241379310344827,
-   "tier": 2,
-   "last_winner": "Rommy Kushner",
-   "first_loser": "Michelle Maginot",
-   "precincts_reporting": "10",
-   "precincts_total": "10"
-  },
-  {
-   "type": "candidate",
-   "name": "Santa Clara Unified SD, Trustee Area 1",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Kamal Yassin",
-     "votes": 1466,
-     "winner": true,
-     "pct_ballots": 41.65956237567491,
-     "pct_votes": 50.92045849253213
-    },
-    {
-     "name": "Jim Canova",
-     "votes": 1408,
-     "winner": false,
-     "pct_ballots": 40.011366865586815,
-     "pct_votes": 48.90587009378256
-    },
-    {
-     "name": "Write-in",
-     "votes": 5,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.14208581983518045,
-     "pct_votes": 0.1736714136853074
-    }
-   ],
-   "candidate_votes": 2879,
-   "undervotes": 639,
-   "overvotes": 1,
-   "ballots_cast": 3519,
-   "margin": 58,
-   "pct": 1.6481955100880932,
-   "site_pct": 2.0145883987495656,
-   "tier": 2,
-   "last_winner": "Kamal Yassin",
-   "first_loser": "Jim Canova",
-   "precincts_reporting": "6",
-   "precincts_total": "6"
   },
   {
    "type": "candidate",
@@ -340,6 +262,7 @@
    "tier": 3,
    "last_winner": "Karen Hardy",
    "first_loser": "Kathy Watanabe",
+   "key": "89",
    "precincts_reporting": "37",
    "precincts_total": "37"
   },
@@ -395,8 +318,51 @@
    "tier": 3,
    "last_winner": "Steven Sanchez",
    "first_loser": "Gilbert Borrayo",
+   "key": "59",
    "precincts_reporting": "21",
    "precincts_total": "21"
+  },
+  {
+   "type": "candidate",
+   "name": "Sunnyvale SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Rommy Kushner",
+     "votes": 1856,
+     "winner": true,
+     "pct_ballots": 40.25157232704402,
+     "pct_votes": 50.79365079365079
+    },
+    {
+     "name": "Michelle Maginot",
+     "votes": 1793,
+     "winner": false,
+     "pct_ballots": 38.8852743439601,
+     "pct_votes": 49.069512862616314
+    },
+    {
+     "name": "Write-in",
+     "votes": 5,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.10843634786380395,
+     "pct_votes": 0.13683634373289547
+    }
+   ],
+   "candidate_votes": 3654,
+   "undervotes": 952,
+   "overvotes": 5,
+   "ballots_cast": 4611,
+   "margin": 63,
+   "pct": 1.3662979830839297,
+   "site_pct": 1.7241379310344827,
+   "tier": 3,
+   "last_winner": "Rommy Kushner",
+   "first_loser": "Michelle Maginot",
+   "key": "67",
+   "precincts_reporting": "10",
+   "precincts_total": "10"
   },
   {
    "type": "candidate",
@@ -478,131 +444,51 @@
    "tier": 3,
    "last_winner": "Silja Paymer",
    "first_loser": "Robert Cox",
+   "key": "84",
    "precincts_reporting": "17",
    "precincts_total": "17"
   },
   {
    "type": "candidate",
-   "name": "Mayor, City of Milpitas",
+   "name": "Santa Clara Unified SD, Trustee Area 1",
    "vote_for": 1,
    "rows": [
     {
-     "name": "Carmen Montano",
-     "votes": 7548,
+     "name": "Kamal Yassin",
+     "votes": 1466,
      "winner": true,
-     "pct_ballots": 38.711662734639454,
-     "pct_votes": 41.94964708497749
+     "pct_ballots": 41.65956237567491,
+     "pct_votes": 50.92045849253213
     },
     {
-     "name": "Hon Lien",
-     "votes": 7248,
+     "name": "Jim Canova",
+     "votes": 1408,
      "winner": false,
-     "pct_ballots": 37.17304338906555,
-     "pct_votes": 40.282332018007004
-    },
-    {
-     "name": "Santosh Sahoo",
-     "votes": 1750,
-     "winner": false,
-     "pct_ballots": 8.97527951584778,
-     "pct_votes": 9.72600455732785
-    },
-    {
-     "name": "Voltaire S. Montemayor",
-     "votes": 1437,
-     "winner": false,
-     "pct_ballots": 7.369986665299005,
-     "pct_votes": 7.98643917078864
+     "pct_ballots": 40.011366865586815,
+     "pct_votes": 48.90587009378256
     },
     {
      "name": "Write-in",
-     "votes": 10,
+     "votes": 5,
      "winner": false,
      "write_in": true,
-     "pct_ballots": 0.051287311519130165,
-     "pct_votes": 0.05557716889901628
+     "pct_ballots": 0.14208581983518045,
+     "pct_votes": 0.1736714136853074
     }
    ],
-   "candidate_votes": 17993,
-   "undervotes": 1449,
-   "overvotes": 56,
-   "ballots_cast": 19498,
-   "margin": 300,
-   "pct": 1.538619345573905,
-   "site_pct": 1.6673150669704886,
+   "candidate_votes": 2879,
+   "undervotes": 639,
+   "overvotes": 1,
+   "ballots_cast": 3519,
+   "margin": 58,
+   "pct": 1.6481955100880932,
+   "site_pct": 2.0145883987495656,
    "tier": 3,
-   "last_winner": "Carmen Montano",
-   "first_loser": "Hon Lien",
-   "precincts_reporting": "14",
-   "precincts_total": "14"
-  },
-  {
-   "type": "measure",
-   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
-   "threshold": 0.55,
-   "threshold_label": "55%",
-   "passing": false,
-   "yes_share": 54.12760665773867,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 11317,
-     "winner": false,
-     "pct_ballots": 51.86288437743458,
-     "pct_votes": 54.12760665773867
-    },
-    {
-     "name": "No",
-     "votes": 9591,
-     "winner": true,
-     "pct_ballots": 43.95307272810595,
-     "pct_votes": 45.87239334226133
-    }
-   ],
-   "candidate_votes": 20908,
-   "undervotes": 913,
-   "overvotes": 0,
-   "ballots_cast": 21821,
-   "margin": 405,
-   "pct": 1.8560102653407269,
-   "site_pct": -0.8723933422613399,
-   "tier": 3,
-   "precincts_reporting": "26",
-   "precincts_total": "26"
-  },
-  {
-   "type": "measure",
-   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
-   "threshold": 0.55,
-   "threshold_label": "55%",
-   "passing": false,
-   "yes_share": 54.11413258357861,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 12318,
-     "winner": false,
-     "pct_ballots": 51.205520452278016,
-     "pct_votes": 54.114132583578616
-    },
-    {
-     "name": "No",
-     "votes": 10445,
-     "winner": true,
-     "pct_ballots": 43.41952111739275,
-     "pct_votes": 45.885867416421384
-    }
-   ],
-   "candidate_votes": 22763,
-   "undervotes": 1290,
-   "overvotes": 3,
-   "ballots_cast": 24056,
-   "margin": 448,
-   "pct": 1.8623212504156967,
-   "site_pct": -0.885867416421398,
-   "tier": 3,
-   "precincts_reporting": "42",
-   "precincts_total": "42"
+   "last_winner": "Kamal Yassin",
+   "first_loser": "Jim Canova",
+   "key": "45",
+   "precincts_reporting": "6",
+   "precincts_total": "6"
   },
   {
    "type": "candidate",
@@ -642,49 +528,9 @@
    "tier": 3,
    "last_winner": "Sangeeta Balachandran Mallik",
    "first_loser": "Ishaan Prasad",
+   "key": "50",
    "precincts_reporting": "18",
    "precincts_total": "18"
-  },
-  {
-   "type": "candidate",
-   "name": "Alum Rock Union SD, TA 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Andrés Quintero",
-     "votes": 2368,
-     "winner": true,
-     "pct_ballots": 46.25903496776714,
-     "pct_votes": 51.63541212385521
-    },
-    {
-     "name": "Delia Oseguera",
-     "votes": 2214,
-     "winner": false,
-     "pct_ballots": 43.25063488962688,
-     "pct_votes": 48.27736589620584
-    },
-    {
-     "name": "Write-in",
-     "votes": 4,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.07814026176987693,
-     "pct_votes": 0.08722197993894461
-    }
-   ],
-   "candidate_votes": 4586,
-   "undervotes": 527,
-   "overvotes": 6,
-   "ballots_cast": 5119,
-   "margin": 154,
-   "pct": 3.008400078140262,
-   "site_pct": 3.3580462276493677,
-   "tier": 3,
-   "last_winner": "Andrés Quintero",
-   "first_loser": "Delia Oseguera",
-   "precincts_reporting": "9",
-   "precincts_total": "9"
   },
   {
    "type": "candidate",
@@ -724,6 +570,7 @@
    "tier": 3,
    "last_winner": "Nancy Altman-Palm",
    "first_loser": "Jason Amezcua",
+   "key": "38",
    "precincts_reporting": "8",
    "precincts_total": "8"
   },
@@ -793,83 +640,135 @@
    "tier": 3,
    "last_winner": "Renee Lo",
    "first_loser": "Lyseria Evelyn Phillips",
+   "key": "65",
    "precincts_reporting": "7",
    "precincts_total": "7"
   },
   {
    "type": "candidate",
-   "name": "Gilroy Unified SD, Trustee Area 3",
+   "name": "Mayor, City of Milpitas",
    "vote_for": 1,
    "rows": [
     {
-     "name": "Michelle Nelson",
-     "votes": 1861,
+     "name": "Carmen Montano",
+     "votes": 7548,
      "winner": true,
-     "pct_ballots": 45.53462197210668,
-     "pct_votes": 52.674780639682986
+     "pct_ballots": 38.711662734639454,
+     "pct_votes": 41.94964708497749
     },
     {
-     "name": "Daniel Harney",
-     "votes": 1670,
+     "name": "Hon Lien",
+     "votes": 7248,
      "winner": false,
-     "pct_ballots": 40.861267433325175,
-     "pct_votes": 47.268610246249644
+     "pct_ballots": 37.17304338906555,
+     "pct_votes": 40.282332018007004
+    },
+    {
+     "name": "Santosh Sahoo",
+     "votes": 1750,
+     "winner": false,
+     "pct_ballots": 8.97527951584778,
+     "pct_votes": 9.72600455732785
+    },
+    {
+     "name": "Voltaire S. Montemayor",
+     "votes": 1437,
+     "winner": false,
+     "pct_ballots": 7.369986665299005,
+     "pct_votes": 7.98643917078864
     },
     {
      "name": "Write-in",
-     "votes": 2,
+     "votes": 10,
      "winner": false,
      "write_in": true,
-     "pct_ballots": 0.048935649620748714,
-     "pct_votes": 0.056609114067364845
+     "pct_ballots": 0.051287311519130165,
+     "pct_votes": 0.05557716889901628
     }
    ],
-   "candidate_votes": 3533,
-   "undervotes": 552,
-   "overvotes": 2,
-   "ballots_cast": 4087,
-   "margin": 191,
-   "pct": 4.673354538781503,
-   "site_pct": 5.406170393433343,
-   "tier": 3,
-   "last_winner": "Michelle Nelson",
-   "first_loser": "Daniel Harney",
-   "precincts_reporting": "4",
-   "precincts_total": "4"
+   "candidate_votes": 17993,
+   "undervotes": 1449,
+   "overvotes": 56,
+   "ballots_cast": 19498,
+   "margin": 300,
+   "pct": 1.538619345573905,
+   "site_pct": 1.6673150669704886,
+   "tier": 0,
+   "last_winner": "Carmen Montano",
+   "first_loser": "Hon Lien",
+   "key": "79",
+   "precincts_reporting": "14",
+   "precincts_total": "14"
   },
   {
    "type": "measure",
-   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
-   "threshold": 0.6666666666666666,
-   "threshold_label": "two-thirds",
+   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
    "passing": false,
-   "yes_share": 64.84708977310095,
+   "yes_share": 54.12760665773867,
    "rows": [
     {
      "name": "Yes",
-     "votes": 1972,
+     "votes": 11317,
      "winner": false,
-     "pct_ballots": 59.55904560555723,
-     "pct_votes": 64.84708977310095
+     "pct_ballots": 51.86288437743458,
+     "pct_votes": 54.12760665773867
     },
     {
      "name": "No",
-     "votes": 1069,
+     "votes": 9591,
      "winner": true,
-     "pct_ballots": 32.286318332829964,
-     "pct_votes": 35.152910226899046
+     "pct_ballots": 43.95307272810595,
+     "pct_votes": 45.87239334226133
     }
    ],
-   "candidate_votes": 3041,
-   "undervotes": 270,
+   "candidate_votes": 20908,
+   "undervotes": 913,
    "overvotes": 0,
-   "ballots_cast": 3311,
-   "margin": 166,
-   "pct": 5.013591060102688,
-   "site_pct": -1.81957689356571,
-   "tier": 3,
-   "precincts_reporting": "7",
-   "precincts_total": "7"
+   "ballots_cast": 21821,
+   "margin": 405,
+   "pct": 1.8560102653407269,
+   "site_pct": -0.8723933422613399,
+   "tier": 0,
+   "key": "128",
+   "precincts_reporting": "26",
+   "precincts_total": "26"
+  },
+  {
+   "type": "measure",
+   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.11413258357861,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 12318,
+     "winner": false,
+     "pct_ballots": 51.205520452278016,
+     "pct_votes": 54.114132583578616
+    },
+    {
+     "name": "No",
+     "votes": 10445,
+     "winner": true,
+     "pct_ballots": 43.41952111739275,
+     "pct_votes": 45.885867416421384
+    }
+   ],
+   "candidate_votes": 22763,
+   "undervotes": 1290,
+   "overvotes": 3,
+   "ballots_cast": 24056,
+   "margin": 448,
+   "pct": 1.8623212504156967,
+   "site_pct": -0.885867416421398,
+   "tier": 0,
+   "key": "129",
+   "precincts_reporting": "42",
+   "precincts_total": "42"
   },
   {
    "type": "candidate",
@@ -923,6 +822,7 @@
    "tier": 0,
    "last_winner": "David Poll",
    "first_loser": "Brandon Stroy",
+   "key": "60",
    "precincts_reporting": "20",
    "precincts_total": "20"
   },
@@ -957,6 +857,7 @@
    "pct": 2.2253824275501577,
    "site_pct": 1.1878872430347585,
    "tier": 0,
+   "key": "125",
    "precincts_reporting": "22",
    "precincts_total": "22"
   },
@@ -1026,6 +927,7 @@
    "tier": 0,
    "last_winner": "Rob Stump",
    "first_loser": "Mary Badame",
+   "key": "78",
    "precincts_reporting": "15",
    "precincts_total": "15"
   },
@@ -1067,8 +969,51 @@
    "tier": 0,
    "last_winner": "Phuong Tran Nguyen",
    "first_loser": "Milan Balinton",
+   "key": "97",
    "precincts_reporting": "82",
    "precincts_total": "82"
+  },
+  {
+   "type": "candidate",
+   "name": "Alum Rock Union SD, TA 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Andrés Quintero",
+     "votes": 2368,
+     "winner": true,
+     "pct_ballots": 46.25903496776714,
+     "pct_votes": 51.63541212385521
+    },
+    {
+     "name": "Delia Oseguera",
+     "votes": 2214,
+     "winner": false,
+     "pct_ballots": 43.25063488962688,
+     "pct_votes": 48.27736589620584
+    },
+    {
+     "name": "Write-in",
+     "votes": 4,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.07814026176987693,
+     "pct_votes": 0.08722197993894461
+    }
+   ],
+   "candidate_votes": 4586,
+   "undervotes": 527,
+   "overvotes": 6,
+   "ballots_cast": 5119,
+   "margin": 154,
+   "pct": 3.008400078140262,
+   "site_pct": 3.3580462276493677,
+   "tier": 0,
+   "last_winner": "Andrés Quintero",
+   "first_loser": "Delia Oseguera",
+   "key": "52",
+   "precincts_reporting": "9",
+   "precincts_total": "9"
   },
   {
    "type": "candidate",
@@ -1115,6 +1060,7 @@
    "tier": 0,
    "last_winner": "Jose Magana",
    "first_loser": "Tomara Hall",
+   "key": "43",
    "precincts_reporting": "21",
    "precincts_total": "21"
   },
@@ -1149,8 +1095,86 @@
    "pct": 4.51736150129228,
    "site_pct": -2.512185976752903,
    "tier": 0,
+   "key": "116",
    "precincts_reporting": "17",
    "precincts_total": "17"
+  },
+  {
+   "type": "candidate",
+   "name": "Gilroy Unified SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Michelle Nelson",
+     "votes": 1861,
+     "winner": true,
+     "pct_ballots": 45.53462197210668,
+     "pct_votes": 52.674780639682986
+    },
+    {
+     "name": "Daniel Harney",
+     "votes": 1670,
+     "winner": false,
+     "pct_ballots": 40.861267433325175,
+     "pct_votes": 47.268610246249644
+    },
+    {
+     "name": "Write-in",
+     "votes": 2,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.048935649620748714,
+     "pct_votes": 0.056609114067364845
+    }
+   ],
+   "candidate_votes": 3533,
+   "undervotes": 552,
+   "overvotes": 2,
+   "ballots_cast": 4087,
+   "margin": 191,
+   "pct": 4.673354538781503,
+   "site_pct": 5.406170393433343,
+   "tier": 0,
+   "last_winner": "Michelle Nelson",
+   "first_loser": "Daniel Harney",
+   "key": "35",
+   "precincts_reporting": "4",
+   "precincts_total": "4"
+  },
+  {
+   "type": "measure",
+   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": false,
+   "yes_share": 64.84708977310095,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 1972,
+     "winner": false,
+     "pct_ballots": 59.55904560555723,
+     "pct_votes": 64.84708977310095
+    },
+    {
+     "name": "No",
+     "votes": 1069,
+     "winner": true,
+     "pct_ballots": 32.286318332829964,
+     "pct_votes": 35.152910226899046
+    }
+   ],
+   "candidate_votes": 3041,
+   "undervotes": 270,
+   "overvotes": 0,
+   "ballots_cast": 3311,
+   "margin": 166,
+   "pct": 5.013591060102688,
+   "site_pct": -1.81957689356571,
+   "tier": 0,
+   "key": "133",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
   },
   {
    "type": "candidate",
@@ -1204,6 +1228,7 @@
    "tier": 0,
    "last_winner": "William Lambert",
    "first_loser": "Sundar Subbarayan",
+   "key": "61",
    "precincts_reporting": "19",
    "precincts_total": "19"
   },
@@ -1245,6 +1270,7 @@
    "tier": 0,
    "last_winner": "Peter Ortiz",
    "first_loser": "Nora Campos",
+   "key": "86",
    "precincts_reporting": "40",
    "precincts_total": "40"
   },
@@ -1328,6 +1354,7 @@
    "tier": 0,
    "last_winner": "Seema Sharma Lindskog",
    "first_loser": "Tracy Kosolcharoen",
+   "key": "71",
    "precincts_reporting": "24",
    "precincts_total": "24"
   },
@@ -1390,6 +1417,7 @@
    "tier": 0,
    "last_winner": "Vidya R. Vineet",
    "first_loser": "Farnoush Drexel",
+   "key": "66",
    "precincts_reporting": "20",
    "precincts_total": "20"
   },
@@ -1431,6 +1459,7 @@
    "tier": 0,
    "last_winner": "Genny Altwer",
    "first_loser": "Gordon Chester",
+   "key": "88",
    "precincts_reporting": "33",
    "precincts_total": "33"
   },
@@ -1472,6 +1501,7 @@
    "tier": 0,
    "last_winner": "Susan Oster Fish",
    "first_loser": "Doug Robb",
+   "key": "33",
    "precincts_reporting": "34",
    "precincts_total": "34"
   },
@@ -1527,6 +1557,7 @@
    "tier": 0,
    "last_winner": "Shanna Brewer",
    "first_loser": "Jamal Khan",
+   "key": "54",
    "precincts_reporting": "30",
    "precincts_total": "30"
   },
@@ -1561,6 +1592,7 @@
    "pct": 7.414968764035768,
    "site_pct": 5.290843387538615,
    "tier": 0,
+   "key": "130",
    "precincts_reporting": "49",
    "precincts_total": "49"
   },
@@ -1602,6 +1634,7 @@
    "tier": 0,
    "last_winner": "Gabriela \"Gabby\" Winter",
    "first_loser": "John T. Horner",
+   "key": "39",
    "precincts_reporting": "9",
    "precincts_total": "9"
   },
@@ -1650,6 +1683,7 @@
    "tier": 0,
    "last_winner": "Gilbert Wong",
    "first_loser": "Taghi Saadati",
+   "key": "99",
    "precincts_reporting": "27",
    "precincts_total": "27"
   },
@@ -1705,6 +1739,7 @@
    "tier": 0,
    "last_winner": "Franchesca Lacanlale",
    "first_loser": "Anuradha Sankaran",
+   "key": "37",
    "precincts_reporting": "18",
    "precincts_total": "18"
   },
@@ -1746,6 +1781,7 @@
    "tier": 0,
    "last_winner": "Sophie Freestone",
    "first_loser": "Kaushik C. Joglekar",
+   "key": "63",
    "precincts_reporting": "7",
    "precincts_total": "7"
   },
@@ -1787,6 +1823,7 @@
    "tier": 0,
    "last_winner": "Eric Crutchlow",
    "first_loser": "Kyle Madej",
+   "key": "91",
    "precincts_reporting": "5",
    "precincts_total": "5"
   },
@@ -1828,6 +1865,7 @@
    "tier": 0,
    "last_winner": "Anky van Deursen",
    "first_loser": "Lynette Lee Eng",
+   "key": "75",
    "precincts_reporting": "2",
    "precincts_total": "2"
   },
@@ -1876,6 +1914,7 @@
    "tier": 0,
    "last_winner": "Avery Wang",
    "first_loser": "John Craig",
+   "key": "42",
    "precincts_reporting": "22",
    "precincts_total": "22"
   },
@@ -1931,6 +1970,7 @@
    "tier": 0,
    "last_winner": "Mark Turner",
    "first_loser": "Deborah M. Africa",
+   "key": "81",
    "precincts_reporting": "17",
    "precincts_total": "17"
   },
@@ -1979,6 +2019,7 @@
    "tier": 0,
    "last_winner": "Lorena Chavez",
    "first_loser": "Tony Lam",
+   "key": "47",
    "precincts_reporting": "33",
    "precincts_total": "33"
   },
@@ -2020,6 +2061,7 @@
    "tier": 0,
    "last_winner": "Karen Martinez",
    "first_loser": "Scott Hung Pham",
+   "key": "31",
    "precincts_reporting": "47",
    "precincts_total": "47"
   },
@@ -2075,6 +2117,7 @@
    "tier": 0,
    "last_winner": "Sergio Martínez",
    "first_loser": "Harmony ″Jay″ McMillin",
+   "key": "55",
    "precincts_reporting": "13",
    "precincts_total": "13"
   },
@@ -2116,6 +2159,7 @@
    "tier": 0,
    "last_winner": "Kimberley Williams",
    "first_loser": "Yvonne Inciarte",
+   "key": "90",
    "precincts_reporting": "7",
    "precincts_total": "7"
   },
@@ -2157,6 +2201,7 @@
    "tier": 0,
    "last_winner": "John L. Varela",
    "first_loser": "Jimmy Forbis",
+   "key": "96",
    "precincts_reporting": "151",
    "precincts_total": "151"
   },
@@ -2198,6 +2243,7 @@
    "tier": 0,
    "last_winner": "Diana Sanchez Bentz",
    "first_loser": "Fred Tovar",
+   "key": "72",
    "precincts_reporting": "2",
    "precincts_total": "2"
   },
@@ -2246,6 +2292,7 @@
    "tier": 0,
    "last_winner": "Christina Tovar",
    "first_loser": "Tom Cline",
+   "key": "73",
    "precincts_reporting": "3",
    "precincts_total": "3"
   },
@@ -2287,6 +2334,7 @@
    "tier": 0,
    "last_winner": "William \"Bill\" Wilson",
    "first_loser": "Liangfang \"Liang\" Chao",
+   "key": "29",
    "precincts_reporting": "33",
    "precincts_total": "33"
   },
@@ -2328,6 +2376,7 @@
    "tier": 0,
    "last_winner": "Pete Dailey",
    "first_loser": "Rebecca Eisenberg",
+   "key": "98",
    "precincts_reporting": "120",
    "precincts_total": "120"
   },
@@ -2369,6 +2418,7 @@
    "tier": 0,
    "last_winner": "Dolores Alvarado",
    "first_loser": "Marilyn Librers",
+   "key": "83",
    "precincts_reporting": "4",
    "precincts_total": "4"
   },
@@ -2410,6 +2460,7 @@
    "tier": 0,
    "last_winner": "Vartika Chandra",
    "first_loser": "Sam Krow-Lucal",
+   "key": "57",
    "precincts_reporting": "10",
    "precincts_total": "10"
   },
@@ -2479,6 +2530,7 @@
    "tier": 0,
    "last_winner": "Johnny Ray Reyna",
    "first_loser": "Corinna Diener",
+   "key": "58",
    "precincts_reporting": "30",
    "precincts_total": "30"
   },
@@ -2527,6 +2579,7 @@
    "tier": 0,
    "last_winner": "Art Cohen",
    "first_loser": "Sarah Northrup Gadus",
+   "key": "40",
    "precincts_reporting": "7",
    "precincts_total": "7"
   },
@@ -2568,6 +2621,7 @@
    "tier": 0,
    "last_winner": "Raeena S. Lari",
    "first_loser": "Karla Dominguez Vega",
+   "key": "28",
    "precincts_reporting": "113",
    "precincts_total": "113"
   },
@@ -2609,6 +2663,7 @@
    "tier": 0,
    "last_winner": "Mary J. Grunthaner",
    "first_loser": "Michael Melillo",
+   "key": "44",
    "precincts_reporting": "21",
    "precincts_total": "21"
   },
@@ -2650,6 +2705,7 @@
    "tier": 0,
    "last_winner": "Dan Furtado",
    "first_loser": "Joseph \"Joe\" Brenner",
+   "key": "68",
    "precincts_reporting": "4",
    "precincts_total": "4"
   },
@@ -2733,6 +2789,7 @@
    "tier": 0,
    "last_winner": "Ed Lauing",
    "first_loser": "Yu \"Yudy\" Deng",
+   "key": "85",
    "precincts_reporting": "22",
    "precincts_total": "22"
   },
@@ -2774,6 +2831,7 @@
    "tier": 0,
    "last_winner": "Diego Martinez",
    "first_loser": "Victor A. Ramirez",
+   "key": "62",
    "precincts_reporting": "6",
    "precincts_total": "6"
   },
@@ -2822,6 +2880,7 @@
    "tier": 0,
    "last_winner": "Jasmeen Pombra",
    "first_loser": "Indu Kadambi",
+   "key": "77",
    "precincts_reporting": "6",
    "precincts_total": "6"
   },
@@ -2870,6 +2929,7 @@
    "tier": 0,
    "last_winner": "Rebeca G. Armendáriz",
    "first_loser": "Elizabeth Bracco",
+   "key": "74",
    "precincts_reporting": "3",
    "precincts_total": "3"
   },
@@ -2911,6 +2971,7 @@
    "tier": 0,
    "last_winner": "Chris Miller",
    "first_loser": "Mohit Vora",
+   "key": "56",
    "precincts_reporting": "8",
    "precincts_total": "8"
   },
@@ -2966,6 +3027,7 @@
    "tier": 0,
    "last_winner": "Bill Dalton",
    "first_loser": "Glenn K. Hendricks",
+   "key": "92",
    "precincts_reporting": "17",
    "precincts_total": "17"
   },
@@ -3000,6 +3062,7 @@
    "pct": 18.81357089221107,
    "site_pct": -9.892318736539842,
    "tier": 0,
+   "key": "119",
    "precincts_reporting": "14",
    "precincts_total": "14"
   },
@@ -3041,6 +3104,7 @@
    "tier": 0,
    "last_winner": "Bien Doan",
    "first_loser": "Van Le",
+   "key": "87",
    "precincts_reporting": "24",
    "precincts_total": "24"
   },
@@ -3075,6 +3139,7 @@
    "pct": 21.551018442721627,
    "site_pct": 12.371119772230976,
    "tier": 0,
+   "key": "124",
    "precincts_reporting": "49",
    "precincts_total": "49"
   },
@@ -3116,6 +3181,7 @@
    "tier": 0,
    "last_winner": "Steven Hayes",
    "first_loser": "Yvonne Martinez Beltran",
+   "key": "82",
    "precincts_reporting": "5",
    "precincts_total": "5"
   },
@@ -3164,6 +3230,7 @@
    "tier": 0,
    "last_winner": "Thida Cornes",
    "first_loser": "Sanjay Dave",
+   "key": "51",
    "precincts_reporting": "4",
    "precincts_total": "4"
   },
@@ -3205,6 +3272,7 @@
    "tier": 0,
    "last_winner": "Craig Gleason",
    "first_loser": "Tina Marie To",
+   "key": "100",
    "precincts_reporting": "68",
    "precincts_total": "68"
   },
@@ -3246,6 +3314,7 @@
    "tier": 0,
    "last_winner": "Glen R. Webb",
    "first_loser": "Claudia Ortiz",
+   "key": "41",
    "precincts_reporting": "5",
    "precincts_total": "5"
   },
@@ -3294,6 +3363,7 @@
    "tier": 0,
    "last_winner": "Jenny Ludwig",
    "first_loser": "Línda Lo Chávez",
+   "key": "53",
    "precincts_reporting": "22",
    "precincts_total": "22"
   },
@@ -3328,6 +3398,7 @@
    "pct": 30.10492332526231,
    "site_pct": 15.631111359445711,
    "tier": 0,
+   "key": "117",
    "precincts_reporting": "18",
    "precincts_total": "18"
   },
@@ -3362,6 +3433,7 @@
    "pct": 30.586746151647542,
    "site_pct": 18.206946838128054,
    "tier": 0,
+   "key": "131",
    "precincts_reporting": "49",
    "precincts_total": "49"
   },
@@ -3410,6 +3482,7 @@
    "tier": 0,
    "last_winner": "Paul Chun",
    "first_loser": "Casino Fajardo",
+   "key": "64",
    "precincts_reporting": "10",
    "precincts_total": "10"
   },
@@ -3451,6 +3524,7 @@
    "tier": 0,
    "last_winner": "Davis Stuart Fields",
    "first_loser": "Joseph I. Guardado",
+   "key": "69",
    "precincts_reporting": "3",
    "precincts_total": "3"
   },
@@ -3492,6 +3566,7 @@
    "tier": 0,
    "last_winner": "Gabriel Gutierrez",
    "first_loser": "Shahida S. Merchant",
+   "key": "30",
    "precincts_reporting": "20",
    "precincts_total": "20"
   },
@@ -3533,6 +3608,7 @@
    "tier": 0,
    "last_winner": "Naomi Nakano-Matsumoto",
    "first_loser": "Ilanit Eliaz",
+   "key": "49",
    "precincts_reporting": "16",
    "precincts_total": "16"
   },
@@ -3567,6 +3643,7 @@
    "pct": 37.270669812683586,
    "site_pct": 20.97333622371559,
    "tier": 0,
+   "key": "123",
    "precincts_reporting": "49",
    "precincts_total": "49"
   },
@@ -3601,6 +3678,7 @@
    "pct": 39.33947157726181,
    "site_pct": 21.273325540113433,
    "tier": 0,
+   "key": "120",
    "precincts_reporting": "17",
    "precincts_total": "17"
   },
@@ -3642,6 +3720,7 @@
    "tier": 0,
    "last_winner": "Jane Stevens",
    "first_loser": "Trevor Scott Van Laar",
+   "key": "36",
    "precincts_reporting": "3",
    "precincts_total": "3"
   },
@@ -3676,6 +3755,7 @@
    "pct": 43.953944650970676,
    "site_pct": 23.432424993118644,
    "tier": 0,
+   "key": "126",
    "precincts_reporting": "14",
    "precincts_total": "14"
   },
@@ -3710,6 +3790,7 @@
    "pct": 44.885912855828124,
    "site_pct": 24.969987995198082,
    "tier": 0,
+   "key": "118",
    "precincts_reporting": "37",
    "precincts_total": "37"
   },
@@ -3751,6 +3832,7 @@
    "tier": 0,
    "last_winner": "Anne J. Kepner",
    "first_loser": "Colin Lee Elliott Glaves",
+   "key": "32",
    "precincts_reporting": "23",
    "precincts_total": "23"
   },
@@ -3785,6 +3867,7 @@
    "pct": 49.65570376077431,
    "site_pct": 27.194092827004226,
    "tier": 0,
+   "key": "122",
    "precincts_reporting": "49",
    "precincts_total": "49"
   },
@@ -3819,6 +3902,7 @@
    "pct": 54.971977582065655,
    "site_pct": 29.349405830554844,
    "tier": 0,
+   "key": "121",
    "precincts_reporting": "17",
    "precincts_total": "17"
   },
@@ -3853,6 +3937,7 @@
    "pct": 72.35602627425021,
    "site_pct": 38.01498127340824,
    "tier": 0,
+   "key": "127",
    "precincts_reporting": "24",
    "precincts_total": "24"
   },
@@ -3887,6 +3972,7 @@
    "pct": 74.4165608827263,
    "site_pct": 41.70536454180153,
    "tier": 0,
+   "key": "134",
    "precincts_reporting": "73",
    "precincts_total": "73"
   }
