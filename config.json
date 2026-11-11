@@ -1,0 +1,40 @@
+{
+  "election_url": "https://results.enr.clarityelections.com/CA/Santa_Clara/127570",
+  "report_path": "reports/detailxml.zip",
+
+  "tiers": {
+    "recount_pct": 0.25,
+    "very_close_votes": 100,
+    "very_close_pct": 0.5,
+    "watch_votes": 200,
+    "watch_pct": 2.0
+  },
+
+  "include_ballot_measures": true,
+
+  "exclude_name_patterns": [
+    "^Governor",
+    "^Lieutenant Governor",
+    "^Secretary of State",
+    "^Controller",
+    "^Treasurer$",
+    "^Attorney General",
+    "^Insurance Commissioner",
+    "^Member, State Board of Equalization",
+    "^US Representative",
+    "^United States",
+    "^State Senator",
+    "^Member of the State Assembly",
+    "^Associate Justice",
+    "^Chief Justice",
+    "^Presiding Justice",
+    "^State Superintendent",
+    "^State Proposition"
+  ],
+
+  "_exclude_contests_note": "Contests that cross county lines. Match is a case-insensitive substring of the contest name. Add or remove names here.",
+  "exclude_contests": [
+    "Yosemite CCD",
+    "Measure RTM"
+  ]
+}
