@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCC Recount Watch</title>
+<style>
+:root{--bg:#f6f6f6;--box:#fff;--fg:#111;--muted:#666;--line:#ddd;--cut:#111;--link:#0645ad;
+  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f}
+@media (prefers-color-scheme: dark){:root{--bg:#111;--box:#1b1b1b;--fg:#eee;--muted:#9a9a9a;--line:#333;--cut:#eee;--link:#8ab4f8;
+  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;padding:16px}
+main{max-width:700px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px}
+p{margin:4px 0}
+.muted{color:var(--muted);font-size:13px}
+.times{background:var(--box);border:2px solid var(--fg);border-radius:4px;padding:10px 12px;margin:12px 0;display:grid;gap:4px}
+.times div{font-size:17px}
+.times b{font-size:17px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.tile{border-radius:4px;padding:10px;color:var(--fg);text-decoration:none;display:block}
+.tile b{display:block;font-size:30px;line-height:1.1}
+.tile span{font-size:14px;font-weight:600}
+.tile.t1{background:var(--t1)} .tile.t2{background:var(--t2)} .tile.t3{background:var(--t3)}
+h2.sec{font-size:22px;margin:36px 0 12px;padding:10px 12px;border-radius:4px;border-bottom:4px solid}
+h2.sec small{display:block;font-size:14px;font-weight:normal}
+h2.t1{background:var(--t1);border-color:var(--t1s)} h2.t2{background:var(--t2);border-color:var(--t2s)} h2.t3{background:var(--t3);border-color:var(--t3s)}
+h3{font-size:17px;margin:0}
+.contest{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:12px;margin-bottom:12px}
+.margin{margin:6px 0 8px;padding:5px 8px;border-radius:4px}
+.contest.t1 .margin{background:var(--t1)} .contest.t2 .margin{background:var(--t2)} .contest.t3 .margin{background:var(--t3)}
+.margin .big{font-size:15px;font-weight:600}
+.margin .cmp{font-size:13px;color:var(--muted)}
+.recap{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0}
+.recap h2{font-size:18px;margin:0 0 4px}
+.recap h4{font-size:15px;margin:10px 0 0;padding:2px 6px;border-radius:3px;display:inline-block}
+.rh.t1{background:var(--t1)} .rh.t2{background:var(--t2)} .rh.t3{background:var(--t3)}
+.recap ul{margin:4px 0 0;padding-left:20px}
+.recap li{margin:2px 0}
+.recap p{margin:4px 0 0}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom}
+tr.cut td{border-bottom:3px solid var(--cut)}
+tr.wi td{color:var(--muted)}
+tr.tot td{color:var(--muted);font-size:13px;border-bottom:0}
+tr.first td{border-top:1px solid var(--muted)}
+.none{color:var(--muted)}
+details{margin-top:24px}
+summary{cursor:pointer;font-weight:600}
+a{color:var(--link)}
+@media (max-width:440px){body{padding:12px}.tile b{font-size:24px}.tile span{font-size:12px}.margin .big{font-size:14px}th,td{padding:4px 3px}}
+</style>
+</head>
+<body>
+<main>
+<h1>SCC Recount Watch</h1>
+<p>Santa Clara County contests at or near the automatic recount margin. November 3, 2026 General Election.</p>
+
+<div class="times">
+<div>Results as of: <b><span title="Nov 10, 2026, 5:06 PM PST">Tue Nov 10, 5:06 PM PST</span></b> <span class="muted">(update from uploaded file)</span></div>
+<div>Last checked: <b id="checked" data-ts="2026-11-12T00:14:08+00:00" title="Nov 11, 2026, 4:14 PM PST">Nov 11, 2026, 4:14 PM PST</b></div>
+</div>
+
+<div class="tiles"><a class="tile t1" href="#tier1"><b>3</b><span>Automatic recount</span></a><a class="tile t2" href="#tier2"><b>3</b><span>Very close</span></a><a class="tile t3" href="#tier3"><b>9</b><span>Keep an eye on</span></a></div>
+
+<div class="recap">
+<h2>Summary</h2>
+<h4 class="rh t1">Automatic recount (3)</h4><ul><li><a href="#c46">East Side Union HSD, TA 1, Short Term</a>: 39 votes / 0.18%</li><li><a href="#c80">City of Milpitas Council</a>: 37 votes / 0.19%</li><li><a href="#c48">Fremont Union HSD, TA 3</a>: 46 votes / 0.2489%</li></ul><h4 class="rh t2">Very close (3)</h4><ul><li><a href="#c132">Measure Q - Cambrian School District</a>: 74 votes / 0.67%</li><li><a href="#c67">Sunnyvale SD, Trustee Area 3</a>: 63 votes / 1.37%</li><li><a href="#c45">Santa Clara Unified SD, Trustee Area 1</a>: 58 votes / 1.65%</li></ul><h4 class="rh t3">Keep an eye on (9)</h4><ul><li><a href="#c89">Mayor, City of Santa Clara</a>: 412 votes / 1.30%</li><li><a href="#c59">Franklin-McKinley SD</a>: 262 votes / 1.34%</li><li><a href="#c84">City of Mountain View Council</a>: 374 votes / 1.4936%</li><li><a href="#c50">Los Gatos-Saratoga Union HSD, TA 2</a>: 130 votes / 2.45%</li><li><a href="#c52">Alum Rock Union SD, TA 3</a>: 154 votes / 3.01%</li><li><a href="#c38">Morgan Hill Unified SD, Trustee Area 1</a>: 148 votes / 3.18%</li><li><a href="#c65">Orchard SD</a>: 118 votes / 3.53%</li><li><a href="#c35">Gilroy Unified SD, Trustee Area 3</a>: 191 votes / 4.67%</li><li><a href="#c133">Measure R - Orchard School District</a>: 166 votes / 5.01%</li></ul>
+</div>
+
+<p class="muted">Margin = last winner minus first loser. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The county results site divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
+
+<section id="tier1">
+<h2 class="sec t1">Automatic recount <small>Margin under 25 votes or under 0.25% of ballots cast</small></h2>
+<div class="contest t1" id="c46">
+<h3>East Side Union HSD, TA 1, Short Term</h3>
+<p class="muted">Vote for 1 · 33 precincts</p>
+<div class="margin"><span class="big">Margin: 39 votes, 0.18% of ballots cast</span><br><span class="cmp">(0.20% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Paul Pham</td><td>6,818</td><td>31.21%</td><td>34.62%</td></tr><tr class=""><td>Mer Curry Nuñez</td><td>6,779</td><td>31.03%</td><td>34.42%</td></tr><tr class=""><td>Patricia Martínez-Roach</td><td>6,082</td><td>27.84%</td><td>30.88%</td></tr><tr class="wi"><td>Write-in</td><td>15</td><td>0.07%</td><td>0.08%</td></tr><tr class="tot first"><td>Candidate votes</td><td>19,694</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>31</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>2,120</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>21,845</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t1" id="c80">
+<h3>City of Milpitas Council</h3>
+<p class="muted">Vote for 2 · 14 precincts</p>
+<div class="margin"><span class="big">Margin: 37 votes, 0.19% of ballots cast</span><br><span class="cmp">(0.13% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class=""><td>Bill Chuan</td><td>7,322</td><td>37.55%</td><td>25.31%</td></tr><tr class="cut"><td>Seema Kanani</td><td>6,273</td><td>32.17%</td><td>21.68%</td></tr><tr class=""><td>Garry Barbadillo</td><td>6,236</td><td>31.98%</td><td>21.55%</td></tr><tr class=""><td>Jennie Ha Phan</td><td>4,603</td><td>23.61%</td><td>15.91%</td></tr><tr class=""><td>Dipak Awasthi</td><td>4,491</td><td>23.03%</td><td>15.52%</td></tr><tr class="wi"><td>Write-in</td><td>6</td><td>0.03%</td><td>0.02%</td></tr><tr class="tot first"><td>Candidate votes</td><td>28,931</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>142</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>9,923</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>19,498</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t1" id="c48">
+<h3>Fremont Union HSD, TA 3</h3>
+<p class="muted">Vote for 1 · 33 precincts</p>
+<div class="margin"><span class="big">Margin: 46 votes, 0.2489% of ballots cast</span><br><span class="cmp">(0.29% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Jason Lin</td><td>7,842</td><td>42.44%</td><td>50.14%</td></tr><tr class=""><td>Rosa Kim</td><td>7,796</td><td>42.19%</td><td>49.84%</td></tr><tr class="wi"><td>Write-in</td><td>3</td><td>0.02%</td><td>0.02%</td></tr><tr class="tot first"><td>Candidate votes</td><td>15,641</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>5</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>2,833</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>18,479</td><td></td><td></td></tr>
+</table></div>
+</div>
+</section><section id="tier2">
+<h2 class="sec t2">Very close <small>Within 100 votes or 0.5% of ballots cast</small></h2>
+<div class="contest t2" id="c132">
+<h3>Measure Q - Cambrian School District, Parcel Tax - 2/3rds (66.67%) Vote Required</h3>
+<p class="muted">Needs two-thirds Yes · currently passing · 13 precincts</p>
+<div class="margin"><span class="big">Margin: 74 more No votes would flip it, 0.67% of ballots cast</span><br><span class="cmp">(Yes at 67.14% of votes, needs 66.67%)</span></div>
+<div class="tbl"><table>
+<tr><th>Choice</th><th>Votes</th><th>% of ballots cast</th><th>% of votes</th></tr>
+<tr class=""><td>Yes ✓</td><td>6,956</td><td>63.09%</td><td>67.14%</td></tr><tr class=""><td>No</td><td>3,404</td><td>30.87%</td><td>32.86%</td></tr><tr class="tot first"><td>Total votes</td><td>10,360</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>2</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>664</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>11,026</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t2" id="c67">
+<h3>Sunnyvale SD, Trustee Area 3</h3>
+<p class="muted">Vote for 1 · 10 precincts</p>
+<div class="margin"><span class="big">Margin: 63 votes, 1.37% of ballots cast</span><br><span class="cmp">(1.72% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Rommy Kushner</td><td>1,856</td><td>40.25%</td><td>50.79%</td></tr><tr class=""><td>Michelle Maginot</td><td>1,793</td><td>38.89%</td><td>49.07%</td></tr><tr class="wi"><td>Write-in</td><td>5</td><td>0.11%</td><td>0.14%</td></tr><tr class="tot first"><td>Candidate votes</td><td>3,654</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>5</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>952</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>4,611</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t2" id="c45">
+<h3>Santa Clara Unified SD, Trustee Area 1</h3>
+<p class="muted">Vote for 1 · 6 precincts</p>
+<div class="margin"><span class="big">Margin: 58 votes, 1.65% of ballots cast</span><br><span class="cmp">(2.01% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Kamal Yassin</td><td>1,466</td><td>41.66%</td><td>50.92%</td></tr><tr class=""><td>Jim Canova</td><td>1,408</td><td>40.01%</td><td>48.91%</td></tr><tr class="wi"><td>Write-in</td><td>5</td><td>0.14%</td><td>0.17%</td></tr><tr class="tot first"><td>Candidate votes</td><td>2,879</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>1</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>639</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>3,519</td><td></td><td></td></tr>
+</table></div>
+</div>
+</section><section id="tier3">
+<h2 class="sec t3">Keep an eye on <small>Within 200 votes or 1.5% of ballots cast</small></h2>
+<div class="contest t3" id="c89">
+<h3>Mayor, City of Santa Clara</h3>
+<p class="muted">Vote for 1 · 37 precincts</p>
+<div class="margin"><span class="big">Margin: 412 votes, 1.30% of ballots cast</span><br><span class="cmp">(1.43% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Karen Hardy</td><td>6,531</td><td>20.65%</td><td>22.73%</td></tr><tr class=""><td>Kathy Watanabe</td><td>6,119</td><td>19.35%</td><td>21.30%</td></tr><tr class=""><td>David Kertes</td><td>5,621</td><td>17.77%</td><td>19.56%</td></tr><tr class=""><td>Kevin Park</td><td>5,290</td><td>16.72%</td><td>18.41%</td></tr><tr class=""><td>Armando &quot;Gary&quot; Ferraris</td><td>3,113</td><td>9.84%</td><td>10.83%</td></tr><tr class=""><td>Mike Wiltberger</td><td>2,040</td><td>6.45%</td><td>7.10%</td></tr><tr class="wi"><td>Write-in</td><td>20</td><td>0.06%</td><td>0.07%</td></tr><tr class="tot first"><td>Candidate votes</td><td>28,734</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>55</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>2,841</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>31,630</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c59">
+<h3>Franklin-McKinley SD</h3>
+<p class="muted">Vote for 3 · 21 precincts</p>
+<div class="margin"><span class="big">Margin: 262 votes, 1.34% of ballots cast</span><br><span class="cmp">(0.82% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class=""><td>Marc Cooper</td><td>8,134</td><td>41.71%</td><td>25.44%</td></tr><tr class=""><td>Rudy J. Rodriguez</td><td>8,048</td><td>41.27%</td><td>25.18%</td></tr><tr class="cut"><td>Steven Sanchez</td><td>8,008</td><td>41.06%</td><td>25.05%</td></tr><tr class=""><td>Gilbert Borrayo</td><td>7,746</td><td>39.72%</td><td>24.23%</td></tr><tr class="wi"><td>Write-in</td><td>31</td><td>0.16%</td><td>0.10%</td></tr><tr class="tot first"><td>Candidate votes</td><td>31,967</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>39</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>26,500</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>19,502</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c84">
+<h3>City of Mountain View Council</h3>
+<p class="muted">Vote for 3 · 17 precincts</p>
+<div class="margin"><span class="big">Margin: 374 votes, 1.4936% of ballots cast</span><br><span class="cmp">(0.68% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class=""><td>IdaRose Sylvester</td><td>10,123</td><td>40.43%</td><td>18.31%</td></tr><tr class=""><td>Erik Poicon</td><td>8,435</td><td>33.69%</td><td>15.26%</td></tr><tr class="cut"><td>Silja Paymer</td><td>8,415</td><td>33.61%</td><td>15.22%</td></tr><tr class=""><td>Robert Cox</td><td>8,041</td><td>32.11%</td><td>14.54%</td></tr><tr class=""><td>Paul Donahue</td><td>7,238</td><td>28.91%</td><td>13.09%</td></tr><tr class=""><td>James Kuszmaul</td><td>6,398</td><td>25.55%</td><td>11.57%</td></tr><tr class=""><td>Alex Amoroso</td><td>4,317</td><td>17.24%</td><td>7.81%</td></tr><tr class=""><td>Samuel Ali</td><td>2,306</td><td>9.21%</td><td>4.17%</td></tr><tr class="wi"><td>Write-in</td><td>19</td><td>0.08%</td><td>0.03%</td></tr><tr class="tot first"><td>Candidate votes</td><td>55,292</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>189</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>19,639</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>25,040</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c50">
+<h3>Los Gatos-Saratoga Union HSD, TA 2</h3>
+<p class="muted">Vote for 1 · 18 precincts</p>
+<div class="margin"><span class="big">Margin: 130 votes, 2.45% of ballots cast</span><br><span class="cmp">(3.21% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Sangeeta Balachandran Mallik</td><td>2,087</td><td>39.27%</td><td>51.57%</td></tr><tr class=""><td>Ishaan Prasad</td><td>1,957</td><td>36.83%</td><td>48.36%</td></tr><tr class="wi"><td>Write-in</td><td>3</td><td>0.06%</td><td>0.07%</td></tr><tr class="tot first"><td>Candidate votes</td><td>4,047</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>2</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>1,265</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>5,314</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c52">
+<h3>Alum Rock Union SD, TA 3</h3>
+<p class="muted">Vote for 1 · 9 precincts</p>
+<div class="margin"><span class="big">Margin: 154 votes, 3.01% of ballots cast</span><br><span class="cmp">(3.36% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Andrés Quintero</td><td>2,368</td><td>46.26%</td><td>51.64%</td></tr><tr class=""><td>Delia Oseguera</td><td>2,214</td><td>43.25%</td><td>48.28%</td></tr><tr class="wi"><td>Write-in</td><td>4</td><td>0.08%</td><td>0.09%</td></tr><tr class="tot first"><td>Candidate votes</td><td>4,586</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>6</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>527</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>5,119</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c38">
+<h3>Morgan Hill Unified SD, Trustee Area 1</h3>
+<p class="muted">Vote for 1 · 8 precincts</p>
+<div class="margin"><span class="big">Margin: 148 votes, 3.18% of ballots cast</span><br><span class="cmp">(3.79% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Nancy Altman-Palm</td><td>2,023</td><td>43.46%</td><td>51.83%</td></tr><tr class=""><td>Jason Amezcua</td><td>1,875</td><td>40.28%</td><td>48.04%</td></tr><tr class="wi"><td>Write-in</td><td>5</td><td>0.11%</td><td>0.13%</td></tr><tr class="tot first"><td>Candidate votes</td><td>3,903</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>3</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>749</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>4,655</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c65">
+<h3>Orchard SD</h3>
+<p class="muted">Vote for 3 · 7 precincts</p>
+<div class="margin"><span class="big">Margin: 118 votes, 3.53% of ballots cast</span><br><span class="cmp">(2.17% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class=""><td>Katherine Kasolas-Jacobson</td><td>1,265</td><td>37.80%</td><td>23.25%</td></tr><tr class=""><td>Jeff Tang</td><td>1,196</td><td>35.73%</td><td>21.98%</td></tr><tr class="cut"><td>Renee Lo</td><td>1,104</td><td>32.98%</td><td>20.29%</td></tr><tr class=""><td>Lyseria Evelyn Phillips</td><td>986</td><td>29.46%</td><td>18.12%</td></tr><tr class=""><td>Molly Eslao</td><td>868</td><td>25.93%</td><td>15.95%</td></tr><tr class=""><td>Hina Patel</td><td>7</td><td>0.21%</td><td>0.13%</td></tr><tr class="wi"><td>Write-in</td><td>15</td><td>0.45%</td><td>0.28%</td></tr><tr class="tot first"><td>Candidate votes</td><td>5,441</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>9</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>4,592</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>3,347</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c35">
+<h3>Gilroy Unified SD, Trustee Area 3</h3>
+<p class="muted">Vote for 1 · 4 precincts</p>
+<div class="margin"><span class="big">Margin: 191 votes, 4.67% of ballots cast</span><br><span class="cmp">(5.41% of candidate votes only)</span></div>
+<div class="tbl"><table>
+<tr><th>Candidate</th><th>Votes</th><th>% of ballots cast</th><th>% of candidate votes</th></tr>
+<tr class="cut"><td>Michelle Nelson</td><td>1,861</td><td>45.53%</td><td>52.67%</td></tr><tr class=""><td>Daniel Harney</td><td>1,670</td><td>40.86%</td><td>47.27%</td></tr><tr class="wi"><td>Write-in</td><td>2</td><td>0.05%</td><td>0.06%</td></tr><tr class="tot first"><td>Candidate votes</td><td>3,533</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>2</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>552</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>4,087</td><td></td><td></td></tr>
+</table></div>
+</div><div class="contest t3" id="c133">
+<h3>Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required</h3>
+<p class="muted">Needs two-thirds Yes · currently failing · 7 precincts</p>
+<div class="margin"><span class="big">Margin: 166 more Yes votes would flip it, 5.01% of ballots cast</span><br><span class="cmp">(Yes at 64.85% of votes, needs 66.67%)</span></div>
+<div class="tbl"><table>
+<tr><th>Choice</th><th>Votes</th><th>% of ballots cast</th><th>% of votes</th></tr>
+<tr class=""><td>Yes</td><td>1,972</td><td>59.56%</td><td>64.85%</td></tr><tr class=""><td>No ✓</td><td>1,069</td><td>32.29%</td><td>35.15%</td></tr><tr class="tot first"><td>Total votes</td><td>3,041</td><td></td><td></td></tr><tr class="tot"><td>Overvotes</td><td>0</td><td></td><td></td></tr><tr class="tot"><td>Undervotes</td><td>270</td><td></td><td></td></tr><tr class="tot"><td>Ballots cast</td><td>3,311</td><td></td><td></td></tr>
+</table></div>
+</div>
+</section>
+
+<details>
+<summary>Other county contests (71, not close)</summary>
+<div class="tbl"><table>
+<tr><th>Contest</th><th>Margin</th><th>% of ballots cast</th></tr>
+<tr><td>Mayor, City of Milpitas</td><td>300</td><td>1.54%</td></tr><tr><td>Measure M - Gilroy Unified School District, School Bond - 55% Vote Required</td><td>405</td><td>1.86%</td></tr><tr><td>Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required</td><td>448</td><td>1.86%</td></tr><tr><td>Los Altos SD</td><td>404</td><td>2.09%</td></tr><tr><td>Measure J - City of Palo Alto, Transactions and Use Tax - Majority Vote Required</td><td>579</td><td>2.23%</td></tr><tr><td>Town of Los Gatos Council</td><td>411</td><td>2.78%</td></tr><tr><td>Santa Clara Valley Water, District 6</td><td>1,616</td><td>2.89%</td></tr><tr><td>San José Unified SD, Trustee Area 2</td><td>554</td><td>3.71%</td></tr><tr><td>Measure A - City of Morgan Hill, Elected City Treasurer to an Appointive Position - Majority Vote Required</td><td>804</td><td>4.52%</td></tr><tr><td>Mountain View Whisman SD</td><td>1,094</td><td>5.06%</td></tr><tr><td>City of San José Council, District 5</td><td>1,220</td><td>5.56%</td></tr><tr><td>City of Cupertino Council</td><td>1,222</td><td>6.21%</td></tr><tr><td>Saratoga Union SD</td><td>615</td><td>6.26%</td></tr><tr><td>City of San José Council, District 9</td><td>2,168</td><td>6.53%</td></tr><tr><td>West Valley-Mission CCD, Trustee Area 7</td><td>1,650</td><td>6.80%</td></tr><tr><td>Berryessa Union SD</td><td>1,531</td><td>6.93%</td></tr><tr><td>Measure O - Alum Rock Union School District, Parcel Tax - 2/3rds (66.67%) Vote Required</td><td>1,816</td><td>7.41%</td></tr><tr><td>Morgan Hill Unified SD, Trustee Area 2</td><td>341</td><td>7.69%</td></tr><tr><td>Cupertino Sanitary District</td><td>1,651</td><td>7.77%</td></tr><tr><td>Milpitas Unified SD</td><td>1,513</td><td>7.80%</td></tr><tr><td>Oak Grove SD, Trustee Area 3</td><td>494</td><td>8.26%</td></tr><tr><td>City of Santa Clara Council, District 3</td><td>413</td><td>8.49%</td></tr><tr><td>City of Los Altos Council, D2</td><td>263</td><td>8.49%</td></tr><tr><td>Palo Alto Unified SD</td><td>2,863</td><td>9.66%</td></tr><tr><td>Mayor, City of Morgan Hill</td><td>1,782</td><td>9.90%</td></tr><tr><td>East Side Union HSD, TA 4</td><td>2,651</td><td>10.02%</td></tr><tr><td>San José-Evergreen CCD, Trustee Area 2</td><td>2,586</td><td>10.07%</td></tr><tr><td>Cambrian SD</td><td>1,189</td><td>10.73%</td></tr><tr><td>City of Santa Clara Council, District 2</td><td>536</td><td>10.79%</td></tr><tr><td>Santa Clara Valley Water, District 1</td><td>12,283</td><td>13.09%</td></tr><tr><td>City of Gilroy Council, District 4</td><td>257</td><td>13.09%</td></tr><tr><td>City of Gilroy Council, District 5</td><td>407</td><td>13.15%</td></tr><tr><td>Foothill-De Anza CCD, Trustee Area 4</td><td>3,867</td><td>13.43%</td></tr><tr><td>Santa Clara Valley Water, District 7</td><td>13,975</td><td>13.76%</td></tr><tr><td>City of Morgan Hill Council, District D</td><td>736</td><td>14.31%</td></tr><tr><td>Campbell Union SD, TA 5</td><td>1,169</td><td>14.48%</td></tr><tr><td>Evergreen SD</td><td>4,811</td><td>15.14%</td></tr><tr><td>Morgan Hill Unified SD, Trustee Area 3</td><td>541</td><td>15.18%</td></tr><tr><td>Santa Clara County BOE, Trustee Area 7</td><td>13,855</td><td>15.20%</td></tr><tr><td>San José Unified SD, Trustee Area 4</td><td>2,770</td><td>15.54%</td></tr><tr><td>City of Campbell Council, District 3</td><td>508</td><td>15.58%</td></tr><tr><td>City of Palo Alto Council</td><td>4,218</td><td>16.16%</td></tr><tr><td>Oak Grove SD, Trustee Area 2</td><td>946</td><td>16.90%</td></tr><tr><td>Town of Los Altos Hills Council</td><td>675</td><td>16.94%</td></tr><tr><td>City of Gilroy Council, District 6</td><td>374</td><td>17.03%</td></tr><tr><td>Campbell Union SD, TA 4</td><td>963</td><td>17.35%</td></tr><tr><td>City of Saratoga Council</td><td>2,659</td><td>18.37%</td></tr><tr><td>Measure D - City of Los Altos, Citizen-Sponsored Initiative, Los Altos Downtown Parking Plaza Ordinance - Majority Vote Required</td><td>2,756</td><td>18.81%</td></tr><tr><td>City of San José Council, District 7</td><td>3,991</td><td>19.45%</td></tr><tr><td>Measure I - City of Sunnyvale, Charter Amendment, Elections to Fill Council Vacancies - Majority Vote Required</td><td>8,951</td><td>21.55%</td></tr><tr><td>City of Morgan Hill Council, District B</td><td>1,153</td><td>24.43%</td></tr><tr><td>Mountain View-Los Altos Union HSD, TA 3</td><td>1,925</td><td>25.28%</td></tr><tr><td>Midpeninsula Regional Open Space District, Ward 1</td><td>12,272</td><td>27.23%</td></tr><tr><td>Morgan Hill Unified SD, Trustee Area 4</td><td>1,128</td><td>29.00%</td></tr><tr><td>Alum Rock Union SD, TA 5</td><td>1,855</td><td>30.02%</td></tr><tr><td>Measure B - City of Gilroy, Transient Occupancy Tax - Majority Vote Required</td><td>5,595</td><td>30.10%</td></tr><tr><td>Measure P - Alum Rock Union School District, School Bond - 55% Vote Required</td><td>7,491</td><td>30.59%</td></tr><tr><td>Oak Grove SD, Trustee Area 5</td><td>1,931</td><td>30.84%</td></tr><tr><td>City of Campbell Council, District 4</td><td>974</td><td>31.50%</td></tr><tr><td>Gavilan Joint CCD, Trustee Area 3</td><td>4,259</td><td>33.83%</td></tr><tr><td>Fremont Union HSD, TA 4</td><td>4,843</td><td>36.98%</td></tr><tr><td>Measure H - City of Sunnyvale, City Manager Settlement Authority - Majority Vote Required</td><td>15,480</td><td>37.27%</td></tr><tr><td>Measure E - City of Mountain View, Charter Amendment, Modernize and Clarify Its Provisions - Majority Vote Required</td><td>9,827</td><td>39.34%</td></tr><tr><td>Gilroy Unified SD, Trustee Area 4</td><td>1,039</td><td>39.67%</td></tr><tr><td>Measure K - City of Milpitas, Business Tax Modernization - Majority Vote Required</td><td>8,513</td><td>43.95%</td></tr><tr><td>Measure C - City of Santa Clara, Public Works Charter Amendment - Majority Vote Required</td><td>14,144</td><td>44.89%</td></tr><tr><td>West Valley-Mission CCD, Trustee Area 3</td><td>7,928</td><td>45.77%</td></tr><tr><td>Measure G - City of Sunnyvale, Charter Amendment, Public Works Contracts - Majority Vote Required</td><td>20,624</td><td>49.66%</td></tr><tr><td>Measure F - City of Mountain View, Transient Occupancy Tax - Majority Vote Required</td><td>13,732</td><td>54.97%</td></tr><tr><td>Measure L - City of Cupertino, General Plan Amendment - Majority Vote Required</td><td>14,210</td><td>72.36%</td></tr><tr><td>Measure S - El Camino Healthcare District, Limit Number of Terms for Directors - Majority Vote Required</td><td>53,347</td><td>74.42%</td></tr>
+</table></div>
+</details>
+
+<details>
+<summary>Contests not included (48)</summary>
+<ul><li>Governor <span class='muted'>(statewide, congressional or legislative)</span></li><li>Lieutenant Governor <span class='muted'>(statewide, congressional or legislative)</span></li><li>Secretary of State <span class='muted'>(statewide, congressional or legislative)</span></li><li>Controller <span class='muted'>(statewide, congressional or legislative)</span></li><li>Treasurer <span class='muted'>(statewide, congressional or legislative)</span></li><li>Attorney General <span class='muted'>(statewide, congressional or legislative)</span></li><li>Insurance Commissioner <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member, State Board of Equalization, District 2 <span class='muted'>(statewide, congressional or legislative)</span></li><li>US Representative, District 16 <span class='muted'>(statewide, congressional or legislative)</span></li><li>US Representative, District 17 <span class='muted'>(statewide, congressional or legislative)</span></li><li>US Representative, District 18 <span class='muted'>(statewide, congressional or legislative)</span></li><li>US Representative, District 19 <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Senator, District 10 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member of the State Assembly, District 23 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member of the State Assembly, District 24 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member of the State Assembly, District 25 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member of the State Assembly, District 26 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member of the State Assembly, District 28 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Member of the State Assembly, District 29 <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice of Supreme Court JOSHUA GROBAN <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice of Supreme Court KELLI M. EVANS <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice, Court of Appeal Sixth Appellate District CHARLES E. WILSON II <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice, Court of Appeal Sixth Appellate District FREDERICK S. CHUNG <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice, Court of Appeal Sixth Appellate District CHARLES F. ADAMS <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice, Court of Appeal Sixth Appellate District ALLISON MARSTON DANNER <span class='muted'>(statewide, congressional or legislative)</span></li><li>Associate Justice, Court of Appeal Sixth Appellate District DANIEL H. BROMBERG <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Superintendent of Public Instruction <span class='muted'>(statewide, congressional or legislative)</span></li><li>Yosemite CCD, Trustee Area 4 <span class='muted'>(crosses county lines (config list))</span></li><li>State Proposition 1 - The Veterans and Affordable Housing Bond Act of 2026 <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 2 - Save for California&#x27;s Future Act <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 3 - Provides Permanent Funding for Schools and Healthcare by Extending Existing Tax on High Incomes <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 4 - Political Reform Act of 1974, Public Campaign Financing: California Fair Elections Act of 2026 <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 5 - Elections: Recall of State Officers <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 37 - Creates Loan Program for Middle-Income Buyers of Qualified New Homes <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 38 - Authorizes Bonds for Immunology Research <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 39 - Establishes Additional Voter Identification and Citizenship Verification Requirements <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 40 - Imposes One-Time Tax on Certain Individuals and Trusts <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 41 - New State Special Taxes: Requires Audits of Programs Funded and Prohibits Exclusions from Existing Vot... <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 42 - Prohibits New State Personal Property Taxes and Certain Retroactive State Taxes <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 43 - Local Taxes: Limitation <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 44 - Requires Community Health Clinics Spend 90% of Revenue on Program Services <span class='muted'>(statewide, congressional or legislative)</span></li><li>State Proposition 45 - Modifies Environmental Review for Certain Projects <span class='muted'>(statewide, congressional or legislative)</span></li><li>Measure RTM - Public Transit Revenue Measure District (PTRMD), Regional Transit Measure - Majority Vote Required <span class='muted'>(crosses county lines (config list))</span></li><li>City of Campbell Council, District 5 <span class='muted'>(uncontested)</span></li><li>City of Los Altos Council, D4 <span class='muted'>(uncontested)</span></li><li>City of Sunnyvale Council, District 1 <span class='muted'>(uncontested)</span></li><li>City of Sunnyvale Council, District 3 <span class='muted'>(uncontested)</span></li><li>City of Sunnyvale Council, District 5 <span class='muted'>(uncontested)</span></li></ul>
+</details>
+
+<p class="muted" style="margin-top:24px">Source: <a href="https://results.enr.clarityelections.com/CA/Santa_Clara/127570/">Santa Clara County official results</a>. Checked about once an hour. Unofficial tracker; margins change as the county counts more ballots.</p>
+</main>
+<script>
+// Show "last checked" as time ago (exact time on hover), using the most recent
+// hourly run even when nothing new was published.
+(function(){
+  var el=document.getElementById('checked');
+  var when=new Date(el.dataset.ts);
+  function ago(){
+    var m=Math.max(0,Math.round((Date.now()-when)/60000));
+    var s=m<1?'just now':m<60?m+(m==1?' minute':' minutes')+' ago':
+      (function(h){return h<48?h+(h==1?' hour':' hours')+' ago':Math.round(h/24)+' days ago'})(Math.round(m/60));
+    el.textContent=s;
+    el.title=when.toLocaleString('en-US',{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+  }
+  ago(); setInterval(ago,60000);
+  fetch('https://api.github.com/repos/rkudeshi/SCC-Recount-Watch/actions/workflows/update.yml/runs?per_page=1&status=completed')
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(j){
+      if(!j||!j.workflow_runs||!j.workflow_runs.length)return;
+      var t=new Date(j.workflow_runs[0].updated_at);
+      if(t>when){when=t;ago();}
+    }).catch(function(){});
+})();
+</script>
+</body>
+</html>
