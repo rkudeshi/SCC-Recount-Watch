@@ -9,6 +9,7 @@ Usage:
   python update.py --render-only   # re-render site/ from data/results.json
 """
 import argparse
+import gzip
 import html
 import io
 import json
@@ -36,16 +37,46 @@ WRITE_IN = re.compile(r"^write[- ]?ins?$", re.I)
 # ---------------------------------------------------------------- fetching
 
 def http_get(url, timeout=60):
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    req = urllib.request.Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+    })
     with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
+        body = r.read()
+        if r.headers.get("Content-Encoding") == "gzip" or body[:2] == b"\x1f\x8b":
+            body = gzip.decompress(body)
+        return body
 
 
 def current_version(base):
-    text = http_get(f"{base}/current_ver.txt").decode("utf-8-sig").strip()
-    if not text.isdigit():
-        raise ValueError(f"unexpected current_ver.txt contents: {text[:80]!r}")
-    return text
+    """Find the newest results version. Clarity's current_ver.txt is the usual
+    source; fall back to other spellings and to version numbers in the landing page."""
+    root = base.split("/CA/")[0]
+    path = base[len(root):]
+    candidates = [
+        f"{base}/current_ver.txt",
+        f"{root}/{path}/current_ver.txt",  # the double-slash form Clarity links use
+        f"{base}/current_ver.txt?nocache={int(datetime.now().timestamp())}",
+    ]
+    for url in candidates:
+        try:
+            text = http_get(url).decode("utf-8-sig", "replace").strip()
+            print(f"  {url} -> {text[:60]!r}")
+            if text.isdigit():
+                return text
+        except Exception as e:  # noqa: BLE001
+            print(f"  {url} -> error {e}")
+    for url in (f"{base}/", f"{base}/index.html"):
+        try:
+            page = http_get(url).decode("utf-8", "replace")
+            print(f"  {url} -> {len(page)} bytes: {page[:200]!r}")
+            found = re.findall(re.escape(path.rsplit("/", 1)[-1]) + r"/(\d{5,7})/", page) + re.findall(r"(?:ver|version)\D{0,5}(\d{5,7})", page, re.I)
+            if found:
+                return max(found, key=int)
+        except Exception as e:  # noqa: BLE001
+            print(f"  {url} -> error {e}")
+    raise ValueError("could not find the current results version")
 
 
 def read_detail_xml(blob):
