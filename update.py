@@ -30,6 +30,7 @@ SITE_DIR = os.path.join(ROOT, "site")
 STATE_PATH = os.path.join(DATA_DIR, "state.json")
 RESULTS_PATH = os.path.join(DATA_DIR, "results.json")
 HISTORY_PATH = os.path.join(DATA_DIR, "history.json")
+ARCHIVE_DIR = os.path.join(DATA_DIR, "archive")  # full results for each version, for the dated pages
 PACIFIC = ZoneInfo("America/Los_Angeles")
 USER_AGENT = "SCC-Recount-Watch/1.0 (+https://github.com/rkudeshi/SCC-Recount-Watch)"
 WRITE_IN = re.compile(r"^write[- ]?ins?$", re.I)
@@ -607,7 +608,21 @@ def short_name(a):
     return a["name"]
 
 
-def render(results, state, cfg, hist=None):
+def date_picker(res_time_s, pages, current):
+    """The 'Results as of' box. With older pages available it opens a list of them."""
+    if not pages or len(pages) < 2:
+        return f'<div class="times">Results as of <b>{res_time_s}</b></div>'
+    items = []
+    for i, pg in enumerate(pages):
+        cur = ' aria-current="page" class="cur"' if pg["version"] == current else ""
+        latest = ' <span class="muted">latest</span>' if i == 0 else ""
+        items.append(f'<li><a href="{E(pg["file"])}"{cur}>{E(pg["label"])}{latest}</a></li>')
+    return (f'<div class="dd"><button type="button" class="times ddbtn" id="ddbtn" aria-haspopup="true" aria-expanded="false">'
+            f'<span>Results as of <b>{res_time_s}</b></span><span class="caret" aria-hidden="true"></span></button>'
+            f'<ul class="ddlist" id="ddlist" hidden>{"".join(items)}</ul></div>')
+
+
+def render(results, state, cfg, hist=None, pages=None):
     t = cfg["tiers"]
     PCT_LINES[:] = [t["recount_pct"]]
     w = t.get("watch_ratio", 6)
@@ -636,6 +651,12 @@ def render(results, state, cfg, hist=None):
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
     res_time_s = (f'<span title="{fmt_time(res_time)}">{fmt_short_time(res_time)}</span>'
                   if res_time else E(results.get("results_timestamp", "")))
+
+    old_bar = ""
+    if pages and version != pages[0]["version"]:
+        when = fmt_short_time(res_time).split(",")[0] if res_time else "an earlier update"
+        old_bar = (f'<div class="oldbar">You\'re looking at older results, as of {E(when)}. '
+                   f'<a href="index.html">Go to the latest results</a></div>')
 
     tiles = "".join(
         f'<a class="tile g{k}" href="#group{k}"><b>{counts[k]}</b><span>{ginfo[k][0]}</span></a>'
@@ -721,6 +742,17 @@ tr.cut td{{border-bottom-color:var(--th)}}
 a.totop{{position:absolute;top:10px;right:12px;font-size:12px;color:var(--muted);text-decoration:none}}
 .times{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0;font-size:17px}}
 details.nc{{margin:0}}
+.dd{{position:relative;margin:12px 0}}
+.ddbtn{{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;margin:0;font:inherit;font-size:17px;color:var(--fg);text-align:left;cursor:pointer}}
+.caret{{flex:none;border-style:solid;border-width:6px 5px 0 5px;border-color:var(--muted) transparent transparent transparent}}
+.ddbtn[aria-expanded="true"] .caret{{transform:rotate(180deg)}}
+.ddlist{{position:absolute;left:0;right:0;top:100%;margin:4px 0 0;padding:4px 0;list-style:none;background:var(--box);border:1px solid var(--line);border-radius:4px;box-shadow:0 4px 14px rgba(0,0,0,.15);z-index:20}}
+.ddlist a{{display:block;padding:8px 12px;color:var(--fg);text-decoration:none}}
+.ddlist a:hover{{background:var(--th)}}
+.ddlist a.cur{{font-weight:600;background:var(--th)}}
+.oldbar{{position:sticky;top:0;z-index:30;background:#ffe27a;color:#111;padding:10px 16px;margin:-16px -16px 12px;font-size:15px;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.15)}}
+.oldbar a{{color:#111;font-weight:700}}
+@media (max-width:440px){{.oldbar{{margin:-12px -12px 12px}}}}
 #ncall{{font:inherit;font-size:13px;background:none;border:0;padding:0;color:var(--link);cursor:pointer;margin:0 0 6px}}
 th small{{font-size:11px}}
 .sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
@@ -783,11 +815,12 @@ a{{color:var(--link)}}
 </style>
 </head>
 <body>
+{old_bar}
 <main id="top">
 <h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
 <p>Contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
 
-<div class="times">Results as of <b>{res_time_s}</b></div>
+{date_picker(res_time_s, pages, version)}
 
 <div class="tiles">{tiles}</div>
 
@@ -844,6 +877,13 @@ a{{color:var(--link)}}
     document.querySelectorAll('details.nc').forEach(function(d){{d.open=open}});
     nb.textContent=open?'Show as list':'Show all as cards';
   }});
+  // Date picker: a custom list of every day's results.
+  var dbtn=document.getElementById('ddbtn'),dl=document.getElementById('ddlist');
+  if(dbtn){{
+    dbtn.addEventListener('click',function(e){{e.stopPropagation();dl.hidden=!dl.hidden;dbtn.setAttribute('aria-expanded',!dl.hidden);}});
+    document.addEventListener('click',function(e){{if(!dl.hidden&&!e.target.closest('.dd')){{dl.hidden=true;dbtn.setAttribute('aria-expanded','false');}}}});
+    document.addEventListener('keydown',function(e){{if(e.key==='Escape'&&!dl.hidden){{dl.hidden=true;dbtn.setAttribute('aria-expanded','false');dbtn.focus();}}}});
+  }}
   // Links from the summary open a collapsed card.
   function openHash(){{var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}}
   window.addEventListener('hashchange',openHash);openHash();
@@ -879,11 +919,36 @@ def write_json(path, obj):
 
 
 def write_site(results, state, cfg):
+    """index.html for the latest results, plus one page per earlier day (YYYY-MM-DD.html),
+    each built only from what was known at that update."""
     os.makedirs(SITE_DIR, exist_ok=True)
     hist = load_json(HISTORY_PATH, {})
+    snaps = hist.get("snapshots", [])
+    latest = str(state["version"])
+    pages = []
+    for snap in reversed(snaps):
+        v = snap["version"]
+        if v != latest and not os.path.exists(os.path.join(ARCHIVE_DIR, f"{v}.json")):
+            continue
+        dt = parse_clarity_time(snap["results_timestamp"])
+        pages.append({"version": v, "label": fmt_short_time(dt) if dt else v,
+                      "file": "index.html" if v == latest else f"{dt.strftime('%Y-%m-%d') if dt else v}.html"})
+    if not pages or pages[0]["version"] != latest:
+        pages.insert(0, {"version": latest, "label": "Latest", "file": "index.html"})
     with open(os.path.join(SITE_DIR, "index.html"), "w") as f:
-        f.write(render(results, state, cfg, hist))
+        f.write(render(results, state, cfg, hist, pages))
     write_json(os.path.join(SITE_DIR, "results.json"), {"state": state, **results})
+    for pg in pages[1:]:
+        v = pg["version"]
+        old = load_json(os.path.join(ARCHIVE_DIR, f"{v}.json"), None)
+        cut = parse_clarity_time(old.get("results_timestamp", ""))
+        upto = [sn for sn in snaps if cut is None or (parse_clarity_time(sn["results_timestamp"]) or cut) <= cut]
+        with open(os.path.join(SITE_DIR, pg["file"]), "w") as f:
+            f.write(render(old, {**state, "version": v}, cfg, {"snapshots": upto}, pages))
+
+
+def archive_results(results, version):
+    write_json(os.path.join(ARCHIVE_DIR, f"{version}.json"), results)
 
 
 def set_output(changed):
@@ -919,7 +984,9 @@ def main():
             try:
                 blob = http_get(f"{base}/{v}/{cfg['report_path']}", timeout=180)
                 meta, contests = parse_detail(read_detail_xml(blob))
-                hist = add_snapshot(hist, snapshot_of(analyze(meta, contests, cfg), v))
+                res = analyze(meta, contests, cfg)
+                hist = add_snapshot(hist, snapshot_of(res, v))
+                archive_results(res, v)
                 print(f"  added {v} ({meta['results_timestamp']})")
             except Exception as e:  # noqa: BLE001
                 print(f"  {v}: {e}")
@@ -974,6 +1041,7 @@ def main():
         "source_url": f"{base}/",
     }
     write_json(RESULTS_PATH, results)
+    archive_results(results, version)
     write_json(STATE_PATH, state)
     write_json(HISTORY_PATH, add_snapshot(load_json(HISTORY_PATH, {}), snapshot_of(results, version)))
     write_site(results, state, cfg)

@@ -51,6 +51,17 @@ tr.cut td{border-bottom-color:var(--th)}
 a.totop{position:absolute;top:10px;right:12px;font-size:12px;color:var(--muted);text-decoration:none}
 .times{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0;font-size:17px}
 details.nc{margin:0}
+.dd{position:relative;margin:12px 0}
+.ddbtn{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;margin:0;font:inherit;font-size:17px;color:var(--fg);text-align:left;cursor:pointer}
+.caret{flex:none;border-style:solid;border-width:6px 5px 0 5px;border-color:var(--muted) transparent transparent transparent}
+.ddbtn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.ddlist{position:absolute;left:0;right:0;top:100%;margin:4px 0 0;padding:4px 0;list-style:none;background:var(--box);border:1px solid var(--line);border-radius:4px;box-shadow:0 4px 14px rgba(0,0,0,.15);z-index:20}
+.ddlist a{display:block;padding:8px 12px;color:var(--fg);text-decoration:none}
+.ddlist a:hover{background:var(--th)}
+.ddlist a.cur{font-weight:600;background:var(--th)}
+.oldbar{position:sticky;top:0;z-index:30;background:#ffe27a;color:#111;padding:10px 16px;margin:-16px -16px 12px;font-size:15px;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.oldbar a{color:#111;font-weight:700}
+@media (max-width:440px){.oldbar{margin:-12px -12px 12px}}
 #ncall{font:inherit;font-size:13px;background:none;border:0;padding:0;color:var(--link);cursor:pointer;margin:0 0 6px}
 th small{font-size:11px}
 .sparkwrap{position:relative;max-width:440px;margin:6px 0 2px}
@@ -113,11 +124,12 @@ a{color:var(--link)}
 </style>
 </head>
 <body>
+
 <main id="top">
 <h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
 <p>Contests at or near the automatic recount margin. November 3, 2026 General Election.</p>
 
-<div class="times">Results as of <b><span title="Nov 11, 2026, 4:50 PM PST">Wed Nov 11, 4:50 PM PST</span></b></div>
+<div class="dd"><button type="button" class="times ddbtn" id="ddbtn" aria-haspopup="true" aria-expanded="false"><span>Results as of <b><span title="Nov 11, 2026, 4:50 PM PST">Wed Nov 11, 4:50 PM PST</span></b></span><span class="caret" aria-hidden="true"></span></button><ul class="ddlist" id="ddlist" hidden><li><a href="index.html" aria-current="page" class="cur">Wed Nov 11, 4:50 PM PST <span class="muted">latest</span></a></li><li><a href="2026-11-10.html">Tue Nov 10, 5:06 PM PST</a></li><li><a href="2026-11-09.html">Mon Nov 9, 5:01 PM PST</a></li><li><a href="2026-11-08.html">Sun Nov 8, 5:02 PM PST</a></li><li><a href="2026-11-07.html">Sat Nov 7, 4:49 PM PST</a></li><li><a href="2026-11-06.html">Fri Nov 6, 5:06 PM PST</a></li><li><a href="2026-11-05.html">Thu Nov 5, 5:10 PM PST</a></li><li><a href="2026-11-04.html">Wed Nov 4, 4:46 PM PST</a></li><li><a href="2026-11-03.html">Tue Nov 3, 11:20 PM PST</a></li></ul></div>
 
 <div class="tiles"><a class="tile g1" href="#group1"><b>1</b><span>In recount range</span></a><a class="tile g2" href="#group2"><b>6</b><span>Were in range, out for now</span></a><a class="tile g3" href="#group3"><b>3</b><span>Getting closer</span></a><a class="tile g4" href="#group4"><b>7</b><span>Close</span></a></div>
 
@@ -1635,6 +1647,13 @@ a{color:var(--link)}
     document.querySelectorAll('details.nc').forEach(function(d){d.open=open});
     nb.textContent=open?'Show as list':'Show all as cards';
   });
+  // Date picker: a custom list of every day's results.
+  var dbtn=document.getElementById('ddbtn'),dl=document.getElementById('ddlist');
+  if(dbtn){
+    dbtn.addEventListener('click',function(e){e.stopPropagation();dl.hidden=!dl.hidden;dbtn.setAttribute('aria-expanded',!dl.hidden);});
+    document.addEventListener('click',function(e){if(!dl.hidden&&!e.target.closest('.dd')){dl.hidden=true;dbtn.setAttribute('aria-expanded','false');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!dl.hidden){dl.hidden=true;dbtn.setAttribute('aria-expanded','false');dbtn.focus();}});
+  }
   // Links from the summary open a collapsed card.
   function openHash(){var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}
   window.addEventListener('hashchange',openHash);openHash();
