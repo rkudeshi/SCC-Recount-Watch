@@ -6,7 +6,8 @@ Live site: https://rkudeshi.github.io/SCC-Recount-Watch/
 
 ## How it works
 
-- `.github/workflows/update.yml` runs hourly (at :17 past the hour). It reads Clarity's `current_ver.txt` for election 127570. If the version is new, it downloads `reports/detailxml.zip`, recalculates margins, commits `data/` and `site/`, and deploys `site/` to GitHub Pages. If the download fails, the last good data stays up.
+- Clarity returns empty responses to GitHub-hosted runners, so a scheduled Claude task runs `python update.py --record-check` daily at about 6 PM Pacific and pushes `data/` and `site/` to `main`. It reads Clarity's `current_ver.txt` for election 127570; if the version is new it downloads `reports/detailxml.zip` and recalculates margins. If the download fails, the last good data stays up.
+- `.github/workflows/update.yml` deploys `site/` to GitHub Pages whenever `data/`, `update.py` or `config.json` change on `main`, or when run by hand.
 - `update.py` does the fetching, parsing and page rendering. `python update.py --file detailxml.zip` builds from a local file.
 - `config.json` holds the tier thresholds, whether to include ballot measures, and the list of contests to leave out.
 

@@ -559,6 +559,8 @@ def set_output(changed):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--record-check", action="store_true",
+                    help="when the version is unchanged, still update 'last checked' and re-render")
     ap.add_argument("--file")
     ap.add_argument("--version")
     ap.add_argument("--render-only", action="store_true")
@@ -586,6 +588,12 @@ def main():
             version = current_version(base)
             if version == state.get("version") and not args.force:
                 print(f"version {version} unchanged; nothing to do")
+                if args.record_check and os.path.exists(RESULTS_PATH):
+                    state["last_checked"] = now
+                    write_json(STATE_PATH, state)
+                    write_site(load_json(RESULTS_PATH, None), state, cfg)
+                    set_output(True)
+                    return
                 set_output(False)
                 return
             blob = http_get(f"{base}/{version}/{cfg['report_path']}", timeout=180)

@@ -1,8 +1,8 @@
 name: Update results
 
 on:
-  schedule:
-    - cron: "17 * * * *"   # hourly, at :17 past the hour (UTC)
+  # Clarity returns empty responses to GitHub-hosted runners, so the daily
+  # check runs elsewhere (a scheduled Claude task) and pushes data/ here.
   workflow_dispatch:
   push:
     branches: [main]
