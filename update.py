@@ -323,7 +323,22 @@ def add_snapshot(hist, snap):
     return hist
 
 
-TIER_WORDS = {1: "automatic recount", 2: "very close", 3: "watch list", 0: "not close"}
+def line_votes(ballots, t):
+    """Smallest margin that is NOT an automatic recount: under this many votes triggers one.
+    The rule is under 25 votes or under 0.25% of ballots cast, so the larger of the two applies."""
+    return max(t["recount_votes"], math.ceil(t["recount_pct"] / 100 * ballots - 1e-9))
+
+
+def in_range(margin, ballots, t):
+    return margin < line_votes(ballots, t)
+
+
+GROUPS = {
+    1: ("In recount range", "Margin is under the automatic recount line: 25 votes or 0.25% of ballots cast, whichever is larger"),
+    2: ("Was in range, now out", "Was under the recount line at an earlier update, now above it"),
+    3: ("Getting closer", "Within {w:g}× the recount line and narrower than two updates ago"),
+    4: ("Close, not narrowing", "Within {w:g}× the recount line, holding steady or widening"),
+}
 
 
 def contest_points(hist, key, t):
@@ -333,104 +348,127 @@ def contest_points(hist, key, t):
         if not rec:
             continue
         dt = parse_clarity_time(snap["results_timestamp"])
-        pts.append({**rec, "tier": tier_for(rec["margin"], rec["pct"], t), "dt": dt,
+        line = line_votes(rec["ballots"], t)
+        pts.append({**rec, "version": snap["version"], "line": line, "ratio": rec["margin"] / line,
+                    "in": rec["margin"] < line, "dt": dt,
                     "label": dt.strftime("%b %-d") if dt else snap["version"]})
-    # Same-day updates: add the time so labels stay distinct.
-    for i, p in enumerate(pts):
-        if any(q is not p and q["label"] == p["label"] for q in pts) and p["dt"]:
+    for p in pts:
+        if p["dt"] and any(q is not p and q["label"] == p["label"] for q in pts):
             p["label"] = p["dt"].strftime("%b %-d %-I%p").replace("AM", "a").replace("PM", "p")
     return pts
 
 
-def mv(p):
-    return f"{fmt_n(p['margin'])} vote{'' if p['margin'] == 1 else 's'}, {fmt_margin_pct(p['pct'])}"
+def current_point(a, version, t):
+    line = line_votes(a["ballots_cast"], t)
+    p = {"name": a["name"], "margin": a["margin"], "pct": a["pct"], "ballots": a["ballots_cast"],
+         "version": str(version), "line": line, "ratio": a["margin"] / line, "in": a["margin"] < line}
+    if a["type"] == "candidate":
+        p["winner"], p["loser"] = a["last_winner"], a["first_loser"]
+    else:
+        p["passing"] = a["passing"]
+    return p
+
+
+def group_for(pts, t):
+    """pts: history points ending with the current one."""
+    cur, prev = pts[-1], pts[:-1]
+    if cur["in"]:
+        return 1
+    if any(p["in"] for p in prev):
+        return 2
+    w = t.get("watch_ratio", 6)
+    if cur["ratio"] <= w:
+        ref = prev[-2] if len(prev) >= 2 else (prev[0] if prev else None)
+        if ref and cur["ratio"] < ref["ratio"]:
+            return 3
+        return 4
+    return 0
+
+
+def votes(n):
+    return f"{fmt_n(n)} vote{'' if n == 1 else 's'}"
 
 
 def history_sentence(pts):
-    if len(pts) < 2:
-        return ""
-    segs = []
-    for p in pts:
-        if segs and segs[-1]["tier"] == p["tier"]:
-            segs[-1]["last"] = p
-        else:
-            segs.append({"tier": p["tier"], "first": p, "last": p})
-    first, last = pts[0], pts[-1]
-    if len(segs) == 1:
-        word = TIER_WORDS[segs[0]["tier"]].capitalize()
-        out = f"{word} since {first['label']}; margin went from {mv(first)} to {mv(last)}."
-    else:
-        parts = []
-        for i, sg in enumerate(segs[-3:]):
-            word = TIER_WORDS[sg["tier"]]
-            if i == 0:
-                parts.append(f"{word.capitalize()} on {sg['first']['label']} ({mv(sg['first'])})")
-            else:
-                parts.append(f"{word} by {sg['first']['label']} ({mv(sg['first'])})")
-        out = ", then ".join(parts) + "."
-    # Note changes in who holds the last winning spot (or a measure flipping); keep the last two.
-    notes = []
+    """Only the moments that matter: entering or leaving recount range, and lead changes."""
+    events = []
     for prev, cur in zip(pts, pts[1:]):
-        if "winner" in cur and cur.get("winner") != prev.get("winner") and prev.get("winner"):
-            notes.append(f" {cur['winner']} passed {prev['winner']} for the last winning spot by {cur['label']}.")
-        if "passing" in cur and cur["passing"] != prev.get("passing"):
-            notes.append(f" It flipped to {'passing' if cur['passing'] else 'failing'} by {cur['label']}.")
-    return out + "".join(notes[-2:])
+        when = "on " + cur.get("label", "now")
+        if cur["in"] and not prev["in"]:
+            events.append(f"Entered recount range {when} ({votes(cur['margin'])}).")
+        elif prev["in"] and not cur["in"]:
+            events.append(f"Left recount range {when} ({votes(cur['margin'])}).")
+        if cur.get("winner") and prev.get("winner") and cur["winner"] != prev["winner"]:
+            events.append(f"{cur['winner']} passed {prev['winner']} {when}.")
+        if "passing" in cur and "passing" in prev and cur["passing"] != prev["passing"]:
+            events.append(f"Flipped to {'passing' if cur['passing'] else 'failing'} {when}.")
+    return " ".join(events[-5:])
 
 
-def history_chart(pts, t):
-    """Small bar chart of the official margin % for each update, with the 0.25% line."""
+def sparkline(pts):
+    """Margin in votes at each update (labelled), with the recount line dashed underneath."""
     if len(pts) < 2:
         return ""
     n = len(pts)
-    W, H, top, bottom = 300, 74, 14, 16
-    # Cap the scale so a large early margin doesn't flatten the recent, close ones.
-    vmax = max(min(max(p["pct"] for p in pts), t["watch_pct"] * 1.4), t["recount_pct"] * 1.3)
-    slot = W / n
-    bw = min(34, slot * 0.6)
+    W, H, top, bottom, side = 320, 66, 13, 14, 14
+    vmax = max(max(p["margin"] for p in pts), max(p["line"] for p in pts)) * 1.05 or 1
     ph = H - top - bottom
-    y = lambda v: top + ph - ph * min(v, vmax) / vmax
-    out = [f'<svg class="hist" viewBox="0 0 {W} {H}" role="img" aria-label="Margin at each update">']
-    yl = y(t["recount_pct"])
-    out.append(f'<line class="rl" x1="0" x2="{W}" y1="{yl:.1f}" y2="{yl:.1f}"/>')
-    step = max(1, math.ceil(n / 8))
+    x = lambda i: side + (W - 2 * side) * i / (n - 1)
+    y = lambda v: top + ph - ph * v / vmax
+    out = [f'<svg class="spark" viewBox="0 0 {W} {H}" role="img" aria-label="Margin in votes at each update">']
+    base = top + ph
+    out.append(f'<line class="base" x1="{side}" x2="{W - side}" y1="{base}" y2="{base}"/>')
+    rl = " ".join(f"{x(i):.1f},{y(p['line']):.1f}" for i, p in enumerate(pts))
+    out.append(f'<polyline class="rl" points="{rl}"/>')
+    ml = " ".join(f"{x(i):.1f},{y(p['margin']):.1f}" for i, p in enumerate(pts))
+    out.append(f'<polyline class="ml" points="{ml}"/>')
+    prev_month = None
     for i, p in enumerate(pts):
-        cx = slot * i + slot / 2
-        yy = y(p["pct"])
-        out.append(f'<rect class="b{p["tier"]}" x="{cx - bw / 2:.1f}" y="{yy:.1f}" width="{bw:.1f}" '
-                   f'height="{max(top + ph - yy, 1):.1f}"><title>{E(p["label"])}: {E(mv(p))}</title></rect>')
-        if n <= 8 or i % step == 0 or i == n - 1:
-            out.append(f'<text class="bv" x="{cx:.1f}" y="{yy - 3:.1f}" text-anchor="middle">{fmt_margin_pct(p["pct"]).rstrip("%")}</text>')
-            out.append(f'<text class="bl" x="{cx:.1f}" y="{H - 4}" text-anchor="middle">{E(p["label"])}</text>')
+        cx, cy = x(i), y(p["margin"])
+        tip = f'{p["label"]}: margin {votes(p["margin"])} ({fmt_margin_pct(p["pct"])}); recount if under {fmt_n(p["line"])}'
+        out.append(f'<g><title>{E(tip)}</title><rect class="hit" x="{cx - 14:.1f}" y="0" width="28" height="{H}"/>'
+                   f'<circle class="{"pin" if p["in"] else "pt"}" cx="{cx:.1f}" cy="{cy:.1f}" r="{3.5 if p["in"] else 2.5}"/></g>')
+        out.append(f'<text class="v{" in" if p["in"] else ""}" x="{cx:.1f}" y="{cy - 5:.1f}" text-anchor="middle">{fmt_n(p["margin"])}</text>')
+        d = p.get("dt")
+        if d:
+            lab = d.strftime("%b %-d") if d.month != prev_month else d.strftime("%-d")
+            prev_month = d.month
+        else:
+            lab = p.get("label", "")
+        out.append(f'<text class="d" x="{cx:.1f}" y="{H - 2}" text-anchor="middle">{E(lab)}</text>')
     out.append("</svg>")
     return "".join(out)
 
 
-def history_block(pts, t):
+def history_block(pts):
     if len(pts) < 2:
         return ""
-    return (f'<div class="history"><p><b>History:</b> {E(history_sentence(pts))}</p>'
-            f'{history_chart(pts, t)}<p class="muted cap">Margin as % of ballots cast at each day\'s update. Dashed line: {t["recount_pct"]:g}% automatic recount line.</p></div>')
+    s = history_sentence(pts)
+    return (f'<div class="history">{f"<p>{E(s)}</p>" if s else ""}{sparkline(pts)}'
+            f'<p class="muted cap">Margin in votes after each day\'s update. Dashed: recount line. Tap a point for details.</p></div>')
 
 
 def render_contest(a, hist_html=""):
-    tier = a["tier"]
-    cls = f"contest t{tier}" if tier else "contest"
+    g = a.get("group", 0)
+    cls = f"contest g{g}" if g else "contest"
     np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
     precincts = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'}"
+    line = a["line"]
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']} · {precincts}"
-        margin_line = (f"Margin: {fmt_n(a['margin'])} votes, {fmt_margin_pct(a['pct'])} of ballots cast")
-        compare = f"({fmt_pct(a['site_pct'])} of candidate votes only)"
+        margin_line = f"Margin: {votes(a['margin'])} ({fmt_margin_pct(a['pct'])} of ballots cast)"
+        compare = f"{fmt_pct(a['site_pct'])} of candidate votes only"
         col_label, pv_label, total_label = "Candidate", "% of candidate votes", "Candidate votes"
     else:
         sub = f"Needs {a['threshold_label']} Yes · currently {'passing' if a['passing'] else 'failing'} · {precincts}"
         side = "No" if a["passing"] else "Yes"
-        margin_line = (f"Margin: {fmt_n(a['margin'])} more {side} votes would flip it, "
-                       f"{fmt_margin_pct(a['pct'])} of ballots cast")
-        compare = (f"(Yes at {fmt_pct(a['yes_share'])} of votes, needs "
-                   f"{fmt_pct(100 * a['threshold'])})")
+        margin_line = (f"Margin: {fmt_n(a['margin'])} more {side} votes would flip it "
+                       f"({fmt_margin_pct(a['pct'])} of ballots cast)")
+        compare = f"Yes at {fmt_pct(a['yes_share'])}, needs {fmt_pct(100 * a['threshold'])}"
         col_label, pv_label, total_label = "Choice", "% of votes", "Total votes"
+    which = (f"{a['recount_pct_cfg']:g}% of {fmt_n(a['ballots_cast'])} ballots cast"
+             if line > a["recount_votes_cfg"] else f"{a['recount_votes_cfg']}-vote minimum")
+    line_text = f"Recount if under {votes(line)} ({which}) · {compare}"
 
     rows = []
     n_rows = [r for r in a["rows"] if not r.get("write_in")]
@@ -456,7 +494,7 @@ def render_contest(a, hist_html=""):
     return f"""<div class="{cls}" id="c{E(str(a['key']))}">
 <h3>{E(a['name'])}</h3>
 <p class="muted">{E(sub)}</p>
-<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">{E(compare)}</span></div>
+<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">{E(line_text)}</span></div>
 {hist_html}
 <div class="tbl"><table>
 <tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th><th>{pv_label}</th></tr>
@@ -474,20 +512,31 @@ def short_name(a):
 
 def render(results, state, cfg, hist=None):
     t = cfg["tiers"]
-    TIER_INFO.update(tier_info(t))
     PCT_LINES[:] = [t["recount_pct"]]
-    # Re-tier from saved numbers so a config change applies without a new download.
+    w = t.get("watch_ratio", 6)
+    ginfo = {k: (v[0], v[1].format(w=w)) for k, v in GROUPS.items()}
+    hist = hist or {}
+    version = str(state["version"])
     contests = results["contests"]
+    pts_by_key = {}
     for a in contests:
         a["tier"] = tier_for(a["margin"], a["pct"], t)
-    contests.sort(key=lambda a: (a["tier"] or 9, a["pct"], a["margin"]))
-    counts = {k: sum(1 for a in contests if a["tier"] == k) for k in (1, 2, 3)}
-    hist = hist or {}
-    pts_by_key = {str(a["key"]): contest_points(hist, a["key"], t) for a in contests}
-    hblock = lambda a: history_block(pts_by_key[str(a["key"])], t)
-    # Contests that were in a group at some earlier update but are not close now.
-    dropped = [a for a in contests if a["tier"] == 0
-               and any(p["tier"] in (1, 2) for p in pts_by_key[str(a["key"])][:-1])]
+        a["line"] = line_votes(a["ballots_cast"], t)
+        a["ratio"] = a["margin"] / a["line"]
+        a["recount_votes_cfg"], a["recount_pct_cfg"] = t["recount_votes"], t["recount_pct"]
+        prev = [p for p in contest_points(hist, a["key"], t) if p["version"] != version]
+        cur = current_point(a, version, t)
+        cur_hist = [p for p in contest_points(hist, a["key"], t) if p["version"] == version]
+        if cur_hist:
+            cur.update({k: cur_hist[0][k] for k in ("label", "dt")})
+        else:
+            cur["label"], cur["dt"] = "now", parse_clarity_time(results.get("results_timestamp", ""))
+        pts = prev + [cur]
+        pts_by_key[str(a["key"])] = pts
+        a["group"] = group_for(pts, t)
+    contests.sort(key=lambda a: (a["group"] or 9, a["ratio"], a["margin"]))
+    counts = {k: sum(1 for a in contests if a["group"] == k) for k in GROUPS}
+    hblock = lambda a: history_block(pts_by_key[str(a["key"])])
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
     res_time_s = (f'<span title="{fmt_time(res_time)}">{fmt_short_time(res_time)}</span>'
                   if res_time else E(results.get("results_timestamp", "")))
@@ -495,42 +544,30 @@ def render(results, state, cfg, hist=None):
     repo = os.environ.get("GITHUB_REPOSITORY", "rkudeshi/SCC-Recount-Watch")
 
     tiles = "".join(
-        f'<a class="tile t{k}" href="#tier{k}"><b>{counts[k]}</b><span>{TIER_INFO[k][0]}</span></a>'
-        for k in (1, 2, 3))
+        f'<a class="tile g{k}" href="#group{k}"><b>{counts[k]}</b><span>{ginfo[k][0]}</span></a>'
+        for k in GROUPS)
 
     recap_parts = []
-    for k in (1, 2, 3):
+    for k in GROUPS:
         items = "".join(
-            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
-            for a in contests if a["tier"] == k)
+            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: {votes(a["margin"])}, recount if under {fmt_n(a["line"])}</li>'
+            for a in contests if a["group"] == k)
         body = f"<ul>{items}</ul>" if items else '<p class="muted">None right now.</p>'
-        recap_parts.append(f'<h4 class="rh t{k}">{TIER_INFO[k][0]} ({counts[k]})</h4>{body}')
-    if dropped:
-        items = "".join(
-            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: now {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
-            for a in dropped)
-        recap_parts.append(f'<h4 class="rh t0">No longer close ({len(dropped)})</h4><ul>{items}</ul>')
+        recap_parts.append(f'<h4 class="rh g{k}">{ginfo[k][0]} ({counts[k]})</h4>{body}')
     recap = "".join(recap_parts)
 
     sections = []
-    for k in (1, 2, 3):
-        items = [a for a in contests if a["tier"] == k]
+    for k in GROUPS:
+        items = [a for a in contests if a["group"] == k]
         body = "".join(render_contest(a, hblock(a)) for a in items) or '<p class="none">No contests in this group right now.</p>'
-        sections.append(f"""<section id="tier{k}">
-<h2 class="sec t{k}">{TIER_INFO[k][0]} <small>{TIER_INFO[k][1]}</small></h2>
+        sections.append(f"""<section id="group{k}">
+<h2 class="sec g{k}">{ginfo[k][0]} <small>{ginfo[k][1]}</small></h2>
 {body}
 </section>""")
 
-    if dropped:
-        sections.append(f"""<section id="dropped">
-<h2 class="sec t0">No longer close <small>Were an automatic recount or very close at an earlier update</small></h2>
-{"".join(render_contest(a, hblock(a)) for a in dropped)}
-</section>""")
-
-    others = [a for a in contests if a["tier"] == 0 and a not in dropped]
-    others.sort(key=lambda a: a["pct"])
+    others = [a for a in contests if a["group"] == 0]
     other_rows = "".join(
-        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_margin_pct(a["pct"])}</td></tr>'
+        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_n(a["line"])}</td></tr>'
         for a in others)
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
                    for x in results["excluded"] + results["skipped"])
@@ -555,24 +592,24 @@ p{{margin:4px 0}}
 .times{{background:var(--box);border:2px solid var(--fg);border-radius:4px;padding:10px 12px;margin:12px 0;display:grid;gap:4px}}
 .times div{{font-size:17px}}
 .times b{{font-size:17px}}
-.tiles{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}}
+.tiles{{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}}
 .tile{{border-radius:4px;padding:10px;color:var(--fg);text-decoration:none;display:block}}
 .tile b{{display:block;font-size:30px;line-height:1.1}}
 .tile span{{font-size:14px;font-weight:600}}
-.tile.t1{{background:var(--t1)}} .tile.t2{{background:var(--t2)}} .tile.t3{{background:var(--t3)}}
+.tile.g1{{background:var(--t1)}} .tile.g2{{background:var(--t2)}} .tile.g3{{background:var(--t3)}} .tile.g4{{background:var(--t0)}}
 h2.sec{{font-size:22px;margin:36px 0 12px;padding:10px 12px;border-radius:4px;border-bottom:4px solid}}
 h2.sec small{{display:block;font-size:14px;font-weight:normal}}
-h2.t0{{background:var(--t0);border-color:var(--t0s)}} h2.t1{{background:var(--t1);border-color:var(--t1s)}} h2.t2{{background:var(--t2);border-color:var(--t2s)}} h2.t3{{background:var(--t3);border-color:var(--t3s)}}
+h2.g1{{background:var(--t1);border-color:var(--t1s)}} h2.g2{{background:var(--t2);border-color:var(--t2s)}} h2.g3{{background:var(--t3);border-color:var(--t3s)}} h2.g4{{background:var(--t0);border-color:var(--t0s)}}
 h3{{font-size:17px;margin:0}}
 .contest{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:12px;margin-bottom:12px}}
 .margin{{margin:6px 0 8px;padding:5px 8px;border-radius:4px}}
-.contest.t1 .margin{{background:var(--t1)}} .contest.t2 .margin{{background:var(--t2)}} .contest.t3 .margin{{background:var(--t3)}}
+.contest.g1 .margin{{background:var(--t1)}} .contest.g2 .margin{{background:var(--t2)}} .contest.g3 .margin{{background:var(--t3)}} .contest.g4 .margin{{background:var(--t0)}}
 .margin .big{{font-size:15px;font-weight:600}}
 .margin .cmp{{font-size:13px;color:var(--muted)}}
 .recap{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0}}
 .recap h2{{font-size:18px;margin:0 0 4px}}
 .recap h4{{font-size:15px;margin:10px 0 0;padding:2px 6px;border-radius:3px;display:inline-block}}
-.rh.t0{{background:var(--t0)}} .rh.t1{{background:var(--t1)}} .rh.t2{{background:var(--t2)}} .rh.t3{{background:var(--t3)}}
+.rh.g1{{background:var(--t1)}} .rh.g2{{background:var(--t2)}} .rh.g3{{background:var(--t3)}} .rh.g4{{background:var(--t0)}}
 .recap ul{{margin:4px 0 0;padding-left:20px}}
 .recap li{{margin:2px 0}}
 .recap p{{margin:4px 0 0}}
@@ -585,11 +622,14 @@ tr.cut td{{border-bottom:3px solid var(--cut)}}
 .history{{margin:4px 0 8px;font-size:13px}}
 .history p{{margin:0 0 2px}}
 .history .cap{{font-size:11px}}
-svg.hist{{width:100%;max-width:420px;height:auto;display:block}}
-svg.hist text{{font-size:9px;fill:var(--muted);font-family:inherit}}
-svg.hist .rl{{stroke:var(--t1s);stroke-dasharray:3 2;stroke-width:1}}
-svg.hist .rlt{{fill:var(--t1s)}}
-svg.hist .b0{{fill:var(--t0s)}} svg.hist .b1{{fill:var(--t1s)}} svg.hist .b2{{fill:var(--t2s)}} svg.hist .b3{{fill:var(--t3s)}}
+svg.spark{{width:100%;max-width:440px;height:auto;display:block;overflow:visible}}
+svg.spark text{{font-size:9px;fill:var(--muted);font-family:inherit;font-variant-numeric:tabular-nums}}
+svg.spark text.v{{fill:var(--fg)}} svg.spark text.v.in{{fill:var(--t1s);font-weight:700}}
+svg.spark .base{{stroke:var(--line);stroke-width:1}}
+svg.spark .rl{{fill:none;stroke:var(--t1s);stroke-dasharray:3 3;stroke-width:1}}
+svg.spark .ml{{fill:none;stroke:var(--fg);stroke-width:2;stroke-linejoin:round}}
+svg.spark .pt{{fill:var(--fg)}} svg.spark .pin{{fill:var(--t1s);stroke:var(--box);stroke-width:1.5}}
+svg.spark .hit{{fill:transparent}}
 tr.wi td{{color:var(--muted)}}
 tr.tot td{{color:var(--muted);font-size:13px;border-bottom:0}}
 tr.first td{{border-top:1px solid var(--muted)}}
@@ -597,7 +637,7 @@ tr.first td{{border-top:1px solid var(--muted)}}
 details{{margin-top:24px}}
 summary{{cursor:pointer;font-weight:600}}
 a{{color:var(--link)}}
-@media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:12px}}.margin .big{{font-size:14px}}th,td{{padding:4px 3px}}}}
+@media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:11px}}.margin .big{{font-size:14px}}th,td{{padding:4px 3px}}}}
 </style>
 </head>
 <body>
@@ -622,9 +662,9 @@ a{{color:var(--link)}}
 {''.join(sections)}
 
 <details>
-<summary>Other county contests ({len(others)}, never close)</summary>
+<summary>Other county contests ({len(others)}, not close)</summary>
 <div class="tbl"><table>
-<tr><th>Contest</th><th>Margin</th><th>% of ballots cast</th></tr>
+<tr><th>Contest</th><th>Margin (votes)</th><th>Recount if under</th></tr>
 {other_rows}
 </table></div>
 </details>

@@ -58,5 +58,26 @@ class Margins(unittest.TestCase):
         self.assertEqual(a["margin"], 250)              # 600 - 350
 
 
+
+class Groups(unittest.TestCase):
+    T6 = {**T, "watch_ratio": 6}
+
+    def pts(self, margins, ballots=10000):
+        return [{"margin": m, "line": update.line_votes(ballots, T), "ratio": m / update.line_votes(ballots, T),
+                 "in": m < update.line_votes(ballots, T)} for m in margins]
+
+    def test_line(self):
+        self.assertEqual(update.line_votes(19627, T), 50)   # 49.07 -> under 50
+        self.assertEqual(update.line_votes(4000, T), 25)    # minimum
+        self.assertEqual(update.line_votes(20000, T), 50)   # exactly 0.25% is not a recount
+
+    def test_groups(self):
+        g = lambda ms: update.group_for(self.pts(ms), self.T6)
+        self.assertEqual(g([300, 100, 20]), 1)
+        self.assertEqual(g([300, 20, 100]), 2)
+        self.assertEqual(g([300, 200, 100]), 3)
+        self.assertEqual(g([100, 120, 140]), 4)
+        self.assertEqual(g([100, 120, 400]), 0)
+
 if __name__ == "__main__":
     unittest.main()
