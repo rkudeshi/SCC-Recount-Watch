@@ -19,6 +19,10 @@ Live site: https://rkudeshi.github.io/SCC-Recount-Watch/
 - Ballot measures: margin = extra votes needed to flip the outcome against its threshold (majority, 55% or two-thirds). For a majority measure this equals Yes minus No.
 - Tiers (set in `config.json`): automatic recount under 25 votes or under 0.25%; very close within 100 votes or 0.5%; keep an eye on within 200 votes or 1.5%. Percentages near the 0.25% line show four decimals.
 
+## History
+
+`data/history.json` keeps one compact snapshot per results update. Each new update is added automatically. `python update.py --backfill VERSION ...` adds older updates (the county does not list past version numbers, so they were found by checking each number). The page shows a one-sentence history and a bar chart of the margin for each contest that has more than one snapshot, plus a "No longer close" section.
+
 ## Leaving out contests
 
 Statewide, congressional and legislative contests are left out by name pattern. Other contests that cross county lines go in `exclude_contests` in `config.json` (a case-insensitive part of the contest name). Pushing a change to `config.json` rebuilds the site.
