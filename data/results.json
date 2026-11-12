@@ -186,10 +186,94 @@
    "margin": 74,
    "pct": 0.6711409395973155,
    "site_pct": 0.4761904761904816,
-   "tier": 3,
+   "tier": 2,
    "key": "132",
    "precincts_reporting": "13",
    "precincts_total": "13"
+  },
+  {
+   "type": "candidate",
+   "name": "Sunnyvale SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Rommy Kushner",
+     "votes": 1856,
+     "winner": true,
+     "pct_ballots": 40.25157232704402,
+     "pct_votes": 50.79365079365079
+    },
+    {
+     "name": "Michelle Maginot",
+     "votes": 1793,
+     "winner": false,
+     "pct_ballots": 38.8852743439601,
+     "pct_votes": 49.069512862616314
+    },
+    {
+     "name": "Write-in",
+     "votes": 5,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.10843634786380395,
+     "pct_votes": 0.13683634373289547
+    }
+   ],
+   "candidate_votes": 3654,
+   "undervotes": 952,
+   "overvotes": 5,
+   "ballots_cast": 4611,
+   "margin": 63,
+   "pct": 1.3662979830839297,
+   "site_pct": 1.7241379310344827,
+   "tier": 2,
+   "last_winner": "Rommy Kushner",
+   "first_loser": "Michelle Maginot",
+   "key": "67",
+   "precincts_reporting": "10",
+   "precincts_total": "10"
+  },
+  {
+   "type": "candidate",
+   "name": "Santa Clara Unified SD, Trustee Area 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Kamal Yassin",
+     "votes": 1466,
+     "winner": true,
+     "pct_ballots": 41.65956237567491,
+     "pct_votes": 50.92045849253213
+    },
+    {
+     "name": "Jim Canova",
+     "votes": 1408,
+     "winner": false,
+     "pct_ballots": 40.011366865586815,
+     "pct_votes": 48.90587009378256
+    },
+    {
+     "name": "Write-in",
+     "votes": 5,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.14208581983518045,
+     "pct_votes": 0.1736714136853074
+    }
+   ],
+   "candidate_votes": 2879,
+   "undervotes": 639,
+   "overvotes": 1,
+   "ballots_cast": 3519,
+   "margin": 58,
+   "pct": 1.6481955100880932,
+   "site_pct": 2.0145883987495656,
+   "tier": 2,
+   "last_winner": "Kamal Yassin",
+   "first_loser": "Jim Canova",
+   "key": "45",
+   "precincts_reporting": "6",
+   "precincts_total": "6"
   },
   {
    "type": "candidate",
@@ -319,48 +403,6 @@
   },
   {
    "type": "candidate",
-   "name": "Sunnyvale SD, Trustee Area 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Rommy Kushner",
-     "votes": 1856,
-     "winner": true,
-     "pct_ballots": 40.25157232704402,
-     "pct_votes": 50.79365079365079
-    },
-    {
-     "name": "Michelle Maginot",
-     "votes": 1793,
-     "winner": false,
-     "pct_ballots": 38.8852743439601,
-     "pct_votes": 49.069512862616314
-    },
-    {
-     "name": "Write-in",
-     "votes": 5,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.10843634786380395,
-     "pct_votes": 0.13683634373289547
-    }
-   ],
-   "candidate_votes": 3654,
-   "undervotes": 952,
-   "overvotes": 5,
-   "ballots_cast": 4611,
-   "margin": 63,
-   "pct": 1.3662979830839297,
-   "site_pct": 1.7241379310344827,
-   "tier": 3,
-   "last_winner": "Rommy Kushner",
-   "first_loser": "Michelle Maginot",
-   "key": "67",
-   "precincts_reporting": "10",
-   "precincts_total": "10"
-  },
-  {
-   "type": "candidate",
    "name": "City of Mountain View Council",
    "vote_for": 3,
    "rows": [
@@ -445,48 +487,6 @@
   },
   {
    "type": "candidate",
-   "name": "Santa Clara Unified SD, Trustee Area 1",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Kamal Yassin",
-     "votes": 1466,
-     "winner": true,
-     "pct_ballots": 41.65956237567491,
-     "pct_votes": 50.92045849253213
-    },
-    {
-     "name": "Jim Canova",
-     "votes": 1408,
-     "winner": false,
-     "pct_ballots": 40.011366865586815,
-     "pct_votes": 48.90587009378256
-    },
-    {
-     "name": "Write-in",
-     "votes": 5,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.14208581983518045,
-     "pct_votes": 0.1736714136853074
-    }
-   ],
-   "candidate_votes": 2879,
-   "undervotes": 639,
-   "overvotes": 1,
-   "ballots_cast": 3519,
-   "margin": 58,
-   "pct": 1.6481955100880932,
-   "site_pct": 2.0145883987495656,
-   "tier": 3,
-   "last_winner": "Kamal Yassin",
-   "first_loser": "Jim Canova",
-   "key": "45",
-   "precincts_reporting": "6",
-   "precincts_total": "6"
-  },
-  {
-   "type": "candidate",
    "name": "Los Gatos-Saratoga Union HSD, TA 2",
    "vote_for": 1,
    "rows": [
@@ -526,6 +526,48 @@
    "key": "50",
    "precincts_reporting": "18",
    "precincts_total": "18"
+  },
+  {
+   "type": "candidate",
+   "name": "Alum Rock Union SD, TA 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Andrés Quintero",
+     "votes": 2368,
+     "winner": true,
+     "pct_ballots": 46.25903496776714,
+     "pct_votes": 51.63541212385521
+    },
+    {
+     "name": "Delia Oseguera",
+     "votes": 2214,
+     "winner": false,
+     "pct_ballots": 43.25063488962688,
+     "pct_votes": 48.27736589620584
+    },
+    {
+     "name": "Write-in",
+     "votes": 4,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.07814026176987693,
+     "pct_votes": 0.08722197993894461
+    }
+   ],
+   "candidate_votes": 4586,
+   "undervotes": 527,
+   "overvotes": 6,
+   "ballots_cast": 5119,
+   "margin": 154,
+   "pct": 3.008400078140262,
+   "site_pct": 3.3580462276493677,
+   "tier": 3,
+   "last_winner": "Andrés Quintero",
+   "first_loser": "Delia Oseguera",
+   "key": "52",
+   "precincts_reporting": "9",
+   "precincts_total": "9"
   },
   {
    "type": "candidate",
@@ -636,6 +678,83 @@
    "last_winner": "Renee Lo",
    "first_loser": "Lyseria Evelyn Phillips",
    "key": "65",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
+  },
+  {
+   "type": "candidate",
+   "name": "Gilroy Unified SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Michelle Nelson",
+     "votes": 1861,
+     "winner": true,
+     "pct_ballots": 45.53462197210668,
+     "pct_votes": 52.674780639682986
+    },
+    {
+     "name": "Daniel Harney",
+     "votes": 1670,
+     "winner": false,
+     "pct_ballots": 40.861267433325175,
+     "pct_votes": 47.268610246249644
+    },
+    {
+     "name": "Write-in",
+     "votes": 2,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.048935649620748714,
+     "pct_votes": 0.056609114067364845
+    }
+   ],
+   "candidate_votes": 3533,
+   "undervotes": 552,
+   "overvotes": 2,
+   "ballots_cast": 4087,
+   "margin": 191,
+   "pct": 4.673354538781503,
+   "site_pct": 5.406170393433343,
+   "tier": 3,
+   "last_winner": "Michelle Nelson",
+   "first_loser": "Daniel Harney",
+   "key": "35",
+   "precincts_reporting": "4",
+   "precincts_total": "4"
+  },
+  {
+   "type": "measure",
+   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": false,
+   "yes_share": 64.84708977310095,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 1972,
+     "winner": false,
+     "pct_ballots": 59.55904560555723,
+     "pct_votes": 64.84708977310095
+    },
+    {
+     "name": "No",
+     "votes": 1069,
+     "winner": true,
+     "pct_ballots": 32.286318332829964,
+     "pct_votes": 35.152910226899046
+    }
+   ],
+   "candidate_votes": 3041,
+   "undervotes": 270,
+   "overvotes": 0,
+   "ballots_cast": 3311,
+   "margin": 166,
+   "pct": 5.013591060102688,
+   "site_pct": -1.81957689356571,
+   "tier": 3,
+   "key": "133",
    "precincts_reporting": "7",
    "precincts_total": "7"
   },
@@ -970,48 +1089,6 @@
   },
   {
    "type": "candidate",
-   "name": "Alum Rock Union SD, TA 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Andrés Quintero",
-     "votes": 2368,
-     "winner": true,
-     "pct_ballots": 46.25903496776714,
-     "pct_votes": 51.63541212385521
-    },
-    {
-     "name": "Delia Oseguera",
-     "votes": 2214,
-     "winner": false,
-     "pct_ballots": 43.25063488962688,
-     "pct_votes": 48.27736589620584
-    },
-    {
-     "name": "Write-in",
-     "votes": 4,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.07814026176987693,
-     "pct_votes": 0.08722197993894461
-    }
-   ],
-   "candidate_votes": 4586,
-   "undervotes": 527,
-   "overvotes": 6,
-   "ballots_cast": 5119,
-   "margin": 154,
-   "pct": 3.008400078140262,
-   "site_pct": 3.3580462276493677,
-   "tier": 0,
-   "last_winner": "Andrés Quintero",
-   "first_loser": "Delia Oseguera",
-   "key": "52",
-   "precincts_reporting": "9",
-   "precincts_total": "9"
-  },
-  {
-   "type": "candidate",
    "name": "San José Unified SD, Trustee Area 2",
    "vote_for": 1,
    "rows": [
@@ -1093,83 +1170,6 @@
    "key": "116",
    "precincts_reporting": "17",
    "precincts_total": "17"
-  },
-  {
-   "type": "candidate",
-   "name": "Gilroy Unified SD, Trustee Area 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Michelle Nelson",
-     "votes": 1861,
-     "winner": true,
-     "pct_ballots": 45.53462197210668,
-     "pct_votes": 52.674780639682986
-    },
-    {
-     "name": "Daniel Harney",
-     "votes": 1670,
-     "winner": false,
-     "pct_ballots": 40.861267433325175,
-     "pct_votes": 47.268610246249644
-    },
-    {
-     "name": "Write-in",
-     "votes": 2,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.048935649620748714,
-     "pct_votes": 0.056609114067364845
-    }
-   ],
-   "candidate_votes": 3533,
-   "undervotes": 552,
-   "overvotes": 2,
-   "ballots_cast": 4087,
-   "margin": 191,
-   "pct": 4.673354538781503,
-   "site_pct": 5.406170393433343,
-   "tier": 0,
-   "last_winner": "Michelle Nelson",
-   "first_loser": "Daniel Harney",
-   "key": "35",
-   "precincts_reporting": "4",
-   "precincts_total": "4"
-  },
-  {
-   "type": "measure",
-   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
-   "threshold": 0.6666666666666666,
-   "threshold_label": "two-thirds",
-   "passing": false,
-   "yes_share": 64.84708977310095,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 1972,
-     "winner": false,
-     "pct_ballots": 59.55904560555723,
-     "pct_votes": 64.84708977310095
-    },
-    {
-     "name": "No",
-     "votes": 1069,
-     "winner": true,
-     "pct_ballots": 32.286318332829964,
-     "pct_votes": 35.152910226899046
-    }
-   ],
-   "candidate_votes": 3041,
-   "undervotes": 270,
-   "overvotes": 0,
-   "ballots_cast": 3311,
-   "margin": 166,
-   "pct": 5.013591060102688,
-   "site_pct": -1.81957689356571,
-   "tier": 0,
-   "key": "133",
-   "precincts_reporting": "7",
-   "precincts_total": "7"
   },
   {
    "type": "candidate",

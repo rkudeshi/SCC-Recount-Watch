@@ -254,6 +254,11 @@ def fmt_time(dt):
     return dt.strftime("%b %-d, %Y, %-I:%M %p %Z")
 
 
+def fmt_short_time(dt):
+    # e.g. "TUE, Nov 10, 5:06 PM PST"
+    return dt.strftime("%a").upper() + dt.strftime(", %b %-d, %-I:%M %p %Z")
+
+
 def parse_clarity_time(s):
     # e.g. "11/10/2026 5:06:37 PM PST"
     try:
@@ -323,7 +328,8 @@ def render(results, state, cfg):
     contests.sort(key=lambda a: (a["tier"] or 9, a["pct"], a["margin"]))
     counts = {k: sum(1 for a in contests if a["tier"] == k) for k in (1, 2, 3)}
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
-    res_time_s = fmt_time(res_time) if res_time else E(results.get("results_timestamp", ""))
+    res_time_s = (f'<span title="{fmt_time(res_time)}">{fmt_short_time(res_time)}</span>'
+                  if res_time else E(results.get("results_timestamp", "")))
     checked = datetime.fromisoformat(state["last_checked"]).astimezone(PACIFIC)
     repo = os.environ.get("GITHUB_REPOSITORY", "rkudeshi/SCC-Recount-Watch")
 
@@ -414,7 +420,7 @@ a{{color:var(--link)}}
 
 <div class="times">
 <div>Results as of: <b>{res_time_s}</b> <span class="muted">(update {E(str(state['version']))})</span></div>
-<div>Last checked: <b id="checked" data-ts="{state['last_checked']}">{fmt_time(checked)}</b></div>
+<div>Last checked: <b id="checked" data-ts="{state['last_checked']}" title="{fmt_time(checked)}">{fmt_time(checked)}</b></div>
 </div>
 
 <div class="tiles">{tiles}</div>
@@ -444,15 +450,25 @@ a{{color:var(--link)}}
 <p class="muted" style="margin-top:24px">Source: <a href="{E(state['source_url'])}">Santa Clara County official results</a>. Checked about once an hour. Unofficial tracker; margins change as the county counts more ballots.</p>
 </main>
 <script>
-// Show the most recent hourly check, even when nothing new was published.
+// Show "last checked" as time ago (exact time on hover), using the most recent
+// hourly run even when nothing new was published.
 (function(){{
   var el=document.getElementById('checked');
+  var when=new Date(el.dataset.ts);
+  function ago(){{
+    var m=Math.max(0,Math.round((Date.now()-when)/60000));
+    var s=m<1?'just now':m<60?m+(m==1?' minute':' minutes')+' ago':
+      (function(h){{return h<48?h+(h==1?' hour':' hours')+' ago':Math.round(h/24)+' days ago'}})(Math.round(m/60));
+    el.textContent=s;
+    el.title=when.toLocaleString('en-US',{{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}});
+  }}
+  ago(); setInterval(ago,60000);
   fetch('https://api.github.com/repos/{repo}/actions/workflows/update.yml/runs?per_page=1&status=completed')
     .then(function(r){{return r.ok?r.json():null}})
     .then(function(j){{
       if(!j||!j.workflow_runs||!j.workflow_runs.length)return;
       var t=new Date(j.workflow_runs[0].updated_at);
-      if(t>new Date(el.dataset.ts))el.textContent=t.toLocaleString('en-US',{{timeZone:'America/Los_Angeles',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}});
+      if(t>when){{when=t;ago();}}
     }}).catch(function(){{}});
 }})();
 </script>

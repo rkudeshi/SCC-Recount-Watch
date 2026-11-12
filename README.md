@@ -16,7 +16,7 @@ Live site: https://rkudeshi.github.io/SCC-Recount-Watch/
 - Ballots cast in a contest = (candidate votes + undervotes + overvotes) ÷ seats.
 - Official percentage = margin ÷ ballots cast. The results-site percentage = margin ÷ candidate votes.
 - Ballot measures: margin = extra votes needed to flip the outcome against its threshold (majority, 55% or two-thirds). For a majority measure this equals Yes minus No.
-- Tiers (set in `config.json`): automatic recount under 25 votes or under 0.25%; very close within 50 votes or 0.5%; keep an eye on within 150 votes or 1.5%. Percentages near a tier line show four decimals.
+- Tiers (set in `config.json`): automatic recount under 25 votes or under 0.25%; very close within 100 votes or 0.5%; keep an eye on within 200 votes or 1.5%. Percentages near a tier line show four decimals.
 
 ## Leaving out contests
 
