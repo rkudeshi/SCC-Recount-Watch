@@ -394,102 +394,75 @@ def votes(n):
     return f"{fmt_n(n)} vote{'' if n == 1 else 's'}"
 
 
-def join_names(names):
-    names = list(names)
-    return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
+def short_label(name, all_names=()):
+    if name in ("Yes", "No"):
+        return name
+    last = name.replace('"', "").split()[-1]
+    if sum(1 for n in all_names if n.replace('"', "").split()[-1] == last) > 1:
+        return name
+    return last
 
 
-def lead_sentence(a, pts):
-    """Always says something, so a missing note is never read as 'no change'."""
-    pts = [p for p in pts if p.get("votes")]
-    if a["type"] == "measure":
-        flips = [(p, q) for p, q in zip(pts, pts[1:]) if p["passing"] != q["passing"]]
-        state = "passing" if a["passing"] else "failing"
-        if not flips:
-            return f"Has been {state} at every update."
-        return " ".join(f"Flipped to {'passing' if q['passing'] else 'failing'} on {q['label']}." for p, q in flips[-3:])
-    n = a["vote_for"]
-    tops = [set(sorted(p["votes"], key=lambda k: -p["votes"][k])[:n]) for p in pts]
-    events = []
-    for i in range(1, len(pts)):
-        came, went = tops[i] - tops[i - 1], tops[i - 1] - tops[i]
-        if came:
-            events.append(f"{join_names(sorted(came))} passed {join_names(sorted(went))} on {pts[i]['label']}.")
-    if not events:
-        winners = [r["name"] for r in a["rows"] if r["winner"]]
-        if n == 1:
-            return f"{winners[0]} has led at every update."
-        return f"{join_names(winners)} have held the winning spots at every update."
-    return " ".join(events[-3:])
-
-
-def short_label(name):
-    return name if len(name) <= 12 else name.split()[-1]
+def date_labels(pts):
+    out, prev_month = [], None
+    for p in pts:
+        d = p.get("dt")
+        if d:
+            out.append(d.strftime("%b %-d") if d.month != prev_month else d.strftime("%-d"))
+            prev_month = d.month
+        else:
+            out.append(p.get("label", ""))
+    return out
 
 
 def results_chart(a, pts):
-    """How each choice's share of the vote moved, one line per candidate (or Yes vs the threshold)."""
+    """Each choice's share of the vote after each update, on the same x-axis as the margin chart.
+    Names sit at the start of each line, inside the chart."""
     pts = [p for p in pts if p.get("votes")]
     if len(pts) < 2:
         return ""
-    names = [r["name"] for r in a["rows"] if not r.get("write_in")]
+    names = ["Yes"] if a["type"] == "measure" else [r["name"] for r in a["rows"] if not r.get("write_in")]
     winners = {r["name"] for r in a["rows"] if r["winner"]}
-    if a["type"] == "measure":
-        names = ["Yes"]
     share = lambda p, nm: 100 * p["votes"].get(nm, 0) / (sum(p["votes"].values()) or 1)
-    vals = [share(p, nm) for p in pts for nm in names]
-    if a["type"] == "measure":
-        vals.append(100 * a["threshold"])
+    thr = 100 * a["threshold"] if a["type"] == "measure" else None
+    vals = [share(p, nm) for p in pts for nm in names] + ([thr] if thr else [])
     lo, hi = min(vals), max(vals)
-    pad = max((hi - lo) * 0.12, 0.5)
-    lo, hi = lo - pad, hi + pad
+    span = (hi - lo) or 1
     n = len(pts)
-    W, top, bottom, left, right = 320, 8, 14, 14, 92
-    H = max(70, 14 * len(names) + top + bottom)
-    ph = H - top - bottom
-    x = lambda i: left + (W - left - right) * i / (n - 1)
-    y = lambda v: top + ph - ph * (v - lo) / (hi - lo)
-    out = [f'<svg class="spark res" viewBox="0 0 {W} {H}" role="img" aria-label="Share of the vote after each update">']
-    if a["type"] == "measure":
-        ty = y(100 * a["threshold"])
-        out.append(f'<line class="rl" x1="{left}" x2="{W - right}" y1="{ty:.1f}" y2="{ty:.1f}"/>')
-    ends = []
-    if a["type"] == "measure":
-        ends.append([ty, f'needs {fmt_pct(100 * a["threshold"], 0) if a["threshold"] != 2 / 3 else "66.7%"}', "l"])
-    for nm in reversed(names):  # draw leaders last so they sit on top
-        cls = "w" if nm in winners or a["type"] == "measure" else "l"
+    W, side, top = 320, 14, 16
+    ph = 44 + 10 * max(0, len(names) - 2)
+    bot = top + ph
+    x = lambda i: side + (W - 2 * side) * i / (n - 1)
+    y = lambda v: bot - (v - lo) / span * ph
+    out = []
+    if thr:
+        out.append(f'<line class="rl" x1="{side}" x2="{W - side}" y1="{y(thr):.1f}" y2="{y(thr):.1f}"/>')
+    order = sorted(names, key=lambda nm: (nm in winners or a["type"] == "measure"))
+    for nm in order:  # leaders drawn last, on top
+        role = "w" if nm in winners or a["type"] == "measure" else "l"
         line = " ".join(f"{x(i):.1f},{y(share(p, nm)):.1f}" for i, p in enumerate(pts))
-        out.append(f'<polyline class="cl {cls}" points="{line}"/>')
-        ends.append([y(share(pts[-1], nm)), nm, cls])
-    # Nudge end labels apart so they don't overlap.
-    ends.sort()
-    for i in range(1, len(ends)):
-        ends[i][0] = max(ends[i][0], ends[i - 1][0] + 11)
-    over = ends[-1][0] - (H - bottom) if ends else 0
-    if over > 0:
-        for e in ends:
-            e[0] -= over
-    for ey, nm, cls in ends:
-        out.append(f'<text class="lab {cls}" x="{W - right + 6}" y="{ey + 3:.1f}">{E(nm if nm.startswith("needs") else short_label(nm))}</text>')
-    prev_month = None
-    step = (W - left - right) / (n - 1)
-    for i, p in enumerate(pts):
+        out.append(f'<polyline class="cl {role}" points="{line}"/>')
+    labs = sorted([y(share(pts[0], nm)) - 4, short_label(nm, names),
+                   "w" if nm in winners or a["type"] == "measure" else "l"] for nm in names)
+    if thr:
+        labs = sorted(labs + [[y(thr) - 4, f"{thr:.0f}% needed", "thr"]])
+    for i in range(1, len(labs)):
+        labs[i][0] = max(labs[i][0], labs[i - 1][0] + 10)
+    for ly, txt, role in labs:
+        anchor, lx = ("end", W - side) if role == "thr" else ("start", side - 4)
+        out.append(f'<text class="lab {role}" x="{lx}" y="{ly:.1f}" text-anchor="{anchor}">{E(txt)}</text>')
+    dy = max(bot, labs[-1][0] if labs else bot) + 12
+    step = (W - 2 * side) / (n - 1)
+    for i, (p, lab) in enumerate(zip(pts, date_labels(pts))):
+        out.append(f'<text class="d" x="{x(i):.1f}" y="{dy:.0f}" text-anchor="middle">{E(lab)}</text>')
         d = p.get("dt")
-        if d:
-            lab = d.strftime("%b %-d") if d.month != prev_month else d.strftime("%-d")
-            prev_month = d.month
-        else:
-            lab = p.get("label", "")
-        out.append(f'<text class="d" x="{x(i):.1f}" y="{H - 2}" text-anchor="middle">{E(lab)}</text>')
         full = d.strftime("%a %b %-d") if d else p.get("label", "")
-        parts = [f"{short_label(nm)} {share(p, nm):.1f}%" for nm in sorted(names, key=lambda k: -p["votes"].get(k, 0))]
-        tip = f"{full}: " + ", ".join(parts)
-        out.append(f'<rect class="hit" x="{x(i) - step / 2:.1f}" y="0" width="{step:.1f}" height="{H}" '
-                   f'data-tip="{E(tip)}" data-x="{x(i):.1f}" data-y="{top}"/>')
-    out.append("</svg>")
-    what = "Yes share of the vote" if a["type"] == "measure" else "Share of candidate votes"
-    return (f'<p class="muted sub2">{what} after each update</p>'
-            f'<div class="sparkwrap">{"".join(out)}<div class="tip" hidden></div></div>')
+        parts = [f"{short_label(nm, names)} {share(p, nm):.1f}%" for nm in sorted(names, key=lambda k: -share(p, k))]
+        out.append(f'<rect class="hit" x="{x(i) - step / 2:.1f}" y="0" width="{step:.1f}" height="{dy}" '
+                   f'data-tip="{E(full + ": " + ", ".join(parts))}" data-x="{x(i):.1f}" data-y="{top}"/>')
+    svg = (f'<svg class="spark res" viewBox="0 0 {W} {dy + 2:.0f}" role="img" '
+           f'aria-label="Share of the vote after each update">{"".join(out)}</svg>')
+    return f'<div class="sparkwrap">{svg}<div class="tip" hidden></div></div>'
 
 
 def sparkline(pts):
@@ -531,24 +504,31 @@ def sparkline(pts):
     return f'<div class="sparkwrap">{"".join(out)}<div class="tip" hidden></div></div>'
 
 
-def render_contest(a, pts, collapsed=False):
+def section(key, title, body, open_):
+    return (f'<details class="sec" data-sec="{key}"{" open" if open_ else ""}>'
+            f'<summary><h4 class="sh">{E(title)}</h4></summary>\n{body}\n</details>')
+
+
+def margin_text(a):
+    if a["type"] == "candidate":
+        return f"{votes(a['margin'])} ({fmt_margin_pct(a['pct'])} of ballots cast)"
+    side = "No" if a["passing"] else "Yes"
+    return f"{fmt_n(a['margin'])} more {side} votes would flip it ({fmt_margin_pct(a['pct'])} of ballots cast)"
+
+
+def render_contest(a, pts, anchor=True):
     g = a.get("group", 0)
-    cls = f"contest g{g}" if g else "contest"
+    cls = f"contest g{g}" if g else "contest g0"
     np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
     sub = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'} · {fmt_n(a['ballots_cast'])} ballots cast"
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']} · {sub}"
-        margin_line = f"Margin: {votes(a['margin'])} ({fmt_margin_pct(a['pct'])} of ballots cast)"
         compare = f"{fmt_pct(a['site_pct'])} of candidate votes only"
-        col_label, pv_label, total_label = "Candidate", "% of candidate votes", "candidate votes"
+        col_label, pv_label, share_title = "Candidate", "% of candidate votes", "Share of candidate votes"
     else:
         sub = f"Needs {a['threshold_label']} Yes · {sub}"
-        side = "No" if a["passing"] else "Yes"
-        margin_line = (f"Margin: {fmt_n(a['margin'])} more {side} votes would flip it "
-                       f"({fmt_margin_pct(a['pct'])} of ballots cast)")
         compare = f"currently {'passing' if a['passing'] else 'failing'}, Yes at {fmt_pct(a['yes_share'])}"
-        col_label, pv_label, total_label = "Choice", "% of votes", "total votes"
-    lead = lead_sentence(a, pts) if len(pts) >= 2 else ""
+        col_label, pv_label, share_title = "Choice", "% of votes", "Yes share of the vote"
 
     rows = []
     n_rows = [r for r in a["rows"] if not r.get("write_in")]
@@ -562,32 +542,34 @@ def render_contest(a, pts, collapsed=False):
         rows.append(
             f'<tr class="{" ".join(classes)}"><td>{name}</td><td>{fmt_n(r["votes"])}</td>'
             f'<td>{fmt_pct(r["pct_ballots"])}</td><td>{fmt_pct(r["pct_votes"])}</td></tr>')
-    totals = (f"{fmt_n(a['candidate_votes'])} {total_label} · {fmt_n(a['overvotes'])} overvotes · "
-              f"{fmt_n(a['undervotes'])} undervotes · {fmt_n(a['ballots_cast'])} ballots cast")
+    b = a["ballots_cast"] or 1
+    for j, (k, v) in enumerate((("Overvotes", a["overvotes"]), ("Undervotes", a["undervotes"]))):
+        rows.append(f'<tr class="ou{" first" if j == 0 else ""}"><td>{k}</td><td>{fmt_n(v)}</td>'
+                    f'<td>{fmt_pct(100 * v / b)}</td><td></td></tr>')
+    rows.append(f'<tr class="bc"><td>Ballots cast</td><td>{fmt_n(a["ballots_cast"])}</td><td></td><td></td></tr>')
 
-    body = f"""<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">({E(compare)})</span></div>
-{sparkline(pts)}
-<div class="results">
-{f'<p class="ev">{E(lead)}</p>' if lead else ''}
-<div class="tbl"><table>
-<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th><th>{pv_label}</th></tr>
-{''.join(rows)}
-</table></div>
-<p class="muted tot">{E(totals)}</p>
-{results_chart(a, pts)}
+    margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span><br>'
+                   f'<span class="cmp">({E(compare)})</span></div>\n{sparkline(pts)}')
+    table = (f'<div class="tbl"><table>\n<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th>'
+             f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>')
+    chart = results_chart(a, pts)
+    secs = [section("m", "Margin", margin_body, True)]
+    if chart:
+        secs.append(section("s", share_title, chart, True))
+    secs.append(section("r", "Results", table, False))
+    idattr = f' id="c{E(str(a["key"]))}"' if anchor else ""
+    return f"""<div class="{cls}"{idattr}>
+<div class="chead"><h3>{E(a['name'])}</h3>
+<p class="muted">{E(sub)}</p></div>
+{chr(10).join(secs)}
 </div>"""
-    cid = f"c{E(str(a['key']))}"
-    if collapsed:
-        return f"""<details class="{cls}" id="{cid}"><summary><h3>{E(a['name'])}</h3>
-<span class="muted">{E(margin_line)}</span></summary>
-<p class="muted">{E(sub)}</p>
-{body}
-</details>"""
-    return f"""<div class="{cls}" id="{cid}">
-<h3>{E(a['name'])}</h3>
-<p class="muted">{E(sub)}</p>
-{body}
-</div>"""
+
+
+def nc_item(a, pts):
+    """A 'Not close' contest: one line that opens into its full card."""
+    return (f'<li><details class="nc" id="c{E(str(a["key"]))}"><summary>{E(a["name"])} '
+            f'<span class="muted">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}</span></summary>\n'
+            f'{render_contest(a, pts, anchor=False)}</details></li>')
 
 
 def recap_row(a):
@@ -659,8 +641,7 @@ def render(results, state, cfg, hist=None):
 
     sections.append(f"""<section id="group0">
 <h2 class="sec g0">Not close</h2>
-<p><button type="button" id="expandall">Expand all</button></p>
-{"".join(render_contest(a, pts_by_key[str(a["key"])], collapsed=True) for a in others)}
+<ul class="nclist">{"".join(nc_item(a, pts_by_key[str(a["key"])]) for a in others)}</ul>
 </section>""")
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
                    for x in results["excluded"] + results["skipped"])
@@ -694,7 +675,6 @@ h2.g1{{background:var(--t1);border-color:var(--t1s)}} h2.g2{{background:var(--t2
 h3{{font-size:17px;margin:0}}
 .contest{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:12px;margin-bottom:12px}}
 .margin{{margin:6px 0 8px;padding:5px 8px;border-radius:4px}}
-.contest.g1 .margin{{background:var(--t1)}} .contest.g2 .margin{{background:var(--t2)}} .contest.g3 .margin{{background:var(--t3)}} .contest.g4 .margin{{background:var(--t0)}}
 .margin .big{{font-size:15px;font-weight:600}}
 .margin .cmp{{font-size:13px;color:var(--muted)}}
 .recap{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0}}
@@ -713,9 +693,6 @@ th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
 th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
 tr.cut td{{border-bottom:3px solid var(--cut)}}
-.ev{{font-size:13px;margin:4px 0 6px}}
-.results{{border-top:1px solid var(--line);margin-top:10px;padding-top:6px}}
-p.tot{{margin:6px 0 0}}
 .sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
 .tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}}
 .recap .nm{{display:flex;flex-direction:column}} .recap .nm small{{color:var(--muted);font-size:12px}}
@@ -730,12 +707,33 @@ svg.spark .ml{{fill:none;stroke:var(--fg);stroke-width:2;stroke-linejoin:round}}
 svg.spark .pt{{fill:var(--fg)}} svg.spark .pin{{fill:var(--t1s);stroke:var(--box);stroke-width:1.5}}
 svg.res .cl{{fill:none;stroke-width:2;stroke-linejoin:round}} svg.res .cl.w{{stroke:var(--fg)}} svg.res .cl.l{{stroke:var(--t0s);stroke-width:1.5}}
 svg.res text.lab{{fill:var(--fg);font-size:10px}} svg.res text.lab.l{{fill:var(--muted)}}
-.sub2{{margin:12px 0 0;font-size:12px}}
-details.contest>summary{{list-style:none;cursor:pointer}} details.contest>summary::-webkit-details-marker{{display:none}}
-details.contest>summary h3::before{{content:"▸ ";color:var(--muted)}} details.contest[open]>summary h3::before{{content:"▾ "}}
-details.contest>summary .muted{{display:block;margin-left:16px}}
-#expandall{{font:inherit;font-size:14px;padding:4px 10px;border:1px solid var(--line);background:var(--box);color:var(--fg);border-radius:4px;cursor:pointer}}
 svg.spark .hit{{fill:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}}
+.contest{{padding:0 14px 6px;overflow:hidden}}
+.contest.g1{{border-color:var(--t1s)}} .contest.g2{{border-color:var(--t2s)}} .contest.g3{{border-color:var(--t3s)}}
+.chead{{margin:0 -14px;padding:10px 14px 9px;background:var(--th);border-bottom:1px solid var(--line)}}
+.chead p.muted{{margin:2px 0 0;color:var(--fg);opacity:.75}}
+.contest.g1 .chead{{background:var(--t1);border-color:var(--t1s)}} .contest.g2 .chead{{background:var(--t2);border-color:var(--t2s)}} .contest.g3 .chead{{background:var(--t3);border-color:var(--t3s)}} .contest.g4 .chead{{background:var(--t0);border-color:var(--t0s)}}
+details.sec{{margin:0;padding:16px 0 10px}}
+details.sec+details.sec{{border-top:1px solid var(--line)}}
+details.sec>summary,details.nc>summary{{list-style:none;cursor:pointer;font-weight:normal}}
+details.sec>summary{{display:flex;align-items:center;gap:6px}}
+details.sec>summary::-webkit-details-marker,details.nc>summary::-webkit-details-marker{{display:none}}
+details.sec>summary::before,details.nc>summary::before{{content:"";display:inline-block;border-style:solid;border-width:4px 0 4px 6px;border-color:transparent transparent transparent var(--muted);transition:transform .15s}}
+details.nc>summary::before{{margin-right:7px;vertical-align:1px}}
+details.sec[open]>summary::before,details.nc[open]>summary::before{{transform:rotate(90deg)}}
+details.sec[open]>summary{{margin-bottom:8px}}
+h4.sh{{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
+.margin{{margin:0 0 4px;padding:0}}
+.margin .big{{font-size:16px}}
+tr.ou td{{color:var(--muted)}}
+tr.ou.first td{{border-top:1px solid var(--muted)}}
+tr.bc td{{font-weight:600;border-bottom:0;white-space:nowrap}}
+svg.res text.lab{{paint-order:stroke;stroke:var(--box);stroke-width:3px;stroke-linejoin:round}}
+svg.res text.lab.thr{{fill:var(--t1s)}}
+ul.nclist{{margin:0;padding:0;list-style:none}}
+ul.nclist>li{{padding:5px 0;border-bottom:1px solid var(--line)}}
+details.nc>.contest{{margin:8px 0 6px}}
+@media (prefers-reduced-motion:reduce){{details.sec>summary::before,details.nc>summary::before{{transition:none}}}}
 tr.wi td{{color:var(--muted)}}
 tr.tot td{{color:var(--muted);font-size:13px;border-bottom:0}}
 tr.first td{{border-top:1px solid var(--muted)}}
@@ -787,11 +785,13 @@ a{{color:var(--link)}}
   document.addEventListener('click',function(e){{
     var r=e.target.closest&&e.target.closest('rect.hit');hideAll();if(r)show(r);
   }});
-  var btn=document.getElementById('expandall');
-  if(btn)btn.addEventListener('click',function(){{
-    var ds=document.querySelectorAll('#group0 details.contest'),open=btn.textContent==='Expand all';
-    ds.forEach(function(d){{d.open=open}});btn.textContent=open?'Collapse all':'Expand all';
-  }});
+  // Opening or closing a section on one card does the same on every card.
+  var busy=false;
+  document.addEventListener('toggle',function(e){{
+    var d=e.target;if(busy||!d.matches||!d.matches('details.sec'))return;busy=true;
+    document.querySelectorAll('details.sec[data-sec="'+d.dataset.sec+'"]').forEach(function(x){{if(x!==d)x.open=d.open}});
+    setTimeout(function(){{busy=false}},0);
+  }},true);
   // Links from the summary open a collapsed card.
   function openHash(){{var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}}
   window.addEventListener('hashchange',openHash);openHash();
