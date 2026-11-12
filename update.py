@@ -311,6 +311,8 @@ def snapshot_of(results, version):
             rec["winner"], rec["loser"] = a["last_winner"], a["first_loser"]
         else:
             rec["passing"] = a["passing"]
+        # Each choice's votes, so the cards can chart how the results moved.
+        rec["votes"] = {r["name"]: r["votes"] for r in a["rows"] if not r.get("write_in")}
         snap["contests"][str(a["key"])] = rec
     return snap
 
@@ -335,7 +337,7 @@ def in_range(margin, ballots, t):
 
 GROUPS = {
     1: ("In recount range", "Margin under 25 votes or under 0.25% of ballots cast"),
-    2: ("Were in range, now out", ""),
+    2: ("Were in range, out for now", ""),
     3: ("Getting closer", ""),
     4: ("Close", ""),
 }
@@ -366,6 +368,7 @@ def current_point(a, version, t):
         p["winner"], p["loser"] = a["last_winner"], a["first_loser"]
     else:
         p["passing"] = a["passing"]
+    p["votes"] = {r["name"]: r["votes"] for r in a["rows"] if not r.get("write_in")}
     return p
 
 
@@ -391,20 +394,102 @@ def votes(n):
     return f"{fmt_n(n)} vote{'' if n == 1 else 's'}"
 
 
-def history_events(pts):
-    """Two short lists: entering/leaving recount range, and lead changes (or a measure flipping)."""
-    rng, lead = [], []
-    for prev, cur in zip(pts, pts[1:]):
-        when = "on " + cur.get("label", "now")
-        if cur["in"] and not prev["in"]:
-            rng.append(f"Entered recount range {when} ({votes(cur['margin'])}).")
-        elif prev["in"] and not cur["in"]:
-            rng.append(f"Left recount range {when} ({votes(cur['margin'])}).")
-        if cur.get("winner") and prev.get("winner") and cur["winner"] != prev["winner"]:
-            lead.append(f"{cur['winner']} passed {prev['winner']} {when}.")
-        if "passing" in cur and "passing" in prev and cur["passing"] != prev["passing"]:
-            lead.append(f"Flipped to {'passing' if cur['passing'] else 'failing'} {when}.")
-    return " ".join(rng[-4:]), " ".join(lead[-3:])
+def join_names(names):
+    names = list(names)
+    return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
+
+
+def lead_sentence(a, pts):
+    """Always says something, so a missing note is never read as 'no change'."""
+    pts = [p for p in pts if p.get("votes")]
+    if a["type"] == "measure":
+        flips = [(p, q) for p, q in zip(pts, pts[1:]) if p["passing"] != q["passing"]]
+        state = "passing" if a["passing"] else "failing"
+        if not flips:
+            return f"Has been {state} at every update."
+        return " ".join(f"Flipped to {'passing' if q['passing'] else 'failing'} on {q['label']}." for p, q in flips[-3:])
+    n = a["vote_for"]
+    tops = [set(sorted(p["votes"], key=lambda k: -p["votes"][k])[:n]) for p in pts]
+    events = []
+    for i in range(1, len(pts)):
+        came, went = tops[i] - tops[i - 1], tops[i - 1] - tops[i]
+        if came:
+            events.append(f"{join_names(sorted(came))} passed {join_names(sorted(went))} on {pts[i]['label']}.")
+    if not events:
+        winners = [r["name"] for r in a["rows"] if r["winner"]]
+        if n == 1:
+            return f"{winners[0]} has led at every update."
+        return f"{join_names(winners)} have held the winning spots at every update."
+    return " ".join(events[-3:])
+
+
+def short_label(name):
+    return name if len(name) <= 12 else name.split()[-1]
+
+
+def results_chart(a, pts):
+    """How each choice's share of the vote moved, one line per candidate (or Yes vs the threshold)."""
+    pts = [p for p in pts if p.get("votes")]
+    if len(pts) < 2:
+        return ""
+    names = [r["name"] for r in a["rows"] if not r.get("write_in")]
+    winners = {r["name"] for r in a["rows"] if r["winner"]}
+    if a["type"] == "measure":
+        names = ["Yes"]
+    share = lambda p, nm: 100 * p["votes"].get(nm, 0) / (sum(p["votes"].values()) or 1)
+    vals = [share(p, nm) for p in pts for nm in names]
+    if a["type"] == "measure":
+        vals.append(100 * a["threshold"])
+    lo, hi = min(vals), max(vals)
+    pad = max((hi - lo) * 0.12, 0.5)
+    lo, hi = lo - pad, hi + pad
+    n = len(pts)
+    W, top, bottom, left, right = 320, 8, 14, 14, 92
+    H = max(70, 14 * len(names) + top + bottom)
+    ph = H - top - bottom
+    x = lambda i: left + (W - left - right) * i / (n - 1)
+    y = lambda v: top + ph - ph * (v - lo) / (hi - lo)
+    out = [f'<svg class="spark res" viewBox="0 0 {W} {H}" role="img" aria-label="Share of the vote after each update">']
+    if a["type"] == "measure":
+        ty = y(100 * a["threshold"])
+        out.append(f'<line class="rl" x1="{left}" x2="{W - right}" y1="{ty:.1f}" y2="{ty:.1f}"/>')
+    ends = []
+    if a["type"] == "measure":
+        ends.append([ty, f'needs {fmt_pct(100 * a["threshold"], 0) if a["threshold"] != 2 / 3 else "66.7%"}', "l"])
+    for nm in reversed(names):  # draw leaders last so they sit on top
+        cls = "w" if nm in winners or a["type"] == "measure" else "l"
+        line = " ".join(f"{x(i):.1f},{y(share(p, nm)):.1f}" for i, p in enumerate(pts))
+        out.append(f'<polyline class="cl {cls}" points="{line}"/>')
+        ends.append([y(share(pts[-1], nm)), nm, cls])
+    # Nudge end labels apart so they don't overlap.
+    ends.sort()
+    for i in range(1, len(ends)):
+        ends[i][0] = max(ends[i][0], ends[i - 1][0] + 11)
+    over = ends[-1][0] - (H - bottom) if ends else 0
+    if over > 0:
+        for e in ends:
+            e[0] -= over
+    for ey, nm, cls in ends:
+        out.append(f'<text class="lab {cls}" x="{W - right + 6}" y="{ey + 3:.1f}">{E(nm if nm.startswith("needs") else short_label(nm))}</text>')
+    prev_month = None
+    step = (W - left - right) / (n - 1)
+    for i, p in enumerate(pts):
+        d = p.get("dt")
+        if d:
+            lab = d.strftime("%b %-d") if d.month != prev_month else d.strftime("%-d")
+            prev_month = d.month
+        else:
+            lab = p.get("label", "")
+        out.append(f'<text class="d" x="{x(i):.1f}" y="{H - 2}" text-anchor="middle">{E(lab)}</text>')
+        full = d.strftime("%a %b %-d") if d else p.get("label", "")
+        parts = [f"{short_label(nm)} {share(p, nm):.1f}%" for nm in sorted(names, key=lambda k: -p["votes"].get(k, 0))]
+        tip = f"{full}: " + ", ".join(parts)
+        out.append(f'<rect class="hit" x="{x(i) - step / 2:.1f}" y="0" width="{step:.1f}" height="{H}" '
+                   f'data-tip="{E(tip)}" data-x="{x(i):.1f}" data-y="{top}"/>')
+    out.append("</svg>")
+    what = "Yes share of the vote" if a["type"] == "measure" else "Share of candidate votes"
+    return (f'<p class="muted sub2">{what} after each update</p>'
+            f'<div class="sparkwrap">{"".join(out)}<div class="tip" hidden></div></div>')
 
 
 def sparkline(pts):
@@ -446,7 +531,7 @@ def sparkline(pts):
     return f'<div class="sparkwrap">{"".join(out)}<div class="tip" hidden></div></div>'
 
 
-def render_contest(a, pts):
+def render_contest(a, pts, collapsed=False):
     g = a.get("group", 0)
     cls = f"contest g{g}" if g else "contest"
     np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
@@ -463,7 +548,7 @@ def render_contest(a, pts):
                        f"({fmt_margin_pct(a['pct'])} of ballots cast)")
         compare = f"currently {'passing' if a['passing'] else 'failing'}, Yes at {fmt_pct(a['yes_share'])}"
         col_label, pv_label, total_label = "Choice", "% of votes", "total votes"
-    rng, lead = history_events(pts) if len(pts) >= 2 else ("", "")
+    lead = lead_sentence(a, pts) if len(pts) >= 2 else ""
 
     rows = []
     n_rows = [r for r in a["rows"] if not r.get("write_in")]
@@ -480,12 +565,8 @@ def render_contest(a, pts):
     totals = (f"{fmt_n(a['candidate_votes'])} {total_label} · {fmt_n(a['overvotes'])} overvotes · "
               f"{fmt_n(a['undervotes'])} undervotes · {fmt_n(a['ballots_cast'])} ballots cast")
 
-    return f"""<div class="{cls}" id="c{E(str(a['key']))}">
-<h3>{E(a['name'])}</h3>
-<p class="muted">{E(sub)}</p>
-<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">({E(compare)})</span></div>
+    body = f"""<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">({E(compare)})</span></div>
 {sparkline(pts)}
-{f'<p class="ev">{E(rng)}</p>' if rng else ''}
 <div class="results">
 {f'<p class="ev">{E(lead)}</p>' if lead else ''}
 <div class="tbl"><table>
@@ -493,7 +574,19 @@ def render_contest(a, pts):
 {''.join(rows)}
 </table></div>
 <p class="muted tot">{E(totals)}</p>
-</div>
+{results_chart(a, pts)}
+</div>"""
+    cid = f"c{E(str(a['key']))}"
+    if collapsed:
+        return f"""<details class="{cls}" id="{cid}"><summary><h3>{E(a['name'])}</h3>
+<span class="muted">{E(margin_line)}</span></summary>
+<p class="muted">{E(sub)}</p>
+{body}
+</details>"""
+    return f"""<div class="{cls}" id="{cid}">
+<h3>{E(a['name'])}</h3>
+<p class="muted">{E(sub)}</p>
+{body}
 </div>"""
 
 
@@ -566,7 +659,8 @@ def render(results, state, cfg, hist=None):
 
     sections.append(f"""<section id="group0">
 <h2 class="sec g0">Not close</h2>
-{"".join(render_contest(a, pts_by_key[str(a["key"])]) for a in others)}
+<p><button type="button" id="expandall">Expand all</button></p>
+{"".join(render_contest(a, pts_by_key[str(a["key"])], collapsed=True) for a in others)}
 </section>""")
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
                    for x in results["excluded"] + results["skipped"])
@@ -579,9 +673,9 @@ def render(results, state, cfg, hist=None):
 <title>Santa Clara County Automatic Recount Watch</title>
 <style>
 :root{{--bg:#f6f6f6;--box:#fff;--fg:#111;--muted:#666;--line:#ddd;--cut:#111;--link:#0645ad;
-  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f;--t0:#e6e6e6;--t0s:#8a8a8a}}
+  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f;--t0:#e6e6e6;--t0s:#8a8a8a;--th:#f0f0f0}}
 @media (prefers-color-scheme: dark){{:root{{--bg:#111;--box:#1b1b1b;--fg:#eee;--muted:#9a9a9a;--line:#333;--cut:#eee;--link:#8ab4f8;
-  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;--t0:#2a2a2a;--t0s:#9a9a9a;color-scheme:dark}}}}
+  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;--t0:#2a2a2a;--t0s:#9a9a9a;--th:#262626;color-scheme:dark}}}}
 *{{box-sizing:border-box}}
 body{{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;padding:16px}}
 main{{max-width:700px;margin:0 auto}}
@@ -617,13 +711,13 @@ h3{{font-size:17px;margin:0}}
 table{{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}}
 th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
-th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom}}
+th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
 tr.cut td{{border-bottom:3px solid var(--cut)}}
 .ev{{font-size:13px;margin:4px 0 6px}}
 .results{{border-top:1px solid var(--line);margin-top:10px;padding-top:6px}}
 p.tot{{margin:6px 0 0}}
 .sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
-.tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;white-space:nowrap;pointer-events:none}}
+.tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}}
 .recap .nm{{display:flex;flex-direction:column}} .recap .nm small{{color:var(--muted);font-size:12px}}
 .cp{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:pre}}
 .recap details{{margin-top:12px}}
@@ -634,6 +728,13 @@ svg.spark .base{{stroke:var(--line);stroke-width:1}}
 svg.spark .rl{{fill:none;stroke:var(--t1s);stroke-dasharray:3 3;stroke-width:1}}
 svg.spark .ml{{fill:none;stroke:var(--fg);stroke-width:2;stroke-linejoin:round}}
 svg.spark .pt{{fill:var(--fg)}} svg.spark .pin{{fill:var(--t1s);stroke:var(--box);stroke-width:1.5}}
+svg.res .cl{{fill:none;stroke-width:2;stroke-linejoin:round}} svg.res .cl.w{{stroke:var(--fg)}} svg.res .cl.l{{stroke:var(--t0s);stroke-width:1.5}}
+svg.res text.lab{{fill:var(--fg);font-size:10px}} svg.res text.lab.l{{fill:var(--muted)}}
+.sub2{{margin:12px 0 0;font-size:12px}}
+details.contest>summary{{list-style:none;cursor:pointer}} details.contest>summary::-webkit-details-marker{{display:none}}
+details.contest>summary h3::before{{content:"▸ ";color:var(--muted)}} details.contest[open]>summary h3::before{{content:"▾ "}}
+details.contest>summary .muted{{display:block;margin-left:16px}}
+#expandall{{font:inherit;font-size:14px;padding:4px 10px;border:1px solid var(--line);background:var(--box);color:var(--fg);border-radius:4px;cursor:pointer}}
 svg.spark .hit{{fill:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}}
 tr.wi td{{color:var(--muted)}}
 tr.tot td{{color:var(--muted);font-size:13px;border-bottom:0}}
@@ -677,14 +778,23 @@ a{{color:var(--link)}}
     var w=r.closest('.sparkwrap'),tip=w.querySelector('.tip'),svg=w.querySelector('svg');
     var s=svg.getBoundingClientRect().width/svg.viewBox.baseVal.width;
     tip.textContent=r.getAttribute('data-tip');
-    tip.style.left=Math.min(Math.max(r.getAttribute('data-x')*s,70),svg.getBoundingClientRect().width-70)+'px';
-    tip.style.top=(r.getAttribute('data-y')*s)+'px';
     tip.hidden=false;
+    var hw=tip.offsetWidth/2,sw=svg.getBoundingClientRect().width;
+    tip.style.left=Math.min(Math.max(r.getAttribute('data-x')*s,hw),sw-hw)+'px';
+    tip.style.top=(r.getAttribute('data-y')*s)+'px';
   }}
   function hideAll(){{document.querySelectorAll('.tip').forEach(function(t){{t.hidden=true}})}}
   document.addEventListener('click',function(e){{
     var r=e.target.closest&&e.target.closest('rect.hit');hideAll();if(r)show(r);
   }});
+  var btn=document.getElementById('expandall');
+  if(btn)btn.addEventListener('click',function(){{
+    var ds=document.querySelectorAll('#group0 details.contest'),open=btn.textContent==='Expand all';
+    ds.forEach(function(d){{d.open=open}});btn.textContent=open?'Collapse all':'Expand all';
+  }});
+  // Links from the summary open a collapsed card.
+  function openHash(){{var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}}
+  window.addEventListener('hashchange',openHash);openHash();
   document.addEventListener('pointerover',function(e){{
     if(e.pointerType!=='mouse')return;
     var r=e.target.closest&&e.target.closest('rect.hit');if(r){{hideAll();show(r);}}
