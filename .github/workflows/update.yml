@@ -10,6 +10,7 @@ on:
       - update.py
       - config.json
       - .github/workflows/update.yml
+      - data/**
 
 permissions:
   contents: write
