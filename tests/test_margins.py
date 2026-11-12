@@ -72,10 +72,12 @@ class Groups(unittest.TestCase):
         self.assertEqual(update.line_votes(20000, T), 50)   # exactly 0.25% is not a recount
 
     def test_groups(self):
-        g = lambda ms: update.group_for(self.pts(ms), self.T6)
+        g = lambda ms, b=10000: update.group_for(self.pts(ms, b), self.T6)
         self.assertEqual(g([300, 100, 20]), 1)
         self.assertEqual(g([300, 20, 100]), 2)
-        self.assertEqual(g([300, 200, 100]), 3)
+        self.assertEqual(g([400, 300, 200, 100]), 3)
+        self.assertEqual(g([278, 276, 262, 251], 50000), 4)  # shrinking, but only 10%
+        self.assertEqual(g([160, 166, 132]), 4)        # one drop isn't a trend
         self.assertEqual(g([100, 120, 140]), 4)
         self.assertEqual(g([100, 120, 400]), 0)
 

@@ -334,10 +334,10 @@ def in_range(margin, ballots, t):
 
 
 GROUPS = {
-    1: ("In recount range", "Margin is under the automatic recount line: 25 votes or 0.25% of ballots cast, whichever is larger"),
-    2: ("Was in range, now out", "Was under the recount line at an earlier update, now above it"),
-    3: ("Getting closer", "Within {w:g}× the recount line and narrower than two updates ago"),
-    4: ("Close, not narrowing", "Within {w:g}× the recount line, holding steady or widening"),
+    1: ("In recount range", "Margin under 25 votes or under 0.25% of ballots cast"),
+    2: ("Was in range, now out", "Was in automatic recount range at an earlier update, now out of it"),
+    3: ("Getting closer", "Margin shrank at each of the last two updates, and by at least a quarter over the last three"),
+    4: ("Close, not narrowing", "Near recount range, but the margin isn't steadily shrinking"),
 }
 
 
@@ -378,8 +378,10 @@ def group_for(pts, t):
         return 2
     w = t.get("watch_ratio", 6)
     if cur["ratio"] <= w:
-        ref = prev[-2] if len(prev) >= 2 else (prev[0] if prev else None)
-        if ref and cur["ratio"] < ref["ratio"]:
+        m = [p["margin"] for p in pts]
+        # Steady shrinking in votes: down at each of the last two updates, and
+        # down at least 25% compared with three updates ago.
+        if len(m) >= 4 and m[-1] < m[-2] < m[-3] and m[-1] <= 0.75 * m[-4]:
             return 3
         return 4
     return 0
@@ -425,7 +427,7 @@ def sparkline(pts):
     prev_month = None
     for i, p in enumerate(pts):
         cx, cy = x(i), y(p["margin"])
-        tip = f'{p["label"]}: margin {votes(p["margin"])} ({fmt_margin_pct(p["pct"])}); recount if under {fmt_n(p["line"])}'
+        tip = f'{p["label"]}: margin {votes(p["margin"])} ({fmt_margin_pct(p["pct"])})'
         out.append(f'<g><title>{E(tip)}</title><rect class="hit" x="{cx - 14:.1f}" y="0" width="28" height="{H}"/>'
                    f'<circle class="{"pin" if p["in"] else "pt"}" cx="{cx:.1f}" cy="{cy:.1f}" r="{3.5 if p["in"] else 2.5}"/></g>')
         out.append(f'<text class="v{" in" if p["in"] else ""}" x="{cx:.1f}" y="{cy - 5:.1f}" text-anchor="middle">{fmt_n(p["margin"])}</text>')
@@ -453,7 +455,6 @@ def render_contest(a, hist_html=""):
     cls = f"contest g{g}" if g else "contest"
     np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
     precincts = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'}"
-    line = a["line"]
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']} · {precincts}"
         margin_line = f"Margin: {votes(a['margin'])} ({fmt_margin_pct(a['pct'])} of ballots cast)"
@@ -466,9 +467,6 @@ def render_contest(a, hist_html=""):
                        f"({fmt_margin_pct(a['pct'])} of ballots cast)")
         compare = f"Yes at {fmt_pct(a['yes_share'])}, needs {fmt_pct(100 * a['threshold'])}"
         col_label, pv_label, total_label = "Choice", "% of votes", "Total votes"
-    which = (f"{a['recount_pct_cfg']:g}% of {fmt_n(a['ballots_cast'])} ballots cast"
-             if line > a["recount_votes_cfg"] else f"{a['recount_votes_cfg']}-vote minimum")
-    line_text = f"Recount if under {votes(line)} ({which}) · {compare}"
 
     rows = []
     n_rows = [r for r in a["rows"] if not r.get("write_in")]
@@ -494,7 +492,7 @@ def render_contest(a, hist_html=""):
     return f"""<div class="{cls}" id="c{E(str(a['key']))}">
 <h3>{E(a['name'])}</h3>
 <p class="muted">{E(sub)}</p>
-<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">{E(line_text)}</span></div>
+<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">({E(compare)})</span></div>
 {hist_html}
 <div class="tbl"><table>
 <tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th><th>{pv_label}</th></tr>
@@ -540,8 +538,6 @@ def render(results, state, cfg, hist=None):
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
     res_time_s = (f'<span title="{fmt_time(res_time)}">{fmt_short_time(res_time)}</span>'
                   if res_time else E(results.get("results_timestamp", "")))
-    checked = datetime.fromisoformat(state["last_checked"]).astimezone(PACIFIC)
-    repo = os.environ.get("GITHUB_REPOSITORY", "rkudeshi/SCC-Recount-Watch")
 
     tiles = "".join(
         f'<a class="tile g{k}" href="#group{k}"><b>{counts[k]}</b><span>{ginfo[k][0]}</span></a>'
@@ -550,7 +546,7 @@ def render(results, state, cfg, hist=None):
     recap_parts = []
     for k in GROUPS:
         items = "".join(
-            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: {votes(a["margin"])}, recount if under {fmt_n(a["line"])}</li>'
+            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a><span class="num">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}</span></li>'
             for a in contests if a["group"] == k)
         body = f"<ul>{items}</ul>" if items else '<p class="muted">None right now.</p>'
         recap_parts.append(f'<h4 class="rh g{k}">{ginfo[k][0]} ({counts[k]})</h4>{body}')
@@ -567,7 +563,7 @@ def render(results, state, cfg, hist=None):
 
     others = [a for a in contests if a["group"] == 0]
     other_rows = "".join(
-        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_n(a["line"])}</td></tr>'
+        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_margin_pct(a["pct"])}</td></tr>'
         for a in others)
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
                    for x in results["excluded"] + results["skipped"])
@@ -586,7 +582,8 @@ def render(results, state, cfg, hist=None):
 *{{box-sizing:border-box}}
 body{{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;padding:16px}}
 main{{max-width:700px;margin:0 auto}}
-h1{{font-size:24px;margin:0 0 4px}}
+h1{{font-size:26px;margin:0 0 6px;line-height:1.2}}
+h1 .pre{{display:block;font-size:17px;font-weight:normal;color:var(--muted)}}
 p{{margin:4px 0}}
 .muted{{color:var(--muted);font-size:13px}}
 .times{{background:var(--box);border:2px solid var(--fg);border-radius:4px;padding:10px 12px;margin:12px 0;display:grid;gap:4px}}
@@ -610,8 +607,11 @@ h3{{font-size:17px;margin:0}}
 .recap h2{{font-size:18px;margin:0 0 4px}}
 .recap h4{{font-size:15px;margin:10px 0 0;padding:2px 6px;border-radius:3px;display:inline-block}}
 .rh.g1{{background:var(--t1)}} .rh.g2{{background:var(--t2)}} .rh.g3{{background:var(--t3)}} .rh.g4{{background:var(--t0)}}
-.recap ul{{margin:4px 0 0;padding-left:20px}}
-.recap li{{margin:2px 0}}
+.recap ul{{margin:4px 0 0;padding:0;list-style:none}}
+.recap li{{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--line)}}
+.recap li:last-child{{border-bottom:0}}
+.recap li a{{text-decoration:none;font-weight:600}} .recap li a:hover{{text-decoration:underline}}
+.recap .num{{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted)}}
 .recap p{{margin:4px 0 0}}
 .tbl{{overflow-x:auto}}
 table{{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}}
@@ -642,12 +642,11 @@ a{{color:var(--link)}}
 </head>
 <body>
 <main>
-<h1>Santa Clara County Automatic Recount Watch</h1>
-<p>Santa Clara County contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
+<h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
+<p>Contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
 
 <div class="times">
 <div>Results as of: <b>{res_time_s}</b> <span class="muted">(update {E(str(state['version']))})</span></div>
-<div>Last checked: <b id="checked" data-ts="{state['last_checked']}" title="{fmt_time(checked)}">{fmt_time(checked)}</b></div>
 </div>
 
 <div class="tiles">{tiles}</div>
@@ -664,7 +663,7 @@ a{{color:var(--link)}}
 <details>
 <summary>Other county contests ({len(others)}, not close)</summary>
 <div class="tbl"><table>
-<tr><th>Contest</th><th>Margin (votes)</th><th>Recount if under</th></tr>
+<tr><th>Contest</th><th>Margin (votes)</th><th>% of ballots cast</th></tr>
 {other_rows}
 </table></div>
 </details>
@@ -676,29 +675,6 @@ a{{color:var(--link)}}
 
 <p class="muted" style="margin-top:24px">Source: <a href="{E(state['source_url'])}">Santa Clara County official results</a>. Checked about once an hour. Unofficial tracker; margins change as the county counts more ballots.</p>
 </main>
-<script>
-// Show "last checked" as time ago (exact time on hover), using the most recent
-// hourly run even when nothing new was published.
-(function(){{
-  var el=document.getElementById('checked');
-  var when=new Date(el.dataset.ts);
-  function ago(){{
-    var m=Math.max(0,Math.round((Date.now()-when)/60000));
-    var s=m<1?'just now':m<60?m+(m==1?' minute':' minutes')+' ago':
-      (function(h){{return h<48?h+(h==1?' hour':' hours')+' ago':Math.round(h/24)+' days ago'}})(Math.round(m/60));
-    el.textContent=s;
-    el.title=when.toLocaleString('en-US',{{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}});
-  }}
-  ago(); setInterval(ago,60000);
-  fetch('https://api.github.com/repos/{repo}/actions/workflows/update.yml/runs?per_page=1&status=completed')
-    .then(function(r){{return r.ok?r.json():null}})
-    .then(function(j){{
-      if(!j||!j.workflow_runs||!j.workflow_runs.length)return;
-      var t=new Date(j.workflow_runs[0].updated_at);
-      if(t>when){{when=t;ago();}}
-    }}).catch(function(){{}});
-}})();
-</script>
 </body>
 </html>
 """

@@ -544,6 +544,46 @@
    "group": 3
   },
   {
+   "type": "measure",
+   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.41042877906976,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 11979,
+     "winner": false,
+     "pct_ballots": 52.05318732890105,
+     "pct_votes": 54.41042877906977
+    },
+    {
+     "name": "No",
+     "votes": 10037,
+     "winner": true,
+     "pct_ballots": 43.61447877286751,
+     "pct_votes": 45.58957122093023
+    }
+   ],
+   "candidate_votes": 22016,
+   "undervotes": 997,
+   "overvotes": 0,
+   "ballots_cast": 23013,
+   "margin": 288,
+   "pct": 1.2514665623777865,
+   "site_pct": -0.5895712209302459,
+   "tier": 3,
+   "key": "128",
+   "precincts_reporting": "26",
+   "precincts_total": "26",
+   "line": 58,
+   "ratio": 4.9655172413793105,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
    "type": "candidate",
    "name": "Franklin-McKinley SD",
    "vote_for": 3,
@@ -602,47 +642,7 @@
    "ratio": 4.482142857142857,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 3
-  },
-  {
-   "type": "measure",
-   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
-   "threshold": 0.55,
-   "threshold_label": "55%",
-   "passing": false,
-   "yes_share": 54.41042877906976,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 11979,
-     "winner": false,
-     "pct_ballots": 52.05318732890105,
-     "pct_votes": 54.41042877906977
-    },
-    {
-     "name": "No",
-     "votes": 10037,
-     "winner": true,
-     "pct_ballots": 43.61447877286751,
-     "pct_votes": 45.58957122093023
-    }
-   ],
-   "candidate_votes": 22016,
-   "undervotes": 997,
-   "overvotes": 0,
-   "ballots_cast": 23013,
-   "margin": 288,
-   "pct": 1.2514665623777865,
-   "site_pct": -0.5895712209302459,
-   "tier": 3,
-   "key": "128",
-   "precincts_reporting": "26",
-   "precincts_total": "26",
-   "line": 58,
-   "ratio": 4.9655172413793105,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 3
+   "group": 4
   },
   {
    "type": "measure",
@@ -682,7 +682,7 @@
    "ratio": 5.1875,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 3
+   "group": 4
   },
   {
    "type": "measure",
@@ -722,7 +722,7 @@
    "ratio": 5.28,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 3
+   "group": 4
   },
   {
    "type": "candidate",
