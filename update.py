@@ -255,8 +255,8 @@ def fmt_time(dt):
 
 
 def fmt_short_time(dt):
-    # e.g. "TUE, Nov 10, 5:06 PM PST"
-    return dt.strftime("%a").upper() + dt.strftime(", %b %-d, %-I:%M %p %Z")
+    # e.g. "Tue Nov 10, 5:06 PM PST"
+    return dt.strftime("%a %b %-d, %-I:%M %p %Z")
 
 
 def parse_clarity_time(s):
@@ -271,13 +271,15 @@ def parse_clarity_time(s):
 def render_contest(a):
     tier = a["tier"]
     cls = f"contest t{tier}" if tier else "contest"
+    np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
+    precincts = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'}"
     if a["type"] == "candidate":
-        sub = f"Vote for {a['vote_for']}"
+        sub = f"Vote for {a['vote_for']} · {precincts}"
         margin_line = (f"Margin: {fmt_n(a['margin'])} votes, {fmt_margin_pct(a['pct'])} of ballots cast")
         compare = f"({fmt_pct(a['site_pct'])} of candidate votes only)"
         col_label, pv_label, total_label = "Candidate", "% of candidate votes", "Candidate votes"
     else:
-        sub = f"Needs {a['threshold_label']} Yes · currently {'passing' if a['passing'] else 'failing'}"
+        sub = f"Needs {a['threshold_label']} Yes · currently {'passing' if a['passing'] else 'failing'} · {precincts}"
         side = "No" if a["passing"] else "Yes"
         margin_line = (f"Margin: {fmt_n(a['margin'])} more {side} votes would flip it, "
                        f"{fmt_margin_pct(a['pct'])} of ballots cast")
@@ -299,8 +301,8 @@ def render_contest(a):
             f'<td>{fmt_pct(r["pct_ballots"])}</td><td>{fmt_pct(r["pct_votes"])}</td></tr>')
     totals = [
         (total_label, fmt_n(a["candidate_votes"])),
-        ("Undervotes", fmt_n(a["undervotes"])),
         ("Overvotes", fmt_n(a["overvotes"])),
+        ("Undervotes", fmt_n(a["undervotes"])),
         ("Ballots cast", fmt_n(a["ballots_cast"])),
     ]
     for j, (k, v) in enumerate(totals):
@@ -315,6 +317,13 @@ def render_contest(a):
 {''.join(rows)}
 </table></div>
 </div>"""
+
+
+def short_name(a):
+    # "Measure Q - Cambrian School District, Parcel Tax - 2/3rds ..." -> "Measure Q - Cambrian School District"
+    if a["type"] == "measure":
+        return " - ".join(a["name"].split(" - ")[:2]).split(",")[0]
+    return a["name"]
 
 
 def render(results, state, cfg):
@@ -337,10 +346,14 @@ def render(results, state, cfg):
         f'<a class="tile t{k}" href="#tier{k}"><b>{counts[k]}</b><span>{TIER_INFO[k][0]}</span></a>'
         for k in (1, 2, 3))
 
-    recap_items = "".join(
-        f'<li><a href="#c{E(str(a["key"]))}">{E(a["name"])}</a>: {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
-        for a in contests if a["tier"] == 1)
-    recap = f"<ul>{recap_items}</ul>" if recap_items else "<p>None right now.</p>"
+    recap_parts = []
+    for k in (1, 2, 3):
+        items = "".join(
+            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
+            for a in contests if a["tier"] == k)
+        body = f"<ul>{items}</ul>" if items else '<p class="muted">None right now.</p>'
+        recap_parts.append(f'<h4 class="rh t{k}">{TIER_INFO[k][0]} ({counts[k]})</h4>{body}')
+    recap = "".join(recap_parts)
 
     sections = []
     for k in (1, 2, 3):
@@ -393,7 +406,10 @@ h3{{font-size:17px;margin:0}}
 .contest.t1 .margin{{background:var(--t1)}} .contest.t2 .margin{{background:var(--t2)}} .contest.t3 .margin{{background:var(--t3)}}
 .margin .big{{font-size:15px;font-weight:600}}
 .margin .cmp{{font-size:13px;color:var(--muted)}}
-.recap{{background:var(--t1);border-radius:4px;padding:10px 12px;margin:12px 0}}
+.recap{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0}}
+.recap h2{{font-size:18px;margin:0 0 4px}}
+.recap h4{{font-size:15px;margin:10px 0 0;padding:2px 6px;border-radius:3px;display:inline-block}}
+.rh.t1{{background:var(--t1)}} .rh.t2{{background:var(--t2)}} .rh.t3{{background:var(--t3)}}
 .recap ul{{margin:4px 0 0;padding-left:20px}}
 .recap li{{margin:2px 0}}
 .recap p{{margin:4px 0 0}}
@@ -426,7 +442,7 @@ a{{color:var(--link)}}
 <div class="tiles">{tiles}</div>
 
 <div class="recap">
-<b>Automatic recount:</b>
+<h2>Summary</h2>
 {recap}
 </div>
 
