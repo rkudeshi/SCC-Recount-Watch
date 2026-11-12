@@ -29,6 +29,7 @@ DATA_DIR = os.path.join(ROOT, "data")
 SITE_DIR = os.path.join(ROOT, "site")
 STATE_PATH = os.path.join(DATA_DIR, "state.json")
 RESULTS_PATH = os.path.join(DATA_DIR, "results.json")
+HISTORY_PATH = os.path.join(DATA_DIR, "history.json")
 PACIFIC = ZoneInfo("America/Los_Angeles")
 USER_AGENT = "SCC-Recount-Watch/1.0 (+https://github.com/rkudeshi/SCC-Recount-Watch)"
 WRITE_IN = re.compile(r"^write[- ]?ins?$", re.I)
@@ -299,7 +300,120 @@ def parse_clarity_time(s):
         return None
 
 
-def render_contest(a):
+# ---------------------------------------------------------------- history
+
+def snapshot_of(results, version):
+    """Compact per-contest record of one results update."""
+    snap = {"version": str(version), "results_timestamp": results.get("results_timestamp", ""), "contests": {}}
+    for a in results["contests"]:
+        rec = {"name": a["name"], "margin": a["margin"], "pct": round(a["pct"], 6), "ballots": a["ballots_cast"]}
+        if a["type"] == "candidate":
+            rec["winner"], rec["loser"] = a["last_winner"], a["first_loser"]
+        else:
+            rec["passing"] = a["passing"]
+        snap["contests"][str(a["key"])] = rec
+    return snap
+
+
+def add_snapshot(hist, snap):
+    snaps = [s for s in hist.get("snapshots", []) if s["version"] != snap["version"]]
+    snaps.append(snap)
+    snaps.sort(key=lambda s: parse_clarity_time(s["results_timestamp"]) or datetime.min.replace(tzinfo=PACIFIC))
+    hist["snapshots"] = snaps
+    return hist
+
+
+TIER_WORDS = {1: "automatic recount", 2: "very close", 3: "watch list", 0: "not close"}
+
+
+def contest_points(hist, key, t):
+    pts = []
+    for snap in hist.get("snapshots", []):
+        rec = snap["contests"].get(str(key))
+        if not rec:
+            continue
+        dt = parse_clarity_time(snap["results_timestamp"])
+        pts.append({**rec, "tier": tier_for(rec["margin"], rec["pct"], t), "dt": dt,
+                    "label": dt.strftime("%b %-d") if dt else snap["version"]})
+    # Same-day updates: add the time so labels stay distinct.
+    for i, p in enumerate(pts):
+        if any(q is not p and q["label"] == p["label"] for q in pts) and p["dt"]:
+            p["label"] = p["dt"].strftime("%b %-d %-I%p").replace("AM", "a").replace("PM", "p")
+    return pts
+
+
+def mv(p):
+    return f"{fmt_n(p['margin'])} vote{'' if p['margin'] == 1 else 's'}, {fmt_margin_pct(p['pct'])}"
+
+
+def history_sentence(pts):
+    if len(pts) < 2:
+        return ""
+    segs = []
+    for p in pts:
+        if segs and segs[-1]["tier"] == p["tier"]:
+            segs[-1]["last"] = p
+        else:
+            segs.append({"tier": p["tier"], "first": p, "last": p})
+    first, last = pts[0], pts[-1]
+    if len(segs) == 1:
+        word = TIER_WORDS[segs[0]["tier"]].capitalize()
+        out = f"{word} since {first['label']}; margin went from {mv(first)} to {mv(last)}."
+    else:
+        parts = []
+        for i, sg in enumerate(segs[-3:]):
+            word = TIER_WORDS[sg["tier"]]
+            if i == 0:
+                parts.append(f"{word.capitalize()} on {sg['first']['label']} ({mv(sg['first'])})")
+            else:
+                parts.append(f"{word} by {sg['first']['label']} ({mv(sg['first'])})")
+        out = ", then ".join(parts) + "."
+    # Note changes in who holds the last winning spot (or a measure flipping); keep the last two.
+    notes = []
+    for prev, cur in zip(pts, pts[1:]):
+        if "winner" in cur and cur.get("winner") != prev.get("winner") and prev.get("winner"):
+            notes.append(f" {cur['winner']} passed {prev['winner']} for the last winning spot by {cur['label']}.")
+        if "passing" in cur and cur["passing"] != prev.get("passing"):
+            notes.append(f" It flipped to {'passing' if cur['passing'] else 'failing'} by {cur['label']}.")
+    return out + "".join(notes[-2:])
+
+
+def history_chart(pts, t):
+    """Small bar chart of the official margin % for each update, with the 0.25% line."""
+    if len(pts) < 2:
+        return ""
+    n = len(pts)
+    W, H, top, bottom = 300, 74, 14, 16
+    # Cap the scale so a large early margin doesn't flatten the recent, close ones.
+    vmax = max(min(max(p["pct"] for p in pts), t["watch_pct"] * 1.4), t["recount_pct"] * 1.3)
+    slot = W / n
+    bw = min(34, slot * 0.6)
+    ph = H - top - bottom
+    y = lambda v: top + ph - ph * min(v, vmax) / vmax
+    out = [f'<svg class="hist" viewBox="0 0 {W} {H}" role="img" aria-label="Margin at each update">']
+    yl = y(t["recount_pct"])
+    out.append(f'<line class="rl" x1="0" x2="{W}" y1="{yl:.1f}" y2="{yl:.1f}"/>')
+    step = max(1, math.ceil(n / 8))
+    for i, p in enumerate(pts):
+        cx = slot * i + slot / 2
+        yy = y(p["pct"])
+        out.append(f'<rect class="b{p["tier"]}" x="{cx - bw / 2:.1f}" y="{yy:.1f}" width="{bw:.1f}" '
+                   f'height="{max(top + ph - yy, 1):.1f}"><title>{E(p["label"])}: {E(mv(p))}</title></rect>')
+        if n <= 8 or i % step == 0 or i == n - 1:
+            out.append(f'<text class="bv" x="{cx:.1f}" y="{yy - 3:.1f}" text-anchor="middle">{fmt_margin_pct(p["pct"]).rstrip("%")}</text>')
+            out.append(f'<text class="bl" x="{cx:.1f}" y="{H - 4}" text-anchor="middle">{E(p["label"])}</text>')
+    out.append("</svg>")
+    return "".join(out)
+
+
+def history_block(pts, t):
+    if len(pts) < 2:
+        return ""
+    return (f'<div class="history"><p><b>History:</b> {E(history_sentence(pts))}</p>'
+            f'{history_chart(pts, t)}<p class="muted cap">Margin as % of ballots cast at each day\'s update. Dashed line: {t["recount_pct"]:g}% automatic recount line.</p></div>')
+
+
+def render_contest(a, hist_html=""):
     tier = a["tier"]
     cls = f"contest t{tier}" if tier else "contest"
     np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
@@ -343,6 +457,7 @@ def render_contest(a):
 <h3>{E(a['name'])}</h3>
 <p class="muted">{E(sub)}</p>
 <div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">{E(compare)}</span></div>
+{hist_html}
 <div class="tbl"><table>
 <tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th><th>{pv_label}</th></tr>
 {''.join(rows)}
@@ -357,7 +472,7 @@ def short_name(a):
     return a["name"]
 
 
-def render(results, state, cfg):
+def render(results, state, cfg, hist=None):
     t = cfg["tiers"]
     TIER_INFO.update(tier_info(t))
     PCT_LINES[:] = [t["recount_pct"]]
@@ -367,6 +482,12 @@ def render(results, state, cfg):
         a["tier"] = tier_for(a["margin"], a["pct"], t)
     contests.sort(key=lambda a: (a["tier"] or 9, a["pct"], a["margin"]))
     counts = {k: sum(1 for a in contests if a["tier"] == k) for k in (1, 2, 3)}
+    hist = hist or {}
+    pts_by_key = {str(a["key"]): contest_points(hist, a["key"], t) for a in contests}
+    hblock = lambda a: history_block(pts_by_key[str(a["key"])], t)
+    # Contests that were in a group at some earlier update but are not close now.
+    dropped = [a for a in contests if a["tier"] == 0
+               and any(p["tier"] in (1, 2) for p in pts_by_key[str(a["key"])][:-1])]
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
     res_time_s = (f'<span title="{fmt_time(res_time)}">{fmt_short_time(res_time)}</span>'
                   if res_time else E(results.get("results_timestamp", "")))
@@ -384,18 +505,29 @@ def render(results, state, cfg):
             for a in contests if a["tier"] == k)
         body = f"<ul>{items}</ul>" if items else '<p class="muted">None right now.</p>'
         recap_parts.append(f'<h4 class="rh t{k}">{TIER_INFO[k][0]} ({counts[k]})</h4>{body}')
+    if dropped:
+        items = "".join(
+            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: now {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
+            for a in dropped)
+        recap_parts.append(f'<h4 class="rh t0">No longer close ({len(dropped)})</h4><ul>{items}</ul>')
     recap = "".join(recap_parts)
 
     sections = []
     for k in (1, 2, 3):
         items = [a for a in contests if a["tier"] == k]
-        body = "".join(render_contest(a) for a in items) or '<p class="none">No contests in this group right now.</p>'
+        body = "".join(render_contest(a, hblock(a)) for a in items) or '<p class="none">No contests in this group right now.</p>'
         sections.append(f"""<section id="tier{k}">
 <h2 class="sec t{k}">{TIER_INFO[k][0]} <small>{TIER_INFO[k][1]}</small></h2>
 {body}
 </section>""")
 
-    others = [a for a in contests if a["tier"] == 0]
+    if dropped:
+        sections.append(f"""<section id="dropped">
+<h2 class="sec t0">No longer close <small>Were an automatic recount or very close at an earlier update</small></h2>
+{"".join(render_contest(a, hblock(a)) for a in dropped)}
+</section>""")
+
+    others = [a for a in contests if a["tier"] == 0 and a not in dropped]
     others.sort(key=lambda a: a["pct"])
     other_rows = "".join(
         f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_margin_pct(a["pct"])}</td></tr>'
@@ -411,9 +543,9 @@ def render(results, state, cfg):
 <title>Santa Clara County Automatic Recount Watch</title>
 <style>
 :root{{--bg:#f6f6f6;--box:#fff;--fg:#111;--muted:#666;--line:#ddd;--cut:#111;--link:#0645ad;
-  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f}}
+  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f;--t0:#e6e6e6;--t0s:#8a8a8a}}
 @media (prefers-color-scheme: dark){{:root{{--bg:#111;--box:#1b1b1b;--fg:#eee;--muted:#9a9a9a;--line:#333;--cut:#eee;--link:#8ab4f8;
-  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;color-scheme:dark}}}}
+  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;--t0:#2a2a2a;--t0s:#9a9a9a;color-scheme:dark}}}}
 *{{box-sizing:border-box}}
 body{{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;padding:16px}}
 main{{max-width:700px;margin:0 auto}}
@@ -430,7 +562,7 @@ p{{margin:4px 0}}
 .tile.t1{{background:var(--t1)}} .tile.t2{{background:var(--t2)}} .tile.t3{{background:var(--t3)}}
 h2.sec{{font-size:22px;margin:36px 0 12px;padding:10px 12px;border-radius:4px;border-bottom:4px solid}}
 h2.sec small{{display:block;font-size:14px;font-weight:normal}}
-h2.t1{{background:var(--t1);border-color:var(--t1s)}} h2.t2{{background:var(--t2);border-color:var(--t2s)}} h2.t3{{background:var(--t3);border-color:var(--t3s)}}
+h2.t0{{background:var(--t0);border-color:var(--t0s)}} h2.t1{{background:var(--t1);border-color:var(--t1s)}} h2.t2{{background:var(--t2);border-color:var(--t2s)}} h2.t3{{background:var(--t3);border-color:var(--t3s)}}
 h3{{font-size:17px;margin:0}}
 .contest{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:12px;margin-bottom:12px}}
 .margin{{margin:6px 0 8px;padding:5px 8px;border-radius:4px}}
@@ -440,7 +572,7 @@ h3{{font-size:17px;margin:0}}
 .recap{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0}}
 .recap h2{{font-size:18px;margin:0 0 4px}}
 .recap h4{{font-size:15px;margin:10px 0 0;padding:2px 6px;border-radius:3px;display:inline-block}}
-.rh.t1{{background:var(--t1)}} .rh.t2{{background:var(--t2)}} .rh.t3{{background:var(--t3)}}
+.rh.t0{{background:var(--t0)}} .rh.t1{{background:var(--t1)}} .rh.t2{{background:var(--t2)}} .rh.t3{{background:var(--t3)}}
 .recap ul{{margin:4px 0 0;padding-left:20px}}
 .recap li{{margin:2px 0}}
 .recap p{{margin:4px 0 0}}
@@ -450,6 +582,14 @@ th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
 th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom}}
 tr.cut td{{border-bottom:3px solid var(--cut)}}
+.history{{margin:4px 0 8px;font-size:13px}}
+.history p{{margin:0 0 2px}}
+.history .cap{{font-size:11px}}
+svg.hist{{width:100%;max-width:420px;height:auto;display:block}}
+svg.hist text{{font-size:9px;fill:var(--muted);font-family:inherit}}
+svg.hist .rl{{stroke:var(--t1s);stroke-dasharray:3 2;stroke-width:1}}
+svg.hist .rlt{{fill:var(--t1s)}}
+svg.hist .b0{{fill:var(--t0s)}} svg.hist .b1{{fill:var(--t1s)}} svg.hist .b2{{fill:var(--t2s)}} svg.hist .b3{{fill:var(--t3s)}}
 tr.wi td{{color:var(--muted)}}
 tr.tot td{{color:var(--muted);font-size:13px;border-bottom:0}}
 tr.first td{{border-top:1px solid var(--muted)}}
@@ -482,7 +622,7 @@ a{{color:var(--link)}}
 {''.join(sections)}
 
 <details>
-<summary>Other county contests ({len(others)}, not close)</summary>
+<summary>Other county contests ({len(others)}, never close)</summary>
 <div class="tbl"><table>
 <tr><th>Contest</th><th>Margin</th><th>% of ballots cast</th></tr>
 {other_rows}
@@ -543,8 +683,9 @@ def write_json(path, obj):
 
 def write_site(results, state, cfg):
     os.makedirs(SITE_DIR, exist_ok=True)
+    hist = load_json(HISTORY_PATH, {})
     with open(os.path.join(SITE_DIR, "index.html"), "w") as f:
-        f.write(render(results, state, cfg))
+        f.write(render(results, state, cfg, hist))
     write_json(os.path.join(SITE_DIR, "results.json"), {"state": state, **results})
 
 
@@ -566,12 +707,27 @@ def main():
     ap.add_argument("--file")
     ap.add_argument("--version")
     ap.add_argument("--render-only", action="store_true")
+    ap.add_argument("--backfill", nargs="+", metavar="VERSION",
+                    help="add older results versions to data/history.json, then re-render")
     args = ap.parse_args()
 
     cfg = load_json(CONFIG_PATH, None)
     state = load_json(STATE_PATH, {})
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     base = cfg["election_url"].rstrip("/")
+
+    if args.backfill:
+        hist = load_json(HISTORY_PATH, {})
+        for v in args.backfill:
+            try:
+                blob = http_get(f"{base}/{v}/{cfg['report_path']}", timeout=180)
+                meta, contests = parse_detail(read_detail_xml(blob))
+                hist = add_snapshot(hist, snapshot_of(analyze(meta, contests, cfg), v))
+                print(f"  added {v} ({meta['results_timestamp']})")
+            except Exception as e:  # noqa: BLE001
+                print(f"  {v}: {e}")
+        write_json(HISTORY_PATH, hist)
+        args.render_only = True
 
     if args.render_only:
         results = load_json(RESULTS_PATH, None)
@@ -622,6 +778,7 @@ def main():
     }
     write_json(RESULTS_PATH, results)
     write_json(STATE_PATH, state)
+    write_json(HISTORY_PATH, add_snapshot(load_json(HISTORY_PATH, {}), snapshot_of(results, version)))
     write_site(results, state, cfg)
     counts = {k: sum(1 for a in results["contests"] if a["tier"] == k) for k in (1, 2, 3)}
     print(f"version {version}: {len(results['contests'])} contests, tiers {counts}")
