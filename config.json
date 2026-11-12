@@ -10,7 +10,9 @@
     "watch_votes": 200,
     "watch_pct": 1.5,
     "_watch_ratio_note": "Groups 3 and 4 hold contests whose margin is within this many times the recount line.",
-    "watch_ratio": 6
+    "watch_ratio": 6,
+    "_close_pct_note": "Contests under this margin (% of ballots cast) also count as Close.",
+    "close_pct": 2
   },
 
   "include_ballot_measures": true,

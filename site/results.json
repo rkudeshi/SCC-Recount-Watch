@@ -773,53 +773,6 @@
   },
   {
    "type": "candidate",
-   "name": "Morgan Hill Unified SD, Trustee Area 1",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Nancy Altman-Palm",
-     "votes": 2125,
-     "winner": true,
-     "pct_ballots": 43.34081174790944,
-     "pct_votes": 51.8166300902219
-    },
-    {
-     "name": "Jason Amezcua",
-     "votes": 1971,
-     "winner": false,
-     "pct_ballots": 40.1998776259433,
-     "pct_votes": 48.06144842721287
-    },
-    {
-     "name": "Write-in",
-     "votes": 5,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.10197838058331633,
-     "pct_votes": 0.12192148256522799
-    }
-   ],
-   "candidate_votes": 4101,
-   "undervotes": 799,
-   "overvotes": 3,
-   "ballots_cast": 4903,
-   "margin": 154,
-   "pct": 3.140934121966143,
-   "site_pct": 3.7551816630090222,
-   "tier": 3,
-   "last_winner": "Nancy Altman-Palm",
-   "first_loser": "Jason Amezcua",
-   "key": "38",
-   "precincts_reporting": "8",
-   "precincts_total": "8",
-   "line": 25,
-   "ratio": 6.16,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 0
-  },
-  {
-   "type": "candidate",
    "name": "Mayor, City of Santa Clara",
    "vote_for": 1,
    "rows": [
@@ -891,7 +844,7 @@
    "ratio": 6.2,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 0
+   "group": 4
   },
   {
    "type": "measure",
@@ -931,7 +884,7 @@
    "ratio": 6.290322580645161,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 0
+   "group": 4
   },
   {
    "type": "candidate",
@@ -990,6 +943,53 @@
    "precincts_total": "14",
    "line": 53,
    "ratio": 7.169811320754717,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 4
+  },
+  {
+   "type": "candidate",
+   "name": "Morgan Hill Unified SD, Trustee Area 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Nancy Altman-Palm",
+     "votes": 2125,
+     "winner": true,
+     "pct_ballots": 43.34081174790944,
+     "pct_votes": 51.8166300902219
+    },
+    {
+     "name": "Jason Amezcua",
+     "votes": 1971,
+     "winner": false,
+     "pct_ballots": 40.1998776259433,
+     "pct_votes": 48.06144842721287
+    },
+    {
+     "name": "Write-in",
+     "votes": 5,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.10197838058331633,
+     "pct_votes": 0.12192148256522799
+    }
+   ],
+   "candidate_votes": 4101,
+   "undervotes": 799,
+   "overvotes": 3,
+   "ballots_cast": 4903,
+   "margin": 154,
+   "pct": 3.140934121966143,
+   "site_pct": 3.7551816630090222,
+   "tier": 3,
+   "last_winner": "Nancy Altman-Palm",
+   "first_loser": "Jason Amezcua",
+   "key": "38",
+   "precincts_reporting": "8",
+   "precincts_total": "8",
+   "line": 25,
+   "ratio": 6.16,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
