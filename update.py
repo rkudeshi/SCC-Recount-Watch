@@ -426,7 +426,14 @@ def results_chart(a, pts):
     share = lambda p, nm: 100 * p["votes"].get(nm, 0) / (sum(p["votes"].values()) or 1)
     thr = 100 * a["threshold"] if a["type"] == "measure" else None
     vals = [share(p, nm) for p in pts for nm in names] + ([thr] if thr else [])
-    lo, hi = min(vals), max(vals)
+    if thr:
+        # Centre on the threshold so the distance to it reads honestly.
+        d = max(max(abs(v - thr) for v in vals) * 1.25, 5)
+        lo, hi = thr - d, thr + d
+    else:
+        lo, hi = min(vals), max(vals)
+        pad = max((hi - lo) * 0.1, (10 - (hi - lo)) / 2, 0)  # at least a 10-point range
+        lo, hi = lo - pad, hi + pad
     span = (hi - lo) or 1
     n = len(pts)
     W, side, top = 320, 14, 16
@@ -536,7 +543,7 @@ def render_contest(a, pts, anchor=True):
     sub = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'} · {fmt_n(a['ballots_cast'])} ballots cast"
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']} · {sub}"
-        col_label, pv_label, share_title = f"Candidate<br><small>Vote for {a['vote_for']}</small>", "% of candidate votes", "Share of candidate votes"
+        col_label, pv_label, share_title = f"Candidate<br><small>(vote for {a['vote_for']})</small>", "% of candidate votes", "Share of candidate votes"
     else:
         sub = f"Needs {a['threshold_label']} Yes · {sub}"
         col_label, pv_label, share_title = "Choice", "% of votes", "Yes share of the vote"
@@ -563,10 +570,7 @@ def render_contest(a, pts, anchor=True):
                     f'<td>{fmt_pct(100 * v / b)}</td><td></td></tr>')
     rows.append(f'<tr class="bc"><td>Ballots cast</td><td>{fmt_n(a["ballots_cast"])}</td><td></td><td></td></tr>')
 
-    flip = ""
-    if a["type"] == "measure":
-        flip = f'<br><span class="cmp">more {"No" if a["passing"] else "Yes"} votes would flip it</span>'
-    margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span>{flip}</div>\n{sparkline(pts)}')
+    margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span></div>\n{sparkline(pts)}')
     table = (f'<div class="tbl"><table>\n<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th>'
              f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>')
     chart = results_chart(a, pts)
@@ -576,7 +580,7 @@ def render_contest(a, pts, anchor=True):
     secs.append(section("r", "Results", table, False))
     idattr = f' id="c{E(str(a["key"]))}"' if anchor else ""
     return f"""<div class="{cls}"{idattr}>
-<div class="chead"><h3>{E(a['name'])}</h3>
+<div class="chead"><a class="totop" href="#top" aria-label="Back to top">↑ Top</a><h3>{E(a['name'])}</h3>
 <p class="muted">{E(sub)}</p></div>
 {chr(10).join(secs)}
 </div>"""
@@ -658,6 +662,7 @@ def render(results, state, cfg, hist=None):
 
     sections.append(f"""<section id="group0">
 <h2 class="sec g0">Not close</h2>
+<button type="button" id="ncall">Show all as cards</button>
 <ul class="nclist">{"".join(nc_item(a, pts_by_key[str(a["key"])]) for a in others)}</ul>
 </section>""")
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
@@ -710,7 +715,12 @@ th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
 th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
 tr.cut td{{border-bottom:0}}
-tr.mg td{{font-size:12px;color:var(--muted);padding-top:2px;padding-bottom:2px;border-top:1px solid var(--muted);border-bottom:1px solid var(--muted);background:var(--th)}}
+tr.mg td{{font-size:12px;font-style:italic;color:var(--muted);padding-top:2px;padding-bottom:2px}}
+.chead{{position:relative}} .chead h3{{padding-right:52px}}
+a.totop{{position:absolute;top:10px;right:12px;font-size:12px;color:var(--muted);text-decoration:none}}
+.times{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0;font-size:17px}}
+details.nc{{margin:0}}
+#ncall{{font:inherit;font-size:13px;background:none;border:0;padding:0;color:var(--link);cursor:pointer;margin:0 0 6px}}
 th small{{font-size:11px}}
 .sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
 .tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}}
@@ -769,11 +779,11 @@ a{{color:var(--link)}}
 </style>
 </head>
 <body>
-<main>
+<main id="top">
 <h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
 <p>Contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
 
-<p>Results as of <b>{res_time_s}</b></p>
+<div class="times">Results as of <b>{res_time_s}</b></div>
 
 <div class="tiles">{tiles}</div>
 
@@ -782,7 +792,7 @@ a{{color:var(--link)}}
 {recap}
 </div>
 
-<p class="muted">Margin = last winner minus first loser. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The county results site divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
+<p class="muted">Margin = last winner minus first loser. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The official results website divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
 
 {''.join(sections)}
 
@@ -824,6 +834,12 @@ a{{color:var(--link)}}
     anchor=null;
     setTimeout(function(){{busy=false}},0);
   }},true);
+  var nb=document.getElementById('ncall');
+  if(nb)nb.addEventListener('click',function(){{
+    var open=nb.textContent==='Show all as cards';
+    document.querySelectorAll('details.nc').forEach(function(d){{d.open=open}});
+    nb.textContent=open?'Show as list':'Show all as cards';
+  }});
   // Links from the summary open a collapsed card.
   function openHash(){{var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}}
   window.addEventListener('hashchange',openHash);openHash();
