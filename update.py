@@ -536,16 +536,9 @@ def render_contest(a, pts, anchor=True):
     sub = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'} · {fmt_n(a['ballots_cast'])} ballots cast"
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']} · {sub}"
-        note = (f"% of ballots cast divides by everyone who voted in this contest's area, including people who "
-                f"skipped it. That is the measure for the automatic recount. % of candidate votes counts only votes "
-                f"for candidates, which is what the county results site shows. By that measure the margin here is "
-                f"{fmt_pct(a['site_pct'])}.")
-        col_label, pv_label, share_title = f"Candidate (vote for {a['vote_for']})", "% of candidate votes", "Share of candidate votes"
+        col_label, pv_label, share_title = f"Candidate<br><small>Vote for {a['vote_for']}</small>", "% of candidate votes", "Share of candidate votes"
     else:
         sub = f"Needs {a['threshold_label']} Yes · {sub}"
-        note = (f"% of ballots cast divides by everyone who voted in this measure's area, including people who "
-                f"skipped it. % of votes counts only Yes and No votes; Yes is at {fmt_pct(a['yes_share'])} and needs "
-                f"{fmt_pct(100 * a['threshold'])}.")
         col_label, pv_label, share_title = "Choice", "% of votes", "Yes share of the vote"
 
     rows = []
@@ -560,6 +553,10 @@ def render_contest(a, pts, anchor=True):
         rows.append(
             f'<tr class="{" ".join(classes)}"><td>{name}</td><td>{fmt_n(r["votes"])}</td>'
             f'<td>{fmt_pct(r["pct_ballots"])}</td><td>{fmt_pct(r["pct_votes"])}</td></tr>')
+        if "cut" in classes:
+            # The gap between the last winner and the first loser, so nobody has to do the math.
+            rows.append(f'<tr class="mg"><td>Margin</td><td>{fmt_n(a["margin"])}</td>'
+                        f'<td>{fmt_margin_pct(a["pct"])}</td><td>{fmt_pct(a["site_pct"])}</td></tr>')
     b = a["ballots_cast"] or 1
     for j, (k, v) in enumerate((("Overvotes", a["overvotes"]), ("Undervotes", a["undervotes"]))):
         rows.append(f'<tr class="ou{" first" if j == 0 else ""}"><td>{k}</td><td>{fmt_n(v)}</td>'
@@ -571,7 +568,7 @@ def render_contest(a, pts, anchor=True):
         flip = f'<br><span class="cmp">more {"No" if a["passing"] else "Yes"} votes would flip it</span>'
     margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span>{flip}</div>\n{sparkline(pts)}')
     table = (f'<div class="tbl"><table>\n<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th>'
-             f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>\n<p class="muted fn">{E(note)}</p>')
+             f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>')
     chart = results_chart(a, pts)
     secs = [section("m", "Margin", margin_body, True)]
     if chart:
@@ -712,7 +709,9 @@ table{{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}}
 th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
 th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
-tr.cut td{{border-bottom:1.5px solid var(--muted)}}
+tr.cut td{{border-bottom:0}}
+tr.mg td{{font-size:12px;color:var(--muted);padding-top:2px;padding-bottom:2px;border-top:1px solid var(--muted);border-bottom:1px solid var(--muted);background:var(--th)}}
+th small{{font-size:11px}}
 .sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
 .tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}}
 .recap .nm{{display:flex;flex-direction:column}} .recap .nm small{{color:var(--muted);font-size:12px}}
