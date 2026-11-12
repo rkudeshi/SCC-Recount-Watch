@@ -510,10 +510,23 @@ def section(key, title, body, open_):
 
 
 def margin_text(a):
-    if a["type"] == "candidate":
-        return f"{votes(a['margin'])} ({fmt_margin_pct(a['pct'])} of ballots cast)"
-    side = "No" if a["passing"] else "Yes"
-    return f"{fmt_n(a['margin'])} more {side} votes would flip it ({fmt_margin_pct(a['pct'])} of ballots cast)"
+    return f"{votes(a['margin'])} / {fmt_margin_pct(a['pct'])}"
+
+
+def mini_spark(pts):
+    """Tiny margin trend for the summary list (no text, so copy-paste stays clean)."""
+    m = [p["margin"] for p in pts]
+    if len(m) < 2:
+        return ""
+    W, H = 64, 14
+    hi = max(max(m), max(p["line"] for p in pts)) or 1
+    xy = [(1 + (W - 4) * i / (len(m) - 1), H - 1 - (H - 3) * v / hi) for i, v in enumerate(m)]
+    ly = H - 1 - (H - 3) * pts[-1]["line"] / hi
+    dot = "pin" if pts[-1]["in"] else "pt"
+    return (f'<svg class="mini" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true">'
+            f'<line class="rl" x1="1" x2="{W - 3}" y1="{ly:.1f}" y2="{ly:.1f}"/>'
+            f'<polyline points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in xy)}"/>'
+            f'<circle class="{dot}" cx="{xy[-1][0]:.1f}" cy="{xy[-1][1]:.1f}" r="2"/></svg>')
 
 
 def render_contest(a, pts, anchor=True):
@@ -523,11 +536,16 @@ def render_contest(a, pts, anchor=True):
     sub = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'} · {fmt_n(a['ballots_cast'])} ballots cast"
     if a["type"] == "candidate":
         sub = f"Vote for {a['vote_for']} · {sub}"
-        compare = f"{fmt_pct(a['site_pct'])} of candidate votes only"
-        col_label, pv_label, share_title = "Candidate", "% of candidate votes", "Share of candidate votes"
+        note = (f"% of ballots cast divides by everyone who voted in this contest's area, including people who "
+                f"skipped it. That is the measure for the automatic recount. % of candidate votes counts only votes "
+                f"for candidates, which is what the county results site shows. By that measure the margin here is "
+                f"{fmt_pct(a['site_pct'])}.")
+        col_label, pv_label, share_title = f"Candidate (vote for {a['vote_for']})", "% of candidate votes", "Share of candidate votes"
     else:
         sub = f"Needs {a['threshold_label']} Yes · {sub}"
-        compare = f"currently {'passing' if a['passing'] else 'failing'}, Yes at {fmt_pct(a['yes_share'])}"
+        note = (f"% of ballots cast divides by everyone who voted in this measure's area, including people who "
+                f"skipped it. % of votes counts only Yes and No votes; Yes is at {fmt_pct(a['yes_share'])} and needs "
+                f"{fmt_pct(100 * a['threshold'])}.")
         col_label, pv_label, share_title = "Choice", "% of votes", "Yes share of the vote"
 
     rows = []
@@ -538,7 +556,7 @@ def render_contest(a, pts, anchor=True):
             classes.append("cut")
         if r.get("write_in"):
             classes.append("wi")
-        name = E(r["name"]) + (" ✓" if a["type"] == "measure" and r["winner"] else "")
+        name = ("Write-ins" if r.get("write_in") else E(r["name"])) + (" ✓" if a["type"] == "measure" and r["winner"] else "")
         rows.append(
             f'<tr class="{" ".join(classes)}"><td>{name}</td><td>{fmt_n(r["votes"])}</td>'
             f'<td>{fmt_pct(r["pct_ballots"])}</td><td>{fmt_pct(r["pct_votes"])}</td></tr>')
@@ -548,10 +566,12 @@ def render_contest(a, pts, anchor=True):
                     f'<td>{fmt_pct(100 * v / b)}</td><td></td></tr>')
     rows.append(f'<tr class="bc"><td>Ballots cast</td><td>{fmt_n(a["ballots_cast"])}</td><td></td><td></td></tr>')
 
-    margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span><br>'
-                   f'<span class="cmp">({E(compare)})</span></div>\n{sparkline(pts)}')
+    flip = ""
+    if a["type"] == "measure":
+        flip = f'<br><span class="cmp">more {"No" if a["passing"] else "Yes"} votes would flip it</span>'
+    margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span>{flip}</div>\n{sparkline(pts)}')
     table = (f'<div class="tbl"><table>\n<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th>'
-             f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>')
+             f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>\n<p class="muted fn">{E(note)}</p>')
     chart = results_chart(a, pts)
     secs = [section("m", "Margin", margin_body, True)]
     if chart:
@@ -572,11 +592,11 @@ def nc_item(a, pts):
             f'{render_contest(a, pts, anchor=False)}</details></li>')
 
 
-def recap_row(a):
+def recap_row(a, pts):
     # The hidden ": " and line break keep a copy-and-paste readable ("Name: 13 votes / 0.07%").
     return (f'<li><span class="nm"><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>'
             f'<small>{fmt_n(a["ballots_cast"])} ballots cast</small></span><span class="cp">: </span>'
-            f'<span class="num">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}</span></li>')
+            f'<span class="num">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}{mini_spark(pts)}</span></li>')
 
 
 def short_name(a):
@@ -623,11 +643,11 @@ def render(results, state, cfg, hist=None):
     recap_parts = []
     for k in GROUPS:
         items = "".join(
-            recap_row(a) for a in contests if a["group"] == k)
+            recap_row(a, pts_by_key[str(a["key"])]) for a in contests if a["group"] == k)
         body = f"<ul>{items}</ul>" if items else '<p class="muted">None right now.</p>'
         recap_parts.append(f'<h4 class="rh g{k}">{ginfo[k][0]} ({counts[k]})</h4>{body}')
     others = [a for a in contests if a["group"] == 0]
-    recap_parts.append(f'<details><summary>Not close ({len(others)})</summary><ul>{"".join(recap_row(a) for a in others)}</ul></details>')
+    recap_parts.append(f'<details><summary>Not close ({len(others)})</summary><ul>{"".join(recap_row(a, pts_by_key[str(a["key"])]) for a in others)}</ul></details>')
     recap = "".join(recap_parts)
 
     sections = []
@@ -692,7 +712,7 @@ table{{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}}
 th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
 th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
-tr.cut td{{border-bottom:3px solid var(--cut)}}
+tr.cut td{{border-bottom:1.5px solid var(--muted)}}
 .sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
 .tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}}
 .recap .nm{{display:flex;flex-direction:column}} .recap .nm small{{color:var(--muted);font-size:12px}}
@@ -725,6 +745,11 @@ details.sec[open]>summary{{margin-bottom:8px}}
 h4.sh{{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
 .margin{{margin:0 0 4px;padding:0}}
 .margin .big{{font-size:16px}}
+p.fn{{font-size:12px;margin:8px 0 0}}
+.recap .num{{display:flex;flex-direction:column;align-items:flex-end}}
+svg.mini{{display:block;margin-top:3px}} svg.mini polyline{{fill:none;stroke:var(--fg);stroke-width:1.5;stroke-linejoin:round}}
+svg.mini .rl{{stroke:var(--t1s);stroke-width:1;stroke-dasharray:2 2}} svg.mini .pt{{fill:var(--fg)}} svg.mini .pin{{fill:var(--t1s)}}
+body{{overflow-anchor:none}}
 tr.ou td{{color:var(--muted)}}
 tr.ou.first td{{border-top:1px solid var(--muted)}}
 tr.bc td{{font-weight:600;border-bottom:0;white-space:nowrap}}
@@ -749,7 +774,7 @@ a{{color:var(--link)}}
 <h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
 <p>Contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
 
-<p>Results as of <b>{res_time_s}</b> <span class="muted">(update {E(str(state['version']))})</span></p>
+<p>Results as of <b>{res_time_s}</b></p>
 
 <div class="tiles">{tiles}</div>
 
@@ -786,10 +811,18 @@ a{{color:var(--link)}}
     var r=e.target.closest&&e.target.closest('rect.hit');hideAll();if(r)show(r);
   }});
   // Opening or closing a section on one card does the same on every card.
-  var busy=false;
+  // The section heading you tapped stays put on screen while cards above it grow or shrink.
+  var busy=false,anchor=null,anchorTop=0;
+  document.addEventListener('click',function(e){{
+    var sm=e.target.closest&&e.target.closest('details.sec>summary');
+    if(sm){{anchor=sm;anchorTop=sm.getBoundingClientRect().top;}}
+  }},true);
   document.addEventListener('toggle',function(e){{
     var d=e.target;if(busy||!d.matches||!d.matches('details.sec'))return;busy=true;
     document.querySelectorAll('details.sec[data-sec="'+d.dataset.sec+'"]').forEach(function(x){{if(x!==d)x.open=d.open}});
+    var sm=d.querySelector('summary');
+    if(anchor===sm){{window.scrollBy(0,sm.getBoundingClientRect().top-anchorTop);}}
+    anchor=null;
     setTimeout(function(){{busy=false}},0);
   }},true);
   // Links from the summary open a collapsed card.
