@@ -311,6 +311,8 @@ def snapshot_of(results, version):
             rec["winner"], rec["loser"] = a["last_winner"], a["first_loser"]
         else:
             rec["passing"] = a["passing"]
+        # Each choice's votes, so the cards can chart how the results moved.
+        rec["votes"] = {r["name"]: r["votes"] for r in a["rows"] if not r.get("write_in")}
         snap["contests"][str(a["key"])] = rec
     return snap
 
@@ -323,7 +325,22 @@ def add_snapshot(hist, snap):
     return hist
 
 
-TIER_WORDS = {1: "automatic recount", 2: "very close", 3: "watch list", 0: "not close"}
+def line_votes(ballots, t):
+    """Smallest margin that is NOT an automatic recount: under this many votes triggers one.
+    The rule is under 25 votes or under 0.25% of ballots cast, so the larger of the two applies."""
+    return max(t["recount_votes"], math.ceil(t["recount_pct"] / 100 * ballots - 1e-9))
+
+
+def in_range(margin, ballots, t):
+    return margin < line_votes(ballots, t)
+
+
+GROUPS = {
+    1: ("In recount range", "Margin under 25 votes or under 0.25% of ballots cast"),
+    2: ("Were in range, out for now", ""),
+    3: ("Getting closer", ""),
+    4: ("Close", ""),
+}
 
 
 def contest_points(hist, key, t):
@@ -333,104 +350,185 @@ def contest_points(hist, key, t):
         if not rec:
             continue
         dt = parse_clarity_time(snap["results_timestamp"])
-        pts.append({**rec, "tier": tier_for(rec["margin"], rec["pct"], t), "dt": dt,
+        line = line_votes(rec["ballots"], t)
+        pts.append({**rec, "version": snap["version"], "line": line, "ratio": rec["margin"] / line,
+                    "in": rec["margin"] < line, "dt": dt,
                     "label": dt.strftime("%b %-d") if dt else snap["version"]})
-    # Same-day updates: add the time so labels stay distinct.
-    for i, p in enumerate(pts):
-        if any(q is not p and q["label"] == p["label"] for q in pts) and p["dt"]:
+    for p in pts:
+        if p["dt"] and any(q is not p and q["label"] == p["label"] for q in pts):
             p["label"] = p["dt"].strftime("%b %-d %-I%p").replace("AM", "a").replace("PM", "p")
     return pts
 
 
-def mv(p):
-    return f"{fmt_n(p['margin'])} vote{'' if p['margin'] == 1 else 's'}, {fmt_margin_pct(p['pct'])}"
+def current_point(a, version, t):
+    line = line_votes(a["ballots_cast"], t)
+    p = {"name": a["name"], "margin": a["margin"], "pct": a["pct"], "ballots": a["ballots_cast"],
+         "version": str(version), "line": line, "ratio": a["margin"] / line, "in": a["margin"] < line}
+    if a["type"] == "candidate":
+        p["winner"], p["loser"] = a["last_winner"], a["first_loser"]
+    else:
+        p["passing"] = a["passing"]
+    p["votes"] = {r["name"]: r["votes"] for r in a["rows"] if not r.get("write_in")}
+    return p
 
 
-def history_sentence(pts):
+def group_for(pts, t):
+    """pts: history points ending with the current one."""
+    cur, prev = pts[-1], pts[:-1]
+    if cur["in"]:
+        return 1
+    if any(p["in"] for p in prev):
+        return 2
+    w = t.get("watch_ratio", 6)
+    if cur["ratio"] <= w or cur["pct"] < t.get("close_pct", 2):
+        m = [p["margin"] for p in pts]
+        # Steady shrinking in votes: down at each of the last two updates, and
+        # down at least 25% compared with three updates ago.
+        if len(m) >= 4 and m[-1] < m[-2] < m[-3] and m[-1] <= 0.75 * m[-4]:
+            return 3
+        return 4
+    return 0
+
+
+def votes(n):
+    return f"{fmt_n(n)} vote{'' if n == 1 else 's'}"
+
+
+def short_label(name, all_names=()):
+    if name in ("Yes", "No"):
+        return name
+    last = name.replace('"', "").split()[-1]
+    if sum(1 for n in all_names if n.replace('"', "").split()[-1] == last) > 1:
+        return name
+    return last
+
+
+def date_labels(pts):
+    out, prev_month = [], None
+    for p in pts:
+        d = p.get("dt")
+        if d:
+            out.append(d.strftime("%b %-d") if d.month != prev_month else d.strftime("%-d"))
+            prev_month = d.month
+        else:
+            out.append(p.get("label", ""))
+    return out
+
+
+def results_chart(a, pts):
+    """Each choice's share of the vote after each update, on the same x-axis as the margin chart.
+    Names sit at the start of each line, inside the chart."""
+    pts = [p for p in pts if p.get("votes")]
     if len(pts) < 2:
         return ""
-    segs = []
-    for p in pts:
-        if segs and segs[-1]["tier"] == p["tier"]:
-            segs[-1]["last"] = p
-        else:
-            segs.append({"tier": p["tier"], "first": p, "last": p})
-    first, last = pts[0], pts[-1]
-    if len(segs) == 1:
-        word = TIER_WORDS[segs[0]["tier"]].capitalize()
-        out = f"{word} since {first['label']}; margin went from {mv(first)} to {mv(last)}."
-    else:
-        parts = []
-        for i, sg in enumerate(segs[-3:]):
-            word = TIER_WORDS[sg["tier"]]
-            if i == 0:
-                parts.append(f"{word.capitalize()} on {sg['first']['label']} ({mv(sg['first'])})")
-            else:
-                parts.append(f"{word} by {sg['first']['label']} ({mv(sg['first'])})")
-        out = ", then ".join(parts) + "."
-    # Note changes in who holds the last winning spot (or a measure flipping); keep the last two.
-    notes = []
-    for prev, cur in zip(pts, pts[1:]):
-        if "winner" in cur and cur.get("winner") != prev.get("winner") and prev.get("winner"):
-            notes.append(f" {cur['winner']} passed {prev['winner']} for the last winning spot by {cur['label']}.")
-        if "passing" in cur and cur["passing"] != prev.get("passing"):
-            notes.append(f" It flipped to {'passing' if cur['passing'] else 'failing'} by {cur['label']}.")
-    return out + "".join(notes[-2:])
+    names = ["Yes"] if a["type"] == "measure" else [r["name"] for r in a["rows"] if not r.get("write_in")]
+    winners = {r["name"] for r in a["rows"] if r["winner"]}
+    share = lambda p, nm: 100 * p["votes"].get(nm, 0) / (sum(p["votes"].values()) or 1)
+    thr = 100 * a["threshold"] if a["type"] == "measure" else None
+    vals = [share(p, nm) for p in pts for nm in names] + ([thr] if thr else [])
+    lo, hi = min(vals), max(vals)
+    span = (hi - lo) or 1
+    n = len(pts)
+    W, side, top = 320, 14, 16
+    ph = 44 + 10 * max(0, len(names) - 2)
+    bot = top + ph
+    x = lambda i: side + (W - 2 * side) * i / (n - 1)
+    y = lambda v: bot - (v - lo) / span * ph
+    out = []
+    if thr:
+        out.append(f'<line class="rl" x1="{side}" x2="{W - side}" y1="{y(thr):.1f}" y2="{y(thr):.1f}"/>')
+    order = sorted(names, key=lambda nm: (nm in winners or a["type"] == "measure"))
+    for nm in order:  # leaders drawn last, on top
+        role = "w" if nm in winners or a["type"] == "measure" else "l"
+        line = " ".join(f"{x(i):.1f},{y(share(p, nm)):.1f}" for i, p in enumerate(pts))
+        out.append(f'<polyline class="cl {role}" points="{line}"/>')
+    labs = sorted([y(share(pts[0], nm)) - 4, short_label(nm, names),
+                   "w" if nm in winners or a["type"] == "measure" else "l"] for nm in names)
+    if thr:
+        labs = sorted(labs + [[y(thr) - 4, f"{thr:.0f}% needed", "thr"]])
+    for i in range(1, len(labs)):
+        labs[i][0] = max(labs[i][0], labs[i - 1][0] + 10)
+    for ly, txt, role in labs:
+        anchor, lx = ("end", W - side) if role == "thr" else ("start", side - 4)
+        out.append(f'<text class="lab {role}" x="{lx}" y="{ly:.1f}" text-anchor="{anchor}">{E(txt)}</text>')
+    dy = max(bot, labs[-1][0] if labs else bot) + 12
+    step = (W - 2 * side) / (n - 1)
+    for i, (p, lab) in enumerate(zip(pts, date_labels(pts))):
+        out.append(f'<text class="d" x="{x(i):.1f}" y="{dy:.0f}" text-anchor="middle">{E(lab)}</text>')
+        d = p.get("dt")
+        full = d.strftime("%a %b %-d") if d else p.get("label", "")
+        parts = [f"{short_label(nm, names)} {share(p, nm):.1f}%" for nm in sorted(names, key=lambda k: -share(p, k))]
+        out.append(f'<rect class="hit" x="{x(i) - step / 2:.1f}" y="0" width="{step:.1f}" height="{dy}" '
+                   f'data-tip="{E(full + ": " + ", ".join(parts))}" data-x="{x(i):.1f}" data-y="{top}"/>')
+    svg = (f'<svg class="spark res" viewBox="0 0 {W} {dy + 2:.0f}" role="img" '
+           f'aria-label="Share of the vote after each update">{"".join(out)}</svg>')
+    return f'<div class="sparkwrap">{svg}<div class="tip" hidden></div></div>'
 
 
-def history_chart(pts, t):
-    """Small bar chart of the official margin % for each update, with the 0.25% line."""
+def sparkline(pts):
+    """Margin in votes at each update (labelled), with the recount line dashed underneath."""
     if len(pts) < 2:
         return ""
     n = len(pts)
-    W, H, top, bottom = 300, 74, 14, 16
-    # Cap the scale so a large early margin doesn't flatten the recent, close ones.
-    vmax = max(min(max(p["pct"] for p in pts), t["watch_pct"] * 1.4), t["recount_pct"] * 1.3)
-    slot = W / n
-    bw = min(34, slot * 0.6)
+    W, H, top, bottom, side = 320, 62, 13, 14, 14
+    vmax = max(max(p["margin"] for p in pts), max(p["line"] for p in pts)) * 1.05 or 1
     ph = H - top - bottom
-    y = lambda v: top + ph - ph * min(v, vmax) / vmax
-    out = [f'<svg class="hist" viewBox="0 0 {W} {H}" role="img" aria-label="Margin at each update">']
-    yl = y(t["recount_pct"])
-    out.append(f'<line class="rl" x1="0" x2="{W}" y1="{yl:.1f}" y2="{yl:.1f}"/>')
-    step = max(1, math.ceil(n / 8))
+    x = lambda i: side + (W - 2 * side) * i / (n - 1)
+    y = lambda v: top + ph - ph * v / vmax
+    out = [f'<svg class="spark" viewBox="0 0 {W} {H}" role="img" '
+           f'aria-label="Vote margin after each day\'s update; dashed line is the automatic recount line">']
+    base = top + ph
+    out.append(f'<line class="base" x1="{side}" x2="{W - side}" y1="{base}" y2="{base}"/>')
+    rl = " ".join(f"{x(i):.1f},{y(p['line']):.1f}" for i, p in enumerate(pts))
+    out.append(f'<polyline class="rl" points="{rl}"/>')
+    ml = " ".join(f"{x(i):.1f},{y(p['margin']):.1f}" for i, p in enumerate(pts))
+    out.append(f'<polyline class="ml" points="{ml}"/>')
+    prev_month = None
     for i, p in enumerate(pts):
-        cx = slot * i + slot / 2
-        yy = y(p["pct"])
-        out.append(f'<rect class="b{p["tier"]}" x="{cx - bw / 2:.1f}" y="{yy:.1f}" width="{bw:.1f}" '
-                   f'height="{max(top + ph - yy, 1):.1f}"><title>{E(p["label"])}: {E(mv(p))}</title></rect>')
-        if n <= 8 or i % step == 0 or i == n - 1:
-            out.append(f'<text class="bv" x="{cx:.1f}" y="{yy - 3:.1f}" text-anchor="middle">{fmt_margin_pct(p["pct"]).rstrip("%")}</text>')
-            out.append(f'<text class="bl" x="{cx:.1f}" y="{H - 4}" text-anchor="middle">{E(p["label"])}</text>')
+        cx, cy = x(i), y(p["margin"])
+        d = p.get("dt")
+        full = (d.strftime("%a %b %-d") if d else p.get("label", ""))
+        tip = f'{full}: {votes(p["margin"])}, {fmt_margin_pct(p["pct"])}' + (" (in recount range)" if p["in"] else "")
+        out.append(f'<circle class="{"pin" if p["in"] else "pt"}" cx="{cx:.1f}" cy="{cy:.1f}" r="{3.5 if p["in"] else 2.5}"/>')
+        out.append(f'<text class="v{" in" if p["in"] else ""}" x="{cx:.1f}" y="{cy - 5:.1f}" text-anchor="middle">{fmt_n(p["margin"])}</text>')
+        if d:
+            lab = d.strftime("%b %-d") if d.month != prev_month else d.strftime("%-d")
+            prev_month = d.month
+        else:
+            lab = p.get("label", "")
+        out.append(f'<text class="d" x="{cx:.1f}" y="{H - 2}" text-anchor="middle">{E(lab)}</text>')
+        # Wide invisible target so a tap anywhere in the day's column works on phones.
+        out.append(f'<rect class="hit" x="{cx - (W - 2 * side) / (n - 1) / 2:.1f}" y="0" '
+                   f'width="{(W - 2 * side) / (n - 1):.1f}" height="{H}" data-tip="{E(tip)}" data-x="{cx:.1f}" data-y="{cy:.1f}"/>')
     out.append("</svg>")
-    return "".join(out)
+    return f'<div class="sparkwrap">{"".join(out)}<div class="tip" hidden></div></div>'
 
 
-def history_block(pts, t):
-    if len(pts) < 2:
-        return ""
-    return (f'<div class="history"><p><b>History:</b> {E(history_sentence(pts))}</p>'
-            f'{history_chart(pts, t)}<p class="muted cap">Margin as % of ballots cast at each day\'s update. Dashed line: {t["recount_pct"]:g}% automatic recount line.</p></div>')
+def section(key, title, body, open_):
+    return (f'<details class="sec" data-sec="{key}"{" open" if open_ else ""}>'
+            f'<summary><h4 class="sh">{E(title)}</h4></summary>\n{body}\n</details>')
 
 
-def render_contest(a, hist_html=""):
-    tier = a["tier"]
-    cls = f"contest t{tier}" if tier else "contest"
-    np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
-    precincts = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'}"
+def margin_text(a):
     if a["type"] == "candidate":
-        sub = f"Vote for {a['vote_for']} · {precincts}"
-        margin_line = (f"Margin: {fmt_n(a['margin'])} votes, {fmt_margin_pct(a['pct'])} of ballots cast")
-        compare = f"({fmt_pct(a['site_pct'])} of candidate votes only)"
-        col_label, pv_label, total_label = "Candidate", "% of candidate votes", "Candidate votes"
+        return f"{votes(a['margin'])} ({fmt_margin_pct(a['pct'])} of ballots cast)"
+    side = "No" if a["passing"] else "Yes"
+    return f"{fmt_n(a['margin'])} more {side} votes would flip it ({fmt_margin_pct(a['pct'])} of ballots cast)"
+
+
+def render_contest(a, pts, anchor=True):
+    g = a.get("group", 0)
+    cls = f"contest g{g}" if g else "contest g0"
+    np_ = int(a.get("precincts_total") or a.get("precincts_reporting") or 0)
+    sub = f"{fmt_n(np_)} precinct{'' if np_ == 1 else 's'} · {fmt_n(a['ballots_cast'])} ballots cast"
+    if a["type"] == "candidate":
+        sub = f"Vote for {a['vote_for']} · {sub}"
+        compare = f"{fmt_pct(a['site_pct'])} of candidate votes only"
+        col_label, pv_label, share_title = "Candidate", "% of candidate votes", "Share of candidate votes"
     else:
-        sub = f"Needs {a['threshold_label']} Yes · currently {'passing' if a['passing'] else 'failing'} · {precincts}"
-        side = "No" if a["passing"] else "Yes"
-        margin_line = (f"Margin: {fmt_n(a['margin'])} more {side} votes would flip it, "
-                       f"{fmt_margin_pct(a['pct'])} of ballots cast")
-        compare = (f"(Yes at {fmt_pct(a['yes_share'])} of votes, needs "
-                   f"{fmt_pct(100 * a['threshold'])})")
-        col_label, pv_label, total_label = "Choice", "% of votes", "Total votes"
+        sub = f"Needs {a['threshold_label']} Yes · {sub}"
+        compare = f"currently {'passing' if a['passing'] else 'failing'}, Yes at {fmt_pct(a['yes_share'])}"
+        col_label, pv_label, share_title = "Choice", "% of votes", "Yes share of the vote"
 
     rows = []
     n_rows = [r for r in a["rows"] if not r.get("write_in")]
@@ -444,25 +542,41 @@ def render_contest(a, hist_html=""):
         rows.append(
             f'<tr class="{" ".join(classes)}"><td>{name}</td><td>{fmt_n(r["votes"])}</td>'
             f'<td>{fmt_pct(r["pct_ballots"])}</td><td>{fmt_pct(r["pct_votes"])}</td></tr>')
-    totals = [
-        (total_label, fmt_n(a["candidate_votes"])),
-        ("Overvotes", fmt_n(a["overvotes"])),
-        ("Undervotes", fmt_n(a["undervotes"])),
-        ("Ballots cast", fmt_n(a["ballots_cast"])),
-    ]
-    for j, (k, v) in enumerate(totals):
-        rows.append(f'<tr class="tot{" first" if j == 0 else ""}"><td>{k}</td><td>{v}</td><td></td><td></td></tr>')
+    b = a["ballots_cast"] or 1
+    for j, (k, v) in enumerate((("Overvotes", a["overvotes"]), ("Undervotes", a["undervotes"]))):
+        rows.append(f'<tr class="ou{" first" if j == 0 else ""}"><td>{k}</td><td>{fmt_n(v)}</td>'
+                    f'<td>{fmt_pct(100 * v / b)}</td><td></td></tr>')
+    rows.append(f'<tr class="bc"><td>Ballots cast</td><td>{fmt_n(a["ballots_cast"])}</td><td></td><td></td></tr>')
 
-    return f"""<div class="{cls}" id="c{E(str(a['key']))}">
-<h3>{E(a['name'])}</h3>
-<p class="muted">{E(sub)}</p>
-<div class="margin"><span class="big">{E(margin_line)}</span><br><span class="cmp">{E(compare)}</span></div>
-{hist_html}
-<div class="tbl"><table>
-<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th><th>{pv_label}</th></tr>
-{''.join(rows)}
-</table></div>
+    margin_body = (f'<div class="margin"><span class="big">{E(margin_text(a))}</span><br>'
+                   f'<span class="cmp">({E(compare)})</span></div>\n{sparkline(pts)}')
+    table = (f'<div class="tbl"><table>\n<tr><th>{col_label}</th><th>Votes</th><th>% of ballots cast</th>'
+             f'<th>{pv_label}</th></tr>\n{"".join(rows)}\n</table></div>')
+    chart = results_chart(a, pts)
+    secs = [section("m", "Margin", margin_body, True)]
+    if chart:
+        secs.append(section("s", share_title, chart, True))
+    secs.append(section("r", "Results", table, False))
+    idattr = f' id="c{E(str(a["key"]))}"' if anchor else ""
+    return f"""<div class="{cls}"{idattr}>
+<div class="chead"><h3>{E(a['name'])}</h3>
+<p class="muted">{E(sub)}</p></div>
+{chr(10).join(secs)}
 </div>"""
+
+
+def nc_item(a, pts):
+    """A 'Not close' contest: one line that opens into its full card."""
+    return (f'<li><details class="nc" id="c{E(str(a["key"]))}"><summary>{E(a["name"])} '
+            f'<span class="muted">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}</span></summary>\n'
+            f'{render_contest(a, pts, anchor=False)}</details></li>')
+
+
+def recap_row(a):
+    # The hidden ": " and line break keep a copy-and-paste readable ("Name: 13 votes / 0.07%").
+    return (f'<li><span class="nm"><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>'
+            f'<small>{fmt_n(a["ballots_cast"])} ballots cast</small></span><span class="cp">: </span>'
+            f'<span class="num">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}</span></li>')
 
 
 def short_name(a):
@@ -474,64 +588,61 @@ def short_name(a):
 
 def render(results, state, cfg, hist=None):
     t = cfg["tiers"]
-    TIER_INFO.update(tier_info(t))
     PCT_LINES[:] = [t["recount_pct"]]
-    # Re-tier from saved numbers so a config change applies without a new download.
+    w = t.get("watch_ratio", 6)
+    ginfo = {k: (v[0], v[1].format(w=w)) for k, v in GROUPS.items()}
+    hist = hist or {}
+    version = str(state["version"])
     contests = results["contests"]
+    pts_by_key = {}
     for a in contests:
         a["tier"] = tier_for(a["margin"], a["pct"], t)
-    contests.sort(key=lambda a: (a["tier"] or 9, a["pct"], a["margin"]))
-    counts = {k: sum(1 for a in contests if a["tier"] == k) for k in (1, 2, 3)}
-    hist = hist or {}
-    pts_by_key = {str(a["key"]): contest_points(hist, a["key"], t) for a in contests}
-    hblock = lambda a: history_block(pts_by_key[str(a["key"])], t)
-    # Contests that were in a group at some earlier update but are not close now.
-    dropped = [a for a in contests if a["tier"] == 0
-               and any(p["tier"] in (1, 2) for p in pts_by_key[str(a["key"])][:-1])]
+        a["line"] = line_votes(a["ballots_cast"], t)
+        a["ratio"] = a["margin"] / a["line"]
+        a["recount_votes_cfg"], a["recount_pct_cfg"] = t["recount_votes"], t["recount_pct"]
+        prev = [p for p in contest_points(hist, a["key"], t) if p["version"] != version]
+        cur = current_point(a, version, t)
+        cur_hist = [p for p in contest_points(hist, a["key"], t) if p["version"] == version]
+        if cur_hist:
+            cur.update({k: cur_hist[0][k] for k in ("label", "dt")})
+        else:
+            cur["label"], cur["dt"] = "now", parse_clarity_time(results.get("results_timestamp", ""))
+        pts = prev + [cur]
+        pts_by_key[str(a["key"])] = pts
+        a["group"] = group_for(pts, t)
+    contests.sort(key=lambda a: (a["group"] or 9, a["ratio"], a["margin"]))
+    counts = {k: sum(1 for a in contests if a["group"] == k) for k in GROUPS}
     res_time = parse_clarity_time(results.get("results_timestamp", ""))
     res_time_s = (f'<span title="{fmt_time(res_time)}">{fmt_short_time(res_time)}</span>'
                   if res_time else E(results.get("results_timestamp", "")))
-    checked = datetime.fromisoformat(state["last_checked"]).astimezone(PACIFIC)
-    repo = os.environ.get("GITHUB_REPOSITORY", "rkudeshi/SCC-Recount-Watch")
 
     tiles = "".join(
-        f'<a class="tile t{k}" href="#tier{k}"><b>{counts[k]}</b><span>{TIER_INFO[k][0]}</span></a>'
-        for k in (1, 2, 3))
+        f'<a class="tile g{k}" href="#group{k}"><b>{counts[k]}</b><span>{ginfo[k][0]}</span></a>'
+        for k in GROUPS)
 
     recap_parts = []
-    for k in (1, 2, 3):
+    for k in GROUPS:
         items = "".join(
-            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
-            for a in contests if a["tier"] == k)
+            recap_row(a) for a in contests if a["group"] == k)
         body = f"<ul>{items}</ul>" if items else '<p class="muted">None right now.</p>'
-        recap_parts.append(f'<h4 class="rh t{k}">{TIER_INFO[k][0]} ({counts[k]})</h4>{body}')
-    if dropped:
-        items = "".join(
-            f'<li><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>: now {fmt_n(a["margin"])} votes / {fmt_margin_pct(a["pct"])}</li>'
-            for a in dropped)
-        recap_parts.append(f'<h4 class="rh t0">No longer close ({len(dropped)})</h4><ul>{items}</ul>')
+        recap_parts.append(f'<h4 class="rh g{k}">{ginfo[k][0]} ({counts[k]})</h4>{body}')
+    others = [a for a in contests if a["group"] == 0]
+    recap_parts.append(f'<details><summary>Not close ({len(others)})</summary><ul>{"".join(recap_row(a) for a in others)}</ul></details>')
     recap = "".join(recap_parts)
 
     sections = []
-    for k in (1, 2, 3):
-        items = [a for a in contests if a["tier"] == k]
-        body = "".join(render_contest(a, hblock(a)) for a in items) or '<p class="none">No contests in this group right now.</p>'
-        sections.append(f"""<section id="tier{k}">
-<h2 class="sec t{k}">{TIER_INFO[k][0]} <small>{TIER_INFO[k][1]}</small></h2>
+    for k in GROUPS:
+        items = [a for a in contests if a["group"] == k]
+        body = "".join(render_contest(a, pts_by_key[str(a["key"])]) for a in items) or '<p class="none">No contests in this group right now.</p>'
+        sections.append(f"""<section id="group{k}">
+<h2 class="sec g{k}">{ginfo[k][0]}{f" <small>{ginfo[k][1]}</small>" if ginfo[k][1] else ""}</h2>
 {body}
 </section>""")
 
-    if dropped:
-        sections.append(f"""<section id="dropped">
-<h2 class="sec t0">No longer close <small>Were an automatic recount or very close at an earlier update</small></h2>
-{"".join(render_contest(a, hblock(a)) for a in dropped)}
+    sections.append(f"""<section id="group0">
+<h2 class="sec g0">Not close</h2>
+<ul class="nclist">{"".join(nc_item(a, pts_by_key[str(a["key"])]) for a in others)}</ul>
 </section>""")
-
-    others = [a for a in contests if a["tier"] == 0 and a not in dropped]
-    others.sort(key=lambda a: a["pct"])
-    other_rows = "".join(
-        f'<tr><td>{E(a["name"])}</td><td>{fmt_n(a["margin"])}</td><td>{fmt_margin_pct(a["pct"])}</td></tr>'
-        for a in others)
     excl = "".join(f"<li>{E(x['name'])} <span class='muted'>({E(x['reason'])})</span></li>"
                    for x in results["excluded"] + results["skipped"])
 
@@ -543,53 +654,86 @@ def render(results, state, cfg, hist=None):
 <title>Santa Clara County Automatic Recount Watch</title>
 <style>
 :root{{--bg:#f6f6f6;--box:#fff;--fg:#111;--muted:#666;--line:#ddd;--cut:#111;--link:#0645ad;
-  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f;--t0:#e6e6e6;--t0s:#8a8a8a}}
+  --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f;--t0:#e6e6e6;--t0s:#8a8a8a;--th:#f0f0f0}}
 @media (prefers-color-scheme: dark){{:root{{--bg:#111;--box:#1b1b1b;--fg:#eee;--muted:#9a9a9a;--line:#333;--cut:#eee;--link:#8ab4f8;
-  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;--t0:#2a2a2a;--t0s:#9a9a9a;color-scheme:dark}}}}
+  --t1:#5a2321;--t1s:#ff9b95;--t2:#4d3a15;--t2s:#f2c06a;--t3:#203246;--t3s:#a9c6e8;--t0:#2a2a2a;--t0s:#9a9a9a;--th:#262626;color-scheme:dark}}}}
 *{{box-sizing:border-box}}
 body{{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;padding:16px}}
 main{{max-width:700px;margin:0 auto}}
-h1{{font-size:24px;margin:0 0 4px}}
+h1{{font-size:26px;margin:0 0 6px;line-height:1.2}}
+h1 .pre{{display:block;font-size:17px;font-weight:normal;color:var(--muted)}}
 p{{margin:4px 0}}
 .muted{{color:var(--muted);font-size:13px}}
-.times{{background:var(--box);border:2px solid var(--fg);border-radius:4px;padding:10px 12px;margin:12px 0;display:grid;gap:4px}}
-.times div{{font-size:17px}}
-.times b{{font-size:17px}}
-.tiles{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}}
+.tiles{{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}}
 .tile{{border-radius:4px;padding:10px;color:var(--fg);text-decoration:none;display:block}}
 .tile b{{display:block;font-size:30px;line-height:1.1}}
 .tile span{{font-size:14px;font-weight:600}}
-.tile.t1{{background:var(--t1)}} .tile.t2{{background:var(--t2)}} .tile.t3{{background:var(--t3)}}
+.tile.g1{{background:var(--t1)}} .tile.g2{{background:var(--t2)}} .tile.g3{{background:var(--t3)}} .tile.g4{{background:var(--t0)}}
 h2.sec{{font-size:22px;margin:36px 0 12px;padding:10px 12px;border-radius:4px;border-bottom:4px solid}}
 h2.sec small{{display:block;font-size:14px;font-weight:normal}}
-h2.t0{{background:var(--t0);border-color:var(--t0s)}} h2.t1{{background:var(--t1);border-color:var(--t1s)}} h2.t2{{background:var(--t2);border-color:var(--t2s)}} h2.t3{{background:var(--t3);border-color:var(--t3s)}}
+h2.g1{{background:var(--t1);border-color:var(--t1s)}} h2.g2{{background:var(--t2);border-color:var(--t2s)}} h2.g3{{background:var(--t3);border-color:var(--t3s)}} h2.g4{{background:var(--t0);border-color:var(--t0s)}} h2.g0{{background:transparent;border-color:var(--line)}}
 h3{{font-size:17px;margin:0}}
 .contest{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:12px;margin-bottom:12px}}
 .margin{{margin:6px 0 8px;padding:5px 8px;border-radius:4px}}
-.contest.t1 .margin{{background:var(--t1)}} .contest.t2 .margin{{background:var(--t2)}} .contest.t3 .margin{{background:var(--t3)}}
 .margin .big{{font-size:15px;font-weight:600}}
 .margin .cmp{{font-size:13px;color:var(--muted)}}
 .recap{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0}}
 .recap h2{{font-size:18px;margin:0 0 4px}}
 .recap h4{{font-size:15px;margin:10px 0 0;padding:2px 6px;border-radius:3px;display:inline-block}}
-.rh.t0{{background:var(--t0)}} .rh.t1{{background:var(--t1)}} .rh.t2{{background:var(--t2)}} .rh.t3{{background:var(--t3)}}
-.recap ul{{margin:4px 0 0;padding-left:20px}}
-.recap li{{margin:2px 0}}
+.rh.g1{{background:var(--t1)}} .rh.g2{{background:var(--t2)}} .rh.g3{{background:var(--t3)}} .rh.g4{{background:var(--t0)}}
+.recap ul{{margin:4px 0 0;padding:0;list-style:none}}
+.recap li{{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--line)}}
+.recap li:last-child{{border-bottom:0}}
+.recap li a{{text-decoration:none;font-weight:600}} .recap li a:hover{{text-decoration:underline}}
+.recap .num{{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted)}}
 .recap p{{margin:4px 0 0}}
 .tbl{{overflow-x:auto}}
 table{{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}}
 th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
-th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom}}
+th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
 tr.cut td{{border-bottom:3px solid var(--cut)}}
-.history{{margin:4px 0 8px;font-size:13px}}
-.history p{{margin:0 0 2px}}
-.history .cap{{font-size:11px}}
-svg.hist{{width:100%;max-width:420px;height:auto;display:block}}
-svg.hist text{{font-size:9px;fill:var(--muted);font-family:inherit}}
-svg.hist .rl{{stroke:var(--t1s);stroke-dasharray:3 2;stroke-width:1}}
-svg.hist .rlt{{fill:var(--t1s)}}
-svg.hist .b0{{fill:var(--t0s)}} svg.hist .b1{{fill:var(--t1s)}} svg.hist .b2{{fill:var(--t2s)}} svg.hist .b3{{fill:var(--t3s)}}
+.sparkwrap{{position:relative;max-width:440px;margin:6px 0 2px}}
+.tip{{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}}
+.recap .nm{{display:flex;flex-direction:column}} .recap .nm small{{color:var(--muted);font-size:12px}}
+.cp{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:pre}}
+.recap details{{margin-top:12px}}
+svg.spark{{width:100%;height:auto;display:block;overflow:visible}}
+svg.spark text{{font-size:9px;fill:var(--muted);font-family:inherit;font-variant-numeric:tabular-nums}}
+svg.spark text.v{{fill:var(--fg)}} svg.spark text.v.in{{fill:var(--t1s);font-weight:700}}
+svg.spark .base{{stroke:var(--line);stroke-width:1}}
+svg.spark .rl{{fill:none;stroke:var(--t1s);stroke-dasharray:3 3;stroke-width:1}}
+svg.spark .ml{{fill:none;stroke:var(--fg);stroke-width:2;stroke-linejoin:round}}
+svg.spark .pt{{fill:var(--fg)}} svg.spark .pin{{fill:var(--t1s);stroke:var(--box);stroke-width:1.5}}
+svg.res .cl{{fill:none;stroke-width:2;stroke-linejoin:round}} svg.res .cl.w{{stroke:var(--fg)}} svg.res .cl.l{{stroke:var(--t0s);stroke-width:1.5}}
+svg.res text.lab{{fill:var(--fg);font-size:10px}} svg.res text.lab.l{{fill:var(--muted)}}
+svg.spark .hit{{fill:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}}
+.contest{{padding:0 14px 6px;overflow:hidden}}
+.contest.g1{{border-color:var(--t1s)}} .contest.g2{{border-color:var(--t2s)}} .contest.g3{{border-color:var(--t3s)}}
+.chead{{margin:0 -14px;padding:10px 14px 9px;background:var(--th);border-bottom:1px solid var(--line)}}
+.chead p.muted{{margin:2px 0 0;color:var(--fg);opacity:.75}}
+.contest.g1 .chead{{background:var(--t1);border-color:var(--t1s)}} .contest.g2 .chead{{background:var(--t2);border-color:var(--t2s)}} .contest.g3 .chead{{background:var(--t3);border-color:var(--t3s)}} .contest.g4 .chead{{background:var(--t0);border-color:var(--t0s)}}
+details.sec{{margin:0;padding:16px 0 10px}}
+details.sec+details.sec{{border-top:1px solid var(--line)}}
+details.sec>summary,details.nc>summary{{list-style:none;cursor:pointer;font-weight:normal}}
+details.sec>summary{{display:flex;align-items:center;gap:6px}}
+details.sec>summary::-webkit-details-marker,details.nc>summary::-webkit-details-marker{{display:none}}
+details.sec>summary::before,details.nc>summary::before{{content:"";display:inline-block;border-style:solid;border-width:4px 0 4px 6px;border-color:transparent transparent transparent var(--muted);transition:transform .15s}}
+details.nc>summary::before{{margin-right:7px;vertical-align:1px}}
+details.sec[open]>summary::before,details.nc[open]>summary::before{{transform:rotate(90deg)}}
+details.sec[open]>summary{{margin-bottom:8px}}
+h4.sh{{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
+.margin{{margin:0 0 4px;padding:0}}
+.margin .big{{font-size:16px}}
+tr.ou td{{color:var(--muted)}}
+tr.ou.first td{{border-top:1px solid var(--muted)}}
+tr.bc td{{font-weight:600;border-bottom:0;white-space:nowrap}}
+svg.res text.lab{{paint-order:stroke;stroke:var(--box);stroke-width:3px;stroke-linejoin:round}}
+svg.res text.lab.thr{{fill:var(--t1s)}}
+ul.nclist{{margin:0;padding:0;list-style:none}}
+ul.nclist>li{{padding:5px 0;border-bottom:1px solid var(--line)}}
+details.nc>.contest{{margin:8px 0 6px}}
+@media (prefers-reduced-motion:reduce){{details.sec>summary::before,details.nc>summary::before{{transition:none}}}}
 tr.wi td{{color:var(--muted)}}
 tr.tot td{{color:var(--muted);font-size:13px;border-bottom:0}}
 tr.first td{{border-top:1px solid var(--muted)}}
@@ -597,18 +741,15 @@ tr.first td{{border-top:1px solid var(--muted)}}
 details{{margin-top:24px}}
 summary{{cursor:pointer;font-weight:600}}
 a{{color:var(--link)}}
-@media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:12px}}.margin .big{{font-size:14px}}th,td{{padding:4px 3px}}}}
+@media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:11px}}.margin .big{{font-size:14px}}th,td{{padding:4px 3px}}}}
 </style>
 </head>
 <body>
 <main>
-<h1>Santa Clara County Automatic Recount Watch</h1>
-<p>Santa Clara County contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
+<h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
+<p>Contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
 
-<div class="times">
-<div>Results as of: <b>{res_time_s}</b> <span class="muted">(update {E(str(state['version']))})</span></div>
-<div>Last checked: <b id="checked" data-ts="{state['last_checked']}" title="{fmt_time(checked)}">{fmt_time(checked)}</b></div>
-</div>
+<p>Results as of <b>{res_time_s}</b> <span class="muted">(update {E(str(state['version']))})</span></p>
 
 <div class="tiles">{tiles}</div>
 
@@ -622,14 +763,6 @@ a{{color:var(--link)}}
 {''.join(sections)}
 
 <details>
-<summary>Other county contests ({len(others)}, never close)</summary>
-<div class="tbl"><table>
-<tr><th>Contest</th><th>Margin</th><th>% of ballots cast</th></tr>
-{other_rows}
-</table></div>
-</details>
-
-<details>
 <summary>Contests not included ({len(results['excluded']) + len(results['skipped'])})</summary>
 <ul>{excl}</ul>
 </details>
@@ -637,26 +770,38 @@ a{{color:var(--link)}}
 <p class="muted" style="margin-top:24px">Source: <a href="{E(state['source_url'])}">Santa Clara County official results</a>. Checked about once an hour. Unofficial tracker; margins change as the county counts more ballots.</p>
 </main>
 <script>
-// Show "last checked" as time ago (exact time on hover), using the most recent
-// hourly run even when nothing new was published.
+// Tap (phones) or hover (desktop) a day on a sparkline to see its numbers.
 (function(){{
-  var el=document.getElementById('checked');
-  var when=new Date(el.dataset.ts);
-  function ago(){{
-    var m=Math.max(0,Math.round((Date.now()-when)/60000));
-    var s=m<1?'just now':m<60?m+(m==1?' minute':' minutes')+' ago':
-      (function(h){{return h<48?h+(h==1?' hour':' hours')+' ago':Math.round(h/24)+' days ago'}})(Math.round(m/60));
-    el.textContent=s;
-    el.title=when.toLocaleString('en-US',{{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}});
+  function show(r){{
+    var w=r.closest('.sparkwrap'),tip=w.querySelector('.tip'),svg=w.querySelector('svg');
+    var s=svg.getBoundingClientRect().width/svg.viewBox.baseVal.width;
+    tip.textContent=r.getAttribute('data-tip');
+    tip.hidden=false;
+    var hw=tip.offsetWidth/2,sw=svg.getBoundingClientRect().width;
+    tip.style.left=Math.min(Math.max(r.getAttribute('data-x')*s,hw),sw-hw)+'px';
+    tip.style.top=(r.getAttribute('data-y')*s)+'px';
   }}
-  ago(); setInterval(ago,60000);
-  fetch('https://api.github.com/repos/{repo}/actions/workflows/update.yml/runs?per_page=1&status=completed')
-    .then(function(r){{return r.ok?r.json():null}})
-    .then(function(j){{
-      if(!j||!j.workflow_runs||!j.workflow_runs.length)return;
-      var t=new Date(j.workflow_runs[0].updated_at);
-      if(t>when){{when=t;ago();}}
-    }}).catch(function(){{}});
+  function hideAll(){{document.querySelectorAll('.tip').forEach(function(t){{t.hidden=true}})}}
+  document.addEventListener('click',function(e){{
+    var r=e.target.closest&&e.target.closest('rect.hit');hideAll();if(r)show(r);
+  }});
+  // Opening or closing a section on one card does the same on every card.
+  var busy=false;
+  document.addEventListener('toggle',function(e){{
+    var d=e.target;if(busy||!d.matches||!d.matches('details.sec'))return;busy=true;
+    document.querySelectorAll('details.sec[data-sec="'+d.dataset.sec+'"]').forEach(function(x){{if(x!==d)x.open=d.open}});
+    setTimeout(function(){{busy=false}},0);
+  }},true);
+  // Links from the summary open a collapsed card.
+  function openHash(){{var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}}
+  window.addEventListener('hashchange',openHash);openHash();
+  document.addEventListener('pointerover',function(e){{
+    if(e.pointerType!=='mouse')return;
+    var r=e.target.closest&&e.target.closest('rect.hit');if(r){{hideAll();show(r);}}
+  }});
+  document.addEventListener('pointerout',function(e){{
+    if(e.pointerType==='mouse'&&e.target.closest&&e.target.closest('rect.hit'))hideAll();
+  }});
 }})();
 </script>
 </body>
