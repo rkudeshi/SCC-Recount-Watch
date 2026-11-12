@@ -275,7 +275,7 @@ def fmt_pct(p, d=2):
 
 
 def fmt_margin_pct(p):
-    """Two decimals, but four when the value sits near a tier line (e.g. 0.2489%)."""
+    """Two decimals, but four near the automatic recount line (e.g. 0.2489%)."""
     if any(abs(p - line) < 0.01 for line in PCT_LINES):
         return f"{p:.4f}%"
     return f"{p:.2f}%"
@@ -360,7 +360,7 @@ def short_name(a):
 def render(results, state, cfg):
     t = cfg["tiers"]
     TIER_INFO.update(tier_info(t))
-    PCT_LINES[:] = [t["recount_pct"], t["very_close_pct"], t["watch_pct"]]
+    PCT_LINES[:] = [t["recount_pct"]]
     # Re-tier from saved numbers so a config change applies without a new download.
     contests = results["contests"]
     for a in contests:
@@ -408,7 +408,7 @@ def render(results, state, cfg):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SCC Recount Watch</title>
+<title>Santa Clara County Automatic Recount Watch</title>
 <style>
 :root{{--bg:#f6f6f6;--box:#fff;--fg:#111;--muted:#666;--line:#ddd;--cut:#111;--link:#0645ad;
   --t1:#f8d4d2;--t1s:#b52a24;--t2:#fde7bd;--t2s:#9a5d00;--t3:#dbe6f3;--t3s:#2f5d8f}}
@@ -462,7 +462,7 @@ a{{color:var(--link)}}
 </head>
 <body>
 <main>
-<h1>SCC Recount Watch</h1>
+<h1>Santa Clara County Automatic Recount Watch</h1>
 <p>Santa Clara County contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
 
 <div class="times">
@@ -559,6 +559,8 @@ def set_output(changed):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--once-per-day", action="store_true",
+                    help="skip if new results were already loaded today (Pacific time)")
     ap.add_argument("--record-check", action="store_true",
                     help="when the version is unchanged, still update 'last checked' and re-render")
     ap.add_argument("--file")
@@ -577,6 +579,12 @@ def main():
             sys.exit("no data/results.json to render")
         write_site(results, state, cfg)
         set_output(True)
+        return
+
+    today = datetime.now(PACIFIC).date().isoformat()
+    if args.once_per_day and state.get("updated_on") == today:
+        print(f"new results already loaded today ({today}); skipping")
+        set_output(False)
         return
 
     try:
@@ -609,6 +617,7 @@ def main():
     state = {
         "version": version,
         "last_checked": now,
+        "updated_on": today,
         "source_url": f"{base}/",
     }
     write_json(RESULTS_PATH, results)
