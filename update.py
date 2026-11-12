@@ -588,8 +588,8 @@ def render_contest(a, pts, anchor=True):
 
 def nc_item(a, pts):
     """A 'Not close' contest: one line that opens into its full card."""
-    return (f'<li><details class="nc" id="c{E(str(a["key"]))}"><summary>{E(a["name"])} '
-            f'<span class="muted">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}</span></summary>\n'
+    return (f'<li><details class="nc" id="c{E(str(a["key"]))}"><summary><span class="nm">{E(a["name"])}</span><span class="cp">: </span>'
+            f'<span class="num">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}{mini_spark(pts)}</span></summary>\n'
             f'{render_contest(a, pts, anchor=False)}</details></li>')
 
 
@@ -715,7 +715,8 @@ th,td{{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}}
 th:first-child,td:first-child{{text-align:left}}
 th{{font-size:12px;color:var(--muted);font-weight:normal;vertical-align:bottom;background:var(--th)}}
 tr.cut td{{border-bottom:0}}
-tr.mg td{{font-size:12px;font-style:italic;color:var(--muted);padding-top:2px;padding-bottom:2px}}
+tr.mg td{{font-size:12px;font-style:italic;color:var(--muted);padding-top:2px;padding-bottom:2px;background:var(--th);border-bottom-color:var(--th)}}
+tr.cut td{{border-bottom-color:var(--th)}}
 .chead{{position:relative}} .chead h3{{padding-right:52px}}
 a.totop{{position:absolute;top:10px;right:12px;font-size:12px;color:var(--muted);text-decoration:none}}
 .times{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:12px 0;font-size:17px}}
@@ -748,7 +749,10 @@ details.sec>summary,details.nc>summary{{list-style:none;cursor:pointer;font-weig
 details.sec>summary{{display:flex;align-items:center;gap:6px}}
 details.sec>summary::-webkit-details-marker,details.nc>summary::-webkit-details-marker{{display:none}}
 details.sec>summary::before,details.nc>summary::before{{content:"";display:inline-block;border-style:solid;border-width:4px 0 4px 6px;border-color:transparent transparent transparent var(--muted);transition:transform .15s}}
-details.nc>summary::before{{margin-right:7px;vertical-align:1px}}
+details.nc>summary::before{{margin:7px 7px 0 0;flex:none;align-self:flex-start}}
+details.nc>summary{{display:flex;gap:0;align-items:flex-start}}
+details.nc>summary .nm{{flex:1;padding-right:12px}}
+details.nc>summary .num{{display:flex;flex-direction:column;align-items:flex-end;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted)}}
 details.sec[open]>summary::before,details.nc[open]>summary::before{{transform:rotate(90deg)}}
 details.sec[open]>summary{{margin-bottom:8px}}
 h4.sh{{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
@@ -792,7 +796,7 @@ a{{color:var(--link)}}
 {recap}
 </div>
 
-<p class="muted">Margin = last winner minus first loser. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The official results website divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
+<p class="muted">Margin = votes for the last winning candidate minus votes for the first losing candidate. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The official results website divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
 
 {''.join(sections)}
 
