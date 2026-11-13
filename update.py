@@ -578,7 +578,7 @@ def render_contest(a, pts, anchor=True):
     secs = [section("m", "Margin", margin_body, True)]
     if chart:
         secs.append(section("s", share_title, chart, True))
-    secs.append(section("r", "Results", table, False))
+    secs.append(section("r", "Results", table, True))
     idattr = f' id="c{E(str(a["key"]))}"' if anchor else ""
     return f"""<div class="{cls}"{idattr}>
 <div class="chead"><a class="totop" href="#top" aria-label="Back to top">↑ Top</a><h3>{E(a['name'])}</h3>
@@ -599,6 +599,12 @@ def recap_row(a, pts):
     return (f'<li><span class="nm"><a href="#c{E(str(a["key"]))}">{E(short_name(a))}</a>'
             f'<small>{fmt_n(a["ballots_cast"])} ballots cast</small></span><span class="cp">: </span>'
             f'<span class="num">{votes(a["margin"])} / {fmt_margin_pct(a["pct"])}{mini_spark(pts)}</span></li>')
+
+
+POLICY_URL = ("https://files.santaclaracounty.gov/exjcpb1586/2025-07/"
+              "board-of-supervisors-policy-manual-complete-07.25.25.pdf"
+              "?VersionId=Ichcak.tSP_lnk63yOJDjAdMHv.zlxGL")
+RECOUNT_FAQ_URL = "https://vote.santaclaracounty.gov/elections/recounts-and-faqs"
 
 
 def short_name(a):
@@ -810,6 +816,11 @@ tr.first td{{border-top:1px solid var(--muted)}}
 .none{{color:var(--muted)}}
 details{{margin-top:24px}}
 summary{{cursor:pointer;font-weight:600}}
+p.lede{{margin:8px 0 4px}}
+details.info{{margin:0 0 10px}}
+details.info>summary{{font-weight:normal;color:var(--link)}}
+.infobody{{background:var(--box);border:1px solid var(--line);border-radius:4px;padding:4px 12px;margin-top:6px;font-size:14px}}
+.infobody p{{margin:8px 0}}
 a{{color:var(--link)}}
 @media (max-width:440px){{body{{padding:12px}}.tile b{{font-size:24px}}.tile span{{font-size:11px}}.margin .big{{font-size:14px}}th,td{{padding:4px 3px}}}}
 </style>
@@ -818,7 +829,16 @@ a{{color:var(--link)}}
 {old_bar}
 <main id="top">
 <h1><span class="pre">Santa Clara County</span>Automatic Recount Watch</h1>
-<p>Contests at or near the automatic recount margin. {E(results.get('election_name',''))}.</p>
+<p class="lede">Under Santa Clara County Board policy, local contests decided by fewer than 25 votes or less than 0.25% of ballots cast get an automatic recount. This page tracks contests near that line in the {E(results.get('election_name',''))}.</p>
+<details class="info">
+<summary>More info</summary>
+<div class="infobody">
+<p>Since February 2018, <a href="{POLICY_URL}">Board Policy 3.63</a> has had the county recount, at its own cost, any local contest where the margin is less than 25 votes or less than 0.25% of ballots cast. A pilot started in 2016 used 0.5%. The policy covers only contests entirely within Santa Clara County, so state and federal contests are not included. Recounts are done before the election is certified, by hand except for countywide and San José citywide contests. See <a href="{RECOUNT_FAQ_URL}">Recounts and FAQs</a> from the Registrar of Voters.</p>
+<p><b>Margin</b> is the votes for the last winning candidate minus the votes for the first losing candidate. For a ballot measure, it is the number of votes that would flip the outcome.</p>
+<p><b>Why this page shows two percentages.</b> The official results website shows each candidate's percentage of candidate votes, which counts only the people who voted in that contest. The recount policy uses ballots cast, which also counts people who skipped the contest (undervotes) or voted for too many (overvotes). Ballots cast for a contest is (votes + undervotes + overvotes) divided by the number of seats. Ballots cast is the larger number, so the margin as a percentage of ballots cast is usually smaller than the gap on the official results website (in vote-for-2 or vote-for-3 contests it can be larger). That is why this page shows both.</p>
+<p>This is an unofficial tracker. Margins change as more ballots are counted, and only the certified results decide which contests are recounted.</p>
+</div>
+</details>
 
 {date_picker(res_time_s, pages, version)}
 
@@ -828,8 +848,6 @@ a{{color:var(--link)}}
 <h2>Summary</h2>
 {recap}
 </div>
-
-<p class="muted">Margin = votes for the last winning candidate minus votes for the first losing candidate. The official percentage divides by all ballots cast in the contest's area, including people who skipped the contest (votes + undervotes + overvotes, divided by seats). The official results website divides by candidate votes only, so its percentage is usually larger. In vote-for-2 or vote-for-3 contests it can be smaller.</p>
 
 {''.join(sections)}
 
