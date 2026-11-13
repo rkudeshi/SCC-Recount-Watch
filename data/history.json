@@ -9800,6 +9800,1095 @@
      }
     }
    }
+  },
+  {
+   "version": "386820",
+   "results_timestamp": "11/12/2026 5:02:30 PM PST",
+   "contests": {
+    "48": {
+     "name": "Fremont Union HSD, TA 3",
+     "margin": 23,
+     "pct": 0.116775,
+     "ballots": 19696,
+     "winner": "Rosa Kim",
+     "loser": "Jason Lin",
+     "votes": {
+      "Rosa Kim": 8309,
+      "Jason Lin": 8286
+     }
+    },
+    "52": {
+     "name": "Alum Rock Union SD, TA 3",
+     "margin": 83,
+     "pct": 1.485858,
+     "ballots": 5586,
+     "winner": "Andrés Quintero",
+     "loser": "Delia Oseguera",
+     "votes": {
+      "Andrés Quintero": 2537,
+      "Delia Oseguera": 2454
+     }
+    },
+    "65": {
+     "name": "Orchard SD",
+     "margin": 91,
+     "pct": 2.399156,
+     "ballots": 3793,
+     "winner": "Renee Lo",
+     "loser": "Lyseria Evelyn Phillips",
+     "votes": {
+      "Katherine Kasolas-Jacobson": 1410,
+      "Jeff Tang": 1329,
+      "Renee Lo": 1210,
+      "Lyseria Evelyn Phillips": 1119,
+      "Molly Eslao": 986,
+      "Hina Patel": 9
+     }
+    },
+    "46": {
+     "name": "East Side Union HSD, TA 1, Short Term",
+     "margin": 142,
+     "pct": 0.589041,
+     "ballots": 24107,
+     "winner": "Mer Curry Nuñez",
+     "loser": "Paul Pham",
+     "votes": {
+      "Mer Curry Nuñez": 7588,
+      "Paul Pham": 7446,
+      "Patricia Martínez-Roach": 6643
+     }
+    },
+    "80": {
+     "name": "City of Milpitas Council",
+     "margin": 133,
+     "pct": 0.639208,
+     "ballots": 20807,
+     "winner": "Seema Kanani",
+     "loser": "Garry Barbadillo",
+     "votes": {
+      "Bill Chuan": 7737,
+      "Seema Kanani": 6711,
+      "Garry Barbadillo": 6578,
+      "Jennie Ha Phan": 4902,
+      "Dipak Awasthi": 4765
+     }
+    },
+    "128": {
+     "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
+     "margin": 254,
+     "pct": 1.094828,
+     "ballots": 23200,
+     "passing": false,
+     "votes": {
+      "Yes": 12092,
+      "No": 10101
+     }
+    },
+    "59": {
+     "name": "Franklin-McKinley SD",
+     "margin": 250,
+     "pct": 1.130659,
+     "ballots": 22111,
+     "winner": "Steven Sanchez",
+     "loser": "Gilbert Borrayo",
+     "votes": {
+      "Marc Cooper": 9044,
+      "Rudy J. Rodriguez": 9040,
+      "Steven Sanchez": 8932,
+      "Gilbert Borrayo": 8682
+     }
+    },
+    "129": {
+     "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
+     "margin": 331,
+     "pct": 1.302022,
+     "ballots": 25422,
+     "passing": false,
+     "votes": {
+      "Yes": 13044,
+      "No": 10943
+     }
+    },
+    "132": {
+     "name": "Measure Q - Cambrian School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+     "margin": 190,
+     "pct": 1.554828,
+     "ballots": 12220,
+     "passing": true,
+     "votes": {
+      "Yes": 7772,
+      "No": 3696
+     }
+    },
+    "67": {
+     "name": "Sunnyvale SD, Trustee Area 3",
+     "margin": 103,
+     "pct": 2.105909,
+     "ballots": 4891,
+     "winner": "Rommy Kushner",
+     "loser": "Michelle Maginot",
+     "votes": {
+      "Rommy Kushner": 1979,
+      "Michelle Maginot": 1876
+     }
+    },
+    "50": {
+     "name": "Los Gatos-Saratoga Union HSD, TA 2",
+     "margin": 131,
+     "pct": 2.368469,
+     "ballots": 5531,
+     "winner": "Sangeeta Balachandran Mallik",
+     "loser": "Ishaan Prasad",
+     "votes": {
+      "Sangeeta Balachandran Mallik": 2162,
+      "Ishaan Prasad": 2031
+     }
+    },
+    "45": {
+     "name": "Santa Clara Unified SD, Trustee Area 1",
+     "margin": 107,
+     "pct": 2.715736,
+     "ballots": 3940,
+     "winner": "Kamal Yassin",
+     "loser": "Jim Canova",
+     "votes": {
+      "Kamal Yassin": 1653,
+      "Jim Canova": 1546
+     }
+    },
+    "38": {
+     "name": "Morgan Hill Unified SD, Trustee Area 1",
+     "margin": 149,
+     "pct": 3.029687,
+     "ballots": 4918,
+     "winner": "Nancy Altman-Palm",
+     "loser": "Jason Amezcua",
+     "votes": {
+      "Nancy Altman-Palm": 2129,
+      "Jason Amezcua": 1980
+     }
+    },
+    "133": {
+     "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+     "margin": 120,
+     "pct": 3.171247,
+     "ballots": 3784,
+     "passing": false,
+     "votes": {
+      "Yes": 2268,
+      "No": 1194
+     }
+    },
+    "35": {
+     "name": "Gilroy Unified SD, Trustee Area 3",
+     "margin": 200,
+     "pct": 4.656577,
+     "ballots": 4295,
+     "winner": "Michelle Nelson",
+     "loser": "Daniel Harney",
+     "votes": {
+      "Michelle Nelson": 1951,
+      "Daniel Harney": 1751
+     }
+    },
+    "89": {
+     "name": "Mayor, City of Santa Clara",
+     "margin": 557,
+     "pct": 1.552657,
+     "ballots": 35874,
+     "winner": "Karen Hardy",
+     "loser": "Kathy Watanabe",
+     "votes": {
+      "Karen Hardy": 7384,
+      "Kathy Watanabe": 6827,
+      "David Kertes": 6352,
+      "Kevin Park": 6087,
+      "Armando \"Gary\" Ferraris": 3512,
+      "Mike Wiltberger": 2260
+     }
+    },
+    "84": {
+     "name": "City of Mountain View Council",
+     "margin": 496,
+     "pct": 1.782185,
+     "ballots": 27831,
+     "winner": "Silja Paymer",
+     "loser": "Robert Cox",
+     "votes": {
+      "IdaRose Sylvester": 11137,
+      "Erik Poicon": 9363,
+      "Silja Paymer": 9343,
+      "Robert Cox": 8847,
+      "Paul Donahue": 8006,
+      "James Kuszmaul": 7144,
+      "Alex Amoroso": 4713,
+      "Samuel Ali": 2568
+     }
+    },
+    "79": {
+     "name": "Mayor, City of Milpitas",
+     "margin": 399,
+     "pct": 1.917624,
+     "ballots": 20807,
+     "winner": "Carmen Montano",
+     "loser": "Hon Lien",
+     "votes": {
+      "Carmen Montano": 8093,
+      "Hon Lien": 7694,
+      "Santosh Sahoo": 1852,
+      "Voltaire S. Montemayor": 1512
+     }
+    },
+    "97": {
+     "name": "Santa Clara Valley Water, District 6",
+     "margin": 1366,
+     "pct": 2.18714,
+     "ballots": 62456,
+     "winner": "Phuong Tran Nguyen",
+     "loser": "Milan Balinton",
+     "votes": {
+      "Phuong Tran Nguyen": 27665,
+      "Milan Balinton": 26299
+     }
+    },
+    "60": {
+     "name": "Los Altos SD",
+     "margin": 464,
+     "pct": 2.206582,
+     "ballots": 21028,
+     "winner": "David Poll",
+     "loser": "Brandon Stroy",
+     "votes": {
+      "Bryan Harvey Johnson": 10987,
+      "Vaishali \"Shali\" Sirkay": 10330,
+      "David Poll": 9312,
+      "Brandon Stroy": 8848
+     }
+    },
+    "78": {
+     "name": "Town of Los Gatos Council",
+     "margin": 449,
+     "pct": 2.868093,
+     "ballots": 15655,
+     "winner": "Rob Stump",
+     "loser": "Mary Badame",
+     "votes": {
+      "Rob Moore": 8522,
+      "Jeff Suzuki": 6794,
+      "Rob Stump": 5952,
+      "Mary Badame": 5503,
+      "Steve Raspe": 4601,
+      "Heidi Owens": 3388
+     }
+    },
+    "125": {
+     "name": "Measure J - City of Palo Alto, Transactions and Use Tax - Majority Vote Required",
+     "margin": 833,
+     "pct": 2.872711,
+     "ballots": 28997,
+     "passing": true,
+     "votes": {
+      "Yes": 13945,
+      "No": 13112
+     }
+    },
+    "43": {
+     "name": "San José Unified SD, Trustee Area 2",
+     "margin": 494,
+     "pct": 2.888044,
+     "ballots": 17105,
+     "winner": "Jose Magana",
+     "loser": "Tomara Hall",
+     "votes": {
+      "Jose Magana": 6104,
+      "Tomara Hall": 5610,
+      "Carson Dance": 2571
+     }
+    },
+    "61": {
+     "name": "Mountain View Whisman SD",
+     "margin": 971,
+     "pct": 4.028043,
+     "ballots": 24106,
+     "winner": "William Lambert",
+     "loser": "Sundar Subbarayan",
+     "votes": {
+      "Devon Conley": 11261,
+      "William Lambert": 8862,
+      "Sundar Subbarayan": 7891,
+      "Quintin Riis": 5608
+     }
+    },
+    "116": {
+     "name": "Measure A - City of Morgan Hill, Elected City Treasurer to an Appointive Position - Majority Vote Required",
+     "margin": 823,
+     "pct": 4.318396,
+     "ballots": 19058,
+     "passing": false,
+     "votes": {
+      "Yes": 8123,
+      "No": 8946
+     }
+    },
+    "86": {
+     "name": "City of San José Council, District 5",
+     "margin": 1286,
+     "pct": 5.297195,
+     "ballots": 24277,
+     "winner": "Peter Ortiz",
+     "loser": "Nora Campos",
+     "votes": {
+      "Peter Ortiz": 11515,
+      "Nora Campos": 10229
+     }
+    },
+    "88": {
+     "name": "City of San José Council, District 9",
+     "margin": 2241,
+     "pct": 6.113096,
+     "ballots": 36659,
+     "winner": "Genny Altwer",
+     "loser": "Gordon Chester",
+     "votes": {
+      "Genny Altwer": 16983,
+      "Gordon Chester": 14742
+     }
+    },
+    "71": {
+     "name": "City of Cupertino Council",
+     "margin": 1289,
+     "pct": 6.209953,
+     "ballots": 20757,
+     "winner": "Seema Sharma Lindskog",
+     "loser": "Tracy Kosolcharoen",
+     "votes": {
+      "John Tang": 8944,
+      "J.R. Fruen": 8409,
+      "Seema Sharma Lindskog": 8301,
+      "Tracy Kosolcharoen": 7012,
+      "Santosh Rao": 6914,
+      "Gopal Kumarappan": 6363,
+      "Mark Fantozzi": 3078,
+      "J.Z. Wang": 2395
+     }
+    },
+    "66": {
+     "name": "Saratoga Union SD",
+     "margin": 651,
+     "pct": 6.343793,
+     "ballots": 10262,
+     "winner": "Vidya R. Vineet",
+     "loser": "Farnoush Drexel",
+     "votes": {
+      "Eric Cao": 5061,
+      "Anna Goldberg": 4748,
+      "Vidya R. Vineet": 3851,
+      "Farnoush Drexel": 3200,
+      "Catalina Rupert": 2265
+     }
+    },
+    "33": {
+     "name": "West Valley-Mission CCD, Trustee Area 7",
+     "margin": 1779,
+     "pct": 6.684452,
+     "ballots": 26614,
+     "winner": "Susan Oster Fish",
+     "loser": "Doug Robb",
+     "votes": {
+      "Susan Oster Fish": 11492,
+      "Doug Robb": 9713
+     }
+    },
+    "54": {
+     "name": "Berryessa Union SD",
+     "margin": 1711,
+     "pct": 6.790491,
+     "ballots": 25197,
+     "winner": "Shanna Brewer",
+     "loser": "Jamal Khan",
+     "votes": {
+      "Jaria Jaug": 13527,
+      "Thelma B. Boac": 8677,
+      "Shanna Brewer": 8628,
+      "Jamal Khan": 6917
+     }
+    },
+    "63": {
+     "name": "Oak Grove SD, Trustee Area 3",
+     "margin": 503,
+     "pct": 7.678217,
+     "ballots": 6551,
+     "winner": "Sophie Freestone",
+     "loser": "Kaushik C. Joglekar",
+     "votes": {
+      "Sophie Freestone": 3020,
+      "Kaushik C. Joglekar": 2517
+     }
+    },
+    "130": {
+     "name": "Measure O - Alum Rock Union School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+     "margin": 2098,
+     "pct": 7.787965,
+     "ballots": 26939,
+     "passing": true,
+     "votes": {
+      "Yes": 18190,
+      "No": 6997
+     }
+    },
+    "99": {
+     "name": "Cupertino Sanitary District",
+     "margin": 1752,
+     "pct": 7.883724,
+     "ballots": 22223,
+     "winner": "Gilbert Wong",
+     "loser": "Taghi Saadati",
+     "votes": {
+      "Patrick Shupui Kwok": 10854,
+      "Gilbert Wong": 9507,
+      "Taghi Saadati": 7755
+     }
+    },
+    "37": {
+     "name": "Milpitas Unified SD",
+     "margin": 1673,
+     "pct": 8.083297,
+     "ballots": 20697,
+     "winner": "Franchesca Lacanlale",
+     "loser": "Anuradha Sankaran",
+     "votes": {
+      "Chris Norwood": 12486,
+      "Kelly Yip-Chuan": 11651,
+      "Franchesca Lacanlale": 7376,
+      "Anuradha Sankaran": 5703
+     }
+    },
+    "75": {
+     "name": "City of Los Altos Council, D2",
+     "margin": 270,
+     "pct": 8.191748,
+     "ballots": 3296,
+     "winner": "Anky van Deursen",
+     "loser": "Lynette Lee Eng",
+     "votes": {
+      "Anky van Deursen": 1616,
+      "Lynette Lee Eng": 1346
+     }
+    },
+    "39": {
+     "name": "Morgan Hill Unified SD, Trustee Area 2",
+     "margin": 383,
+     "pct": 8.281081,
+     "ballots": 4625,
+     "winner": "Gabriela \"Gabby\" Winter",
+     "loser": "John T. Horner",
+     "votes": {
+      "Gabriela \"Gabby\" Winter": 2174,
+      "John T. Horner": 1791
+     }
+    },
+    "91": {
+     "name": "City of Santa Clara Council, District 3",
+     "margin": 465,
+     "pct": 8.318426,
+     "ballots": 5590,
+     "winner": "Eric Crutchlow",
+     "loser": "Kyle Madej",
+     "votes": {
+      "Eric Crutchlow": 2553,
+      "Kyle Madej": 2088
+     }
+    },
+    "81": {
+     "name": "Mayor, City of Morgan Hill",
+     "margin": 1796,
+     "pct": 9.345405,
+     "ballots": 19218,
+     "winner": "Mark Turner",
+     "loser": "Deborah M. Africa",
+     "votes": {
+      "Mark Turner": 8759,
+      "Deborah M. Africa": 6963,
+      "Kristopher L. Clayton": 2075,
+      "Jacob Montoya": 124
+     }
+    },
+    "42": {
+     "name": "Palo Alto Unified SD",
+     "margin": 3187,
+     "pct": 9.658161,
+     "ballots": 32998,
+     "winner": "Avery Wang",
+     "loser": "John Craig",
+     "votes": {
+      "Linda Henigin": 16833,
+      "Avery Wang": 16022,
+      "John Craig": 12835
+     }
+    },
+    "90": {
+     "name": "City of Santa Clara Council, District 2",
+     "margin": 559,
+     "pct": 9.80014,
+     "ballots": 5704,
+     "winner": "Kimberley Williams",
+     "loser": "Yvonne Inciarte",
+     "votes": {
+      "Kimberley Williams": 2687,
+      "Yvonne Inciarte": 2128
+     }
+    },
+    "31": {
+     "name": "San José-Evergreen CCD, Trustee Area 2",
+     "margin": 2990,
+     "pct": 10.50745,
+     "ballots": 28456,
+     "winner": "Karen Martinez",
+     "loser": "Scott Hung Pham",
+     "votes": {
+      "Karen Martinez": 14091,
+      "Scott Hung Pham": 11101
+     }
+    },
+    "47": {
+     "name": "East Side Union HSD, TA 4",
+     "margin": 3237,
+     "pct": 10.814152,
+     "ballots": 29933,
+     "winner": "Lorena Chavez",
+     "loser": "Tony Lam",
+     "votes": {
+      "Lorena Chavez": 13183,
+      "Tony Lam": 9946,
+      "Mahbub Khan": 2826
+     }
+    },
+    "55": {
+     "name": "Cambrian SD",
+     "margin": 1336,
+     "pct": 10.922171,
+     "ballots": 12232,
+     "winner": "Sergio Martínez",
+     "loser": "Harmony ″Jay″ McMillin",
+     "votes": {
+      "Debora Bodenheimer": 6207,
+      "Carol Presunka": 5682,
+      "Sergio Martínez": 4466,
+      "Harmony ″Jay″ McMillin": 3130
+     }
+    },
+    "72": {
+     "name": "City of Gilroy Council, District 4",
+     "margin": 267,
+     "pct": 12.77512,
+     "ballots": 2090,
+     "winner": "Diana Sanchez Bentz",
+     "loser": "Fred Tovar",
+     "votes": {
+      "Diana Sanchez Bentz": 1111,
+      "Fred Tovar": 844
+     }
+    },
+    "96": {
+     "name": "Santa Clara Valley Water, District 1",
+     "margin": 13189,
+     "pct": 13.005236,
+     "ballots": 101413,
+     "winner": "John L. Varela",
+     "loser": "Jimmy Forbis",
+     "votes": {
+      "John L. Varela": 47588,
+      "Jimmy Forbis": 34399
+     }
+    },
+    "73": {
+     "name": "City of Gilroy Council, District 5",
+     "margin": 427,
+     "pct": 13.174946,
+     "ballots": 3241,
+     "winner": "Christina Tovar",
+     "loser": "Tom Cline",
+     "votes": {
+      "Christina Tovar": 1515,
+      "Tom Cline": 1088,
+      "Joseph Garcia": 478
+     }
+    },
+    "29": {
+     "name": "Foothill-De Anza CCD, Trustee Area 4",
+     "margin": 4133,
+     "pct": 13.468683,
+     "ballots": 30686,
+     "winner": "William \"Bill\" Wilson",
+     "loser": "Liangfang \"Liang\" Chao",
+     "votes": {
+      "William \"Bill\" Wilson": 14982,
+      "Liangfang \"Liang\" Chao": 10849
+     }
+    },
+    "98": {
+     "name": "Santa Clara Valley Water, District 7",
+     "margin": 15196,
+     "pct": 13.627111,
+     "ballots": 111513,
+     "winner": "Pete Dailey",
+     "loser": "Rebecca Eisenberg",
+     "votes": {
+      "Pete Dailey": 51494,
+      "Rebecca Eisenberg": 36298
+     }
+    },
+    "83": {
+     "name": "City of Morgan Hill Council, District D",
+     "margin": 787,
+     "pct": 14.28053,
+     "ballots": 5511,
+     "winner": "Dolores Alvarado",
+     "loser": "Marilyn Librers",
+     "votes": {
+      "Dolores Alvarado": 2730,
+      "Marilyn Librers": 1943
+     }
+    },
+    "57": {
+     "name": "Campbell Union SD, TA 5",
+     "margin": 1223,
+     "pct": 14.531844,
+     "ballots": 8416,
+     "winner": "Vartika Chandra",
+     "loser": "Sam Krow-Lucal",
+     "votes": {
+      "Vartika Chandra": 4078,
+      "Sam Krow-Lucal": 2855
+     }
+    },
+    "40": {
+     "name": "Morgan Hill Unified SD, Trustee Area 3",
+     "margin": 558,
+     "pct": 14.820717,
+     "ballots": 3765,
+     "winner": "Art Cohen",
+     "loser": "Sarah Northrup Gadus",
+     "votes": {
+      "Art Cohen": 1503,
+      "Sarah Northrup Gadus": 945,
+      "Cesar Gamboa": 718
+     }
+    },
+    "28": {
+     "name": "Santa Clara County BOE, Trustee Area 7",
+     "margin": 14678,
+     "pct": 14.901372,
+     "ballots": 98501,
+     "winner": "Raeena S. Lari",
+     "loser": "Karla Dominguez Vega",
+     "votes": {
+      "Raeena S. Lari": 47716,
+      "Karla Dominguez Vega": 33038
+     }
+    },
+    "68": {
+     "name": "City of Campbell Council, District 3",
+     "margin": 512,
+     "pct": 15.019067,
+     "ballots": 3409,
+     "winner": "Dan Furtado",
+     "loser": "Joseph \"Joe\" Brenner",
+     "votes": {
+      "Dan Furtado": 1777,
+      "Joseph \"Joe\" Brenner": 1265
+     }
+    },
+    "58": {
+     "name": "Evergreen SD",
+     "margin": 5264,
+     "pct": 15.056347,
+     "ballots": 34962,
+     "winner": "Johnny Ray Reyna",
+     "loser": "Corinna Diener",
+     "votes": {
+      "Monte Wright": 16782,
+      "Mary Hiền Pollett": 13087,
+      "Johnny Ray Reyna": 12686,
+      "Corinna Diener": 7422,
+      "Thong Quang La": 6037,
+      "Magaly Fernández": 5841
+     }
+    },
+    "85": {
+     "name": "City of Palo Alto Council",
+     "margin": 4511,
+     "pct": 15.530003,
+     "ballots": 29047,
+     "winner": "Ed Lauing",
+     "loser": "Yu \"Yudy\" Deng",
+     "votes": {
+      "Bryna Chang": 15134,
+      "Vicki Veenker": 14050,
+      "Ed Lauing": 13772,
+      "Yu \"Yudy\" Deng": 9261,
+      "Brian Hamachek": 4401,
+      "Raymond L. Goins": 3906,
+      "Gary Gechlik": 2275,
+      "Henry Etzkowitz": 1643
+     }
+    },
+    "44": {
+     "name": "San José Unified SD, Trustee Area 4",
+     "margin": 3067,
+     "pct": 15.79381,
+     "ballots": 19419,
+     "winner": "Mary J. Grunthaner",
+     "loser": "Michael Melillo",
+     "votes": {
+      "Mary J. Grunthaner": 9843,
+      "Michael Melillo": 6776
+     }
+    },
+    "62": {
+     "name": "Oak Grove SD, Trustee Area 2",
+     "margin": 1023,
+     "pct": 16.5,
+     "ballots": 6200,
+     "winner": "Diego Martinez",
+     "loser": "Victor A. Ramirez",
+     "votes": {
+      "Diego Martinez": 3102,
+      "Victor A. Ramirez": 2079
+     }
+    },
+    "77": {
+     "name": "Town of Los Altos Hills Council",
+     "margin": 727,
+     "pct": 16.678137,
+     "ballots": 4359,
+     "winner": "Jasmeen Pombra",
+     "loser": "Indu Kadambi",
+     "votes": {
+      "Jim Waschura": 2473,
+      "Jasmeen Pombra": 2208,
+      "Indu Kadambi": 1481
+     }
+    },
+    "56": {
+     "name": "Campbell Union SD, TA 4",
+     "margin": 1029,
+     "pct": 17.311575,
+     "ballots": 5944,
+     "winner": "Chris Miller",
+     "loser": "Mohit Vora",
+     "votes": {
+      "Chris Miller": 3017,
+      "Mohit Vora": 1988
+     }
+    },
+    "74": {
+     "name": "City of Gilroy Council, District 6",
+     "margin": 404,
+     "pct": 17.428818,
+     "ballots": 2318,
+     "winner": "Rebeca G. Armendáriz",
+     "loser": "Elizabeth Bracco",
+     "votes": {
+      "Rebeca G. Armendáriz": 1112,
+      "Elizabeth Bracco": 708,
+      "Brad Starks": 352
+     }
+    },
+    "92": {
+     "name": "City of Saratoga Council",
+     "margin": 2719,
+     "pct": 18.062845,
+     "ballots": 15053,
+     "winner": "Bill Dalton",
+     "loser": "Glenn K. Hendricks",
+     "votes": {
+      "Ping Li": 8868,
+      "Jeri Bromley": 7838,
+      "Bill Dalton": 7044,
+      "Glenn K. Hendricks": 4325
+     }
+    },
+    "119": {
+     "name": "Measure D - City of Los Altos, Citizen-Sponsored Initiative, Los Altos Downtown Parking Plaza Ordinance - Majority Vote Required",
+     "margin": 2975,
+     "pct": 18.647361,
+     "ballots": 15954,
+     "passing": false,
+     "votes": {
+      "Yes": 6068,
+      "No": 9043
+     }
+    },
+    "87": {
+     "name": "City of San José Council, District 7",
+     "margin": 4493,
+     "pct": 19.255989,
+     "ballots": 23333,
+     "winner": "Bien Doan",
+     "loser": "Van Le",
+     "votes": {
+      "Bien Doan": 12508,
+      "Van Le": 8015
+     }
+    },
+    "124": {
+     "name": "Measure I - City of Sunnyvale, Charter Amendment, Elections to Fill Council Vacancies - Majority Vote Required",
+     "margin": 9444,
+     "pct": 21.278897,
+     "ballots": 44382,
+     "passing": true,
+     "votes": {
+      "Yes": 23989,
+      "No": 14545
+     }
+    },
+    "82": {
+     "name": "City of Morgan Hill Council, District B",
+     "margin": 1205,
+     "pct": 23.645997,
+     "ballots": 5096,
+     "winner": "Steven Hayes",
+     "loser": "Yvonne Martinez Beltran",
+     "votes": {
+      "Steven Hayes": 2904,
+      "Yvonne Martinez Beltran": 1699
+     }
+    },
+    "51": {
+     "name": "Mountain View-Los Altos Union HSD, TA 3",
+     "margin": 2145,
+     "pct": 24.944761,
+     "ballots": 8599,
+     "winner": "Thida Cornes",
+     "loser": "Sanjay Dave",
+     "votes": {
+      "Thida Cornes": 3916,
+      "Sanjay Dave": 1771,
+      "Catherine Vonnegut": 1201
+     }
+    },
+    "100": {
+     "name": "Midpeninsula Regional Open Space District, Ward 1",
+     "margin": 12796,
+     "pct": 27.037992,
+     "ballots": 47326,
+     "winner": "Craig Gleason",
+     "loser": "Tina Marie To",
+     "votes": {
+      "Craig Gleason": 23976,
+      "Tina Marie To": 11180
+     }
+    },
+    "41": {
+     "name": "Morgan Hill Unified SD, Trustee Area 4",
+     "margin": 1183,
+     "pct": 28.139867,
+     "ballots": 4204,
+     "winner": "Glen R. Webb",
+     "loser": "Claudia Ortiz",
+     "votes": {
+      "Glen R. Webb": 2388,
+      "Claudia Ortiz": 1205
+     }
+    },
+    "53": {
+     "name": "Alum Rock Union SD, TA 5",
+     "margin": 2003,
+     "pct": 29.828742,
+     "ballots": 6715,
+     "winner": "Jenny Ludwig",
+     "loser": "Línda Lo Chávez",
+     "votes": {
+      "Jenny Ludwig": 3454,
+      "Línda Lo Chávez": 1451,
+      "Manisha Kand": 903
+     }
+    },
+    "117": {
+     "name": "Measure B - City of Gilroy, Transient Occupancy Tax - Majority Vote Required",
+     "margin": 5999,
+     "pct": 30.310226,
+     "ballots": 19792,
+     "passing": true,
+     "votes": {
+      "Yes": 12519,
+      "No": 6520
+     }
+    },
+    "64": {
+     "name": "Oak Grove SD, Trustee Area 5",
+     "margin": 2125,
+     "pct": 30.628423,
+     "ballots": 6938,
+     "winner": "Paul Chun",
+     "loser": "Casino Fajardo",
+     "votes": {
+      "Paul Chun": 3429,
+      "Casino Fajardo": 1304,
+      "Pradeep Kumar": 885
+     }
+    },
+    "131": {
+     "name": "Measure P - Alum Rock Union School District, School Bond - 55% Vote Required",
+     "margin": 8401,
+     "pct": 31.18527,
+     "ballots": 26939,
+     "passing": true,
+     "votes": {
+      "Yes": 18316,
+      "No": 6585
+     }
+    },
+    "69": {
+     "name": "City of Campbell Council, District 4",
+     "margin": 1060,
+     "pct": 31.689088,
+     "ballots": 3345,
+     "winner": "Davis Stuart Fields",
+     "loser": "Joseph I. Guardado",
+     "votes": {
+      "Davis Stuart Fields": 1933,
+      "Joseph I. Guardado": 873
+     }
+    },
+    "30": {
+     "name": "Gavilan Joint CCD, Trustee Area 3",
+     "margin": 4512,
+     "pct": 33.823088,
+     "ballots": 13340,
+     "winner": "Gabriel Gutierrez",
+     "loser": "Shahida S. Merchant",
+     "votes": {
+      "Gabriel Gutierrez": 7653,
+      "Shahida S. Merchant": 3141
+     }
+    },
+    "49": {
+     "name": "Fremont Union HSD, TA 4",
+     "margin": 5073,
+     "pct": 36.934838,
+     "ballots": 13735,
+     "winner": "Naomi Nakano-Matsumoto",
+     "loser": "Ilanit Eliaz",
+     "votes": {
+      "Naomi Nakano-Matsumoto": 8114,
+      "Ilanit Eliaz": 3041
+     }
+    },
+    "123": {
+     "name": "Measure H - City of Sunnyvale, City Manager Settlement Authority - Majority Vote Required",
+     "margin": 16548,
+     "pct": 37.285386,
+     "ballots": 44382,
+     "passing": true,
+     "votes": {
+      "Yes": 27936,
+      "No": 11388
+     }
+    },
+    "120": {
+     "name": "Measure E - City of Mountain View, Charter Amendment, Modernize and Clarify Its Provisions - Majority Vote Required",
+     "margin": 10927,
+     "pct": 39.318484,
+     "ballots": 27791,
+     "passing": true,
+     "votes": {
+      "Yes": 18273,
+      "No": 7346
+     }
+    },
+    "36": {
+     "name": "Gilroy Unified SD, Trustee Area 4",
+     "margin": 1118,
+     "pct": 40.317346,
+     "ballots": 2773,
+     "winner": "Jane Stevens",
+     "loser": "Trevor Scott Van Laar",
+     "votes": {
+      "Jane Stevens": 1815,
+      "Trevor Scott Van Laar": 697
+     }
+    },
+    "126": {
+     "name": "Measure K - City of Milpitas, Business Tax Modernization - Majority Vote Required",
+     "margin": 9141,
+     "pct": 44.012711,
+     "ballots": 20769,
+     "passing": true,
+     "votes": {
+      "Yes": 14294,
+      "No": 5153
+     }
+    },
+    "118": {
+     "name": "Measure C - City of Santa Clara, Public Works Charter Amendment - Majority Vote Required",
+     "margin": 16033,
+     "pct": 44.802437,
+     "ballots": 35786,
+     "passing": true,
+     "votes": {
+      "Yes": 24022,
+      "No": 7989
+     }
+    },
+    "32": {
+     "name": "West Valley-Mission CCD, Trustee Area 3",
+     "margin": 9016,
+     "pct": 46.110571,
+     "ballots": 19553,
+     "winner": "Anne J. Kepner",
+     "loser": "Colin Lee Elliott Glaves",
+     "votes": {
+      "Anne J. Kepner": 12662,
+      "Colin Lee Elliott Glaves": 3646
+     }
+    },
+    "122": {
+     "name": "Measure G - City of Sunnyvale, Charter Amendment, Public Works Contracts - Majority Vote Required",
+     "margin": 22122,
+     "pct": 49.844532,
+     "ballots": 44382,
+     "passing": true,
+     "votes": {
+      "Yes": 31265,
+      "No": 9143
+     }
+    },
+    "121": {
+     "name": "Measure F - City of Mountain View, Transient Occupancy Tax - Majority Vote Required",
+     "margin": 15283,
+     "pct": 54.992624,
+     "ballots": 27791,
+     "passing": true,
+     "votes": {
+      "Yes": 20625,
+      "No": 5342
+     }
+    },
+    "127": {
+     "name": "Measure L - City of Cupertino, General Plan Amendment - Majority Vote Required",
+     "margin": 14994,
+     "pct": 72.298568,
+     "ballots": 20739,
+     "passing": true,
+     "votes": {
+      "Yes": 17358,
+      "No": 2364
+     }
+    },
+    "134": {
+     "name": "Measure S - El Camino Healthcare District, Limit Number of Terms for Directors - Majority Vote Required",
+     "margin": 57887,
+     "pct": 74.110538,
+     "ballots": 78109,
+     "passing": true,
+     "votes": {
+      "Yes": 63652,
+      "No": 5765
+     }
+    }
+   }
   }
  ]
 }
