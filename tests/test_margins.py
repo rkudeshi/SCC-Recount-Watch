@@ -2,7 +2,7 @@ import os, sys, unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import update
 
-T = {"recount_votes": 25, "recount_pct": 0.25, "very_close_votes": 100, "very_close_pct": 0.5, "watch_votes": 200, "watch_pct": 1.5}
+T = {"recount_votes": 25, "recount_pct": 0.25, "very_close_votes": 100, "very_close_pct": 0.75, "watch_votes": 200, "watch_pct": 1.5}
 
 XML = b"""<ElectionResult><Timestamp>11/10/2026 5:06:37 PM PST</Timestamp><ElectionName>Test</ElectionName>
 <Contest key="1" text="City Council" voteFor="2" isQuestion="false">
@@ -60,8 +60,6 @@ class Margins(unittest.TestCase):
 
 
 class Groups(unittest.TestCase):
-    T6 = {**T, "watch_ratio": 6}
-
     def pts(self, margins, ballots=10000):
         return [{"margin": m, "line": update.line_votes(ballots, T), "ratio": m / update.line_votes(ballots, T),
                  "in": m < update.line_votes(ballots, T), "pct": 100 * m / ballots} for m in margins]
@@ -72,15 +70,18 @@ class Groups(unittest.TestCase):
         self.assertEqual(update.line_votes(20000, T), 50)   # exactly 0.25% is not a recount
 
     def test_groups(self):
-        g = lambda ms, b=10000: update.group_for(self.pts(ms, b), self.T6)
+        g = lambda ms, b=10000: update.group_for(self.pts(ms, b), T)
         self.assertEqual(g([300, 100, 20]), 1)
-        self.assertEqual(g([300, 20, 100]), 2)
-        self.assertEqual(g([400, 300, 200, 100]), 3)
-        self.assertEqual(g([278, 276, 262, 251], 50000), 4)  # shrinking, but only 10%
-        self.assertEqual(g([160, 166, 132]), 4)        # one drop isn't a trend
-        self.assertEqual(g([100, 120, 140]), 4)
-        self.assertEqual(g([100, 120, 400]), 0)
-        self.assertEqual(g([300, 300, 300], 20000), 4)  # 1.5% counts as close
+        self.assertEqual(g([20, 100]), 2)                  # within 100 votes
+        self.assertEqual(g([300, 300, 150], 30000), 2)     # 0.5%: within 0.75%
+        self.assertEqual(g([300, 300, 150]), 2)            # 150 away is within one 150-vote swing
+        self.assertEqual(g([150, 155, 150]), 3)            # within 200, steady
+        self.assertEqual(g([300, 290, 300], 20000), 3)     # 1.5%, steady
+        self.assertEqual(g([1000, 800, 600], 60000), 2)    # narrowing, within 3 swings
+        self.assertEqual(g([271, 374, 488], 28000), 0)     # moving away (Mountain View)
+        self.assertEqual(g([20, 400, 410, 415, 420, 425, 430], 20000), 0)  # was in range, now far and steady
+        self.assertEqual(g([150]), 3)                      # election night: tiers only
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -18,7 +18,7 @@ Live site: https://rkudeshi.github.io/SCC-Recount-Watch/
 - Official percentage = margin ÷ ballots cast. The results-site percentage = margin ÷ candidate votes.
 - Ballot measures: margin = extra votes needed to flip the outcome against its threshold (majority, 55% or two-thirds). For a majority measure this equals Yes minus No.
 - Recount line for each contest: under 25 votes or under 0.25% of ballots cast, whichever is larger.
-- Groups, from the day-by-day history: in recount range now; was in range at an earlier update but is out now; getting closer (margin in votes fell at each of the last two updates and is down at least 25% from three updates ago); close (within `watch_ratio`, default 6, times the recount line, or under `close_pct`, default 2%, of ballots cast). Every other contest gets a card under "Not close". Percentages near the 0.25% line show four decimals.
+- Groups: in recount range now; close or getting closer (within 100 votes or 0.75% of ballots cast, or one "swing" from the recount line, or down at each of the last two updates and within 3 swings, where swing is the biggest margin change over the last 5 updates, at least 25 votes); somewhat close (within 200 votes or 1.5%). Every other contest is under "Not close". Thresholds are in `config.json` under `tiers`. Percentages near the 0.25% line show four decimals.
 - Each contest card has a sparkline of the margin in votes after each day's update, with the recount line dashed, and a sentence noting when it entered or left recount range and any lead changes.
 
 ## History

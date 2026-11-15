@@ -97,7 +97,7 @@
    "margin": 148,
    "pct": 0.6079526782780151,
    "site_pct": 0.6762622801005255,
-   "tier": 3,
+   "tier": 2,
    "last_winner": "Mer Curry Nuñez",
    "first_loser": "Paul Pham",
    "key": "46",
@@ -173,6 +173,168 @@
    "precincts_total": "14",
    "line": 53,
    "ratio": 3.056603773584906,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 2
+  },
+  {
+   "type": "candidate",
+   "name": "Alum Rock Union SD, TA 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Andrés Quintero",
+     "votes": 2560,
+     "winner": true,
+     "pct_ballots": 45.4222853087296,
+     "pct_votes": 50.82390311693468
+    },
+    {
+     "name": "Delia Oseguera",
+     "votes": 2477,
+     "winner": false,
+     "pct_ballots": 43.94960965223563,
+     "pct_votes": 49.17609688306532
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5037,
+   "undervotes": 593,
+   "overvotes": 6,
+   "ballots_cast": 5636,
+   "margin": 83,
+   "pct": 1.4726756564939674,
+   "site_pct": 1.6478062338693666,
+   "tier": 2,
+   "last_winner": "Andrés Quintero",
+   "first_loser": "Delia Oseguera",
+   "key": "52",
+   "precincts_reporting": "9",
+   "precincts_total": "9",
+   "line": 25,
+   "ratio": 3.32,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 2
+  },
+  {
+   "type": "measure",
+   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.606731541826626,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 12233,
+     "winner": false,
+     "pct_ballots": 52.224214480874316,
+     "pct_votes": 54.606731541826626
+    },
+    {
+     "name": "No",
+     "votes": 10169,
+     "winner": true,
+     "pct_ballots": 43.41273907103825,
+     "pct_votes": 45.393268458173374
+    }
+   ],
+   "candidate_votes": 22402,
+   "undervotes": 1022,
+   "overvotes": 0,
+   "ballots_cast": 23424,
+   "margin": 196,
+   "pct": 0.8367486338797814,
+   "site_pct": -0.39326845817338096,
+   "tier": 3,
+   "key": "128",
+   "precincts_reporting": "26",
+   "precincts_total": "26",
+   "line": 59,
+   "ratio": 3.3220338983050848,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 2
+  },
+  {
+   "type": "candidate",
+   "name": "Orchard SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Katherine Kasolas-Jacobson",
+     "votes": 1417,
+     "winner": true,
+     "pct_ballots": 37.12339533665182,
+     "pct_votes": 23.21048321048321
+    },
+    {
+     "name": "Jeff Tang",
+     "votes": 1338,
+     "winner": true,
+     "pct_ballots": 35.05370709981661,
+     "pct_votes": 21.916461916461916
+    },
+    {
+     "name": "Renee Lo",
+     "votes": 1217,
+     "winner": true,
+     "pct_ballots": 31.883678281372806,
+     "pct_votes": 19.934479934479935
+    },
+    {
+     "name": "Lyseria Evelyn Phillips",
+     "votes": 1124,
+     "winner": false,
+     "pct_ballots": 29.447209850668063,
+     "pct_votes": 18.41113841113841
+    },
+    {
+     "name": "Molly Eslao",
+     "votes": 989,
+     "winner": false,
+     "pct_ballots": 25.91040083835473,
+     "pct_votes": 16.1998361998362
+    },
+    {
+     "name": "Hina Patel",
+     "votes": 10,
+     "winner": false,
+     "pct_ballots": 0.26198585276395076,
+     "pct_votes": 0.1638001638001638
+    },
+    {
+     "name": "Write-in",
+     "votes": 10,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.26198585276395076,
+     "pct_votes": 0.1638001638001638
+    }
+   ],
+   "candidate_votes": 6105,
+   "undervotes": 5338,
+   "overvotes": 9,
+   "ballots_cast": 3817,
+   "margin": 93,
+   "pct": 2.4364684307047417,
+   "site_pct": 1.5233415233415233,
+   "tier": 2,
+   "last_winner": "Renee Lo",
+   "first_loser": "Lyseria Evelyn Phillips",
+   "key": "65",
+   "precincts_reporting": "7",
+   "precincts_total": "7",
+   "line": 25,
+   "ratio": 3.72,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 2
@@ -269,7 +431,357 @@
    "ratio": 4.56,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 2
+   "group": 3
+  },
+  {
+   "type": "candidate",
+   "name": "Franklin-McKinley SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Rudy J. Rodriguez",
+     "votes": 9171,
+     "winner": true,
+     "pct_ballots": 40.91821710614376,
+     "pct_votes": 25.360174764261814
+    },
+    {
+     "name": "Marc Cooper",
+     "votes": 9132,
+     "winner": true,
+     "pct_ballots": 40.74421094900281,
+     "pct_votes": 25.25232972928131
+    },
+    {
+     "name": "Steven Sanchez",
+     "votes": 9061,
+     "winner": true,
+     "pct_ballots": 40.42743050907955,
+     "pct_votes": 25.055996460470645
+    },
+    {
+     "name": "Gilbert Borrayo",
+     "votes": 8799,
+     "winner": false,
+     "pct_ballots": 39.25846606879936,
+     "pct_votes": 24.331499045986227
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 36163,
+   "undervotes": 31037,
+   "overvotes": 39,
+   "ballots_cast": 22413,
+   "margin": 262,
+   "pct": 1.1689644402801946,
+   "site_pct": 0.7244974144844177,
+   "tier": 3,
+   "last_winner": "Steven Sanchez",
+   "first_loser": "Gilbert Borrayo",
+   "key": "59",
+   "precincts_reporting": "21",
+   "precincts_total": "21",
+   "line": 57,
+   "ratio": 4.5964912280701755,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "measure",
+   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": false,
+   "yes_share": 65.56671449067431,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 2285,
+     "winner": false,
+     "pct_ballots": 59.98949855605146,
+     "pct_votes": 65.56671449067431
+    },
+    {
+     "name": "No",
+     "votes": 1200,
+     "winner": true,
+     "pct_ballots": 31.504331845628773,
+     "pct_votes": 34.43328550932568
+    }
+   ],
+   "candidate_votes": 3485,
+   "undervotes": 324,
+   "overvotes": 0,
+   "ballots_cast": 3809,
+   "margin": 115,
+   "pct": 3.019165135206091,
+   "site_pct": -1.0999521759923425,
+   "tier": 3,
+   "key": "133",
+   "precincts_reporting": "7",
+   "precincts_total": "7",
+   "line": 25,
+   "ratio": 4.6,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "measure",
+   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.40251572327044,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 13148,
+     "winner": false,
+     "pct_ballots": 51.325291798415115,
+     "pct_votes": 54.40251572327044
+    },
+    {
+     "name": "No",
+     "votes": 11020,
+     "winner": true,
+     "pct_ballots": 43.01830815474099,
+     "pct_votes": 45.59748427672956
+    }
+   ],
+   "candidate_votes": 24168,
+   "undervotes": 1446,
+   "overvotes": 3,
+   "ballots_cast": 25617,
+   "margin": 321,
+   "pct": 1.2530741304602413,
+   "site_pct": -0.5974842767295669,
+   "tier": 3,
+   "key": "129",
+   "precincts_reporting": "42",
+   "precincts_total": "42",
+   "line": 65,
+   "ratio": 4.938461538461539,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "candidate",
+   "name": "Los Gatos-Saratoga Union HSD, TA 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Sangeeta Balachandran Mallik",
+     "votes": 2178,
+     "winner": true,
+     "pct_ballots": 39.15857605177994,
+     "pct_votes": 51.611374407582936
+    },
+    {
+     "name": "Ishaan Prasad",
+     "votes": 2042,
+     "winner": false,
+     "pct_ballots": 36.71341244156778,
+     "pct_votes": 48.388625592417064
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4220,
+   "undervotes": 1340,
+   "overvotes": 2,
+   "ballots_cast": 5562,
+   "margin": 136,
+   "pct": 2.445163610212154,
+   "site_pct": 3.2227488151658767,
+   "tier": 3,
+   "last_winner": "Sangeeta Balachandran Mallik",
+   "first_loser": "Ishaan Prasad",
+   "key": "50",
+   "precincts_reporting": "18",
+   "precincts_total": "18",
+   "line": 25,
+   "ratio": 5.44,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "candidate",
+   "name": "Morgan Hill Unified SD, Trustee Area 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Nancy Altman-Palm",
+     "votes": 2135,
+     "winner": true,
+     "pct_ballots": 43.253646677471636,
+     "pct_votes": 51.782682512733444
+    },
+    {
+     "name": "Jason Amezcua",
+     "votes": 1988,
+     "winner": false,
+     "pct_ballots": 40.27552674230146,
+     "pct_votes": 48.217317487266556
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4123,
+   "undervotes": 810,
+   "overvotes": 3,
+   "ballots_cast": 4936,
+   "margin": 147,
+   "pct": 2.978119935170178,
+   "site_pct": 3.565365025466893,
+   "tier": 3,
+   "last_winner": "Nancy Altman-Palm",
+   "first_loser": "Jason Amezcua",
+   "key": "38",
+   "precincts_reporting": "8",
+   "precincts_total": "8",
+   "line": 25,
+   "ratio": 5.88,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "candidate",
+   "name": "Mayor, City of Santa Clara",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Karen Hardy",
+     "votes": 7491,
+     "winner": true,
+     "pct_ballots": 20.61705289811196,
+     "pct_votes": 22.82936640965471
+    },
+    {
+     "name": "Kathy Watanabe",
+     "votes": 6893,
+     "winner": false,
+     "pct_ballots": 18.971211537402983,
+     "pct_votes": 21.00691798982111
+    },
+    {
+     "name": "David Kertes",
+     "votes": 6415,
+     "winner": false,
+     "pct_ballots": 17.655639346067044,
+     "pct_votes": 19.550178282997592
+    },
+    {
+     "name": "Kevin Park",
+     "votes": 6165,
+     "winner": false,
+     "pct_ballots": 16.96757857653988,
+     "pct_votes": 18.788285130893243
+    },
+    {
+     "name": "Armando \"Gary\" Ferraris",
+     "votes": 3559,
+     "winner": false,
+     "pct_ballots": 9.795233114988715,
+     "pct_votes": 10.846310913357511
+    },
+    {
+     "name": "Mike Wiltberger",
+     "votes": 2290,
+     "winner": false,
+     "pct_ballots": 6.302636648868828,
+     "pct_votes": 6.978941273275836
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 32813,
+   "undervotes": 3456,
+   "overvotes": 65,
+   "ballots_cast": 36334,
+   "margin": 598,
+   "pct": 1.645841360708978,
+   "site_pct": 1.8224484198336026,
+   "tier": 0,
+   "last_winner": "Karen Hardy",
+   "first_loser": "Kathy Watanabe",
+   "key": "89",
+   "precincts_reporting": "37",
+   "precincts_total": "37",
+   "line": 91,
+   "ratio": 6.571428571428571,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
+  },
+  {
+   "type": "measure",
+   "name": "Measure Q - Cambrian School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": true,
+   "yes_share": 67.84849533033552,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 7846,
+     "winner": true,
+     "pct_ballots": 63.63341443633414,
+     "pct_votes": 67.84849533033552
+    },
+    {
+     "name": "No",
+     "votes": 3718,
+     "winner": false,
+     "pct_ballots": 30.154095701540957,
+     "pct_votes": 32.151504669664476
+    }
+   ],
+   "candidate_votes": 11564,
+   "undervotes": 765,
+   "overvotes": 1,
+   "ballots_cast": 12330,
+   "margin": 205,
+   "pct": 1.662611516626115,
+   "site_pct": 1.1818286636688669,
+   "tier": 0,
+   "key": "132",
+   "precincts_reporting": "13",
+   "precincts_total": "13",
+   "line": 31,
+   "ratio": 6.612903225806452,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
   },
   {
    "type": "candidate",
@@ -358,580 +870,7 @@
    "ratio": 7.408450704225352,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 2
-  },
-  {
-   "type": "candidate",
-   "name": "Los Altos SD",
-   "vote_for": 3,
-   "rows": [
-    {
-     "name": "Bryan Harvey Johnson",
-     "votes": 11067,
-     "winner": true,
-     "pct_ballots": 52.22993062438057,
-     "pct_votes": 27.84080903625066
-    },
-    {
-     "name": "Vaishali \"Shali\" Sirkay",
-     "votes": 10420,
-     "winner": true,
-     "pct_ballots": 49.17645948369437,
-     "pct_votes": 26.21317702699303
-    },
-    {
-     "name": "David Poll",
-     "votes": 9365,
-     "winner": true,
-     "pct_ballots": 44.197460946717634,
-     "pct_votes": 23.55915574450957
-    },
-    {
-     "name": "Brandon Stroy",
-     "votes": 8899,
-     "winner": false,
-     "pct_ballots": 41.99820661664071,
-     "pct_votes": 22.386858192246734
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 39751,
-   "undervotes": 23786,
-   "overvotes": 30,
-   "ballots_cast": 21189,
-   "margin": 466,
-   "pct": 2.1992543300769265,
-   "site_pct": 1.172297552262836,
-   "tier": 0,
-   "last_winner": "David Poll",
-   "first_loser": "Brandon Stroy",
-   "key": "60",
-   "precincts_reporting": "20",
-   "precincts_total": "20",
-   "line": 53,
-   "ratio": 8.79245283018868,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 2
-  },
-  {
-   "type": "measure",
-   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
-   "threshold": 0.55,
-   "threshold_label": "55%",
-   "passing": false,
-   "yes_share": 54.606731541826626,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 12233,
-     "winner": false,
-     "pct_ballots": 52.224214480874316,
-     "pct_votes": 54.606731541826626
-    },
-    {
-     "name": "No",
-     "votes": 10169,
-     "winner": true,
-     "pct_ballots": 43.41273907103825,
-     "pct_votes": 45.393268458173374
-    }
-   ],
-   "candidate_votes": 22402,
-   "undervotes": 1022,
-   "overvotes": 0,
-   "ballots_cast": 23424,
-   "margin": 196,
-   "pct": 0.8367486338797814,
-   "site_pct": -0.39326845817338096,
-   "tier": 3,
-   "key": "128",
-   "precincts_reporting": "26",
-   "precincts_total": "26",
-   "line": 59,
-   "ratio": 3.3220338983050848,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 3
-  },
-  {
-   "type": "candidate",
-   "name": "Alum Rock Union SD, TA 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Andrés Quintero",
-     "votes": 2560,
-     "winner": true,
-     "pct_ballots": 45.4222853087296,
-     "pct_votes": 50.82390311693468
-    },
-    {
-     "name": "Delia Oseguera",
-     "votes": 2477,
-     "winner": false,
-     "pct_ballots": 43.94960965223563,
-     "pct_votes": 49.17609688306532
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 5037,
-   "undervotes": 593,
-   "overvotes": 6,
-   "ballots_cast": 5636,
-   "margin": 83,
-   "pct": 1.4726756564939674,
-   "site_pct": 1.6478062338693666,
-   "tier": 2,
-   "last_winner": "Andrés Quintero",
-   "first_loser": "Delia Oseguera",
-   "key": "52",
-   "precincts_reporting": "9",
-   "precincts_total": "9",
-   "line": 25,
-   "ratio": 3.32,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "candidate",
-   "name": "Orchard SD",
-   "vote_for": 3,
-   "rows": [
-    {
-     "name": "Katherine Kasolas-Jacobson",
-     "votes": 1417,
-     "winner": true,
-     "pct_ballots": 37.12339533665182,
-     "pct_votes": 23.21048321048321
-    },
-    {
-     "name": "Jeff Tang",
-     "votes": 1338,
-     "winner": true,
-     "pct_ballots": 35.05370709981661,
-     "pct_votes": 21.916461916461916
-    },
-    {
-     "name": "Renee Lo",
-     "votes": 1217,
-     "winner": true,
-     "pct_ballots": 31.883678281372806,
-     "pct_votes": 19.934479934479935
-    },
-    {
-     "name": "Lyseria Evelyn Phillips",
-     "votes": 1124,
-     "winner": false,
-     "pct_ballots": 29.447209850668063,
-     "pct_votes": 18.41113841113841
-    },
-    {
-     "name": "Molly Eslao",
-     "votes": 989,
-     "winner": false,
-     "pct_ballots": 25.91040083835473,
-     "pct_votes": 16.1998361998362
-    },
-    {
-     "name": "Hina Patel",
-     "votes": 10,
-     "winner": false,
-     "pct_ballots": 0.26198585276395076,
-     "pct_votes": 0.1638001638001638
-    },
-    {
-     "name": "Write-in",
-     "votes": 10,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.26198585276395076,
-     "pct_votes": 0.1638001638001638
-    }
-   ],
-   "candidate_votes": 6105,
-   "undervotes": 5338,
-   "overvotes": 9,
-   "ballots_cast": 3817,
-   "margin": 93,
-   "pct": 2.4364684307047417,
-   "site_pct": 1.5233415233415233,
-   "tier": 2,
-   "last_winner": "Renee Lo",
-   "first_loser": "Lyseria Evelyn Phillips",
-   "key": "65",
-   "precincts_reporting": "7",
-   "precincts_total": "7",
-   "line": 25,
-   "ratio": 3.72,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "candidate",
-   "name": "Franklin-McKinley SD",
-   "vote_for": 3,
-   "rows": [
-    {
-     "name": "Rudy J. Rodriguez",
-     "votes": 9171,
-     "winner": true,
-     "pct_ballots": 40.91821710614376,
-     "pct_votes": 25.360174764261814
-    },
-    {
-     "name": "Marc Cooper",
-     "votes": 9132,
-     "winner": true,
-     "pct_ballots": 40.74421094900281,
-     "pct_votes": 25.25232972928131
-    },
-    {
-     "name": "Steven Sanchez",
-     "votes": 9061,
-     "winner": true,
-     "pct_ballots": 40.42743050907955,
-     "pct_votes": 25.055996460470645
-    },
-    {
-     "name": "Gilbert Borrayo",
-     "votes": 8799,
-     "winner": false,
-     "pct_ballots": 39.25846606879936,
-     "pct_votes": 24.331499045986227
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 36163,
-   "undervotes": 31037,
-   "overvotes": 39,
-   "ballots_cast": 22413,
-   "margin": 262,
-   "pct": 1.1689644402801946,
-   "site_pct": 0.7244974144844177,
-   "tier": 3,
-   "last_winner": "Steven Sanchez",
-   "first_loser": "Gilbert Borrayo",
-   "key": "59",
-   "precincts_reporting": "21",
-   "precincts_total": "21",
-   "line": 57,
-   "ratio": 4.5964912280701755,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "measure",
-   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
-   "threshold": 0.6666666666666666,
-   "threshold_label": "two-thirds",
-   "passing": false,
-   "yes_share": 65.56671449067431,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 2285,
-     "winner": false,
-     "pct_ballots": 59.98949855605146,
-     "pct_votes": 65.56671449067431
-    },
-    {
-     "name": "No",
-     "votes": 1200,
-     "winner": true,
-     "pct_ballots": 31.504331845628773,
-     "pct_votes": 34.43328550932568
-    }
-   ],
-   "candidate_votes": 3485,
-   "undervotes": 324,
-   "overvotes": 0,
-   "ballots_cast": 3809,
-   "margin": 115,
-   "pct": 3.019165135206091,
-   "site_pct": -1.0999521759923425,
-   "tier": 3,
-   "key": "133",
-   "precincts_reporting": "7",
-   "precincts_total": "7",
-   "line": 25,
-   "ratio": 4.6,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "measure",
-   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
-   "threshold": 0.55,
-   "threshold_label": "55%",
-   "passing": false,
-   "yes_share": 54.40251572327044,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 13148,
-     "winner": false,
-     "pct_ballots": 51.325291798415115,
-     "pct_votes": 54.40251572327044
-    },
-    {
-     "name": "No",
-     "votes": 11020,
-     "winner": true,
-     "pct_ballots": 43.01830815474099,
-     "pct_votes": 45.59748427672956
-    }
-   ],
-   "candidate_votes": 24168,
-   "undervotes": 1446,
-   "overvotes": 3,
-   "ballots_cast": 25617,
-   "margin": 321,
-   "pct": 1.2530741304602413,
-   "site_pct": -0.5974842767295669,
-   "tier": 3,
-   "key": "129",
-   "precincts_reporting": "42",
-   "precincts_total": "42",
-   "line": 65,
-   "ratio": 4.938461538461539,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "candidate",
-   "name": "Los Gatos-Saratoga Union HSD, TA 2",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Sangeeta Balachandran Mallik",
-     "votes": 2178,
-     "winner": true,
-     "pct_ballots": 39.15857605177994,
-     "pct_votes": 51.611374407582936
-    },
-    {
-     "name": "Ishaan Prasad",
-     "votes": 2042,
-     "winner": false,
-     "pct_ballots": 36.71341244156778,
-     "pct_votes": 48.388625592417064
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 4220,
-   "undervotes": 1340,
-   "overvotes": 2,
-   "ballots_cast": 5562,
-   "margin": 136,
-   "pct": 2.445163610212154,
-   "site_pct": 3.2227488151658767,
-   "tier": 3,
-   "last_winner": "Sangeeta Balachandran Mallik",
-   "first_loser": "Ishaan Prasad",
-   "key": "50",
-   "precincts_reporting": "18",
-   "precincts_total": "18",
-   "line": 25,
-   "ratio": 5.44,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "candidate",
-   "name": "Morgan Hill Unified SD, Trustee Area 1",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Nancy Altman-Palm",
-     "votes": 2135,
-     "winner": true,
-     "pct_ballots": 43.253646677471636,
-     "pct_votes": 51.782682512733444
-    },
-    {
-     "name": "Jason Amezcua",
-     "votes": 1988,
-     "winner": false,
-     "pct_ballots": 40.27552674230146,
-     "pct_votes": 48.217317487266556
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 4123,
-   "undervotes": 810,
-   "overvotes": 3,
-   "ballots_cast": 4936,
-   "margin": 147,
-   "pct": 2.978119935170178,
-   "site_pct": 3.565365025466893,
-   "tier": 3,
-   "last_winner": "Nancy Altman-Palm",
-   "first_loser": "Jason Amezcua",
-   "key": "38",
-   "precincts_reporting": "8",
-   "precincts_total": "8",
-   "line": 25,
-   "ratio": 5.88,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "candidate",
-   "name": "Mayor, City of Santa Clara",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Karen Hardy",
-     "votes": 7491,
-     "winner": true,
-     "pct_ballots": 20.61705289811196,
-     "pct_votes": 22.82936640965471
-    },
-    {
-     "name": "Kathy Watanabe",
-     "votes": 6893,
-     "winner": false,
-     "pct_ballots": 18.971211537402983,
-     "pct_votes": 21.00691798982111
-    },
-    {
-     "name": "David Kertes",
-     "votes": 6415,
-     "winner": false,
-     "pct_ballots": 17.655639346067044,
-     "pct_votes": 19.550178282997592
-    },
-    {
-     "name": "Kevin Park",
-     "votes": 6165,
-     "winner": false,
-     "pct_ballots": 16.96757857653988,
-     "pct_votes": 18.788285130893243
-    },
-    {
-     "name": "Armando \"Gary\" Ferraris",
-     "votes": 3559,
-     "winner": false,
-     "pct_ballots": 9.795233114988715,
-     "pct_votes": 10.846310913357511
-    },
-    {
-     "name": "Mike Wiltberger",
-     "votes": 2290,
-     "winner": false,
-     "pct_ballots": 6.302636648868828,
-     "pct_votes": 6.978941273275836
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 32813,
-   "undervotes": 3456,
-   "overvotes": 65,
-   "ballots_cast": 36334,
-   "margin": 598,
-   "pct": 1.645841360708978,
-   "site_pct": 1.8224484198336026,
-   "tier": 0,
-   "last_winner": "Karen Hardy",
-   "first_loser": "Kathy Watanabe",
-   "key": "89",
-   "precincts_reporting": "37",
-   "precincts_total": "37",
-   "line": 91,
-   "ratio": 6.571428571428571,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
-  },
-  {
-   "type": "measure",
-   "name": "Measure Q - Cambrian School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
-   "threshold": 0.6666666666666666,
-   "threshold_label": "two-thirds",
-   "passing": true,
-   "yes_share": 67.84849533033552,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 7846,
-     "winner": true,
-     "pct_ballots": 63.63341443633414,
-     "pct_votes": 67.84849533033552
-    },
-    {
-     "name": "No",
-     "votes": 3718,
-     "winner": false,
-     "pct_ballots": 30.154095701540957,
-     "pct_votes": 32.151504669664476
-    }
-   ],
-   "candidate_votes": 11564,
-   "undervotes": 765,
-   "overvotes": 1,
-   "ballots_cast": 12330,
-   "margin": 205,
-   "pct": 1.662611516626115,
-   "site_pct": 1.1818286636688669,
-   "tier": 0,
-   "key": "132",
-   "precincts_reporting": "13",
-   "precincts_total": "13",
-   "line": 31,
-   "ratio": 6.612903225806452,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 4
+   "group": 0
   },
   {
    "type": "candidate",
@@ -992,7 +931,7 @@
    "ratio": 7.69811320754717,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
-   "group": 4
+   "group": 0
   },
   {
    "type": "candidate",
@@ -1084,6 +1023,67 @@
    "precincts_total": "82",
    "line": 158,
    "ratio": 8.670886075949367,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
+  },
+  {
+   "type": "candidate",
+   "name": "Los Altos SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Bryan Harvey Johnson",
+     "votes": 11067,
+     "winner": true,
+     "pct_ballots": 52.22993062438057,
+     "pct_votes": 27.84080903625066
+    },
+    {
+     "name": "Vaishali \"Shali\" Sirkay",
+     "votes": 10420,
+     "winner": true,
+     "pct_ballots": 49.17645948369437,
+     "pct_votes": 26.21317702699303
+    },
+    {
+     "name": "David Poll",
+     "votes": 9365,
+     "winner": true,
+     "pct_ballots": 44.197460946717634,
+     "pct_votes": 23.55915574450957
+    },
+    {
+     "name": "Brandon Stroy",
+     "votes": 8899,
+     "winner": false,
+     "pct_ballots": 41.99820661664071,
+     "pct_votes": 22.386858192246734
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 39751,
+   "undervotes": 23786,
+   "overvotes": 30,
+   "ballots_cast": 21189,
+   "margin": 466,
+   "pct": 2.1992543300769265,
+   "site_pct": 1.172297552262836,
+   "tier": 0,
+   "last_winner": "David Poll",
+   "first_loser": "Brandon Stroy",
+   "key": "60",
+   "precincts_reporting": "20",
+   "precincts_total": "20",
+   "line": 53,
+   "ratio": 8.79245283018868,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
