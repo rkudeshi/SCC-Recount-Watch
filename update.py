@@ -338,9 +338,8 @@ def in_range(margin, ballots, t):
 
 GROUPS = {
     1: ("In recount range", "Margin under 25 votes or under 0.25% of ballots cast"),
-    2: ("Were in range, out for now", ""),
-    3: ("Getting closer", ""),
-    4: ("Close", ""),
+    2: ("Close or getting closer", ""),
+    3: ("Somewhat close", ""),
 }
 
 
@@ -374,20 +373,25 @@ def current_point(a, version, t):
 
 
 def group_for(pts, t):
-    """pts: history points ending with the current one."""
-    cur, prev = pts[-1], pts[:-1]
+    """pts: history points ending with the current one.
+    1 in range; 2 close or getting closer; 3 somewhat close; 0 not close."""
+    cur = pts[-1]
     if cur["in"]:
         return 1
-    if any(p["in"] for p in prev):
+    m = [p["margin"] for p in pts]
+    if cur["margin"] <= t["very_close_votes"] or cur["pct"] <= t["very_close_pct"]:
         return 2
-    w = t.get("watch_ratio", 6)
-    if cur["ratio"] <= w or cur["pct"] < t.get("close_pct", 2):
-        m = [p["margin"] for p in pts]
-        # Steady shrinking in votes: down at each of the last two updates, and
-        # down at least 25% compared with three updates ago.
-        if len(m) >= 4 and m[-1] < m[-2] < m[-3] and m[-1] <= 0.75 * m[-4]:
-            return 3
-        return 4
+    # Getting closer: one recent-sized swing from the recount line, or narrowing
+    # at each of the last two updates and within a few swings of it.
+    moves = [abs(m[i + 1] - m[i]) for i in range(len(m) - 1)][-t.get("swing_updates", 5):]
+    if moves:
+        swing = max(max(moves), t.get("swing_min", 25))
+        gap = cur["margin"] - cur["line"]
+        narrowing = len(m) >= 3 and m[-1] < m[-2] < m[-3]
+        if gap <= swing or (narrowing and gap <= t.get("swing_narrowing", 3) * swing):
+            return 2
+    if cur["margin"] <= t["watch_votes"] or cur["pct"] <= t["watch_pct"]:
+        return 3
     return 0
 
 
@@ -631,8 +635,7 @@ def date_picker(res_time_s, pages, current):
 def render(results, state, cfg, hist=None, pages=None):
     t = cfg["tiers"]
     PCT_LINES[:] = [t["recount_pct"]]
-    w = t.get("watch_ratio", 6)
-    ginfo = {k: (v[0], v[1].format(w=w)) for k, v in GROUPS.items()}
+    ginfo = GROUPS
     hist = hist or {}
     version = str(state["version"])
     contests = results["contests"]
