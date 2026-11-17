@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="results-version" content="386740">
 <title>Santa Clara County Automatic Recount Watch</title>
 <style>
 :root{--bg:#f6f6f6;--box:#fff;--fg:#111;--muted:#666;--line:#ddd;--cut:#111;--link:#0645ad;
@@ -1655,19 +1656,24 @@ a{color:var(--link)}
     anchor=null;
     setTimeout(function(){busy=false},0);
   },true);
-  var nb=document.getElementById('ncall');
-  if(nb)nb.addEventListener('click',function(){
+  // (Listeners hang off document so they keep working after a silent refresh swaps the page content.)
+  document.addEventListener('click',function(e){
+    var nb=e.target.closest&&e.target.closest('#ncall');if(!nb)return;
     var open=nb.textContent==='Show all as cards';
     document.querySelectorAll('details.nc').forEach(function(d){d.open=open});
     nb.textContent=open?'Show as list':'Show all as cards';
   });
   // Date picker: a custom list of every day's results.
-  var dbtn=document.getElementById('ddbtn'),dl=document.getElementById('ddlist');
-  if(dbtn){
-    dbtn.addEventListener('click',function(e){e.stopPropagation();dl.hidden=!dl.hidden;dbtn.setAttribute('aria-expanded',!dl.hidden);});
-    document.addEventListener('click',function(e){if(!dl.hidden&&!e.target.closest('.dd')){dl.hidden=true;dbtn.setAttribute('aria-expanded','false');}});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!dl.hidden){dl.hidden=true;dbtn.setAttribute('aria-expanded','false');dbtn.focus();}});
+  function ddClose(focus){
+    var dbtn=document.getElementById('ddbtn'),dl=document.getElementById('ddlist');
+    if(!dbtn||dl.hidden)return;dl.hidden=true;dbtn.setAttribute('aria-expanded','false');if(focus)dbtn.focus();
   }
+  document.addEventListener('click',function(e){
+    var dbtn=document.getElementById('ddbtn'),dl=document.getElementById('ddlist');if(!dbtn)return;
+    if(e.target.closest&&e.target.closest('#ddbtn')){dl.hidden=!dl.hidden;dbtn.setAttribute('aria-expanded',!dl.hidden);}
+    else if(!(e.target.closest&&e.target.closest('.dd')))ddClose(false);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')ddClose(true);});
   // Links from the summary open a collapsed card.
   function openHash(){var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}
   window.addEventListener('hashchange',openHash);openHash();
@@ -1678,6 +1684,56 @@ a{color:var(--link)}
   document.addEventListener('pointerout',function(e){
     if(e.pointerType==='mouse'&&e.target.closest&&e.target.closest('rect.hit'))hideAll();
   });
+  // Silent refresh: on the latest-results page, check every 10 minutes (while the tab is
+  // visible) whether the county has posted new results. If so, swap in the new page content
+  // in place, keeping open/closed sections and the spot you were reading.
+  var vm=document.querySelector('meta[name="results-version"]');
+  if(!vm||!vm.hasAttribute('data-live')||!window.fetch||!window.DOMParser)return;
+  var EVERY=10*60*1000,lastCheck=Date.now(),checking=false;
+  function detailsKey(d,i){return d.id?'#'+d.id:d.dataset.sec?'sec:'+d.dataset.sec:'n'+i;}
+  function keyed(main){
+    var out={},n=0;
+    main.querySelectorAll('details').forEach(function(d){
+      var k=detailsKey(d,(d.id||d.dataset.sec)?0:n++);if(!(k in out))out[k]=d;
+    });
+    return out;
+  }
+  function swap(nm){
+    var om=document.getElementById('top');
+    var opened={},od=keyed(om);for(var k in od)opened[k]=od[k].open;
+    var nb=document.getElementById('ncall'),nbText=nb&&nb.textContent;
+    var anchorId=null,anchorTop=0;
+    if(window.scrollY>2)om.querySelectorAll('[id]').forEach(function(el){
+      var r=el.getBoundingClientRect();if(r.height>0&&r.top<=1){anchorId=el.id;anchorTop=r.top;}
+    });
+    busy=true;
+    om.replaceWith(nm);
+    nm.querySelectorAll('details').forEach(function(d){
+      var k=d.id?'#'+d.id:d.dataset.sec?'sec:'+d.dataset.sec:null;if(k&&k in opened)d.open=opened[k];
+    });
+    var nn=0;nm.querySelectorAll('details').forEach(function(d){
+      if(d.id||d.dataset.sec)return;var k='n'+(nn++);if(k in opened)d.open=opened[k];
+    });
+    var nb2=document.getElementById('ncall');if(nb2&&nbText)nb2.textContent=nbText;
+    var a=anchorId&&document.getElementById(anchorId);
+    if(a){var r=a.getBoundingClientRect();if(r.height>0)window.scrollBy(0,r.top-anchorTop);}
+    setTimeout(function(){busy=false},0);
+  }
+  function check(){
+    if(checking||document.hidden)return;checking=true;lastCheck=Date.now();
+    fetch('version.json?t='+lastCheck,{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
+      if(!j||!j.version||String(j.version)===vm.content)return;
+      return fetch('index.html?v='+encodeURIComponent(j.version),{cache:'no-store'}).then(function(r){return r.ok?r.text():null}).then(function(html){
+        if(!html)return;
+        var doc=new DOMParser().parseFromString(html,'text/html');
+        var m=doc.querySelector('meta[name="results-version"]'),nm=doc.getElementById('top');
+        if(!m||!nm||m.content!==String(j.version)||!m.hasAttribute('data-live'))return;
+        swap(document.adoptNode(nm));vm.content=m.content;
+      });
+    }).catch(function(){}).then(function(){checking=false});
+  }
+  setInterval(function(){if(Date.now()-lastCheck>=EVERY)check()},60*1000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&Date.now()-lastCheck>=EVERY)check()});
 })();
 </script>
 </body>
