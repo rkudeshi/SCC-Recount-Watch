@@ -1,12 +1,12 @@
 {
  "state": {
-  "version": "387102",
-  "last_checked": "2026-11-19T00:03:19+00:00",
-  "updated_on": "2026-11-16",
+  "version": "387260",
+  "last_checked": "2026-11-19T01:03:39+00:00",
+  "updated_on": "2026-11-18",
   "source_url": "https://results.enr.clarityelections.com/CA/Santa_Clara/127570/"
  },
  "election_name": "November 3, 2026 General Election",
- "results_timestamp": "11/16/2026 4:21:37 PM PST",
+ "results_timestamp": "11/18/2026 4:42:49 PM PST",
  "contests": [
   {
    "type": "candidate",
@@ -15,17 +15,17 @@
    "rows": [
     {
      "name": "Rosa Kim",
-     "votes": 8372,
+     "votes": 8377,
      "winner": true,
-     "pct_ballots": 42.165701334676406,
-     "pct_votes": 50.08674842955429
+     "pct_ballots": 42.150548455268186,
+     "pct_votes": 50.080707837627784
     },
     {
      "name": "Jason Lin",
-     "votes": 8343,
+     "votes": 8350,
      "winner": false,
-     "pct_ballots": 42.01964240745404,
-     "pct_votes": 49.91325157044571
+     "pct_ballots": 42.01469256314783,
+     "pct_votes": 49.919292162372216
     },
     {
      "name": "Write-in",
@@ -36,13 +36,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 16715,
-   "undervotes": 3135,
+   "candidate_votes": 16727,
+   "undervotes": 3142,
    "overvotes": 5,
-   "ballots_cast": 19855,
-   "margin": 29,
-   "pct": 0.14605892722236213,
-   "site_pct": 0.17349685910858512,
+   "ballots_cast": 19874,
+   "margin": 27,
+   "pct": 0.13585589212035826,
+   "site_pct": 0.16141567525557482,
    "tier": 1,
    "last_winner": "Rosa Kim",
    "first_loser": "Jason Lin",
@@ -50,7 +50,7 @@
    "precincts_reporting": "33",
    "precincts_total": "33",
    "line": 50,
-   "ratio": 0.58,
+   "ratio": 0.54,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 1
@@ -61,36 +61,36 @@
    "threshold": 0.55,
    "threshold_label": "55%",
    "passing": false,
-   "yes_share": 54.7246016599352,
+   "yes_share": 54.738569337886375,
    "rows": [
     {
      "name": "Yes",
-     "votes": 12330,
+     "votes": 12343,
      "winner": false,
-     "pct_ballots": 52.31892052446217,
-     "pct_votes": 54.7246016599352
+     "pct_ballots": 52.32523633897156,
+     "pct_votes": 54.73856933788638
     },
     {
      "name": "No",
-     "votes": 10201,
+     "votes": 10206,
      "winner": true,
-     "pct_ballots": 43.28510204947596,
-     "pct_votes": 45.2753983400648
+     "pct_ballots": 43.26592903471957,
+     "pct_votes": 45.26143066211362
     }
    ],
-   "candidate_votes": 22531,
-   "undervotes": 1036,
+   "candidate_votes": 22549,
+   "undervotes": 1040,
    "overvotes": 0,
-   "ballots_cast": 23567,
-   "margin": 138,
-   "pct": 0.5855645606144184,
-   "site_pct": -0.2753983400648039,
+   "ballots_cast": 23589,
+   "margin": 131,
+   "pct": 0.5553435923523676,
+   "site_pct": -0.2614306621136322,
    "tier": 2,
    "key": "128",
    "precincts_reporting": "26",
    "precincts_total": "26",
    "line": 59,
-   "ratio": 2.3389830508474576,
+   "ratio": 2.2203389830508473,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 2
@@ -102,17 +102,17 @@
    "rows": [
     {
      "name": "Andrés Quintero",
-     "votes": 2598,
+     "votes": 2600,
      "winner": true,
-     "pct_ballots": 45.43546694648479,
-     "pct_votes": 50.821596244131456
+     "pct_ballots": 45.43865781195386,
+     "pct_votes": 50.8209538702111
     },
     {
      "name": "Delia Oseguera",
-     "votes": 2514,
+     "votes": 2516,
      "winner": false,
-     "pct_ballots": 43.96642182581322,
-     "pct_votes": 49.178403755868544
+     "pct_ballots": 43.97063963649074,
+     "pct_votes": 49.1790461297889
     },
     {
      "name": "Write-in",
@@ -123,13 +123,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 5112,
+   "candidate_votes": 5116,
    "undervotes": 599,
    "overvotes": 7,
-   "ballots_cast": 5718,
+   "ballots_cast": 5722,
    "margin": 84,
-   "pct": 1.4690451206715636,
-   "site_pct": 1.6431924882629108,
+   "pct": 1.4680181754631247,
+   "site_pct": 1.6419077404222049,
    "tier": 2,
    "last_winner": "Andrés Quintero",
    "first_loser": "Delia Oseguera",
@@ -149,62 +149,62 @@
    "rows": [
     {
      "name": "Katherine Kasolas-Jacobson",
-     "votes": 1437,
+     "votes": 1438,
      "winner": true,
-     "pct_ballots": 37.13178294573643,
-     "pct_votes": 23.211112905831044
+     "pct_ballots": 37.138429752066116,
+     "pct_votes": 23.223514211886304
     },
     {
      "name": "Jeff Tang",
      "votes": 1353,
      "winner": true,
-     "pct_ballots": 34.96124031007752,
-     "pct_votes": 21.85430463576159
+     "pct_ballots": 34.94318181818182,
+     "pct_votes": 21.850775193798448
     },
     {
      "name": "Renee Lo",
      "votes": 1233,
      "winner": true,
-     "pct_ballots": 31.86046511627907,
-     "pct_votes": 19.916007107090937
+     "pct_ballots": 31.84400826446281,
+     "pct_votes": 19.912790697674417
     },
     {
      "name": "Lyseria Evelyn Phillips",
      "votes": 1143,
      "winner": false,
-     "pct_ballots": 29.53488372093023,
-     "pct_votes": 18.46228396058795
+     "pct_ballots": 29.519628099173552,
+     "pct_votes": 18.459302325581394
     },
     {
      "name": "Molly Eslao",
      "votes": 1005,
      "winner": false,
-     "pct_ballots": 25.968992248062015,
-     "pct_votes": 16.233241802616703
+     "pct_ballots": 25.955578512396695,
+     "pct_votes": 16.23062015503876
     },
     {
      "name": "Hina Patel",
      "votes": 10,
      "winner": false,
-     "pct_ballots": 0.25839793281653745,
-     "pct_votes": 0.16152479405588757
+     "pct_ballots": 0.25826446280991733,
+     "pct_votes": 0.16149870801033592
     },
     {
      "name": "Write-in",
      "votes": 10,
      "winner": false,
      "write_in": true,
-     "pct_ballots": 0.25839793281653745,
-     "pct_votes": 0.16152479405588757
+     "pct_ballots": 0.25826446280991733,
+     "pct_votes": 0.16149870801033592
     }
    ],
-   "candidate_votes": 6191,
-   "undervotes": 5411,
+   "candidate_votes": 6192,
+   "undervotes": 5416,
    "overvotes": 9,
-   "ballots_cast": 3870,
+   "ballots_cast": 3872,
    "margin": 90,
-   "pct": 2.3255813953488373,
-   "site_pct": 1.4537231465029883,
+   "pct": 2.324380165289256,
+   "site_pct": 1.4534883720930232,
    "tier": 2,
    "last_winner": "Renee Lo",
    "first_loser": "Lyseria Evelyn Phillips",
@@ -218,70 +218,30 @@
    "group": 2
   },
   {
-   "type": "measure",
-   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
-   "threshold": 0.55,
-   "threshold_label": "55%",
-   "passing": false,
-   "yes_share": 54.415836673967846,
-   "rows": [
-    {
-     "name": "Yes",
-     "votes": 13167,
-     "winner": false,
-     "pct_ballots": 51.3273301368261,
-     "pct_votes": 54.415836673967846
-    },
-    {
-     "name": "No",
-     "votes": 11030,
-     "winner": true,
-     "pct_ballots": 42.99692043815538,
-     "pct_votes": 45.584163326032154
-    }
-   ],
-   "candidate_votes": 24197,
-   "undervotes": 1453,
-   "overvotes": 3,
-   "ballots_cast": 25653,
-   "margin": 314,
-   "pct": 1.2240283787471251,
-   "site_pct": -0.5841633260321615,
-   "tier": 3,
-   "key": "129",
-   "precincts_reporting": "42",
-   "precincts_total": "42",
-   "line": 65,
-   "ratio": 4.8307692307692305,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 2
-  },
-  {
    "type": "candidate",
    "name": "East Side Union HSD, TA 1, Short Term",
    "vote_for": 1,
    "rows": [
     {
      "name": "Mer Curry Nuñez",
-     "votes": 7759,
+     "votes": 7769,
      "winner": true,
-     "pct_ballots": 31.522710652474203,
-     "pct_votes": 35.06734158908072
+     "pct_ballots": 31.52747341936531,
+     "pct_votes": 35.0729086722947
     },
     {
      "name": "Paul Pham",
-     "votes": 7560,
+     "votes": 7565,
      "winner": false,
-     "pct_ballots": 30.714227675306734,
-     "pct_votes": 34.16794721142547
+     "pct_ballots": 30.699618537456374,
+     "pct_votes": 34.15195702225633
     },
     {
      "name": "Patricia Martínez-Roach",
-     "votes": 6807,
+     "votes": 6817,
      "winner": false,
-     "pct_ballots": 27.6549930933615,
-     "pct_votes": 30.764711199493807
+     "pct_ballots": 27.66415063712361,
+     "pct_votes": 30.775134305448965
     },
     {
      "name": "Write-in",
@@ -292,13 +252,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 22126,
-   "undervotes": 2459,
+   "candidate_votes": 22151,
+   "undervotes": 2462,
    "overvotes": 29,
-   "ballots_cast": 24614,
-   "margin": 199,
-   "pct": 0.8084829771674656,
-   "site_pct": 0.8993943776552472,
+   "ballots_cast": 24642,
+   "margin": 204,
+   "pct": 0.827854881908936,
+   "site_pct": 0.920951650038373,
    "tier": 3,
    "last_winner": "Mer Curry Nuñez",
    "first_loser": "Paul Pham",
@@ -306,7 +266,7 @@
    "precincts_reporting": "33",
    "precincts_total": "33",
    "line": 62,
-   "ratio": 3.2096774193548385,
+   "ratio": 3.2903225806451615,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 3
@@ -318,38 +278,38 @@
    "rows": [
     {
      "name": "Bill Chuan",
-     "votes": 7839,
+     "votes": 7840,
      "winner": true,
-     "pct_ballots": 37.12878321413347,
-     "pct_votes": 25.20984081041968
+     "pct_ballots": 37.112426035502956,
+     "pct_votes": 25.200900032144006
     },
     {
      "name": "Seema Kanani",
-     "votes": 6829,
+     "votes": 6833,
      "winner": true,
-     "pct_ballots": 32.34500071046275,
-     "pct_votes": 21.96173018170124
+     "pct_ballots": 32.34556213017751,
+     "pct_votes": 21.963998714239793
     },
     {
      "name": "Garry Barbadillo",
-     "votes": 6636,
+     "votes": 6643,
      "winner": false,
-     "pct_ballots": 31.4308719746128,
-     "pct_votes": 21.341051616015438
+     "pct_ballots": 31.446153846153845,
+     "pct_votes": 21.35326261652202
     },
     {
      "name": "Jennie Ha Phan",
-     "votes": 4961,
+     "votes": 4964,
      "winner": false,
-     "pct_ballots": 23.49737128783214,
-     "pct_votes": 15.95433349413089
+     "pct_ballots": 23.498224852071004,
+     "pct_votes": 15.956284153005464
     },
     {
      "name": "Dipak Awasthi",
      "votes": 4830,
      "winner": false,
-     "pct_ballots": 22.87690048785109,
-     "pct_votes": 15.533043897732755
+     "pct_ballots": 22.86390532544379,
+     "pct_votes": 15.525554484088717
     },
     {
      "name": "Write-in",
@@ -360,13 +320,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 31095,
-   "undervotes": 10979,
+   "candidate_votes": 31110,
+   "undervotes": 10988,
    "overvotes": 152,
-   "ballots_cast": 21113,
-   "margin": 193,
-   "pct": 0.9141287358499502,
-   "site_pct": 0.6206785656858016,
+   "ballots_cast": 21125,
+   "margin": 190,
+   "pct": 0.8994082840236687,
+   "site_pct": 0.6107360977177756,
    "tier": 3,
    "last_winner": "Seema Kanani",
    "first_loser": "Garry Barbadillo",
@@ -374,7 +334,7 @@
    "precincts_reporting": "14",
    "precincts_total": "14",
    "line": 53,
-   "ratio": 3.641509433962264,
+   "ratio": 3.5849056603773586,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 3
@@ -386,17 +346,17 @@
    "rows": [
     {
      "name": "Rommy Kushner",
-     "votes": 2006,
+     "votes": 2009,
      "winner": true,
-     "pct_ballots": 40.321608040201006,
-     "pct_votes": 51.291229864484784
+     "pct_ballots": 40.32517061421116,
+     "pct_votes": 51.289251978555015
     },
     {
      "name": "Michelle Maginot",
-     "votes": 1905,
+     "votes": 1908,
      "winner": false,
-     "pct_ballots": 38.29145728643216,
-     "pct_votes": 48.708770135515216
+     "pct_ballots": 38.297872340425535,
+     "pct_votes": 48.710748021444985
     },
     {
      "name": "Write-in",
@@ -407,13 +367,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 3911,
-   "undervotes": 1057,
+   "candidate_votes": 3917,
+   "undervotes": 1058,
    "overvotes": 7,
-   "ballots_cast": 4975,
+   "ballots_cast": 4982,
    "margin": 101,
-   "pct": 2.030150753768844,
-   "site_pct": 2.582459728969573,
+   "pct": 2.0272982737856284,
+   "site_pct": 2.578503957110033,
    "tier": 3,
    "last_winner": "Rommy Kushner",
    "first_loser": "Michelle Maginot",
@@ -432,36 +392,36 @@
    "threshold": 0.6666666666666666,
    "threshold_label": "two-thirds",
    "passing": false,
-   "yes_share": 65.59931992065741,
+   "yes_share": 65.59048428207306,
    "rows": [
     {
      "name": "Yes",
-     "votes": 2315,
+     "votes": 2316,
      "winner": false,
-     "pct_ballots": 59.95855995855996,
-     "pct_votes": 65.59931992065741
+     "pct_ballots": 59.95340409008543,
+     "pct_votes": 65.59048428207306
     },
     {
      "name": "No",
-     "votes": 1214,
+     "votes": 1215,
      "winner": true,
-     "pct_ballots": 31.44263144263144,
-     "pct_votes": 34.40068007934259
+     "pct_ballots": 31.45223919233756,
+     "pct_votes": 34.409515717926936
     }
    ],
-   "candidate_votes": 3529,
+   "candidate_votes": 3531,
    "undervotes": 332,
    "overvotes": 0,
-   "ballots_cast": 3861,
-   "margin": 113,
-   "pct": 2.9267029267029265,
-   "site_pct": -1.0673467460092496,
+   "ballots_cast": 3863,
+   "margin": 114,
+   "pct": 2.9510742945896973,
+   "site_pct": -1.0761823845935936,
    "tier": 3,
    "key": "133",
    "precincts_reporting": "7",
    "precincts_total": "7",
    "line": 25,
-   "ratio": 4.52,
+   "ratio": 4.56,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 3
@@ -473,31 +433,31 @@
    "rows": [
     {
      "name": "Rudy J. Rodriguez",
-     "votes": 9243,
+     "votes": 9250,
      "winner": true,
-     "pct_ballots": 40.968928682239266,
-     "pct_votes": 25.397043468703632
+     "pct_ballots": 40.970899588076364,
+     "pct_votes": 25.39952770607941
     },
     {
      "name": "Marc Cooper",
-     "votes": 9174,
+     "votes": 9180,
      "winner": true,
-     "pct_ballots": 40.66309117503657,
-     "pct_votes": 25.207451777765566
+     "pct_ballots": 40.66084953713957,
+     "pct_votes": 25.20731506397935
     },
     {
      "name": "Steven Sanchez",
-     "votes": 9121,
+     "votes": 9127,
      "winner": true,
-     "pct_ballots": 40.428172510083776,
-     "pct_votes": 25.061823377479804
+     "pct_ballots": 40.426097355715996,
+     "pct_votes": 25.061782634960732
     },
     {
      "name": "Gilbert Borrayo",
-     "votes": 8856,
+     "votes": 8861,
      "winner": false,
-     "pct_ballots": 39.2535791853198,
-     "pct_votes": 24.333681376050997
+     "pct_ballots": 39.247907162156174,
+     "pct_votes": 24.331374594980502
     },
     {
      "name": "Write-in",
@@ -508,13 +468,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 36394,
-   "undervotes": 31250,
+   "candidate_votes": 36418,
+   "undervotes": 31274,
    "overvotes": 39,
-   "ballots_cast": 22561,
-   "margin": 265,
-   "pct": 1.1745933247639733,
-   "site_pct": 0.7281420014288069,
+   "ballots_cast": 22577,
+   "margin": 266,
+   "pct": 1.1781901935598176,
+   "site_pct": 0.7304080399802295,
    "tier": 3,
    "last_winner": "Steven Sanchez",
    "first_loser": "Gilbert Borrayo",
@@ -522,7 +482,47 @@
    "precincts_reporting": "21",
    "precincts_total": "21",
    "line": 57,
-   "ratio": 4.649122807017544,
+   "ratio": 4.666666666666667,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "measure",
+   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.421909207319594,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 13175,
+     "winner": false,
+     "pct_ballots": 51.324503311258276,
+     "pct_votes": 54.421909207319594
+    },
+    {
+     "name": "No",
+     "votes": 11034,
+     "winner": true,
+     "pct_ballots": 42.98402804830541,
+     "pct_votes": 45.578090792680406
+    }
+   ],
+   "candidate_votes": 24209,
+   "undervotes": 1458,
+   "overvotes": 3,
+   "ballots_cast": 25670,
+   "margin": 311,
+   "pct": 1.2115309700038956,
+   "site_pct": -0.5780907926804133,
+   "tier": 3,
+   "key": "129",
+   "precincts_reporting": "42",
+   "precincts_total": "42",
+   "line": 65,
+   "ratio": 4.7846153846153845,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 3
@@ -583,15 +583,15 @@
      "name": "Sangeeta Balachandran Mallik",
      "votes": 2178,
      "winner": true,
-     "pct_ballots": 39.10233393177738,
-     "pct_votes": 51.538097491717934
+     "pct_ballots": 39.07427341227126,
+     "pct_votes": 51.525904897090136
     },
     {
      "name": "Ishaan Prasad",
-     "votes": 2048,
+     "votes": 2049,
      "winner": false,
-     "pct_ballots": 36.768402154398565,
-     "pct_votes": 48.461902508282066
+     "pct_ballots": 36.75995694294941,
+     "pct_votes": 48.474095102909864
     },
     {
      "name": "Write-in",
@@ -602,13 +602,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 4226,
-   "undervotes": 1342,
+   "candidate_votes": 4227,
+   "undervotes": 1345,
    "overvotes": 2,
-   "ballots_cast": 5570,
-   "margin": 130,
-   "pct": 2.3339317773788153,
-   "site_pct": 3.0761949834358733,
+   "ballots_cast": 5574,
+   "margin": 129,
+   "pct": 2.3143164693218514,
+   "site_pct": 3.0518097941802695,
    "tier": 3,
    "last_winner": "Sangeeta Balachandran Mallik",
    "first_loser": "Ishaan Prasad",
@@ -616,7 +616,7 @@
    "precincts_reporting": "18",
    "precincts_total": "18",
    "line": 25,
-   "ratio": 5.2,
+   "ratio": 5.16,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 3
@@ -628,17 +628,17 @@
    "rows": [
     {
      "name": "Nancy Altman-Palm",
-     "votes": 2137,
+     "votes": 2138,
      "winner": true,
-     "pct_ballots": 43.20663162151234,
-     "pct_votes": 51.73081578310337
+     "pct_ballots": 43.19191919191919,
+     "pct_votes": 51.72997822405033
     },
     {
      "name": "Jason Amezcua",
-     "votes": 1994,
+     "votes": 1995,
      "winner": false,
-     "pct_ballots": 40.31540638900121,
-     "pct_votes": 48.26918421689663
+     "pct_ballots": 40.303030303030305,
+     "pct_votes": 48.27002177594967
     },
     {
      "name": "Write-in",
@@ -649,13 +649,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 4131,
-   "undervotes": 812,
+   "candidate_votes": 4133,
+   "undervotes": 814,
    "overvotes": 3,
-   "ballots_cast": 4946,
+   "ballots_cast": 4950,
    "margin": 143,
-   "pct": 2.89122523251112,
-   "site_pct": 3.4616315662067296,
+   "pct": 2.888888888888889,
+   "site_pct": 3.459956448100653,
    "tier": 3,
    "last_winner": "Nancy Altman-Palm",
    "first_loser": "Jason Amezcua",
@@ -670,50 +670,22 @@
   },
   {
    "type": "candidate",
-   "name": "Mayor, City of Santa Clara",
+   "name": "Gilroy Unified SD, Trustee Area 3",
    "vote_for": 1,
    "rows": [
     {
-     "name": "Karen Hardy",
-     "votes": 7524,
+     "name": "Michelle Nelson",
+     "votes": 1967,
      "winner": true,
-     "pct_ballots": 20.62443463720841,
-     "pct_votes": 22.84569138276553
+     "pct_ballots": 45.36439114391144,
+     "pct_votes": 52.663989290495316
     },
     {
-     "name": "Kathy Watanabe",
-     "votes": 6918,
+     "name": "Daniel Harney",
+     "votes": 1768,
      "winner": false,
-     "pct_ballots": 18.963295962281737,
-     "pct_votes": 21.00564765895427
-    },
-    {
-     "name": "David Kertes",
-     "votes": 6431,
-     "winner": false,
-     "pct_ballots": 17.628354485896768,
-     "pct_votes": 19.52693265318516
-    },
-    {
-     "name": "Kevin Park",
-     "votes": 6191,
-     "winner": false,
-     "pct_ballots": 16.970477782955513,
-     "pct_votes": 18.798202465537134
-    },
-    {
-     "name": "Armando \"Gary\" Ferraris",
-     "votes": 3569,
-     "winner": false,
-     "pct_ballots": 9.783174803322277,
-     "pct_votes": 10.83682516548248
-    },
-    {
-     "name": "Mike Wiltberger",
-     "votes": 2301,
-     "winner": false,
-     "pct_ballots": 6.307392889449303,
-     "pct_votes": 6.986700674075424
+     "pct_ballots": 40.77490774907749,
+     "pct_votes": 47.336010709504684
     },
     {
      "name": "Write-in",
@@ -724,13 +696,88 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 32934,
-   "undervotes": 3482,
+   "candidate_votes": 3735,
+   "undervotes": 599,
+   "overvotes": 2,
+   "ballots_cast": 4336,
+   "margin": 199,
+   "pct": 4.589483394833948,
+   "site_pct": 5.327978580990629,
+   "tier": 3,
+   "last_winner": "Michelle Nelson",
+   "first_loser": "Daniel Harney",
+   "key": "35",
+   "precincts_reporting": "4",
+   "precincts_total": "4",
+   "line": 25,
+   "ratio": 7.96,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 3
+  },
+  {
+   "type": "candidate",
+   "name": "Mayor, City of Santa Clara",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Karen Hardy",
+     "votes": 7528,
+     "winner": true,
+     "pct_ballots": 20.617879053461877,
+     "pct_votes": 22.839112890992386
+    },
+    {
+     "name": "Kathy Watanabe",
+     "votes": 6924,
+     "winner": false,
+     "pct_ballots": 18.963628396143733,
+     "pct_votes": 21.00664421589151
+    },
+    {
+     "name": "David Kertes",
+     "votes": 6439,
+     "winner": false,
+     "pct_ballots": 17.635297984224366,
+     "pct_votes": 19.535208276447925
+    },
+    {
+     "name": "Kevin Park",
+     "votes": 6196,
+     "winner": false,
+     "pct_ballots": 16.969763365468886,
+     "pct_votes": 18.797973362458663
+    },
+    {
+     "name": "Armando \"Gary\" Ferraris",
+     "votes": 3572,
+     "winner": false,
+     "pct_ballots": 9.783085013146362,
+     "pct_votes": 10.837049846788629
+    },
+    {
+     "name": "Mike Wiltberger",
+     "votes": 2302,
+     "winner": false,
+     "pct_ballots": 6.304776511831727,
+     "pct_votes": 6.984011407420891
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 32961,
+   "undervotes": 3486,
    "overvotes": 65,
-   "ballots_cast": 36481,
-   "margin": 606,
-   "pct": 1.661138674926674,
-   "site_pct": 1.8400437238112588,
+   "ballots_cast": 36512,
+   "margin": 604,
+   "pct": 1.654250657318142,
+   "site_pct": 1.8324686751008767,
    "tier": 0,
    "last_winner": "Karen Hardy",
    "first_loser": "Kathy Watanabe",
@@ -738,7 +785,7 @@
    "precincts_reporting": "37",
    "precincts_total": "37",
    "line": 92,
-   "ratio": 6.586956521739131,
+   "ratio": 6.565217391304348,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -749,36 +796,97 @@
    "threshold": 0.6666666666666666,
    "threshold_label": "two-thirds",
    "passing": true,
-   "yes_share": 67.8589942975635,
+   "yes_share": 67.84388222087902,
    "rows": [
     {
      "name": "Yes",
-     "votes": 7854,
+     "votes": 7857,
      "winner": true,
-     "pct_ballots": 63.646677471636956,
-     "pct_votes": 67.8589942975635
+     "pct_ballots": 63.629737609329446,
+     "pct_votes": 67.84388222087902
     },
     {
      "name": "No",
-     "votes": 3720,
+     "votes": 3724,
      "winner": false,
-     "pct_ballots": 30.145867098865477,
-     "pct_votes": 32.141005702436495
+     "pct_ballots": 30.158730158730158,
+     "pct_votes": 32.156117779120976
     }
    ],
-   "candidate_votes": 11574,
-   "undervotes": 765,
+   "candidate_votes": 11581,
+   "undervotes": 766,
    "overvotes": 1,
-   "ballots_cast": 12340,
-   "margin": 207,
-   "pct": 1.6774716369529983,
-   "site_pct": 1.1923276308968411,
+   "ballots_cast": 12348,
+   "margin": 205,
+   "pct": 1.6601878846776805,
+   "site_pct": 1.177215554212367,
    "tier": 0,
    "key": "132",
    "precincts_reporting": "13",
    "precincts_total": "13",
    "line": 31,
-   "ratio": 6.67741935483871,
+   "ratio": 6.612903225806452,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
+  },
+  {
+   "type": "candidate",
+   "name": "Mayor, City of Milpitas",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Carmen Montano",
+     "votes": 8206,
+     "winner": true,
+     "pct_ballots": 38.844970414201185,
+     "pct_votes": 42.24235560588902
+    },
+    {
+     "name": "Hon Lien",
+     "votes": 7799,
+     "winner": false,
+     "pct_ballots": 36.918343195266274,
+     "pct_votes": 40.14722536806342
+    },
+    {
+     "name": "Santosh Sahoo",
+     "votes": 1884,
+     "winner": false,
+     "pct_ballots": 8.918343195266273,
+     "pct_votes": 9.698342427674252
+    },
+    {
+     "name": "Voltaire S. Montemayor",
+     "votes": 1537,
+     "winner": false,
+     "pct_ballots": 7.275739644970415,
+     "pct_votes": 7.912076598373314
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 19426,
+   "undervotes": 1647,
+   "overvotes": 52,
+   "ballots_cast": 21125,
+   "margin": 407,
+   "pct": 1.9266272189349112,
+   "site_pct": 2.0951302378255945,
+   "tier": 0,
+   "last_winner": "Carmen Montano",
+   "first_loser": "Hon Lien",
+   "key": "79",
+   "precincts_reporting": "14",
+   "precincts_total": "14",
+   "line": 53,
+   "ratio": 7.679245283018868,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -790,59 +898,59 @@
    "rows": [
     {
      "name": "IdaRose Sylvester",
-     "votes": 11295,
+     "votes": 11303,
      "winner": true,
-     "pct_ballots": 39.92294641594797,
-     "pct_votes": 18.226561239309344
+     "pct_ballots": 39.91736120921034,
+     "pct_votes": 18.225647806246673
     },
     {
      "name": "Erik Poicon",
-     "votes": 9507,
+     "votes": 9512,
      "winner": true,
-     "pct_ballots": 33.603138696451296,
-     "pct_votes": 15.341294174600613
+     "pct_ballots": 33.59231529877101,
+     "pct_votes": 15.3377299772643
     },
     {
      "name": "Silja Paymer",
-     "votes": 9493,
+     "votes": 9500,
      "winner": true,
-     "pct_ballots": 33.55365474339036,
-     "pct_votes": 15.318702598031306
+     "pct_ballots": 33.54993643169939,
+     "pct_votes": 15.318380444071787
     },
     {
      "name": "Robert Cox",
-     "votes": 8945,
+     "votes": 8952,
      "winner": false,
-     "pct_ballots": 31.616711437862293,
-     "pct_votes": 14.434403743746975
+     "pct_ballots": 31.61463483542873,
+     "pct_votes": 14.434751761613752
     },
     {
      "name": "Paul Donahue",
-     "votes": 8082,
+     "votes": 8088,
      "winner": false,
-     "pct_ballots": 28.56637918846317,
-     "pct_votes": 13.04179441665322
+     "pct_ballots": 28.56335640627207,
+     "pct_votes": 13.041585371752907
     },
     {
      "name": "James Kuszmaul",
-     "votes": 7262,
+     "votes": 7270,
      "winner": false,
-     "pct_ballots": 25.668033366322636,
-     "pct_votes": 11.718573503308052
+     "pct_ballots": 25.674530300889955,
+     "pct_votes": 11.722592192463356
     },
     {
      "name": "Alex Amoroso",
-     "votes": 4778,
+     "votes": 4781,
      "winner": false,
-     "pct_ballots": 16.888166266082283,
-     "pct_votes": 7.7101823462965955
+     "pct_ballots": 16.884446955784714,
+     "pct_votes": 7.709176516116549
     },
     {
      "name": "Samuel Ali",
-     "votes": 2608,
+     "votes": 2611,
      "winner": false,
-     "pct_ballots": 9.218153541637212,
-     "pct_votes": 4.208487978053897
+     "pct_ballots": 9.220935160333381,
+     "pct_votes": 4.210135930470678
     },
     {
      "name": "Write-in",
@@ -853,13 +961,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 61970,
-   "undervotes": 22699,
+   "candidate_votes": 62017,
+   "undervotes": 22724,
    "overvotes": 207,
-   "ballots_cast": 28292,
+   "ballots_cast": 28316,
    "margin": 548,
-   "pct": 1.9369433055280645,
-   "site_pct": 0.8842988542843311,
+   "pct": 1.9353015962706597,
+   "site_pct": 0.8836286824580357,
    "tier": 0,
    "last_winner": "Silja Paymer",
    "first_loser": "Robert Cox",
@@ -874,130 +982,22 @@
   },
   {
    "type": "candidate",
-   "name": "Mayor, City of Milpitas",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Carmen Montano",
-     "votes": 8203,
-     "winner": true,
-     "pct_ballots": 38.85283948278312,
-     "pct_votes": 42.248660898228266
-    },
-    {
-     "name": "Hon Lien",
-     "votes": 7793,
-     "winner": false,
-     "pct_ballots": 36.910907971392035,
-     "pct_votes": 40.13700041203131
-    },
-    {
-     "name": "Santosh Sahoo",
-     "votes": 1884,
-     "winner": false,
-     "pct_ballots": 8.923412115758063,
-     "pct_votes": 9.703337453646476
-    },
-    {
-     "name": "Voltaire S. Montemayor",
-     "votes": 1536,
-     "winner": false,
-     "pct_ballots": 7.275138540235874,
-     "pct_votes": 7.911001236093943
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 19416,
-   "undervotes": 1645,
-   "overvotes": 52,
-   "ballots_cast": 21113,
-   "margin": 410,
-   "pct": 1.941931511391086,
-   "site_pct": 2.111660486196951,
-   "tier": 0,
-   "last_winner": "Carmen Montano",
-   "first_loser": "Hon Lien",
-   "key": "79",
-   "precincts_reporting": "14",
-   "precincts_total": "14",
-   "line": 53,
-   "ratio": 7.735849056603773,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 0
-  },
-  {
-   "type": "candidate",
-   "name": "Gilroy Unified SD, Trustee Area 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Michelle Nelson",
-     "votes": 1967,
-     "winner": true,
-     "pct_ballots": 45.385325334563916,
-     "pct_votes": 52.69220466113046
-    },
-    {
-     "name": "Daniel Harney",
-     "votes": 1766,
-     "winner": false,
-     "pct_ballots": 40.747577295800646,
-     "pct_votes": 47.30779533886954
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 3733,
-   "undervotes": 599,
-   "overvotes": 2,
-   "ballots_cast": 4334,
-   "margin": 201,
-   "pct": 4.6377480387632675,
-   "site_pct": 5.384409322260916,
-   "tier": 0,
-   "last_winner": "Michelle Nelson",
-   "first_loser": "Daniel Harney",
-   "key": "35",
-   "precincts_reporting": "4",
-   "precincts_total": "4",
-   "line": 25,
-   "ratio": 8.04,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 0
-  },
-  {
-   "type": "candidate",
    "name": "Santa Clara Valley Water, District 6",
    "vote_for": 1,
    "rows": [
     {
      "name": "Phuong Tran Nguyen",
-     "votes": 28167,
+     "votes": 28198,
      "winner": true,
-     "pct_ballots": 44.2314034013285,
-     "pct_votes": 51.209934003599805
+     "pct_ballots": 44.239790395205446,
+     "pct_votes": 51.220664099396934
     },
     {
      "name": "Milan Balinton",
-     "votes": 26836,
+     "votes": 26854,
      "winner": false,
-     "pct_ballots": 42.14129803238014,
-     "pct_votes": 48.790065996400195
+     "pct_ballots": 42.131191264375026,
+     "pct_votes": 48.779335900603066
     },
     {
      "name": "Write-in",
@@ -1008,13 +1008,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 55003,
-   "undervotes": 8655,
+   "candidate_votes": 55052,
+   "undervotes": 8664,
    "overvotes": 23,
-   "ballots_cast": 63681,
-   "margin": 1331,
-   "pct": 2.0901053689483517,
-   "site_pct": 2.4198680071996073,
+   "ballots_cast": 63739,
+   "margin": 1344,
+   "pct": 2.108599130830418,
+   "site_pct": 2.4413281987938675,
    "tier": 0,
    "last_winner": "Phuong Tran Nguyen",
    "first_loser": "Milan Balinton",
@@ -1022,7 +1022,7 @@
    "precincts_reporting": "82",
    "precincts_total": "82",
    "line": 160,
-   "ratio": 8.31875,
+   "ratio": 8.4,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1034,31 +1034,31 @@
    "rows": [
     {
      "name": "Bryan Harvey Johnson",
-     "votes": 11070,
+     "votes": 11074,
      "winner": true,
-     "pct_ballots": 52.21944431341101,
-     "pct_votes": 27.837851430870593
+     "pct_ballots": 52.208759605864884,
+     "pct_votes": 27.834611034309415
     },
     {
      "name": "Vaishali \"Shali\" Sirkay",
-     "votes": 10424,
+     "votes": 10430,
      "winner": true,
-     "pct_ballots": 49.17213076088495,
-     "pct_votes": 26.213348086304883
+     "pct_ballots": 49.172599123096504,
+     "pct_votes": 26.215910519039838
     },
     {
      "name": "David Poll",
-     "votes": 9369,
+     "votes": 9373,
      "winner": true,
-     "pct_ballots": 44.19548091891127,
-     "pct_votes": 23.560327918322184
+     "pct_ballots": 44.189335722031025,
+     "pct_votes": 23.55913032549956
     },
     {
      "name": "Brandon Stroy",
-     "votes": 8903,
+     "votes": 8908,
      "winner": false,
-     "pct_ballots": 41.99726402188782,
-     "pct_votes": 22.38847256450234
+     "pct_ballots": 41.9970769883551,
+     "pct_votes": 22.390348121151188
     },
     {
      "name": "Write-in",
@@ -1069,21 +1069,21 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 39766,
-   "undervotes": 23801,
+   "candidate_votes": 39785,
+   "undervotes": 23818,
    "overvotes": 30,
-   "ballots_cast": 21199,
-   "margin": 466,
-   "pct": 2.1982168970234444,
-   "site_pct": 1.1718553538198462,
+   "ballots_cast": 21211,
+   "margin": 465,
+   "pct": 2.192258733675923,
+   "site_pct": 1.1687822043483724,
    "tier": 0,
    "last_winner": "David Poll",
    "first_loser": "Brandon Stroy",
    "key": "60",
    "precincts_reporting": "20",
    "precincts_total": "20",
-   "line": 53,
-   "ratio": 8.79245283018868,
+   "line": 54,
+   "ratio": 8.61111111111111,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1095,17 +1095,17 @@
    "rows": [
     {
      "name": "Diana Sanchez Bentz",
-     "votes": 1137,
+     "votes": 1138,
      "winner": true,
-     "pct_ballots": 52.883720930232556,
-     "pct_votes": 56.56716417910448
+     "pct_ballots": 52.88104089219331,
+     "pct_votes": 56.560636182902584
     },
     {
      "name": "Fred Tovar",
-     "votes": 873,
+     "votes": 874,
      "winner": false,
-     "pct_ballots": 40.604651162790695,
-     "pct_votes": 43.43283582089552
+     "pct_ballots": 40.613382899628256,
+     "pct_votes": 43.439363817097416
     },
     {
      "name": "Write-in",
@@ -1116,13 +1116,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 2010,
+   "candidate_votes": 2012,
    "undervotes": 139,
    "overvotes": 1,
-   "ballots_cast": 2150,
+   "ballots_cast": 2152,
    "margin": 264,
-   "pct": 12.279069767441861,
-   "site_pct": 13.134328358208956,
+   "pct": 12.267657992565056,
+   "site_pct": 13.121272365805169,
    "tier": 0,
    "last_winner": "Diana Sanchez Bentz",
    "first_loser": "Fred Tovar",
@@ -1142,17 +1142,17 @@
    "rows": [
     {
      "name": "Anky van Deursen",
-     "votes": 1626,
+     "votes": 1629,
      "winner": true,
-     "pct_ballots": 48.961156278229446,
-     "pct_votes": 54.54545454545455
+     "pct_ballots": 49.0072202166065,
+     "pct_votes": 54.5911528150134
     },
     {
      "name": "Lynette Lee Eng",
      "votes": 1355,
      "winner": false,
-     "pct_ballots": 40.80096356519121,
-     "pct_votes": 45.45454545454545
+     "pct_ballots": 40.76413959085439,
+     "pct_votes": 45.4088471849866
     },
     {
      "name": "Write-in",
@@ -1163,13 +1163,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 2981,
+   "candidate_votes": 2984,
    "undervotes": 340,
    "overvotes": 0,
-   "ballots_cast": 3321,
-   "margin": 271,
-   "pct": 8.160192713038242,
-   "site_pct": 9.090909090909092,
+   "ballots_cast": 3324,
+   "margin": 274,
+   "pct": 8.243080625752105,
+   "site_pct": 9.182305630026809,
    "tier": 0,
    "last_winner": "Anky van Deursen",
    "first_loser": "Lynette Lee Eng",
@@ -1177,7 +1177,7 @@
    "precincts_reporting": "2",
    "precincts_total": "2",
    "line": 25,
-   "ratio": 10.84,
+   "ratio": 10.96,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1189,45 +1189,45 @@
    "rows": [
     {
      "name": "Rob Moore",
-     "votes": 8592,
+     "votes": 8598,
      "winner": true,
-     "pct_ballots": 54.37286419440577,
-     "pct_votes": 24.526847649224973
+     "pct_ballots": 54.369545971923614,
+     "pct_votes": 24.52927079767203
     },
     {
      "name": "Jeff Suzuki",
-     "votes": 6846,
+     "votes": 6850,
      "winner": true,
-     "pct_ballots": 43.32362992026326,
-     "pct_votes": 19.542690759612913
+     "pct_ballots": 43.31604907044391,
+     "pct_votes": 19.542394157252083
     },
     {
      "name": "Rob Stump",
-     "votes": 5994,
+     "votes": 5997,
      "winner": true,
-     "pct_ballots": 37.931907353499554,
-     "pct_votes": 17.11055921897748
+     "pct_ballots": 37.922094346781336,
+     "pct_votes": 17.108866826429306
     },
     {
      "name": "Mary Badame",
-     "votes": 5542,
+     "votes": 5545,
      "winner": false,
-     "pct_ballots": 35.07150993545121,
-     "pct_votes": 15.820273472067598
+     "pct_ballots": 35.063867459213355,
+     "pct_votes": 15.819354102476321
     },
     {
      "name": "Steve Raspe",
-     "votes": 4639,
+     "votes": 4643,
      "winner": false,
-     "pct_ballots": 29.3570434122263,
-     "pct_votes": 13.242556592732152
+     "pct_ballots": 29.360060705703805,
+     "pct_votes": 13.246034463083419
     },
     {
      "name": "Heidi Owens",
-     "votes": 3418,
+     "votes": 3419,
      "winner": false,
-     "pct_ballots": 21.630173395772687,
-     "pct_votes": 9.757072307384888
+     "pct_ballots": 21.620083470342735,
+     "pct_votes": 9.754079653086842
     },
     {
      "name": "Write-in",
@@ -1238,13 +1238,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 35031,
-   "undervotes": 12333,
+   "candidate_votes": 35052,
+   "undervotes": 12348,
    "overvotes": 42,
-   "ballots_cast": 15802,
+   "ballots_cast": 15814,
    "margin": 452,
-   "pct": 2.8603974180483482,
-   "site_pct": 1.2902857469098798,
+   "pct": 2.858226887567978,
+   "site_pct": 1.2895127239529842,
    "tier": 0,
    "last_winner": "Rob Stump",
    "first_loser": "Mary Badame",
@@ -1264,24 +1264,24 @@
    "rows": [
     {
      "name": "Jose Magana",
-     "votes": 6218,
+     "votes": 6227,
      "winner": true,
-     "pct_ballots": 35.750014373598574,
-     "pct_votes": 42.85615824660555
+     "pct_ballots": 35.74626865671642,
+     "pct_votes": 42.86796089770068
     },
     {
      "name": "Tomara Hall",
-     "votes": 5707,
+     "votes": 5715,
      "winner": false,
-     "pct_ballots": 32.81205082504456,
-     "pct_votes": 39.33420635467641
+     "pct_ballots": 32.80711825487945,
+     "pct_votes": 39.34324659231722
     },
     {
      "name": "Carson Dance",
      "votes": 2584,
      "winner": false,
-     "pct_ballots": 14.856551486230092,
-     "pct_votes": 17.809635398718036
+     "pct_ballots": 14.833524684270953,
+     "pct_votes": 17.788792509982102
     },
     {
      "name": "Write-in",
@@ -1292,13 +1292,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 14509,
-   "undervotes": 2843,
+   "candidate_votes": 14526,
+   "undervotes": 2853,
    "overvotes": 41,
-   "ballots_cast": 17393,
-   "margin": 511,
-   "pct": 2.937963548554016,
-   "site_pct": 3.5219518919291475,
+   "ballots_cast": 17420,
+   "margin": 512,
+   "pct": 2.939150401836969,
+   "site_pct": 3.5247143053834504,
    "tier": 0,
    "last_winner": "Jose Magana",
    "first_loser": "Tomara Hall",
@@ -1306,7 +1306,7 @@
    "precincts_reporting": "21",
    "precincts_total": "21",
    "line": 44,
-   "ratio": 11.613636363636363,
+   "ratio": 11.636363636363637,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1317,36 +1317,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 51.62631271878646,
+   "yes_share": 51.63205828779599,
    "rows": [
     {
      "name": "Yes",
-     "votes": 14158,
+     "votes": 14173,
      "winner": true,
-     "pct_ballots": 48.130269241229264,
-     "pct_votes": 51.626312718786465
+     "pct_ballots": 48.13707842271508,
+     "pct_votes": 51.63205828779599
     },
     {
      "name": "No",
-     "votes": 13266,
+     "votes": 13277,
      "winner": false,
-     "pct_ballots": 45.09790590155018,
-     "pct_votes": 48.373687281213535
+     "pct_ballots": 45.09391026729613,
+     "pct_votes": 48.36794171220401
     }
    ],
-   "candidate_votes": 27424,
-   "undervotes": 1986,
+   "candidate_votes": 27450,
+   "undervotes": 1987,
    "overvotes": 6,
-   "ballots_cast": 29416,
-   "margin": 892,
-   "pct": 3.0323633396790863,
-   "site_pct": 1.6263127187864583,
+   "ballots_cast": 29443,
+   "margin": 896,
+   "pct": 3.043168155418945,
+   "site_pct": 1.6320582877959922,
    "tier": 0,
    "key": "125",
    "precincts_reporting": "22",
    "precincts_total": "22",
    "line": 74,
-   "ratio": 12.054054054054054,
+   "ratio": 12.108108108108109,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1358,17 +1358,17 @@
    "rows": [
     {
      "name": "Gabriela \"Gabby\" Winter",
-     "votes": 2186,
+     "votes": 2187,
      "winner": true,
-     "pct_ballots": 46.859592711682744,
-     "pct_votes": 54.7047047047047
+     "pct_ballots": 46.86093850439254,
+     "pct_votes": 54.71603702777083
     },
     {
      "name": "John T. Horner",
      "votes": 1810,
      "winner": false,
-     "pct_ballots": 38.79957127545552,
-     "pct_votes": 45.2952952952953
+     "pct_ballots": 38.78294407542318,
+     "pct_votes": 45.28396297222917
     },
     {
      "name": "Write-in",
@@ -1379,13 +1379,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 3996,
-   "undervotes": 667,
+   "candidate_votes": 3997,
+   "undervotes": 668,
    "overvotes": 2,
-   "ballots_cast": 4665,
-   "margin": 376,
-   "pct": 8.060021436227224,
-   "site_pct": 9.40940940940941,
+   "ballots_cast": 4667,
+   "margin": 377,
+   "pct": 8.07799442896936,
+   "site_pct": 9.432074055541657,
    "tier": 0,
    "last_winner": "Gabriela \"Gabby\" Winter",
    "first_loser": "John T. Horner",
@@ -1393,7 +1393,7 @@
    "precincts_reporting": "9",
    "precincts_total": "9",
    "line": 25,
-   "ratio": 15.04,
+   "ratio": 15.08,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1405,31 +1405,31 @@
    "rows": [
     {
      "name": "Devon Conley",
-     "votes": 11408,
+     "votes": 11419,
      "winner": true,
-     "pct_ballots": 46.53477462777891,
-     "pct_votes": 33.452583426192014
+     "pct_ballots": 46.537881566613684,
+     "pct_votes": 33.45540841439119
     },
     {
      "name": "William Lambert",
-     "votes": 8983,
+     "votes": 8988,
      "winner": true,
-     "pct_ballots": 36.64287171119722,
-     "pct_votes": 26.341563544660136
+     "pct_ballots": 36.63039491380364,
+     "pct_votes": 26.333059885151762
     },
     {
      "name": "Sundar Subbarayan",
-     "votes": 7996,
+     "votes": 8007,
      "winner": false,
-     "pct_ballots": 32.616765245767894,
-     "pct_votes": 23.44730514339335
+     "pct_ballots": 32.63235114317154,
+     "pct_votes": 23.458924176725652
     },
     {
      "name": "Quintin Riis",
-     "votes": 5715,
+     "votes": 5718,
      "winner": false,
-     "pct_ballots": 23.312257801346114,
-     "pct_votes": 16.758547885754503
+     "pct_ballots": 23.303582345029955,
+     "pct_votes": 16.752607523731395
     },
     {
      "name": "Write-in",
@@ -1440,13 +1440,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 34102,
-   "undervotes": 14868,
+   "candidate_votes": 34132,
+   "undervotes": 14882,
    "overvotes": 60,
-   "ballots_cast": 24515,
-   "margin": 987,
-   "pct": 4.026106465429329,
-   "site_pct": 2.894258401266788,
+   "ballots_cast": 24537,
+   "margin": 981,
+   "pct": 3.9980437706321066,
+   "site_pct": 2.8741357084261105,
    "tier": 0,
    "last_winner": "William Lambert",
    "first_loser": "Sundar Subbarayan",
@@ -1454,7 +1454,7 @@
    "precincts_reporting": "19",
    "precincts_total": "19",
    "line": 62,
-   "ratio": 15.919354838709678,
+   "ratio": 15.82258064516129,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1465,36 +1465,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": false,
-   "yes_share": 47.67954519085741,
+   "yes_share": 47.67785701861193,
    "rows": [
     {
      "name": "Yes",
-     "votes": 8219,
+     "votes": 8223,
      "winner": false,
-     "pct_ballots": 42.67836743171669,
-     "pct_votes": 47.67954519085741
+     "pct_ballots": 42.67697737180818,
+     "pct_votes": 47.67785701861193
     },
     {
      "name": "No",
-     "votes": 9019,
+     "votes": 9024,
      "winner": true,
-     "pct_ballots": 46.832485200955446,
-     "pct_votes": 52.32045480914259
+     "pct_ballots": 46.83412912601204,
+     "pct_votes": 52.32214298138807
     }
    ],
-   "candidate_votes": 17238,
-   "undervotes": 2016,
+   "candidate_votes": 17247,
+   "undervotes": 2017,
    "overvotes": 4,
-   "ballots_cast": 19258,
-   "margin": 800,
-   "pct": 4.154117769238758,
-   "site_pct": -2.320454809142589,
+   "ballots_cast": 19268,
+   "margin": 801,
+   "pct": 4.157151754203861,
+   "site_pct": -2.322142981388069,
    "tier": 0,
    "key": "116",
    "precincts_reporting": "17",
    "precincts_total": "17",
    "line": 49,
-   "ratio": 16.3265306122449,
+   "ratio": 16.346938775510203,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1506,24 +1506,24 @@
    "rows": [
     {
      "name": "Rebeca G. Armendáriz",
-     "votes": 1135,
+     "votes": 1137,
      "winner": true,
-     "pct_ballots": 48.154433602036484,
-     "pct_votes": 51.497277676951
+     "pct_ballots": 48.17796610169491,
+     "pct_votes": 51.51789759855007
     },
     {
      "name": "Elizabeth Bracco",
-     "votes": 714,
+     "votes": 715,
      "winner": false,
-     "pct_ballots": 30.292745014849384,
-     "pct_votes": 32.3956442831216
+     "pct_ballots": 30.296610169491526,
+     "pct_votes": 32.396918894426825
     },
     {
      "name": "Brad Starks",
      "votes": 355,
      "winner": false,
-     "pct_ballots": 15.061518879932118,
-     "pct_votes": 16.107078039927405
+     "pct_ballots": 15.042372881355933,
+     "pct_votes": 16.085183507023107
     },
     {
      "name": "Write-in",
@@ -1534,13 +1534,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 2204,
+   "candidate_votes": 2207,
    "undervotes": 153,
    "overvotes": 0,
-   "ballots_cast": 2357,
-   "margin": 421,
-   "pct": 17.861688587187103,
-   "site_pct": 19.101633393829403,
+   "ballots_cast": 2360,
+   "margin": 422,
+   "pct": 17.88135593220339,
+   "site_pct": 19.120978704123246,
    "tier": 0,
    "last_winner": "Rebeca G. Armendáriz",
    "first_loser": "Elizabeth Bracco",
@@ -1548,7 +1548,7 @@
    "precincts_reporting": "3",
    "precincts_total": "3",
    "line": 25,
-   "ratio": 16.84,
+   "ratio": 16.88,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1562,22 +1562,22 @@
      "name": "Christina Tovar",
      "votes": 1549,
      "winner": true,
-     "pct_ballots": 46.99635922330097,
-     "pct_votes": 49.44142993935525
+     "pct_ballots": 46.925174189639506,
+     "pct_votes": 49.409888357256776
     },
     {
      "name": "Tom Cline",
      "votes": 1096,
      "winner": false,
-     "pct_ballots": 33.25242718446602,
-     "pct_votes": 34.98244494095116
+     "pct_ballots": 33.20205998182369,
+     "pct_votes": 34.96012759170654
     },
     {
      "name": "Joseph Garcia",
-     "votes": 488,
+     "votes": 490,
      "winner": false,
-     "pct_ballots": 14.805825242718447,
-     "pct_votes": 15.576125119693584
+     "pct_ballots": 14.843986670705847,
+     "pct_votes": 15.629984051036683
     },
     {
      "name": "Write-in",
@@ -1588,13 +1588,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 3133,
-   "undervotes": 161,
+   "candidate_votes": 3135,
+   "undervotes": 164,
    "overvotes": 2,
-   "ballots_cast": 3296,
+   "ballots_cast": 3301,
    "margin": 453,
-   "pct": 13.743932038834952,
-   "site_pct": 14.458984998404086,
+   "pct": 13.723114207815813,
+   "site_pct": 14.44976076555024,
    "tier": 0,
    "last_winner": "Christina Tovar",
    "first_loser": "Tom Cline",
@@ -1614,17 +1614,17 @@
    "rows": [
     {
      "name": "Eric Crutchlow",
-     "votes": 2585,
+     "votes": 2586,
      "winner": true,
-     "pct_ballots": 45.5827896314583,
-     "pct_votes": 54.95323129251701
+     "pct_ballots": 45.58434690639873,
+     "pct_votes": 54.951126221844454
     },
     {
      "name": "Kyle Madej",
-     "votes": 2119,
+     "votes": 2120,
      "winner": false,
-     "pct_ballots": 37.36554399576794,
-     "pct_votes": 45.04676870748299
+     "pct_ballots": 37.369998237264234,
+     "pct_votes": 45.048873778155546
     },
     {
      "name": "Write-in",
@@ -1635,13 +1635,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 4704,
+   "candidate_votes": 4706,
    "undervotes": 965,
    "overvotes": 2,
-   "ballots_cast": 5671,
+   "ballots_cast": 5673,
    "margin": 466,
-   "pct": 8.217245635690354,
-   "site_pct": 9.906462585034014,
+   "pct": 8.214348669134496,
+   "site_pct": 9.902252443688909,
    "tier": 0,
    "last_winner": "Eric Crutchlow",
    "first_loser": "Kyle Madej",
@@ -1661,17 +1661,17 @@
    "rows": [
     {
      "name": "Sophie Freestone",
-     "votes": 3047,
+     "votes": 3050,
      "winner": true,
-     "pct_ballots": 45.93698175787728,
-     "pct_votes": 54.410714285714285
+     "pct_ballots": 45.94065371290857,
+     "pct_votes": 54.425410421127765
     },
     {
      "name": "Kaushik C. Joglekar",
-     "votes": 2553,
+     "votes": 2554,
      "winner": false,
-     "pct_ballots": 38.489371325192224,
-     "pct_votes": 45.589285714285715
+     "pct_ballots": 38.46964904353065,
+     "pct_votes": 45.574589578872235
     },
     {
      "name": "Write-in",
@@ -1682,13 +1682,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 5600,
-   "undervotes": 1029,
+   "candidate_votes": 5604,
+   "undervotes": 1031,
    "overvotes": 4,
-   "ballots_cast": 6633,
-   "margin": 494,
-   "pct": 7.447610432685059,
-   "site_pct": 8.821428571428571,
+   "ballots_cast": 6639,
+   "margin": 496,
+   "pct": 7.471004669377918,
+   "site_pct": 8.850820842255532,
    "tier": 0,
    "last_winner": "Sophie Freestone",
    "first_loser": "Kaushik C. Joglekar",
@@ -1696,54 +1696,7 @@
    "precincts_reporting": "7",
    "precincts_total": "7",
    "line": 25,
-   "ratio": 19.76,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 0
-  },
-  {
-   "type": "candidate",
-   "name": "City of Campbell Council, District 3",
-   "vote_for": 1,
-   "rows": [
-    {
-     "name": "Dan Furtado",
-     "votes": 1797,
-     "winner": true,
-     "pct_ballots": 52.07186322804984,
-     "pct_votes": 58.42002600780234
-    },
-    {
-     "name": "Joseph \"Joe\" Brenner",
-     "votes": 1279,
-     "winner": false,
-     "pct_ballots": 37.06172124022022,
-     "pct_votes": 41.57997399219766
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 3076,
-   "undervotes": 374,
-   "overvotes": 1,
-   "ballots_cast": 3451,
-   "margin": 518,
-   "pct": 15.010141987829615,
-   "site_pct": 16.84005201560468,
-   "tier": 0,
-   "last_winner": "Dan Furtado",
-   "first_loser": "Joseph \"Joe\" Brenner",
-   "key": "68",
-   "precincts_reporting": "4",
-   "precincts_total": "4",
-   "line": 25,
-   "ratio": 20.72,
+   "ratio": 19.84,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1755,17 +1708,17 @@
    "rows": [
     {
      "name": "Peter Ortiz",
-     "votes": 11741,
+     "votes": 11755,
      "winner": true,
-     "pct_ballots": 47.390514631685164,
-     "pct_votes": 52.91599062556337
+     "pct_ballots": 47.3877287752963,
+     "pct_votes": 52.909933834451095
     },
     {
      "name": "Nora Campos",
-     "votes": 10447,
+     "votes": 10462,
      "winner": false,
-     "pct_ballots": 42.16750756811302,
-     "pct_votes": 47.08400937443663
+     "pct_ballots": 42.17528017415142,
+     "pct_votes": 47.090066165548905
     },
     {
      "name": "Write-in",
@@ -1776,21 +1729,68 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 22188,
-   "undervotes": 2580,
+   "candidate_votes": 22217,
+   "undervotes": 2582,
    "overvotes": 7,
-   "ballots_cast": 24775,
-   "margin": 1294,
-   "pct": 5.223007063572149,
-   "site_pct": 5.831981251126735,
+   "ballots_cast": 24806,
+   "margin": 1293,
+   "pct": 5.212448601144884,
+   "site_pct": 5.819867668902192,
    "tier": 0,
    "last_winner": "Peter Ortiz",
    "first_loser": "Nora Campos",
    "key": "86",
    "precincts_reporting": "40",
    "precincts_total": "40",
-   "line": 62,
-   "ratio": 20.870967741935484,
+   "line": 63,
+   "ratio": 20.523809523809526,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
+  },
+  {
+   "type": "candidate",
+   "name": "City of Campbell Council, District 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Dan Furtado",
+     "votes": 1798,
+     "winner": true,
+     "pct_ballots": 52.05558772437753,
+     "pct_votes": 58.39558298148749
+    },
+    {
+     "name": "Joseph \"Joe\" Brenner",
+     "votes": 1281,
+     "winner": false,
+     "pct_ballots": 37.087434858135495,
+     "pct_votes": 41.60441701851251
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3079,
+   "undervotes": 374,
+   "overvotes": 1,
+   "ballots_cast": 3454,
+   "margin": 517,
+   "pct": 14.968152866242038,
+   "site_pct": 16.791165962974993,
+   "tier": 0,
+   "last_winner": "Dan Furtado",
+   "first_loser": "Joseph \"Joe\" Brenner",
+   "key": "68",
+   "precincts_reporting": "4",
+   "precincts_total": "4",
+   "line": 25,
+   "ratio": 20.68,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1804,22 +1804,22 @@
      "name": "Art Cohen",
      "votes": 1512,
      "winner": true,
-     "pct_ballots": 39.85239852398524,
-     "pct_votes": 47.42785445420326
+     "pct_ballots": 39.84189723320158,
+     "pct_votes": 47.412982126058324
     },
     {
      "name": "Sarah Northrup Gadus",
-     "votes": 951,
+     "votes": 952,
      "winner": false,
-     "pct_ballots": 25.065893516078017,
-     "pct_votes": 29.830614805520703
+     "pct_ballots": 25.085638998682477,
+     "pct_votes": 29.852618375666353
     },
     {
      "name": "Cesar Gamboa",
      "votes": 725,
      "winner": false,
-     "pct_ballots": 19.109119662625197,
-     "pct_votes": 22.741530740276033
+     "pct_ballots": 19.104084321475625,
+     "pct_votes": 22.734399498275323
     },
     {
      "name": "Write-in",
@@ -1830,13 +1830,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 3188,
+   "candidate_votes": 3189,
    "undervotes": 603,
    "overvotes": 3,
-   "ballots_cast": 3794,
-   "margin": 561,
-   "pct": 14.786505007907222,
-   "site_pct": 17.59723964868256,
+   "ballots_cast": 3795,
+   "margin": 560,
+   "pct": 14.756258234519104,
+   "site_pct": 17.56036375039197,
    "tier": 0,
    "last_winner": "Art Cohen",
    "first_loser": "Sarah Northrup Gadus",
@@ -1844,7 +1844,7 @@
    "precincts_reporting": "7",
    "precincts_total": "7",
    "line": 25,
-   "ratio": 22.44,
+   "ratio": 22.4,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1856,17 +1856,17 @@
    "rows": [
     {
      "name": "Kimberley Williams",
-     "votes": 2727,
+     "votes": 2730,
      "winner": true,
-     "pct_ballots": 47.02534919813761,
-     "pct_votes": 55.76687116564417
+     "pct_ballots": 47.02842377260982,
+     "pct_votes": 55.7711950970378
     },
     {
      "name": "Yvonne Inciarte",
-     "votes": 2163,
+     "votes": 2165,
      "winner": false,
-     "pct_ballots": 37.29953440248319,
-     "pct_votes": 44.23312883435583
+     "pct_ballots": 37.295434969853574,
+     "pct_votes": 44.2288049029622
     },
     {
      "name": "Write-in",
@@ -1877,13 +1877,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 4890,
-   "undervotes": 904,
+   "candidate_votes": 4895,
+   "undervotes": 905,
    "overvotes": 5,
-   "ballots_cast": 5799,
-   "margin": 564,
-   "pct": 9.725814795654424,
-   "site_pct": 11.533742331288343,
+   "ballots_cast": 5805,
+   "margin": 565,
+   "pct": 9.732988802756244,
+   "site_pct": 11.542390194075587,
    "tier": 0,
    "last_winner": "Kimberley Williams",
    "first_loser": "Yvonne Inciarte",
@@ -1891,7 +1891,7 @@
    "precincts_reporting": "7",
    "precincts_total": "7",
    "line": 25,
-   "ratio": 22.56,
+   "ratio": 22.6,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -1903,17 +1903,17 @@
    "rows": [
     {
      "name": "Genny Altwer",
-     "votes": 17126,
+     "votes": 17140,
      "winner": true,
-     "pct_ballots": 46.288988593978054,
-     "pct_votes": 53.51373308752304
+     "pct_ballots": 46.27929582028297,
+     "pct_votes": 53.51567378543774
     },
     {
      "name": "Gordon Chester",
-     "votes": 14877,
+     "votes": 14888,
      "winner": false,
-     "pct_ballots": 40.21028163684524,
-     "pct_votes": 46.48626691247696
+     "pct_ballots": 40.1987255643158,
+     "pct_votes": 46.48432621456226
     },
     {
      "name": "Write-in",
@@ -1924,13 +1924,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 32003,
-   "undervotes": 4990,
+   "candidate_votes": 32028,
+   "undervotes": 5003,
    "overvotes": 5,
-   "ballots_cast": 36998,
-   "margin": 2249,
-   "pct": 6.078706957132818,
-   "site_pct": 7.027466175046089,
+   "ballots_cast": 37036,
+   "margin": 2252,
+   "pct": 6.080570255967167,
+   "site_pct": 7.031347570875484,
    "tier": 0,
    "last_winner": "Genny Altwer",
    "first_loser": "Gordon Chester",
@@ -1938,96 +1938,7 @@
    "precincts_reporting": "33",
    "precincts_total": "33",
    "line": 93,
-   "ratio": 24.182795698924732,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 0
-  },
-  {
-   "type": "candidate",
-   "name": "City of Cupertino Council",
-   "vote_for": 3,
-   "rows": [
-    {
-     "name": "John Tang",
-     "votes": 9011,
-     "winner": true,
-     "pct_ballots": 43.011933174224346,
-     "pct_votes": 17.387696820006173
-    },
-    {
-     "name": "J.R. Fruen",
-     "votes": 8465,
-     "winner": true,
-     "pct_ballots": 40.40572792362769,
-     "pct_votes": 16.334130904600187
-    },
-    {
-     "name": "Seema Sharma Lindskog",
-     "votes": 8374,
-     "winner": true,
-     "pct_ballots": 39.97136038186157,
-     "pct_votes": 16.158536585365855
-    },
-    {
-     "name": "Tracy Kosolcharoen",
-     "votes": 7058,
-     "winner": false,
-     "pct_ballots": 33.68973747016707,
-     "pct_votes": 13.619172584130904
-    },
-    {
-     "name": "Santosh Rao",
-     "votes": 6975,
-     "winner": false,
-     "pct_ballots": 33.29355608591885,
-     "pct_votes": 13.459015128125964
-    },
-    {
-     "name": "Gopal Kumarappan",
-     "votes": 6423,
-     "winner": false,
-     "pct_ballots": 30.65871121718377,
-     "pct_votes": 12.393871565297932
-    },
-    {
-     "name": "Mark Fantozzi",
-     "votes": 3105,
-     "winner": false,
-     "pct_ballots": 14.821002386634845,
-     "pct_votes": 5.991432540907687
-    },
-    {
-     "name": "J.Z. Wang",
-     "votes": 2413,
-     "winner": false,
-     "pct_ballots": 11.517899761336515,
-     "pct_votes": 4.656143871565298
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 51824,
-   "undervotes": 10933,
-   "overvotes": 93,
-   "ballots_cast": 20950,
-   "margin": 1316,
-   "pct": 6.281622911694511,
-   "site_pct": 2.539364001234949,
-   "tier": 0,
-   "last_winner": "Seema Sharma Lindskog",
-   "first_loser": "Tracy Kosolcharoen",
-   "key": "71",
-   "precincts_reporting": "24",
-   "precincts_total": "24",
-   "line": 53,
-   "ratio": 24.830188679245282,
+   "ratio": 24.21505376344086,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2039,38 +1950,38 @@
    "rows": [
     {
      "name": "Eric Cao",
-     "votes": 5090,
+     "votes": 5092,
      "winner": true,
-     "pct_ballots": 49.26918981705546,
-     "pct_votes": 26.444305901911886
+     "pct_ballots": 49.25517508222093,
+     "pct_votes": 26.443705857914416
     },
     {
      "name": "Anna Goldberg",
-     "votes": 4776,
+     "votes": 4779,
      "winner": true,
-     "pct_ballots": 46.22979382441196,
-     "pct_votes": 24.81296758104738
+     "pct_ballots": 46.227510156703424,
+     "pct_votes": 24.818238471125884
     },
     {
      "name": "Vidya R. Vineet",
      "votes": 3875,
      "winner": true,
-     "pct_ballots": 37.5084696544381,
-     "pct_votes": 20.131961762261014
+     "pct_ballots": 37.483072160959566,
+     "pct_votes": 20.1235978396344
     },
     {
      "name": "Farnoush Drexel",
      "votes": 3228,
      "winner": false,
-     "pct_ballots": 31.24576517278095,
-     "pct_votes": 16.77057356608479
+     "pct_ballots": 31.22460824143935,
+     "pct_votes": 16.763606148732862
     },
     {
      "name": "Catalina Rupert",
-     "votes": 2279,
+     "votes": 2282,
      "winner": false,
-     "pct_ballots": 22.05981995934566,
-     "pct_votes": 11.840191188694929
+     "pct_ballots": 22.073902108725093,
+     "pct_votes": 11.850851682592438
     },
     {
      "name": "Write-in",
@@ -2081,13 +1992,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 19248,
-   "undervotes": 11715,
+   "candidate_votes": 19256,
+   "undervotes": 11728,
    "overvotes": 30,
-   "ballots_cast": 10331,
+   "ballots_cast": 10338,
    "margin": 647,
-   "pct": 6.262704481657148,
-   "site_pct": 3.361388196176226,
+   "pct": 6.258463919520216,
+   "site_pct": 3.3599916909015373,
    "tier": 0,
    "last_winner": "Vidya R. Vineet",
    "first_loser": "Farnoush Drexel",
@@ -2102,22 +2013,64 @@
   },
   {
    "type": "candidate",
-   "name": "West Valley-Mission CCD, Trustee Area 7",
-   "vote_for": 1,
+   "name": "City of Cupertino Council",
+   "vote_for": 3,
    "rows": [
     {
-     "name": "Susan Oster Fish",
-     "votes": 11586,
+     "name": "John Tang",
+     "votes": 9018,
      "winner": true,
-     "pct_ballots": 43.17013190252627,
-     "pct_votes": 54.20858091985215
+     "pct_ballots": 43.008393742846245,
+     "pct_votes": 17.391136652910095
     },
     {
-     "name": "Doug Robb",
-     "votes": 9787,
+     "name": "J.R. Fruen",
+     "votes": 8469,
+     "winner": true,
+     "pct_ballots": 40.39011827546738,
+     "pct_votes": 16.332394800786826
+    },
+    {
+     "name": "Seema Sharma Lindskog",
+     "votes": 8380,
+     "winner": true,
+     "pct_ballots": 39.965661961083555,
+     "pct_votes": 16.160759054267753
+    },
+    {
+     "name": "Tracy Kosolcharoen",
+     "votes": 7059,
      "winner": false,
-     "pct_ballots": 36.46694984723154,
-     "pct_votes": 45.79141908014785
+     "pct_ballots": 33.66558565433041,
+     "pct_votes": 13.61322173795657
+    },
+    {
+     "name": "Santosh Rao",
+     "votes": 6979,
+     "winner": false,
+     "pct_ballots": 33.28405188859214,
+     "pct_votes": 13.458942415242797
+    },
+    {
+     "name": "Gopal Kumarappan",
+     "votes": 6426,
+     "winner": false,
+     "pct_ballots": 30.646699732926365,
+     "pct_votes": 12.39248659698384
+    },
+    {
+     "name": "Mark Fantozzi",
+     "votes": 3108,
+     "winner": false,
+     "pct_ballots": 14.822586798931706,
+     "pct_votes": 5.993751687430092
+    },
+    {
+     "name": "J.Z. Wang",
+     "votes": 2415,
+     "winner": false,
+     "pct_ballots": 11.51755055322396,
+     "pct_votes": 4.657307054422031
     },
     {
      "name": "Write-in",
@@ -2128,13 +2081,60 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 21373,
-   "undervotes": 5457,
+   "candidate_votes": 51854,
+   "undervotes": 10957,
+   "overvotes": 93,
+   "ballots_cast": 20968,
+   "margin": 1321,
+   "pct": 6.300076306753148,
+   "site_pct": 2.5475373163111814,
+   "tier": 0,
+   "last_winner": "Seema Sharma Lindskog",
+   "first_loser": "Tracy Kosolcharoen",
+   "key": "71",
+   "precincts_reporting": "24",
+   "precincts_total": "24",
+   "line": 53,
+   "ratio": 24.92452830188679,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
+  },
+  {
+   "type": "candidate",
+   "name": "West Valley-Mission CCD, Trustee Area 7",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Susan Oster Fish",
+     "votes": 11595,
+     "winner": true,
+     "pct_ballots": 43.168279970215934,
+     "pct_votes": 54.212642603328966
+    },
+    {
+     "name": "Doug Robb",
+     "votes": 9793,
+     "winner": false,
+     "pct_ballots": 36.45941921072227,
+     "pct_votes": 45.787357396671034
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 21388,
+   "undervotes": 5464,
    "overvotes": 8,
-   "ballots_cast": 26838,
-   "margin": 1799,
-   "pct": 6.703182055294731,
-   "site_pct": 8.417161839704299,
+   "ballots_cast": 26860,
+   "margin": 1802,
+   "pct": 6.708860759493671,
+   "site_pct": 8.42528520665794,
    "tier": 0,
    "last_winner": "Susan Oster Fish",
    "first_loser": "Doug Robb",
@@ -2142,7 +2142,7 @@
    "precincts_reporting": "34",
    "precincts_total": "34",
    "line": 68,
-   "ratio": 26.455882352941178,
+   "ratio": 26.5,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2154,31 +2154,31 @@
    "rows": [
     {
      "name": "Jaria Jaug",
-     "votes": 13681,
+     "votes": 13689,
      "winner": true,
-     "pct_ballots": 53.69730748096397,
-     "pct_votes": 35.82632833163118
+     "pct_ballots": 53.70762711864407,
+     "pct_votes": 35.8332024501335
     },
     {
      "name": "Thelma B. Boac",
-     "votes": 8763,
+     "votes": 8766,
      "winner": true,
-     "pct_ballots": 34.39437946463616,
-     "pct_votes": 22.947599968575695
+     "pct_ballots": 34.39265536723164,
+     "pct_votes": 22.946442594628554
     },
     {
      "name": "Shanna Brewer",
-     "votes": 8724,
+     "votes": 8728,
      "winner": true,
-     "pct_ballots": 34.241306224978416,
-     "pct_votes": 22.845470971796686
+     "pct_ballots": 34.243565599497806,
+     "pct_votes": 22.846971362755877
     },
     {
      "name": "Jamal Khan",
      "votes": 7019,
      "winner": false,
-     "pct_ballots": 27.54925818353089,
-     "pct_votes": 18.380600727996438
+     "pct_ballots": 27.538449466415567,
+     "pct_votes": 18.373383592482067
     },
     {
      "name": "Write-in",
@@ -2189,13 +2189,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 38187,
-   "undervotes": 38226,
+   "candidate_votes": 38202,
+   "undervotes": 38241,
    "overvotes": 21,
-   "ballots_cast": 25478,
-   "margin": 1705,
-   "pct": 6.692048041447523,
-   "site_pct": 4.464870243800246,
+   "ballots_cast": 25488,
+   "margin": 1709,
+   "pct": 6.705116133082234,
+   "site_pct": 4.473587770273808,
    "tier": 0,
    "last_winner": "Shanna Brewer",
    "first_loser": "Jamal Khan",
@@ -2203,7 +2203,7 @@
    "precincts_reporting": "30",
    "precincts_total": "30",
    "line": 64,
-   "ratio": 26.640625,
+   "ratio": 26.703125,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2269,24 +2269,24 @@
    "rows": [
     {
      "name": "Patrick Shupui Kwok",
-     "votes": 10930,
+     "votes": 10942,
      "winner": true,
-     "pct_ballots": 48.75981441827266,
-     "pct_votes": 38.57828603698998
+     "pct_ballots": 48.76548712006418,
+     "pct_votes": 38.58659237578023
     },
     {
      "name": "Gilbert Wong",
-     "votes": 9582,
+     "votes": 9590,
      "winner": true,
-     "pct_ballots": 42.74625267665953,
-     "pct_votes": 33.82041507835663
+     "pct_ballots": 42.73999465192976,
+     "pct_votes": 33.81881017032831
     },
     {
      "name": "Taghi Saadati",
-     "votes": 7820,
+     "votes": 7825,
      "winner": false,
-     "pct_ballots": 34.885795860099925,
-     "pct_votes": 27.601298884653396
+     "pct_ballots": 34.873874676887425,
+     "pct_votes": 27.594597453891456
     },
     {
      "name": "Write-in",
@@ -2297,13 +2297,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 28332,
-   "undervotes": 16494,
+   "candidate_votes": 28357,
+   "undervotes": 16513,
    "overvotes": 6,
-   "ballots_cast": 22416,
-   "margin": 1762,
-   "pct": 7.8604568165596005,
-   "site_pct": 6.219116193703233,
+   "ballots_cast": 22438,
+   "margin": 1765,
+   "pct": 7.866119975042339,
+   "site_pct": 6.224212716436859,
    "tier": 0,
    "last_winner": "Gilbert Wong",
    "first_loser": "Taghi Saadati",
@@ -2311,7 +2311,7 @@
    "precincts_reporting": "27",
    "precincts_total": "27",
    "line": 57,
-   "ratio": 30.912280701754387,
+   "ratio": 30.964912280701753,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2323,17 +2323,17 @@
    "rows": [
     {
      "name": "Dolores Alvarado",
-     "votes": 2749,
+     "votes": 2750,
      "winner": true,
-     "pct_ballots": 49.57619477006312,
-     "pct_votes": 58.50180889550968
+     "pct_ballots": 49.56741167988464,
+     "pct_votes": 58.49819187406935
     },
     {
      "name": "Marilyn Librers",
-     "votes": 1950,
+     "votes": 1951,
      "winner": false,
-     "pct_ballots": 35.166816952209196,
-     "pct_votes": 41.49819110449032
+     "pct_ballots": 35.16582552271089,
+     "pct_votes": 41.50180812593065
     },
     {
      "name": "Write-in",
@@ -2344,13 +2344,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 4699,
-   "undervotes": 846,
+   "candidate_votes": 4701,
+   "undervotes": 847,
    "overvotes": 0,
-   "ballots_cast": 5545,
+   "ballots_cast": 5548,
    "margin": 799,
-   "pct": 14.409377817853922,
-   "site_pct": 17.003617791019366,
+   "pct": 14.401586157173757,
+   "site_pct": 16.996383748138694,
    "tier": 0,
    "last_winner": "Dolores Alvarado",
    "first_loser": "Marilyn Librers",
@@ -2370,31 +2370,31 @@
    "rows": [
     {
      "name": "Chris Norwood",
-     "votes": 12642,
+     "votes": 12650,
      "winner": true,
-     "pct_ballots": 60.2028668031811,
-     "pct_votes": 33.52693133900867
+     "pct_ballots": 60.20942408376963,
+     "pct_votes": 33.52591964380367
     },
     {
      "name": "Kelly Yip-Chuan",
-     "votes": 11801,
+     "votes": 11807,
      "winner": true,
-     "pct_ballots": 56.19791418638983,
-     "pct_votes": 31.29657623252977
+     "pct_ballots": 56.19704902427416,
+     "pct_votes": 31.29174175765928
     },
     {
      "name": "Franchesca Lacanlale",
-     "votes": 7482,
+     "votes": 7488,
      "winner": true,
-     "pct_ballots": 35.63026810800514,
-     "pct_votes": 19.842469567984725
+     "pct_ballots": 35.64017134697763,
+     "pct_votes": 19.845224212869713
     },
     {
      "name": "Anuradha Sankaran",
-     "votes": 5782,
+     "votes": 5787,
      "winner": false,
-     "pct_ballots": 27.53464450688128,
-     "pct_votes": 15.334022860476834
+     "pct_ballots": 27.5440266539743,
+     "pct_votes": 15.337114385667338
     },
     {
      "name": "Write-in",
@@ -2405,13 +2405,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 37707,
-   "undervotes": 25275,
+   "candidate_votes": 37732,
+   "undervotes": 25283,
    "overvotes": 15,
-   "ballots_cast": 20999,
-   "margin": 1700,
-   "pct": 8.095623601123863,
-   "site_pct": 4.50844670750789,
+   "ballots_cast": 21010,
+   "margin": 1701,
+   "pct": 8.096144693003332,
+   "site_pct": 4.508109827202374,
    "tier": 0,
    "last_winner": "Franchesca Lacanlale",
    "first_loser": "Anuradha Sankaran",
@@ -2419,7 +2419,7 @@
    "precincts_reporting": "18",
    "precincts_total": "18",
    "line": 53,
-   "ratio": 32.075471698113205,
+   "ratio": 32.094339622641506,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2430,36 +2430,36 @@
    "threshold": 0.6666666666666666,
    "threshold_label": "two-thirds",
    "passing": true,
-   "yes_share": 72.47909780283881,
+   "yes_share": 72.49912590808438,
    "rows": [
     {
      "name": "Yes",
-     "votes": 18638,
+     "votes": 18662,
      "winner": true,
-     "pct_ballots": 67.74498400697877,
-     "pct_votes": 72.47909780283881
+     "pct_ballots": 67.76325344952797,
+     "pct_votes": 72.49912590808438
     },
     {
      "name": "No",
-     "votes": 7077,
+     "votes": 7079,
      "winner": false,
-     "pct_ballots": 25.723320732771153,
-     "pct_votes": 27.52090219716119
+     "pct_ballots": 25.704429920116194,
+     "pct_votes": 27.50087409191562
     }
    ],
-   "candidate_votes": 25715,
-   "undervotes": 1797,
+   "candidate_votes": 25741,
+   "undervotes": 1799,
    "overvotes": 0,
-   "ballots_cast": 27512,
-   "margin": 2242,
-   "pct": 8.149171270718233,
-   "site_pct": 5.812431136172151,
+   "ballots_cast": 27540,
+   "margin": 2252,
+   "pct": 8.177196804647785,
+   "site_pct": 5.832459241417723,
    "tier": 0,
    "key": "130",
    "precincts_reporting": "49",
    "precincts_total": "49",
    "line": 69,
-   "ratio": 32.492753623188406,
+   "ratio": 32.63768115942029,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2471,48 +2471,48 @@
    "rows": [
     {
      "name": "Mark Turner",
-     "votes": 8819,
+     "votes": 8824,
      "winner": true,
-     "pct_ballots": 45.43534260690366,
-     "pct_votes": 48.41348265261309
+     "pct_ballots": 45.43769309989701,
+     "pct_votes": 48.41700960219479
     },
     {
      "name": "Deborah M. Africa",
-     "votes": 7045,
+     "votes": 7049,
      "winner": false,
-     "pct_ballots": 36.29572385368367,
-     "pct_votes": 38.6747913921827
+     "pct_ballots": 36.29763130792997,
+     "pct_votes": 38.67764060356653
     },
     {
      "name": "Kristopher L. Clayton",
      "votes": 2102,
      "winner": false,
-     "pct_ballots": 10.829469345698094,
-     "pct_votes": 11.539306104523495
+     "pct_ballots": 10.823892893923789,
+     "pct_votes": 11.53360768175583
     },
     {
      "name": "Jacob Montoya",
      "votes": 125,
      "winner": false,
-     "pct_ballots": 0.6439979392065945,
-     "pct_votes": 0.6862099253403601
+     "pct_ballots": 0.6436663233779608,
+     "pct_votes": 0.6858710562414266
     },
     {
      "name": "Write-in",
      "votes": 125,
      "winner": false,
      "write_in": true,
-     "pct_ballots": 0.6439979392065945,
-     "pct_votes": 0.6862099253403601
+     "pct_ballots": 0.6436663233779608,
+     "pct_votes": 0.6858710562414266
     }
    ],
-   "candidate_votes": 18216,
-   "undervotes": 1187,
+   "candidate_votes": 18225,
+   "undervotes": 1188,
    "overvotes": 7,
-   "ballots_cast": 19410,
-   "margin": 1774,
-   "pct": 9.13961875321999,
-   "site_pct": 9.738691260430391,
+   "ballots_cast": 19420,
+   "margin": 1775,
+   "pct": 9.140061791967044,
+   "site_pct": 9.739368998628258,
    "tier": 0,
    "last_winner": "Mark Turner",
    "first_loser": "Deborah M. Africa",
@@ -2520,61 +2520,7 @@
    "precincts_reporting": "17",
    "precincts_total": "17",
    "line": 49,
-   "ratio": 36.204081632653065,
-   "recount_votes_cfg": 25,
-   "recount_pct_cfg": 0.25,
-   "group": 0
-  },
-  {
-   "type": "candidate",
-   "name": "Palo Alto Unified SD",
-   "vote_for": 2,
-   "rows": [
-    {
-     "name": "Linda Henigin",
-     "votes": 17261,
-     "winner": true,
-     "pct_ballots": 50.91890616242367,
-     "pct_votes": 36.92113537678338
-    },
-    {
-     "name": "Avery Wang",
-     "votes": 16452,
-     "winner": true,
-     "pct_ballots": 48.53240508569574,
-     "pct_votes": 35.19069110821159
-    },
-    {
-     "name": "John Craig",
-     "votes": 13038,
-     "winner": false,
-     "pct_ballots": 38.46131154311337,
-     "pct_votes": 27.888173515005025
-    },
-    {
-     "name": "Write-in",
-     "votes": 0,
-     "winner": false,
-     "write_in": true,
-     "pct_ballots": 0.0,
-     "pct_votes": 0.0
-    }
-   ],
-   "candidate_votes": 46751,
-   "undervotes": 21027,
-   "overvotes": 20,
-   "ballots_cast": 33899,
-   "margin": 3414,
-   "pct": 10.071093542582377,
-   "site_pct": 7.302517593206562,
-   "tier": 0,
-   "last_winner": "Avery Wang",
-   "first_loser": "John Craig",
-   "key": "42",
-   "precincts_reporting": "22",
-   "precincts_total": "22",
-   "line": 85,
-   "ratio": 40.16470588235294,
+   "ratio": 36.224489795918366,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2586,17 +2532,17 @@
    "rows": [
     {
      "name": "Chris Miller",
-     "votes": 3040,
+     "votes": 3041,
      "winner": true,
-     "pct_ballots": 50.431320504313206,
-     "pct_votes": 59.936908517350155
+     "pct_ballots": 50.41445623342175,
+     "pct_votes": 59.909377462568955
     },
     {
      "name": "Mohit Vora",
-     "votes": 2032,
+     "votes": 2035,
      "winner": false,
-     "pct_ballots": 33.70935633709356,
-     "pct_votes": 40.063091482649845
+     "pct_ballots": 33.7367374005305,
+     "pct_votes": 40.090622537431045
     },
     {
      "name": "Write-in",
@@ -2607,13 +2553,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 5072,
+   "candidate_votes": 5076,
    "undervotes": 952,
    "overvotes": 4,
-   "ballots_cast": 6028,
-   "margin": 1008,
-   "pct": 16.721964167219642,
-   "site_pct": 19.873817034700316,
+   "ballots_cast": 6032,
+   "margin": 1006,
+   "pct": 16.677718832891248,
+   "site_pct": 19.818754925137902,
    "tier": 0,
    "last_winner": "Chris Miller",
    "first_loser": "Mohit Vora",
@@ -2621,7 +2567,61 @@
    "precincts_reporting": "8",
    "precincts_total": "8",
    "line": 25,
-   "ratio": 40.32,
+   "ratio": 40.24,
+   "recount_votes_cfg": 25,
+   "recount_pct_cfg": 0.25,
+   "group": 0
+  },
+  {
+   "type": "candidate",
+   "name": "Palo Alto Unified SD",
+   "vote_for": 2,
+   "rows": [
+    {
+     "name": "Linda Henigin",
+     "votes": 17273,
+     "winner": true,
+     "pct_ballots": 50.90775125257884,
+     "pct_votes": 36.91364092919881
+    },
+    {
+     "name": "Avery Wang",
+     "votes": 16473,
+     "winner": true,
+     "pct_ballots": 48.5499557913351,
+     "pct_votes": 35.20398350180582
+    },
+    {
+     "name": "John Craig",
+     "votes": 13047,
+     "winner": false,
+     "pct_ballots": 38.4526967285588,
+     "pct_votes": 27.882375568995364
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 46793,
+   "undervotes": 21047,
+   "overvotes": 20,
+   "ballots_cast": 33930,
+   "margin": 3426,
+   "pct": 10.097259062776304,
+   "site_pct": 7.321607932810463,
+   "tier": 0,
+   "last_winner": "Avery Wang",
+   "first_loser": "John Craig",
+   "key": "42",
+   "precincts_reporting": "22",
+   "precincts_total": "22",
+   "line": 85,
+   "ratio": 40.305882352941175,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2633,17 +2633,17 @@
    "rows": [
     {
      "name": "Karen Martinez",
-     "votes": 14350,
+     "votes": 14363,
      "winner": true,
-     "pct_ballots": 49.426514655736575,
-     "pct_votes": 55.83223095478951
+     "pct_ballots": 49.42532690984171,
+     "pct_votes": 55.83067713597139
     },
     {
      "name": "Scott Hung Pham",
-     "votes": 11352,
+     "votes": 11363,
      "winner": false,
-     "pct_ballots": 39.10033410257294,
-     "pct_votes": 44.16776904521049
+     "pct_ballots": 39.10185822436338,
+     "pct_votes": 44.16932286402861
     },
     {
      "name": "Write-in",
@@ -2654,13 +2654,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 25702,
-   "undervotes": 3320,
+   "candidate_votes": 25726,
+   "undervotes": 3323,
    "overvotes": 11,
-   "ballots_cast": 29033,
-   "margin": 2998,
-   "pct": 10.326180553163642,
-   "site_pct": 11.664461909579021,
+   "ballots_cast": 29060,
+   "margin": 3000,
+   "pct": 10.323468685478321,
+   "site_pct": 11.661354271942782,
    "tier": 0,
    "last_winner": "Karen Martinez",
    "first_loser": "Scott Hung Pham",
@@ -2668,7 +2668,7 @@
    "precincts_reporting": "47",
    "precincts_total": "47",
    "line": 73,
-   "ratio": 41.06849315068493,
+   "ratio": 41.0958904109589,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2680,17 +2680,17 @@
    "rows": [
     {
      "name": "Davis Stuart Fields",
-     "votes": 1946,
+     "votes": 1947,
      "winner": true,
-     "pct_ballots": 57.62511104530648,
-     "pct_votes": 68.69043416872573
+     "pct_ballots": 57.63765541740675,
+     "pct_votes": 68.7014820042343
     },
     {
      "name": "Joseph I. Guardado",
      "votes": 887,
      "winner": false,
-     "pct_ballots": 26.265916493929524,
-     "pct_votes": 31.309565831274266
+     "pct_ballots": 26.25814091178212,
+     "pct_votes": 31.298517995765703
     },
     {
      "name": "Write-in",
@@ -2701,13 +2701,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 2833,
+   "candidate_votes": 2834,
    "undervotes": 543,
    "overvotes": 1,
-   "ballots_cast": 3377,
-   "margin": 1059,
-   "pct": 31.359194551376962,
-   "site_pct": 37.38086833745147,
+   "ballots_cast": 3378,
+   "margin": 1060,
+   "pct": 31.37951450562463,
+   "site_pct": 37.402964008468594,
    "tier": 0,
    "last_winner": "Davis Stuart Fields",
    "first_loser": "Joseph I. Guardado",
@@ -2715,7 +2715,7 @@
    "precincts_reporting": "3",
    "precincts_total": "3",
    "line": 25,
-   "ratio": 42.36,
+   "ratio": 42.4,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2727,17 +2727,17 @@
    "rows": [
     {
      "name": "Diego Martinez",
-     "votes": 3151,
+     "votes": 3154,
      "winner": true,
-     "pct_ballots": 50.18315018315018,
-     "pct_votes": 60.13358778625954
+     "pct_ballots": 50.20694046482012,
+     "pct_votes": 60.15639900820141
     },
     {
      "name": "Victor A. Ramirez",
      "votes": 2089,
      "winner": false,
-     "pct_ballots": 33.269628921802834,
-     "pct_votes": 39.86641221374046
+     "pct_ballots": 33.253740846864055,
+     "pct_votes": 39.84360099179859
     },
     {
      "name": "Write-in",
@@ -2748,13 +2748,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 5240,
+   "candidate_votes": 5243,
    "undervotes": 1032,
    "overvotes": 7,
-   "ballots_cast": 6279,
-   "margin": 1062,
-   "pct": 16.91352126134735,
-   "site_pct": 20.267175572519083,
+   "ballots_cast": 6282,
+   "margin": 1065,
+   "pct": 16.953199617956066,
+   "site_pct": 20.312798016402823,
    "tier": 0,
    "last_winner": "Diego Martinez",
    "first_loser": "Victor A. Ramirez",
@@ -2762,7 +2762,7 @@
    "precincts_reporting": "6",
    "precincts_total": "6",
    "line": 25,
-   "ratio": 42.48,
+   "ratio": 42.6,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2774,31 +2774,31 @@
    "rows": [
     {
      "name": "Debora Bodenheimer",
-     "votes": 6261,
+     "votes": 6265,
      "winner": true,
-     "pct_ballots": 50.71688942891859,
-     "pct_votes": 31.86097399623429
+     "pct_ballots": 50.71642515988019,
+     "pct_votes": 31.869976599857566
     },
     {
      "name": "Carol Presunka",
-     "votes": 5722,
+     "votes": 5723,
      "winner": true,
-     "pct_ballots": 46.35074929121102,
-     "pct_votes": 29.11811103760623
+     "pct_ballots": 46.32882700558569,
+     "pct_votes": 29.11282938243972
     },
     {
      "name": "Sergio Martínez",
-     "votes": 4502,
+     "votes": 4503,
      "winner": true,
-     "pct_ballots": 36.468205751316326,
-     "pct_votes": 22.909775583939748
+     "pct_ballots": 36.452683558649724,
+     "pct_votes": 22.906704649506562
     },
     {
      "name": "Harmony ″Jay″ McMillin",
-     "votes": 3166,
+     "votes": 3167,
      "winner": false,
-     "pct_ballots": 25.646010530579183,
-     "pct_votes": 16.111139382219733
+     "pct_ballots": 25.63749696430017,
+     "pct_votes": 16.110489368196156
     },
     {
      "name": "Write-in",
@@ -2809,13 +2809,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 19651,
-   "undervotes": 17363,
+   "candidate_votes": 19658,
+   "undervotes": 17380,
    "overvotes": 21,
-   "ballots_cast": 12345,
+   "ballots_cast": 12353,
    "margin": 1336,
-   "pct": 10.822195220737141,
-   "site_pct": 6.798636201720014,
+   "pct": 10.815186594349552,
+   "site_pct": 6.796215281310408,
    "tier": 0,
    "last_winner": "Sergio Martínez",
    "first_loser": "Harmony ″Jay″ McMillin",
@@ -2835,24 +2835,24 @@
    "rows": [
     {
      "name": "Lorena Chavez",
-     "votes": 13349,
+     "votes": 13355,
      "winner": true,
-     "pct_ballots": 44.05174405174405,
-     "pct_votes": 50.837839896412525
+     "pct_ballots": 44.05409863104074,
+     "pct_votes": 50.843263410362816
     },
     {
      "name": "Tony Lam",
-     "votes": 10034,
+     "votes": 10035,
      "winner": false,
-     "pct_ballots": 33.11223311223311,
-     "pct_votes": 38.21311600274202
+     "pct_ballots": 33.10242454230579,
+     "pct_votes": 38.20382990063578
     },
     {
      "name": "Mahbub Khan",
-     "votes": 2875,
+     "votes": 2877,
      "winner": false,
-     "pct_ballots": 9.487509487509488,
-     "pct_votes": 10.949044100845457
+     "pct_ballots": 9.490351311232063,
+     "pct_votes": 10.95290668900141
     },
     {
      "name": "Write-in",
@@ -2863,13 +2863,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 26258,
-   "undervotes": 3973,
+   "candidate_votes": 26267,
+   "undervotes": 3976,
    "overvotes": 72,
-   "ballots_cast": 30303,
-   "margin": 3315,
-   "pct": 10.939510939510939,
-   "site_pct": 12.6247238936705,
+   "ballots_cast": 30315,
+   "margin": 3320,
+   "pct": 10.951674088734949,
+   "site_pct": 12.639433509727034,
    "tier": 0,
    "last_winner": "Lorena Chavez",
    "first_loser": "Tony Lam",
@@ -2877,7 +2877,7 @@
    "precincts_reporting": "33",
    "precincts_total": "33",
    "line": 76,
-   "ratio": 43.61842105263158,
+   "ratio": 43.68421052631579,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -2889,17 +2889,17 @@
    "rows": [
     {
      "name": "Jane Stevens",
-     "votes": 1835,
+     "votes": 1837,
      "winner": true,
-     "pct_ballots": 65.39558089807555,
-     "pct_votes": 72.27254824734148
+     "pct_ballots": 65.35040910707933,
+     "pct_votes": 72.23751474636256
     },
     {
      "name": "Trevor Scott Van Laar",
-     "votes": 704,
+     "votes": 706,
      "winner": false,
-     "pct_ballots": 25.089094796863865,
-     "pct_votes": 27.727451752658528
+     "pct_ballots": 25.11561721807186,
+     "pct_votes": 27.762485253637436
     },
     {
      "name": "Write-in",
@@ -2910,13 +2910,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 2539,
-   "undervotes": 267,
+   "candidate_votes": 2543,
+   "undervotes": 268,
    "overvotes": 0,
-   "ballots_cast": 2806,
+   "ballots_cast": 2811,
    "margin": 1131,
-   "pct": 40.30648610121169,
-   "site_pct": 44.545096494682944,
+   "pct": 40.23479188900747,
+   "site_pct": 44.47502949272513,
    "tier": 0,
    "last_winner": "Jane Stevens",
    "first_loser": "Trevor Scott Van Laar",
@@ -2985,15 +2985,15 @@
      "name": "Steven Hayes",
      "votes": 2940,
      "winner": true,
-     "pct_ballots": 56.833558863328825,
-     "pct_votes": 62.914615878450675
+     "pct_ballots": 56.78964651342476,
+     "pct_votes": 62.874251497005986
     },
     {
      "name": "Yvonne Martinez Beltran",
-     "votes": 1733,
+     "votes": 1736,
      "winner": false,
-     "pct_ballots": 33.50086990141117,
-     "pct_votes": 37.085384121549325
+     "pct_ballots": 33.532934131736525,
+     "pct_votes": 37.125748502994014
     },
     {
      "name": "Write-in",
@@ -3004,13 +3004,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 4673,
-   "undervotes": 500,
+   "candidate_votes": 4676,
+   "undervotes": 501,
    "overvotes": 0,
-   "ballots_cast": 5173,
-   "margin": 1207,
-   "pct": 23.33268896191765,
-   "site_pct": 25.829231756901347,
+   "ballots_cast": 5177,
+   "margin": 1204,
+   "pct": 23.256712381688235,
+   "site_pct": 25.748502994011975,
    "tier": 0,
    "last_winner": "Steven Hayes",
    "first_loser": "Yvonne Martinez Beltran",
@@ -3018,7 +3018,7 @@
    "precincts_reporting": "5",
    "precincts_total": "5",
    "line": 25,
-   "ratio": 48.28,
+   "ratio": 48.16,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3030,17 +3030,17 @@
    "rows": [
     {
      "name": "Vartika Chandra",
-     "votes": 4103,
+     "votes": 4104,
      "winner": true,
-     "pct_ballots": 48.452999527633445,
-     "pct_votes": 58.84124480137674
+     "pct_ballots": 48.447644906150394,
+     "pct_votes": 58.83870967741935
     },
     {
      "name": "Sam Krow-Lucal",
-     "votes": 2870,
+     "votes": 2871,
      "winner": false,
-     "pct_ballots": 33.8923004251299,
-     "pct_votes": 41.15875519862326
+     "pct_ballots": 33.89210246724117,
+     "pct_votes": 41.16129032258065
     },
     {
      "name": "Write-in",
@@ -3051,13 +3051,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 6973,
-   "undervotes": 1495,
+   "candidate_votes": 6975,
+   "undervotes": 1496,
    "overvotes": 0,
-   "ballots_cast": 8468,
+   "ballots_cast": 8471,
    "margin": 1233,
-   "pct": 14.560699102503543,
-   "site_pct": 17.682489602753478,
+   "pct": 14.55554243890922,
+   "site_pct": 17.677419354838708,
    "tier": 0,
    "last_winner": "Vartika Chandra",
    "first_loser": "Sam Krow-Lucal",
@@ -3077,17 +3077,17 @@
    "rows": [
     {
      "name": "John L. Varela",
-     "votes": 48080,
+     "votes": 48109,
      "winner": true,
-     "pct_ballots": 46.8794181023976,
-     "pct_votes": 57.997587454764776
+     "pct_ballots": 46.881638698863746,
+     "pct_votes": 58.00178433641975
     },
     {
      "name": "Jimmy Forbis",
-     "votes": 34820,
+     "votes": 34835,
      "winner": false,
-     "pct_ballots": 33.950527003441856,
-     "pct_votes": 42.002412545235224
+     "pct_ballots": 33.94628622658793,
+     "pct_votes": 41.99821566358025
     },
     {
      "name": "Write-in",
@@ -3098,13 +3098,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 82900,
-   "undervotes": 19633,
+   "candidate_votes": 82944,
+   "undervotes": 19646,
    "overvotes": 28,
-   "ballots_cast": 102561,
-   "margin": 13260,
-   "pct": 12.928891098955743,
-   "site_pct": 15.995174909529554,
+   "ballots_cast": 102618,
+   "margin": 13274,
+   "pct": 12.935352472275818,
+   "site_pct": 16.003568672839506,
    "tier": 0,
    "last_winner": "John L. Varela",
    "first_loser": "Jimmy Forbis",
@@ -3112,7 +3112,7 @@
    "precincts_reporting": "151",
    "precincts_total": "151",
    "line": 257,
-   "ratio": 51.59533073929961,
+   "ratio": 51.64980544747082,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3124,17 +3124,17 @@
    "rows": [
     {
      "name": "William \"Bill\" Wilson",
-     "votes": 15115,
+     "votes": 15132,
      "winner": true,
-     "pct_ballots": 48.77694591454757,
-     "pct_votes": 58.000767459708364
+     "pct_ballots": 48.78457669740151,
+     "pct_votes": 58.01479891116819
     },
     {
      "name": "Liangfang \"Liang\" Chao",
-     "votes": 10945,
+     "votes": 10951,
      "winner": false,
-     "pct_ballots": 35.32012391893636,
-     "pct_votes": 41.999232540291636
+     "pct_ballots": 35.30530659616996,
+     "pct_votes": 41.98520108883181
     },
     {
      "name": "Write-in",
@@ -3145,13 +3145,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 26060,
-   "undervotes": 4913,
+   "candidate_votes": 26083,
+   "undervotes": 4920,
    "overvotes": 15,
-   "ballots_cast": 30988,
-   "margin": 4170,
-   "pct": 13.456821995611204,
-   "site_pct": 16.00153491941673,
+   "ballots_cast": 31018,
+   "margin": 4181,
+   "pct": 13.479270101231544,
+   "site_pct": 16.029597822336388,
    "tier": 0,
    "last_winner": "William \"Bill\" Wilson",
    "first_loser": "Liangfang \"Liang\" Chao",
@@ -3159,7 +3159,7 @@
    "precincts_reporting": "33",
    "precincts_total": "33",
    "line": 78,
-   "ratio": 53.46153846153846,
+   "ratio": 53.6025641025641,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3171,17 +3171,17 @@
    "rows": [
     {
      "name": "Pete Dailey",
-     "votes": 52165,
+     "votes": 52195,
      "winner": true,
-     "pct_ballots": 46.04188916053981,
-     "pct_votes": 58.610383919643155
+     "pct_ballots": 46.03342593817524,
+     "pct_votes": 58.609189723320156
     },
     {
      "name": "Rebecca Eisenberg",
-     "votes": 36838,
+     "votes": 36861,
      "winner": false,
-     "pct_ballots": 32.513967466614886,
-     "pct_votes": 41.389616080356845
+     "pct_ballots": 32.509591215769284,
+     "pct_votes": 41.390810276679844
     },
     {
      "name": "Write-in",
@@ -3192,13 +3192,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 89003,
-   "undervotes": 24251,
+   "candidate_votes": 89056,
+   "undervotes": 24284,
    "overvotes": 45,
-   "ballots_cast": 113299,
-   "margin": 15327,
-   "pct": 13.527921693924924,
-   "site_pct": 17.220767839286317,
+   "ballots_cast": 113385,
+   "margin": 15334,
+   "pct": 13.523834722405962,
+   "site_pct": 17.218379446640316,
    "tier": 0,
    "last_winner": "Pete Dailey",
    "first_loser": "Rebecca Eisenberg",
@@ -3206,7 +3206,7 @@
    "precincts_reporting": "120",
    "precincts_total": "120",
    "line": 284,
-   "ratio": 53.96830985915493,
+   "ratio": 53.99295774647887,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3218,17 +3218,17 @@
    "rows": [
     {
      "name": "Raeena S. Lari",
-     "votes": 48176,
+     "votes": 48198,
      "winner": true,
-     "pct_ballots": 48.385509255074474,
-     "pct_votes": 59.0254720101937
+     "pct_ballots": 48.37748045247869,
+     "pct_votes": 59.016995640887494
     },
     {
      "name": "Karla Dominguez Vega",
-     "votes": 33443,
+     "votes": 33470,
      "winner": false,
-     "pct_ballots": 33.58843793626402,
-     "pct_votes": 40.9745279898063
+     "pct_ballots": 33.594636099930746,
+     "pct_votes": 40.983004359112506
     },
     {
      "name": "Write-in",
@@ -3239,21 +3239,21 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 81619,
-   "undervotes": 17900,
+   "candidate_votes": 81668,
+   "undervotes": 17913,
    "overvotes": 48,
-   "ballots_cast": 99567,
-   "margin": 14733,
-   "pct": 14.797071318810449,
-   "site_pct": 18.05094402038741,
+   "ballots_cast": 99629,
+   "margin": 14728,
+   "pct": 14.782844352547952,
+   "site_pct": 18.03399128177499,
    "tier": 0,
    "last_winner": "Raeena S. Lari",
    "first_loser": "Karla Dominguez Vega",
    "key": "28",
    "precincts_reporting": "113",
    "precincts_total": "113",
-   "line": 249,
-   "ratio": 59.16867469879518,
+   "line": 250,
+   "ratio": 58.912,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3265,45 +3265,45 @@
    "rows": [
     {
      "name": "Monte Wright",
-     "votes": 16950,
+     "votes": 16958,
      "winner": true,
-     "pct_ballots": 48.00067965564114,
-     "pct_votes": 27.15345305416273
+     "pct_ballots": 48.00022644286563,
+     "pct_votes": 27.15365400627682
     },
     {
      "name": "Mary Hiền Pollett",
-     "votes": 13158,
+     "votes": 13164,
      "winner": true,
-     "pct_ballots": 37.26212052560036,
-     "pct_votes": 21.078769043461545
+     "pct_ballots": 37.26117354015115,
+     "pct_votes": 21.0785883558573
     },
     {
      "name": "Johnny Ray Reyna",
-     "votes": 12808,
+     "votes": 12817,
      "winner": true,
-     "pct_ballots": 36.270956048935204,
-     "pct_votes": 20.518078272431637
+     "pct_ballots": 36.27897761046166,
+     "pct_votes": 20.522961634535324
     },
     {
      "name": "Corinna Diener",
-     "votes": 7485,
+     "votes": 7486,
      "winner": false,
-     "pct_ballots": 21.19676030811056,
-     "pct_votes": 11.990772631882479
+     "pct_ballots": 21.189391151745024,
+     "pct_votes": 11.986805866905783
     },
     {
      "name": "Thong Quang La",
-     "votes": 6092,
+     "votes": 6096,
      "winner": false,
-     "pct_ballots": 17.251925690983235,
-     "pct_votes": 9.759223363183443
+     "pct_ballots": 17.254946361346203,
+     "pct_votes": 9.761096522128994
     },
     {
      "name": "Magaly Fernández",
-     "votes": 5930,
+     "votes": 5931,
      "winner": false,
-     "pct_ballots": 16.793158133212504,
-     "pct_votes": 9.49970363487817
+     "pct_ballots": 16.787907950975118,
+     "pct_votes": 9.496893614295779
     },
     {
      "name": "Write-in",
@@ -3314,13 +3314,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 62423,
-   "undervotes": 43399,
+   "candidate_votes": 62452,
+   "undervotes": 43421,
    "overvotes": 114,
-   "ballots_cast": 35312,
-   "margin": 5323,
-   "pct": 15.07419574082465,
-   "site_pct": 8.527305640549157,
+   "ballots_cast": 35329,
+   "margin": 5331,
+   "pct": 15.089586458716635,
+   "site_pct": 8.53615576762954,
    "tier": 0,
    "last_winner": "Johnny Ray Reyna",
    "first_loser": "Corinna Diener",
@@ -3328,7 +3328,7 @@
    "precincts_reporting": "30",
    "precincts_total": "30",
    "line": 89,
-   "ratio": 59.80898876404494,
+   "ratio": 59.89887640449438,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3340,59 +3340,59 @@
    "rows": [
     {
      "name": "Bryna Chang",
-     "votes": 15288,
+     "votes": 15299,
      "winner": true,
-     "pct_ballots": 51.9134775374376,
-     "pct_votes": 23.465848042977743
+     "pct_ballots": 51.90324331659655,
+     "pct_votes": 23.46292462234491
     },
     {
      "name": "Vicki Veenker",
-     "votes": 14178,
+     "votes": 14186,
      "winner": true,
-     "pct_ballots": 48.14424938028456,
-     "pct_votes": 21.762087490406753
+     "pct_ballots": 48.127289998642965,
+     "pct_votes": 21.756000306724946
     },
     {
      "name": "Ed Lauing",
-     "votes": 13890,
+     "votes": 13902,
      "winner": true,
-     "pct_ballots": 47.16628748005026,
-     "pct_votes": 21.320030698388333
+     "pct_ballots": 47.1637942733071,
+     "pct_votes": 21.320450885668276
     },
     {
      "name": "Yu \"Yudy\" Deng",
-     "votes": 9379,
+     "votes": 9388,
      "winner": false,
-     "pct_ballots": 31.848280077421983,
-     "pct_votes": 14.3960092095165
+     "pct_ballots": 31.849640385398292,
+     "pct_votes": 14.397668890422514
     },
     {
      "name": "Brian Hamachek",
-     "votes": 4470,
+     "votes": 4476,
      "winner": false,
-     "pct_ballots": 15.178783659886584,
-     "pct_votes": 6.8610897927858785
+     "pct_ballots": 15.185235445786402,
+     "pct_votes": 6.864504255808604
     },
     {
      "name": "Raymond L. Goins",
-     "votes": 3972,
+     "votes": 3975,
      "winner": false,
-     "pct_ballots": 13.487724540731435,
-     "pct_votes": 6.096699923254029
+     "pct_ballots": 13.485547564119962,
+     "pct_votes": 6.096158270071314
     },
     {
      "name": "Gary Gechlik",
-     "votes": 2310,
+     "votes": 2315,
      "winner": false,
-     "pct_ballots": 7.844069408129308,
-     "pct_votes": 3.545663852647736
+     "pct_ballots": 7.853847197720179,
+     "pct_votes": 3.550341231500652
     },
     {
      "name": "Henry Etzkowitz",
-     "votes": 1663,
+     "votes": 1664,
      "winner": false,
-     "pct_ballots": 5.647050833644606,
-     "pct_votes": 2.552570990023024
+     "pct_ballots": 5.645270728728457,
+     "pct_votes": 2.551951537458784
     },
     {
      "name": "Write-in",
@@ -3403,13 +3403,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 65150,
-   "undervotes": 23107,
+   "candidate_votes": 65205,
+   "undervotes": 23133,
    "overvotes": 90,
-   "ballots_cast": 29449,
-   "margin": 4511,
-   "pct": 15.318007402628272,
-   "site_pct": 6.924021488871834,
+   "ballots_cast": 29476,
+   "margin": 4514,
+   "pct": 15.314153887908807,
+   "site_pct": 6.922781995245764,
    "tier": 0,
    "last_winner": "Ed Lauing",
    "first_loser": "Yu \"Yudy\" Deng",
@@ -3417,7 +3417,7 @@
    "precincts_reporting": "22",
    "precincts_total": "22",
    "line": 74,
-   "ratio": 60.95945945945946,
+   "ratio": 61.0,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3429,17 +3429,17 @@
    "rows": [
     {
      "name": "Mary J. Grunthaner",
-     "votes": 9937,
+     "votes": 9943,
      "winner": true,
-     "pct_ballots": 50.665375006373324,
-     "pct_votes": 59.21225122154689
+     "pct_ballots": 50.65464363951297,
+     "pct_votes": 59.20919430715179
     },
     {
      "name": "Michael Melillo",
-     "votes": 6845,
+     "votes": 6850,
      "winner": false,
-     "pct_ballots": 34.90032121552032,
-     "pct_votes": 40.78774877845311
+     "pct_ballots": 34.89734576392073,
+     "pct_votes": 40.79080569284821
     },
     {
      "name": "Write-in",
@@ -3450,13 +3450,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 16782,
-   "undervotes": 2827,
+   "candidate_votes": 16793,
+   "undervotes": 2832,
    "overvotes": 4,
-   "ballots_cast": 19613,
-   "margin": 3092,
-   "pct": 15.765053790853006,
-   "site_pct": 18.42450244309379,
+   "ballots_cast": 19629,
+   "margin": 3093,
+   "pct": 15.757297875592236,
+   "site_pct": 18.418388614303577,
    "tier": 0,
    "last_winner": "Mary J. Grunthaner",
    "first_loser": "Michael Melillo",
@@ -3464,7 +3464,7 @@
    "precincts_reporting": "21",
    "precincts_total": "21",
    "line": 50,
-   "ratio": 61.84,
+   "ratio": 61.86,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3476,31 +3476,31 @@
    "rows": [
     {
      "name": "Ping Li",
-     "votes": 8928,
+     "votes": 8934,
      "winner": true,
-     "pct_ballots": 58.90347694134723,
-     "pct_votes": 31.602421153233514
+     "pct_ballots": 58.9003164556962,
+     "pct_votes": 31.604641290505164
     },
     {
      "name": "Jeri Bromley",
-     "votes": 7888,
+     "votes": 7890,
      "winner": true,
-     "pct_ballots": 52.041960810186715,
-     "pct_votes": 27.921135535025307
+     "pct_ballots": 52.017405063291136,
+     "pct_votes": 27.91141927267582
     },
     {
      "name": "Bill Dalton",
-     "votes": 7085,
+     "votes": 7091,
      "winner": true,
-     "pct_ballots": 46.74407864353104,
-     "pct_votes": 25.0787582740434
+     "pct_ballots": 46.749736286919834,
+     "pct_votes": 25.084901655582282
     },
     {
      "name": "Glenn K. Hendricks",
-     "votes": 4350,
+     "votes": 4353,
      "winner": false,
-     "pct_ballots": 28.69961074091179,
-     "pct_votes": 15.39768503769778
+     "pct_ballots": 28.69857594936709,
+     "pct_votes": 15.399037781236734
     },
     {
      "name": "Write-in",
@@ -3511,13 +3511,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 28251,
-   "undervotes": 17202,
+   "candidate_votes": 28268,
+   "undervotes": 17218,
    "overvotes": 18,
-   "ballots_cast": 15157,
-   "margin": 2735,
-   "pct": 18.044467902619253,
-   "site_pct": 9.681073236345616,
+   "ballots_cast": 15168,
+   "margin": 2738,
+   "pct": 18.051160337552744,
+   "site_pct": 9.68586387434555,
    "tier": 0,
    "last_winner": "Bill Dalton",
    "first_loser": "Glenn K. Hendricks",
@@ -3525,7 +3525,7 @@
    "precincts_reporting": "17",
    "precincts_total": "17",
    "line": 38,
-   "ratio": 71.97368421052632,
+   "ratio": 72.05263157894737,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3536,36 +3536,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": false,
-   "yes_share": 40.2312442517409,
+   "yes_share": 40.23373383231567,
    "rows": [
     {
      "name": "Yes",
-     "votes": 6124,
+     "votes": 6128,
      "winner": false,
-     "pct_ballots": 38.08694570557871,
-     "pct_votes": 40.231244251740904
+     "pct_ballots": 38.08813475045062,
+     "pct_votes": 40.23373383231567
     },
     {
      "name": "No",
-     "votes": 9098,
+     "votes": 9103,
      "winner": true,
-     "pct_ballots": 56.58312084084831,
-     "pct_votes": 59.768755748259096
+     "pct_ballots": 56.57902915035117,
+     "pct_votes": 59.76626616768433
     }
    ],
-   "candidate_votes": 15222,
-   "undervotes": 855,
+   "candidate_votes": 15231,
+   "undervotes": 856,
    "overvotes": 2,
-   "ballots_cast": 16079,
-   "margin": 2974,
-   "pct": 18.496175135269606,
-   "site_pct": -9.768755748259103,
+   "ballots_cast": 16089,
+   "margin": 2975,
+   "pct": 18.490894399900554,
+   "site_pct": -9.766266167684329,
    "tier": 0,
    "key": "119",
    "precincts_reporting": "14",
    "precincts_total": "14",
    "line": 41,
-   "ratio": 72.53658536585365,
+   "ratio": 72.5609756097561,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3577,17 +3577,17 @@
    "rows": [
     {
      "name": "Bien Doan",
-     "votes": 12711,
+     "votes": 12715,
      "winner": true,
-     "pct_ballots": 53.38737452223949,
-     "pct_votes": 60.73100812231247
+     "pct_ballots": 53.36607067909007,
+     "pct_votes": 60.71240987442105
     },
     {
      "name": "Van Le",
-     "votes": 8219,
+     "votes": 8228,
      "winner": false,
-     "pct_ballots": 34.52055945230795,
-     "pct_votes": 39.26899187768753
+     "pct_ballots": 34.533702677747,
+     "pct_votes": 39.28759012557895
     },
     {
      "name": "Write-in",
@@ -3598,13 +3598,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 20930,
-   "undervotes": 2853,
+   "candidate_votes": 20943,
+   "undervotes": 2857,
    "overvotes": 26,
-   "ballots_cast": 23809,
-   "margin": 4492,
-   "pct": 18.866815069931537,
-   "site_pct": 21.46201624462494,
+   "ballots_cast": 23826,
+   "margin": 4487,
+   "pct": 18.83236800134307,
+   "site_pct": 21.424819748842094,
    "tier": 0,
    "last_winner": "Bien Doan",
    "first_loser": "Van Le",
@@ -3612,7 +3612,7 @@
    "precincts_reporting": "24",
    "precincts_total": "24",
    "line": 60,
-   "ratio": 74.86666666666666,
+   "ratio": 74.78333333333333,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3624,24 +3624,24 @@
    "rows": [
     {
      "name": "Jenny Ludwig",
-     "votes": 3487,
+     "votes": 3488,
      "winner": true,
-     "pct_ballots": 51.114042802697156,
-     "pct_votes": 59.081667231446964
+     "pct_ballots": 51.1137162954279,
+     "pct_votes": 59.078590785907856
     },
     {
      "name": "Línda Lo Chávez",
-     "votes": 1487,
+     "votes": 1488,
      "winner": false,
-     "pct_ballots": 21.797126942245676,
-     "pct_votes": 25.194849203659775
+     "pct_ballots": 21.805392731535758,
+     "pct_votes": 25.203252032520325
     },
     {
      "name": "Manisha Kand",
      "votes": 928,
      "winner": false,
-     "pct_ballots": 13.603048959249486,
-     "pct_votes": 15.723483564893257
+     "pct_ballots": 13.599062133645955,
+     "pct_votes": 15.718157181571815
     },
     {
      "name": "Write-in",
@@ -3652,13 +3652,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 5902,
+   "candidate_votes": 5904,
    "undervotes": 917,
    "overvotes": 3,
-   "ballots_cast": 6822,
+   "ballots_cast": 6824,
    "margin": 2000,
-   "pct": 29.31691586045148,
-   "site_pct": 33.88681802778719,
+   "pct": 29.308323563892145,
+   "site_pct": 33.87533875338753,
    "tier": 0,
    "last_winner": "Jenny Ludwig",
    "first_loser": "Línda Lo Chávez",
@@ -3677,36 +3677,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 62.19140154331274,
+   "yes_share": 62.19421604036989,
    "rows": [
     {
      "name": "Yes",
-     "votes": 24259,
+     "votes": 24280,
      "winner": true,
-     "pct_ballots": 53.89571438092911,
-     "pct_votes": 62.191401543312736
+     "pct_ballots": 53.88371060807812,
+     "pct_votes": 62.19421604036989
     },
     {
      "name": "No",
-     "votes": 14748,
+     "votes": 14759,
      "winner": false,
-     "pct_ballots": 32.76532403190331,
-     "pct_votes": 37.808598456687264
+     "pct_ballots": 32.75410563692854,
+     "pct_votes": 37.80578395963011
     }
    ],
-   "candidate_votes": 39007,
-   "undervotes": 6003,
+   "candidate_votes": 39039,
+   "undervotes": 6020,
    "overvotes": 1,
-   "ballots_cast": 45011,
-   "margin": 9511,
-   "pct": 21.130390349025795,
-   "site_pct": 12.191401543312743,
+   "ballots_cast": 45060,
+   "margin": 9521,
+   "pct": 21.12960497114958,
+   "site_pct": 12.194216040369888,
    "tier": 0,
    "key": "124",
    "precincts_reporting": "49",
    "precincts_total": "49",
    "line": 113,
-   "ratio": 84.16814159292035,
+   "ratio": 84.2566371681416,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3718,24 +3718,24 @@
    "rows": [
     {
      "name": "Paul Chun",
-     "votes": 3469,
+     "votes": 3471,
      "winner": true,
-     "pct_ballots": 49.45822640433419,
-     "pct_votes": 61.0524463217177
+     "pct_ballots": 49.451488816070665,
+     "pct_votes": 61.04467112205417
     },
     {
      "name": "Casino Fajardo",
-     "votes": 1321,
+     "votes": 1323,
      "winner": false,
-     "pct_ballots": 18.83376104932991,
-     "pct_votes": 23.248856036606828
+     "pct_ballots": 18.848838865935317,
+     "pct_votes": 23.267674991206473
     },
     {
      "name": "Pradeep Kumar",
      "votes": 892,
      "winner": false,
-     "pct_ballots": 12.717422298260622,
-     "pct_votes": 15.698697641675466
+     "pct_ballots": 12.708363014674456,
+     "pct_votes": 15.68765388673936
     },
     {
      "name": "Write-in",
@@ -3746,13 +3746,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 5682,
-   "undervotes": 1327,
+   "candidate_votes": 5686,
+   "undervotes": 1328,
    "overvotes": 5,
-   "ballots_cast": 7014,
+   "ballots_cast": 7019,
    "margin": 2148,
-   "pct": 30.624465355004276,
-   "site_pct": 37.80359028511088,
+   "pct": 30.602649950135348,
+   "site_pct": 37.7769961308477,
    "tier": 0,
    "last_winner": "Paul Chun",
    "first_loser": "Casino Fajardo",
@@ -3772,24 +3772,24 @@
    "rows": [
     {
      "name": "Thida Cornes",
-     "votes": 3990,
+     "votes": 3991,
      "winner": true,
-     "pct_ballots": 45.542746261842254,
-     "pct_votes": 57.0
+     "pct_ballots": 45.52298391696133,
+     "pct_votes": 56.97359029264811
     },
     {
      "name": "Sanjay Dave",
-     "votes": 1790,
+     "votes": 1792,
      "winner": false,
-     "pct_ballots": 20.431457596164822,
-     "pct_votes": 25.571428571428573
+     "pct_ballots": 20.440287441542146,
+     "pct_votes": 25.581727337615987
     },
     {
      "name": "Catherine Vonnegut",
-     "votes": 1220,
+     "votes": 1222,
      "winner": false,
-     "pct_ballots": 13.925350987330214,
-     "pct_votes": 17.428571428571427
+     "pct_ballots": 13.938633512033762,
+     "pct_votes": 17.444682369735904
     },
     {
      "name": "Write-in",
@@ -3800,13 +3800,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 7000,
-   "undervotes": 1726,
+   "candidate_votes": 7005,
+   "undervotes": 1727,
    "overvotes": 35,
-   "ballots_cast": 8761,
-   "margin": 2200,
-   "pct": 25.111288665677435,
-   "site_pct": 31.428571428571427,
+   "ballots_cast": 8767,
+   "margin": 2199,
+   "pct": 25.082696475419187,
+   "site_pct": 31.39186295503212,
    "tier": 0,
    "last_winner": "Thida Cornes",
    "first_loser": "Sanjay Dave",
@@ -3814,7 +3814,7 @@
    "precincts_reporting": "4",
    "precincts_total": "4",
    "line": 25,
-   "ratio": 88.0,
+   "ratio": 87.96,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3826,17 +3826,17 @@
    "rows": [
     {
      "name": "Craig Gleason",
-     "votes": 24134,
+     "votes": 24148,
      "winner": true,
-     "pct_ballots": 50.56146819743568,
-     "pct_votes": 68.12318288311175
+     "pct_ballots": 50.551612970755095,
+     "pct_votes": 68.11847672778562
     },
     {
      "name": "Tina Marie To",
-     "votes": 11293,
+     "votes": 11302,
      "winner": false,
-     "pct_ballots": 23.65918042403419,
-     "pct_votes": 31.876817116888247
+     "pct_ballots": 23.659695618497352,
+     "pct_votes": 31.881523272214388
     },
     {
      "name": "Write-in",
@@ -3847,13 +3847,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 35427,
-   "undervotes": 12293,
+   "candidate_votes": 35450,
+   "undervotes": 12307,
    "overvotes": 12,
-   "ballots_cast": 47732,
-   "margin": 12841,
-   "pct": 26.902287773401493,
-   "site_pct": 36.246365766223505,
+   "ballots_cast": 47769,
+   "margin": 12846,
+   "pct": 26.89191735225774,
+   "site_pct": 36.236953455571225,
    "tier": 0,
    "last_winner": "Craig Gleason",
    "first_loser": "Tina Marie To",
@@ -3861,7 +3861,7 @@
    "precincts_reporting": "68",
    "precincts_total": "68",
    "line": 120,
-   "ratio": 107.00833333333334,
+   "ratio": 107.05,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3872,36 +3872,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 65.80975534060933,
+   "yes_share": 65.7984496124031,
    "rows": [
     {
      "name": "Yes",
-     "votes": 12723,
+     "votes": 12732,
      "winner": true,
-     "pct_ballots": 63.263885435831135,
-     "pct_votes": 65.80975534060931
+     "pct_ballots": 63.24888226527571,
+     "pct_votes": 65.7984496124031
     },
     {
      "name": "No",
-     "votes": 6610,
+     "votes": 6618,
      "winner": false,
-     "pct_ballots": 32.867584903784,
-     "pct_votes": 34.19024465939068
+     "pct_ballots": 32.87630402384501,
+     "pct_votes": 34.201550387596896
     }
    ],
-   "candidate_votes": 19333,
-   "undervotes": 776,
+   "candidate_votes": 19350,
+   "undervotes": 778,
    "overvotes": 2,
-   "ballots_cast": 20111,
-   "margin": 6113,
-   "pct": 30.39630053204714,
-   "site_pct": 15.809755340609328,
+   "ballots_cast": 20130,
+   "margin": 6114,
+   "pct": 30.372578241430702,
+   "site_pct": 15.798449612403104,
    "tier": 0,
    "key": "117",
    "precincts_reporting": "18",
    "precincts_total": "18",
    "line": 51,
-   "ratio": 119.86274509803921,
+   "ratio": 119.88235294117646,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3912,36 +3912,36 @@
    "threshold": 0.55,
    "threshold_label": "55%",
    "passing": true,
-   "yes_share": 73.77552224713797,
+   "yes_share": 73.7905285910788,
    "rows": [
     {
      "name": "Yes",
-     "votes": 18753,
+     "votes": 18776,
      "winner": true,
-     "pct_ballots": 68.16298342541437,
-     "pct_votes": 73.77552224713797
+     "pct_ballots": 68.17719680464778,
+     "pct_votes": 73.7905285910788
     },
     {
      "name": "No",
-     "votes": 6666,
+     "votes": 6669,
      "winner": false,
-     "pct_ballots": 24.229427159057867,
-     "pct_votes": 26.224477752862033
+     "pct_ballots": 24.215686274509803,
+     "pct_votes": 26.209471408921203
     }
    ],
-   "candidate_votes": 25419,
-   "undervotes": 2093,
+   "candidate_votes": 25445,
+   "undervotes": 2095,
    "overvotes": 0,
-   "ballots_cast": 27512,
-   "margin": 8677,
-   "pct": 31.5389648153533,
-   "site_pct": 18.775522247137964,
+   "ballots_cast": 27540,
+   "margin": 8693,
+   "pct": 31.56499636891794,
+   "site_pct": 18.79052859107879,
    "tier": 0,
    "key": "131",
    "precincts_reporting": "49",
    "precincts_total": "49",
    "line": 69,
-   "ratio": 125.7536231884058,
+   "ratio": 125.98550724637681,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -3953,17 +3953,17 @@
    "rows": [
     {
      "name": "Gabriel Gutierrez",
-     "votes": 7728,
+     "votes": 7730,
      "winner": true,
-     "pct_ballots": 57.40603179319566,
-     "pct_votes": 70.93813108132917
+     "pct_ballots": 57.38252542498701,
+     "pct_votes": 70.91092560315568
     },
     {
      "name": "Shahida S. Merchant",
-     "votes": 3166,
+     "votes": 3171,
      "winner": false,
-     "pct_ballots": 23.518050809686525,
-     "pct_votes": 29.06186891867083
+     "pct_ballots": 23.53945512582585,
+     "pct_votes": 29.089074396844325
     },
     {
      "name": "Write-in",
@@ -3974,13 +3974,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 10894,
-   "undervotes": 2566,
+   "candidate_votes": 10901,
+   "undervotes": 2568,
    "overvotes": 2,
-   "ballots_cast": 13462,
-   "margin": 4562,
-   "pct": 33.88798098350914,
-   "site_pct": 41.87626216265834,
+   "ballots_cast": 13471,
+   "margin": 4559,
+   "pct": 33.84307029916116,
+   "site_pct": 41.82185120631135,
    "tier": 0,
    "last_winner": "Gabriel Gutierrez",
    "first_loser": "Shahida S. Merchant",
@@ -3988,7 +3988,7 @@
    "precincts_reporting": "20",
    "precincts_total": "20",
    "line": 34,
-   "ratio": 134.1764705882353,
+   "ratio": 134.08823529411765,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4000,17 +4000,17 @@
    "rows": [
     {
      "name": "Naomi Nakano-Matsumoto",
-     "votes": 8202,
+     "votes": 8211,
      "winner": true,
-     "pct_ballots": 58.96901286936516,
-     "pct_votes": 72.73855977296914
+     "pct_ballots": 58.96588868940754,
+     "pct_votes": 72.74096385542168
     },
     {
      "name": "Ilanit Eliaz",
-     "votes": 3074,
+     "votes": 3077,
      "winner": false,
-     "pct_ballots": 22.100798044431663,
-     "pct_votes": 27.261440227030864
+     "pct_ballots": 22.096947935368043,
+     "pct_votes": 27.259036144578314
     },
     {
      "name": "Write-in",
@@ -4021,13 +4021,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 11276,
-   "undervotes": 2630,
+   "candidate_votes": 11288,
+   "undervotes": 2634,
    "overvotes": 3,
-   "ballots_cast": 13909,
-   "margin": 5128,
-   "pct": 36.868214824933496,
-   "site_pct": 45.47711954593827,
+   "ballots_cast": 13925,
+   "margin": 5134,
+   "pct": 36.8689407540395,
+   "site_pct": 45.48192771084337,
    "tier": 0,
    "last_winner": "Naomi Nakano-Matsumoto",
    "first_loser": "Ilanit Eliaz",
@@ -4035,7 +4035,7 @@
    "precincts_reporting": "16",
    "precincts_total": "16",
    "line": 35,
-   "ratio": 146.5142857142857,
+   "ratio": 146.68571428571428,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4046,36 +4046,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 71.08409524766402,
+   "yes_share": 71.09153427201767,
    "rows": [
     {
      "name": "Yes",
-     "votes": 28300,
+     "votes": 28325,
      "winner": true,
-     "pct_ballots": 62.87351980626958,
-     "pct_votes": 71.08409524766402
+     "pct_ballots": 62.860630270750114,
+     "pct_votes": 71.09153427201767
     },
     {
      "name": "No",
-     "votes": 11512,
+     "votes": 11518,
      "winner": false,
-     "pct_ballots": 25.575970318366622,
-     "pct_votes": 28.91590475233598
+     "pct_ballots": 25.561473590767864,
+     "pct_votes": 28.908465727982332
     }
    ],
-   "candidate_votes": 39812,
-   "undervotes": 5195,
+   "candidate_votes": 39843,
+   "undervotes": 5213,
    "overvotes": 4,
-   "ballots_cast": 45011,
-   "margin": 16788,
-   "pct": 37.297549487902955,
-   "site_pct": 21.084095247664024,
+   "ballots_cast": 45060,
+   "margin": 16807,
+   "pct": 37.29915667998225,
+   "site_pct": 21.091534272017668,
    "tier": 0,
    "key": "123",
    "precincts_reporting": "49",
    "precincts_total": "49",
    "line": 113,
-   "ratio": 148.56637168141592,
+   "ratio": 148.73451327433628,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4086,36 +4086,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 71.32047933630358,
+   "yes_share": 71.32166705042597,
    "rows": [
     {
      "name": "Yes",
-     "votes": 18569,
+     "votes": 18585,
      "winner": true,
-     "pct_ballots": 65.67053331447164,
-     "pct_votes": 71.32047933630358
+     "pct_ballots": 65.67369871726916,
+     "pct_votes": 71.32166705042597
     },
     {
      "name": "No",
-     "votes": 7467,
+     "votes": 7473,
      "winner": false,
-     "pct_ballots": 26.40755410949215,
-     "pct_votes": 28.67952066369642
+     "pct_ballots": 26.40729354394148,
+     "pct_votes": 28.678332949574028
     }
    ],
-   "candidate_votes": 26036,
-   "undervotes": 2238,
+   "candidate_votes": 26058,
+   "undervotes": 2239,
    "overvotes": 2,
-   "ballots_cast": 28276,
-   "margin": 11102,
-   "pct": 39.26297920497949,
-   "site_pct": 21.320479336303578,
+   "ballots_cast": 28299,
+   "margin": 11112,
+   "pct": 39.266405173327676,
+   "site_pct": 21.321667050425972,
    "tier": 0,
    "key": "120",
    "precincts_reporting": "17",
    "precincts_total": "17",
    "line": 71,
-   "ratio": 156.3661971830986,
+   "ratio": 156.50704225352112,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4126,36 +4126,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 73.69781110660722,
+   "yes_share": 73.70606705155474,
    "rows": [
     {
      "name": "Yes",
-     "votes": 14545,
+     "votes": 14554,
      "winner": true,
-     "pct_ballots": 68.972875569044,
-     "pct_votes": 73.69781110660722
+     "pct_ballots": 68.97957249158728,
+     "pct_votes": 73.70606705155474
     },
     {
      "name": "No",
-     "votes": 5191,
+     "votes": 5192,
      "winner": false,
-     "pct_ballots": 24.615895295902884,
-     "pct_votes": 26.302188893392785
+     "pct_ballots": 24.60780131759799,
+     "pct_votes": 26.293932948445256
     }
    ],
-   "candidate_votes": 19736,
-   "undervotes": 1351,
+   "candidate_votes": 19746,
+   "undervotes": 1352,
    "overvotes": 1,
-   "ballots_cast": 21088,
-   "margin": 9354,
-   "pct": 44.356980273141126,
-   "site_pct": 23.69781110660722,
+   "ballots_cast": 21099,
+   "margin": 9362,
+   "pct": 44.37177117398929,
+   "site_pct": 23.70606705155474,
    "tier": 0,
    "key": "126",
    "precincts_reporting": "14",
    "precincts_total": "14",
    "line": 53,
-   "ratio": 176.49056603773585,
+   "ratio": 176.64150943396226,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4166,36 +4166,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 75.05223697148476,
+   "yes_share": 75.0644725531131,
    "rows": [
     {
      "name": "Yes",
-     "votes": 24425,
+     "votes": 24450,
      "winner": true,
-     "pct_ballots": 67.07584994782226,
-     "pct_votes": 75.05223697148476
+     "pct_ballots": 67.08555122647203,
+     "pct_votes": 75.0644725531131
     },
     {
      "name": "No",
-     "votes": 8119,
+     "votes": 8122,
      "winner": false,
-     "pct_ballots": 22.29636952820344,
-     "pct_votes": 24.94776302851524
+     "pct_ballots": 22.285024419689403,
+     "pct_votes": 24.935527446886898
     }
    ],
-   "candidate_votes": 32544,
-   "undervotes": 3869,
+   "candidate_votes": 32572,
+   "undervotes": 3873,
    "overvotes": 1,
-   "ballots_cast": 36414,
-   "margin": 16306,
-   "pct": 44.77948041961883,
-   "site_pct": 25.05223697148476,
+   "ballots_cast": 36446,
+   "margin": 16328,
+   "pct": 44.800526806782635,
+   "site_pct": 25.064472553113106,
    "tier": 0,
    "key": "118",
    "precincts_reporting": "37",
    "precincts_total": "37",
    "line": 92,
-   "ratio": 177.2391304347826,
+   "ratio": 177.47826086956522,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4207,17 +4207,17 @@
    "rows": [
     {
      "name": "Anne J. Kepner",
-     "votes": 12889,
+     "votes": 12896,
      "winner": true,
-     "pct_ballots": 64.77535430696553,
-     "pct_votes": 77.710116966116
+     "pct_ballots": 64.76821857264828,
+     "pct_votes": 77.70078929927095
     },
     {
      "name": "Colin Lee Elliott Glaves",
-     "votes": 3697,
+     "votes": 3701,
      "winner": false,
-     "pct_ballots": 18.579756759473312,
-     "pct_votes": 22.289883033884
+     "pct_ballots": 18.587715333232886,
+     "pct_votes": 22.29921070072905
     },
     {
      "name": "Write-in",
@@ -4228,13 +4228,13 @@
      "pct_votes": 0.0
     }
    ],
-   "candidate_votes": 16586,
-   "undervotes": 3307,
+   "candidate_votes": 16597,
+   "undervotes": 3309,
    "overvotes": 5,
-   "ballots_cast": 19898,
-   "margin": 9192,
-   "pct": 46.19559754749221,
-   "site_pct": 55.420233932232,
+   "ballots_cast": 19911,
+   "margin": 9195,
+   "pct": 46.1805032394154,
+   "site_pct": 55.4015785985419,
    "tier": 0,
    "last_winner": "Anne J. Kepner",
    "first_loser": "Colin Lee Elliott Glaves",
@@ -4242,7 +4242,7 @@
    "precincts_reporting": "23",
    "precincts_total": "23",
    "line": 50,
-   "ratio": 183.84,
+   "ratio": 183.9,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4253,36 +4253,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 77.42219182098012,
+   "yes_share": 77.41218970441065,
    "rows": [
     {
      "name": "Yes",
-     "votes": 31692,
+     "votes": 31715,
      "winner": true,
-     "pct_ballots": 70.40945546644154,
-     "pct_votes": 77.42219182098012
+     "pct_ballots": 70.38393253439858,
+     "pct_votes": 77.41218970441065
     },
     {
      "name": "No",
-     "votes": 9242,
+     "votes": 9254,
      "winner": false,
-     "pct_ballots": 20.532758658994467,
-     "pct_votes": 22.577808179019886
+     "pct_ballots": 20.53706169551709,
+     "pct_votes": 22.58781029558935
     }
    ],
-   "candidate_votes": 40934,
-   "undervotes": 4075,
+   "candidate_votes": 40969,
+   "undervotes": 4089,
    "overvotes": 2,
-   "ballots_cast": 45011,
-   "margin": 22450,
-   "pct": 49.87669680744707,
-   "site_pct": 27.422191820980117,
+   "ballots_cast": 45060,
+   "margin": 22461,
+   "pct": 49.84687083888149,
+   "site_pct": 27.41218970441065,
    "tier": 0,
    "key": "122",
    "precincts_reporting": "49",
    "precincts_total": "49",
    "line": 113,
-   "ratio": 198.67256637168143,
+   "ratio": 198.76991150442478,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4293,36 +4293,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 79.43482707678321,
+   "yes_share": 79.44059649521215,
    "rows": [
     {
      "name": "Yes",
-     "votes": 20970,
+     "votes": 20989,
      "winner": true,
-     "pct_ballots": 74.16183335691045,
-     "pct_votes": 79.43482707678321
+     "pct_ballots": 74.16869854058447,
+     "pct_votes": 79.44059649521215
     },
     {
      "name": "No",
-     "votes": 5429,
+     "votes": 5432,
      "winner": false,
-     "pct_ballots": 19.200028292544914,
-     "pct_votes": 20.56517292321679
+     "pct_ballots": 19.195024559171703,
+     "pct_votes": 20.55940350478786
     }
    ],
-   "candidate_votes": 26399,
-   "undervotes": 1874,
+   "candidate_votes": 26421,
+   "undervotes": 1875,
    "overvotes": 3,
-   "ballots_cast": 28276,
-   "margin": 15541,
-   "pct": 54.96180506436554,
-   "site_pct": 29.434827076783208,
+   "ballots_cast": 28299,
+   "margin": 15557,
+   "pct": 54.97367398141277,
+   "site_pct": 29.440596495212148,
    "tier": 0,
    "key": "121",
    "precincts_reporting": "17",
    "precincts_total": "17",
    "line": 71,
-   "ratio": 218.88732394366198,
+   "ratio": 219.11267605633802,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4333,36 +4333,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 88.01387074077796,
+   "yes_share": 88.00723182000803,
    "rows": [
     {
      "name": "Yes",
-     "votes": 17513,
+     "votes": 17524,
      "winner": true,
-     "pct_ballots": 83.6741519350215,
-     "pct_votes": 88.01387074077796
+     "pct_ballots": 83.65476417796448,
+     "pct_votes": 88.00723182000803
     },
     {
      "name": "No",
-     "votes": 2385,
+     "votes": 2388,
      "winner": false,
-     "pct_ballots": 11.395126612517917,
-     "pct_votes": 11.986129259222032
+     "pct_ballots": 11.399656291770098,
+     "pct_votes": 11.992768179991964
     }
    ],
-   "candidate_votes": 19898,
-   "undervotes": 1028,
+   "candidate_votes": 19912,
+   "undervotes": 1032,
    "overvotes": 4,
-   "ballots_cast": 20930,
-   "margin": 15128,
-   "pct": 72.27902532250359,
-   "site_pct": 38.01387074077796,
+   "ballots_cast": 20948,
+   "margin": 15136,
+   "pct": 72.25510788619438,
+   "site_pct": 38.00723182000803,
    "tier": 0,
    "key": "127",
    "precincts_reporting": "24",
    "precincts_total": "24",
    "line": 53,
-   "ratio": 285.4339622641509,
+   "ratio": 285.58490566037733,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0
@@ -4373,36 +4373,36 @@
    "threshold": 0.5,
    "threshold_label": "majority",
    "passing": true,
-   "yes_share": 91.68184405236198,
+   "yes_share": 91.67496089862078,
    "rows": [
     {
      "name": "Yes",
-     "votes": 64434,
+     "votes": 64475,
      "winner": true,
-     "pct_ballots": 81.4074542008844,
-     "pct_votes": 91.68184405236198
+     "pct_ballots": 81.39344055343753,
+     "pct_votes": 91.67496089862078
     },
     {
      "name": "No",
-     "votes": 5846,
+     "votes": 5855,
      "winner": false,
-     "pct_ballots": 7.385975994946304,
-     "pct_votes": 8.318155947638019
+     "pct_ballots": 7.391370212336203,
+     "pct_votes": 8.325039101379213
     }
    ],
-   "candidate_votes": 70280,
-   "undervotes": 8864,
+   "candidate_votes": 70330,
+   "undervotes": 8878,
    "overvotes": 6,
-   "ballots_cast": 79150,
-   "margin": 58588,
-   "pct": 74.0214782059381,
-   "site_pct": 41.68184405236198,
+   "ballots_cast": 79214,
+   "margin": 58620,
+   "pct": 74.00207034110132,
+   "site_pct": 41.67496089862078,
    "tier": 0,
    "key": "134",
    "precincts_reporting": "73",
    "precincts_total": "73",
-   "line": 198,
-   "ratio": 295.8989898989899,
+   "line": 199,
+   "ratio": 294.57286432160805,
    "recount_votes_cfg": 25,
    "recount_pct_cfg": 0.25,
    "group": 0

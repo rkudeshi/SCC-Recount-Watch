@@ -1,0 +1,4171 @@
+{
+ "election_name": "November 3, 2026 General Election",
+ "results_timestamp": "11/18/2026 4:42:49 PM PST",
+ "contests": [
+  {
+   "type": "candidate",
+   "name": "Fremont Union HSD, TA 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Rosa Kim",
+     "votes": 8377,
+     "winner": true,
+     "pct_ballots": 42.150548455268186,
+     "pct_votes": 50.080707837627784
+    },
+    {
+     "name": "Jason Lin",
+     "votes": 8350,
+     "winner": false,
+     "pct_ballots": 42.01469256314783,
+     "pct_votes": 49.919292162372216
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 16727,
+   "undervotes": 3142,
+   "overvotes": 5,
+   "ballots_cast": 19874,
+   "margin": 27,
+   "pct": 0.13585589212035826,
+   "site_pct": 0.16141567525557482,
+   "tier": 1,
+   "last_winner": "Rosa Kim",
+   "first_loser": "Jason Lin",
+   "key": "48",
+   "precincts_reporting": "33",
+   "precincts_total": "33"
+  },
+  {
+   "type": "measure",
+   "name": "Measure M - Gilroy Unified School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.738569337886375,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 12343,
+     "winner": false,
+     "pct_ballots": 52.32523633897156,
+     "pct_votes": 54.73856933788638
+    },
+    {
+     "name": "No",
+     "votes": 10206,
+     "winner": true,
+     "pct_ballots": 43.26592903471957,
+     "pct_votes": 45.26143066211362
+    }
+   ],
+   "candidate_votes": 22549,
+   "undervotes": 1040,
+   "overvotes": 0,
+   "ballots_cast": 23589,
+   "margin": 131,
+   "pct": 0.5553435923523676,
+   "site_pct": -0.2614306621136322,
+   "tier": 2,
+   "key": "128",
+   "precincts_reporting": "26",
+   "precincts_total": "26"
+  },
+  {
+   "type": "candidate",
+   "name": "Alum Rock Union SD, TA 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Andrés Quintero",
+     "votes": 2600,
+     "winner": true,
+     "pct_ballots": 45.43865781195386,
+     "pct_votes": 50.8209538702111
+    },
+    {
+     "name": "Delia Oseguera",
+     "votes": 2516,
+     "winner": false,
+     "pct_ballots": 43.97063963649074,
+     "pct_votes": 49.1790461297889
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5116,
+   "undervotes": 599,
+   "overvotes": 7,
+   "ballots_cast": 5722,
+   "margin": 84,
+   "pct": 1.4680181754631247,
+   "site_pct": 1.6419077404222049,
+   "tier": 2,
+   "last_winner": "Andrés Quintero",
+   "first_loser": "Delia Oseguera",
+   "key": "52",
+   "precincts_reporting": "9",
+   "precincts_total": "9"
+  },
+  {
+   "type": "candidate",
+   "name": "Orchard SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Katherine Kasolas-Jacobson",
+     "votes": 1438,
+     "winner": true,
+     "pct_ballots": 37.138429752066116,
+     "pct_votes": 23.223514211886304
+    },
+    {
+     "name": "Jeff Tang",
+     "votes": 1353,
+     "winner": true,
+     "pct_ballots": 34.94318181818182,
+     "pct_votes": 21.850775193798448
+    },
+    {
+     "name": "Renee Lo",
+     "votes": 1233,
+     "winner": true,
+     "pct_ballots": 31.84400826446281,
+     "pct_votes": 19.912790697674417
+    },
+    {
+     "name": "Lyseria Evelyn Phillips",
+     "votes": 1143,
+     "winner": false,
+     "pct_ballots": 29.519628099173552,
+     "pct_votes": 18.459302325581394
+    },
+    {
+     "name": "Molly Eslao",
+     "votes": 1005,
+     "winner": false,
+     "pct_ballots": 25.955578512396695,
+     "pct_votes": 16.23062015503876
+    },
+    {
+     "name": "Hina Patel",
+     "votes": 10,
+     "winner": false,
+     "pct_ballots": 0.25826446280991733,
+     "pct_votes": 0.16149870801033592
+    },
+    {
+     "name": "Write-in",
+     "votes": 10,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.25826446280991733,
+     "pct_votes": 0.16149870801033592
+    }
+   ],
+   "candidate_votes": 6192,
+   "undervotes": 5416,
+   "overvotes": 9,
+   "ballots_cast": 3872,
+   "margin": 90,
+   "pct": 2.324380165289256,
+   "site_pct": 1.4534883720930232,
+   "tier": 2,
+   "last_winner": "Renee Lo",
+   "first_loser": "Lyseria Evelyn Phillips",
+   "key": "65",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
+  },
+  {
+   "type": "candidate",
+   "name": "East Side Union HSD, TA 1, Short Term",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Mer Curry Nuñez",
+     "votes": 7769,
+     "winner": true,
+     "pct_ballots": 31.52747341936531,
+     "pct_votes": 35.0729086722947
+    },
+    {
+     "name": "Paul Pham",
+     "votes": 7565,
+     "winner": false,
+     "pct_ballots": 30.699618537456374,
+     "pct_votes": 34.15195702225633
+    },
+    {
+     "name": "Patricia Martínez-Roach",
+     "votes": 6817,
+     "winner": false,
+     "pct_ballots": 27.66415063712361,
+     "pct_votes": 30.775134305448965
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 22151,
+   "undervotes": 2462,
+   "overvotes": 29,
+   "ballots_cast": 24642,
+   "margin": 204,
+   "pct": 0.827854881908936,
+   "site_pct": 0.920951650038373,
+   "tier": 3,
+   "last_winner": "Mer Curry Nuñez",
+   "first_loser": "Paul Pham",
+   "key": "46",
+   "precincts_reporting": "33",
+   "precincts_total": "33"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Milpitas Council",
+   "vote_for": 2,
+   "rows": [
+    {
+     "name": "Bill Chuan",
+     "votes": 7840,
+     "winner": true,
+     "pct_ballots": 37.112426035502956,
+     "pct_votes": 25.200900032144006
+    },
+    {
+     "name": "Seema Kanani",
+     "votes": 6833,
+     "winner": true,
+     "pct_ballots": 32.34556213017751,
+     "pct_votes": 21.963998714239793
+    },
+    {
+     "name": "Garry Barbadillo",
+     "votes": 6643,
+     "winner": false,
+     "pct_ballots": 31.446153846153845,
+     "pct_votes": 21.35326261652202
+    },
+    {
+     "name": "Jennie Ha Phan",
+     "votes": 4964,
+     "winner": false,
+     "pct_ballots": 23.498224852071004,
+     "pct_votes": 15.956284153005464
+    },
+    {
+     "name": "Dipak Awasthi",
+     "votes": 4830,
+     "winner": false,
+     "pct_ballots": 22.86390532544379,
+     "pct_votes": 15.525554484088717
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 31110,
+   "undervotes": 10988,
+   "overvotes": 152,
+   "ballots_cast": 21125,
+   "margin": 190,
+   "pct": 0.8994082840236687,
+   "site_pct": 0.6107360977177756,
+   "tier": 3,
+   "last_winner": "Seema Kanani",
+   "first_loser": "Garry Barbadillo",
+   "key": "80",
+   "precincts_reporting": "14",
+   "precincts_total": "14"
+  },
+  {
+   "type": "candidate",
+   "name": "Franklin-McKinley SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Rudy J. Rodriguez",
+     "votes": 9250,
+     "winner": true,
+     "pct_ballots": 40.970899588076364,
+     "pct_votes": 25.39952770607941
+    },
+    {
+     "name": "Marc Cooper",
+     "votes": 9180,
+     "winner": true,
+     "pct_ballots": 40.66084953713957,
+     "pct_votes": 25.20731506397935
+    },
+    {
+     "name": "Steven Sanchez",
+     "votes": 9127,
+     "winner": true,
+     "pct_ballots": 40.426097355715996,
+     "pct_votes": 25.061782634960732
+    },
+    {
+     "name": "Gilbert Borrayo",
+     "votes": 8861,
+     "winner": false,
+     "pct_ballots": 39.247907162156174,
+     "pct_votes": 24.331374594980502
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 36418,
+   "undervotes": 31274,
+   "overvotes": 39,
+   "ballots_cast": 22577,
+   "margin": 266,
+   "pct": 1.1781901935598176,
+   "site_pct": 0.7304080399802295,
+   "tier": 3,
+   "last_winner": "Steven Sanchez",
+   "first_loser": "Gilbert Borrayo",
+   "key": "59",
+   "precincts_reporting": "21",
+   "precincts_total": "21"
+  },
+  {
+   "type": "measure",
+   "name": "Measure N - Los Gatos-Saratoga Union High School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": false,
+   "yes_share": 54.421909207319594,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 13175,
+     "winner": false,
+     "pct_ballots": 51.324503311258276,
+     "pct_votes": 54.421909207319594
+    },
+    {
+     "name": "No",
+     "votes": 11034,
+     "winner": true,
+     "pct_ballots": 42.98402804830541,
+     "pct_votes": 45.578090792680406
+    }
+   ],
+   "candidate_votes": 24209,
+   "undervotes": 1458,
+   "overvotes": 3,
+   "ballots_cast": 25670,
+   "margin": 311,
+   "pct": 1.2115309700038956,
+   "site_pct": -0.5780907926804133,
+   "tier": 3,
+   "key": "129",
+   "precincts_reporting": "42",
+   "precincts_total": "42"
+  },
+  {
+   "type": "candidate",
+   "name": "Sunnyvale SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Rommy Kushner",
+     "votes": 2009,
+     "winner": true,
+     "pct_ballots": 40.32517061421116,
+     "pct_votes": 51.289251978555015
+    },
+    {
+     "name": "Michelle Maginot",
+     "votes": 1908,
+     "winner": false,
+     "pct_ballots": 38.297872340425535,
+     "pct_votes": 48.710748021444985
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3917,
+   "undervotes": 1058,
+   "overvotes": 7,
+   "ballots_cast": 4982,
+   "margin": 101,
+   "pct": 2.0272982737856284,
+   "site_pct": 2.578503957110033,
+   "tier": 3,
+   "last_winner": "Rommy Kushner",
+   "first_loser": "Michelle Maginot",
+   "key": "67",
+   "precincts_reporting": "10",
+   "precincts_total": "10"
+  },
+  {
+   "type": "candidate",
+   "name": "Los Gatos-Saratoga Union HSD, TA 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Sangeeta Balachandran Mallik",
+     "votes": 2178,
+     "winner": true,
+     "pct_ballots": 39.07427341227126,
+     "pct_votes": 51.525904897090136
+    },
+    {
+     "name": "Ishaan Prasad",
+     "votes": 2049,
+     "winner": false,
+     "pct_ballots": 36.75995694294941,
+     "pct_votes": 48.474095102909864
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4227,
+   "undervotes": 1345,
+   "overvotes": 2,
+   "ballots_cast": 5574,
+   "margin": 129,
+   "pct": 2.3143164693218514,
+   "site_pct": 3.0518097941802695,
+   "tier": 3,
+   "last_winner": "Sangeeta Balachandran Mallik",
+   "first_loser": "Ishaan Prasad",
+   "key": "50",
+   "precincts_reporting": "18",
+   "precincts_total": "18"
+  },
+  {
+   "type": "candidate",
+   "name": "Morgan Hill Unified SD, Trustee Area 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Nancy Altman-Palm",
+     "votes": 2138,
+     "winner": true,
+     "pct_ballots": 43.19191919191919,
+     "pct_votes": 51.72997822405033
+    },
+    {
+     "name": "Jason Amezcua",
+     "votes": 1995,
+     "winner": false,
+     "pct_ballots": 40.303030303030305,
+     "pct_votes": 48.27002177594967
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4133,
+   "undervotes": 814,
+   "overvotes": 3,
+   "ballots_cast": 4950,
+   "margin": 143,
+   "pct": 2.888888888888889,
+   "site_pct": 3.459956448100653,
+   "tier": 3,
+   "last_winner": "Nancy Altman-Palm",
+   "first_loser": "Jason Amezcua",
+   "key": "38",
+   "precincts_reporting": "8",
+   "precincts_total": "8"
+  },
+  {
+   "type": "measure",
+   "name": "Measure R - Orchard School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": false,
+   "yes_share": 65.59048428207306,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 2316,
+     "winner": false,
+     "pct_ballots": 59.95340409008543,
+     "pct_votes": 65.59048428207306
+    },
+    {
+     "name": "No",
+     "votes": 1215,
+     "winner": true,
+     "pct_ballots": 31.45223919233756,
+     "pct_votes": 34.409515717926936
+    }
+   ],
+   "candidate_votes": 3531,
+   "undervotes": 332,
+   "overvotes": 0,
+   "ballots_cast": 3863,
+   "margin": 114,
+   "pct": 2.9510742945896973,
+   "site_pct": -1.0761823845935936,
+   "tier": 3,
+   "key": "133",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
+  },
+  {
+   "type": "candidate",
+   "name": "Santa Clara Unified SD, Trustee Area 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Kamal Yassin",
+     "votes": 1700,
+     "winner": true,
+     "pct_ballots": 42.13135068153655,
+     "pct_votes": 51.89255189255189
+    },
+    {
+     "name": "Jim Canova",
+     "votes": 1576,
+     "winner": false,
+     "pct_ballots": 39.05824039653036,
+     "pct_votes": 48.10744810744811
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3276,
+   "undervotes": 759,
+   "overvotes": 0,
+   "ballots_cast": 4035,
+   "margin": 124,
+   "pct": 3.0731102850061958,
+   "site_pct": 3.785103785103785,
+   "tier": 3,
+   "last_winner": "Kamal Yassin",
+   "first_loser": "Jim Canova",
+   "key": "45",
+   "precincts_reporting": "6",
+   "precincts_total": "6"
+  },
+  {
+   "type": "candidate",
+   "name": "Gilroy Unified SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Michelle Nelson",
+     "votes": 1967,
+     "winner": true,
+     "pct_ballots": 45.36439114391144,
+     "pct_votes": 52.663989290495316
+    },
+    {
+     "name": "Daniel Harney",
+     "votes": 1768,
+     "winner": false,
+     "pct_ballots": 40.77490774907749,
+     "pct_votes": 47.336010709504684
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3735,
+   "undervotes": 599,
+   "overvotes": 2,
+   "ballots_cast": 4336,
+   "margin": 199,
+   "pct": 4.589483394833948,
+   "site_pct": 5.327978580990629,
+   "tier": 3,
+   "last_winner": "Michelle Nelson",
+   "first_loser": "Daniel Harney",
+   "key": "35",
+   "precincts_reporting": "4",
+   "precincts_total": "4"
+  },
+  {
+   "type": "candidate",
+   "name": "Mayor, City of Santa Clara",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Karen Hardy",
+     "votes": 7528,
+     "winner": true,
+     "pct_ballots": 20.617879053461877,
+     "pct_votes": 22.839112890992386
+    },
+    {
+     "name": "Kathy Watanabe",
+     "votes": 6924,
+     "winner": false,
+     "pct_ballots": 18.963628396143733,
+     "pct_votes": 21.00664421589151
+    },
+    {
+     "name": "David Kertes",
+     "votes": 6439,
+     "winner": false,
+     "pct_ballots": 17.635297984224366,
+     "pct_votes": 19.535208276447925
+    },
+    {
+     "name": "Kevin Park",
+     "votes": 6196,
+     "winner": false,
+     "pct_ballots": 16.969763365468886,
+     "pct_votes": 18.797973362458663
+    },
+    {
+     "name": "Armando \"Gary\" Ferraris",
+     "votes": 3572,
+     "winner": false,
+     "pct_ballots": 9.783085013146362,
+     "pct_votes": 10.837049846788629
+    },
+    {
+     "name": "Mike Wiltberger",
+     "votes": 2302,
+     "winner": false,
+     "pct_ballots": 6.304776511831727,
+     "pct_votes": 6.984011407420891
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 32961,
+   "undervotes": 3486,
+   "overvotes": 65,
+   "ballots_cast": 36512,
+   "margin": 604,
+   "pct": 1.654250657318142,
+   "site_pct": 1.8324686751008767,
+   "tier": 0,
+   "last_winner": "Karen Hardy",
+   "first_loser": "Kathy Watanabe",
+   "key": "89",
+   "precincts_reporting": "37",
+   "precincts_total": "37"
+  },
+  {
+   "type": "measure",
+   "name": "Measure Q - Cambrian School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": true,
+   "yes_share": 67.84388222087902,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 7857,
+     "winner": true,
+     "pct_ballots": 63.629737609329446,
+     "pct_votes": 67.84388222087902
+    },
+    {
+     "name": "No",
+     "votes": 3724,
+     "winner": false,
+     "pct_ballots": 30.158730158730158,
+     "pct_votes": 32.156117779120976
+    }
+   ],
+   "candidate_votes": 11581,
+   "undervotes": 766,
+   "overvotes": 1,
+   "ballots_cast": 12348,
+   "margin": 205,
+   "pct": 1.6601878846776805,
+   "site_pct": 1.177215554212367,
+   "tier": 0,
+   "key": "132",
+   "precincts_reporting": "13",
+   "precincts_total": "13"
+  },
+  {
+   "type": "candidate",
+   "name": "Mayor, City of Milpitas",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Carmen Montano",
+     "votes": 8206,
+     "winner": true,
+     "pct_ballots": 38.844970414201185,
+     "pct_votes": 42.24235560588902
+    },
+    {
+     "name": "Hon Lien",
+     "votes": 7799,
+     "winner": false,
+     "pct_ballots": 36.918343195266274,
+     "pct_votes": 40.14722536806342
+    },
+    {
+     "name": "Santosh Sahoo",
+     "votes": 1884,
+     "winner": false,
+     "pct_ballots": 8.918343195266273,
+     "pct_votes": 9.698342427674252
+    },
+    {
+     "name": "Voltaire S. Montemayor",
+     "votes": 1537,
+     "winner": false,
+     "pct_ballots": 7.275739644970415,
+     "pct_votes": 7.912076598373314
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 19426,
+   "undervotes": 1647,
+   "overvotes": 52,
+   "ballots_cast": 21125,
+   "margin": 407,
+   "pct": 1.9266272189349112,
+   "site_pct": 2.0951302378255945,
+   "tier": 0,
+   "last_winner": "Carmen Montano",
+   "first_loser": "Hon Lien",
+   "key": "79",
+   "precincts_reporting": "14",
+   "precincts_total": "14"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Mountain View Council",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "IdaRose Sylvester",
+     "votes": 11303,
+     "winner": true,
+     "pct_ballots": 39.91736120921034,
+     "pct_votes": 18.225647806246673
+    },
+    {
+     "name": "Erik Poicon",
+     "votes": 9512,
+     "winner": true,
+     "pct_ballots": 33.59231529877101,
+     "pct_votes": 15.3377299772643
+    },
+    {
+     "name": "Silja Paymer",
+     "votes": 9500,
+     "winner": true,
+     "pct_ballots": 33.54993643169939,
+     "pct_votes": 15.318380444071787
+    },
+    {
+     "name": "Robert Cox",
+     "votes": 8952,
+     "winner": false,
+     "pct_ballots": 31.61463483542873,
+     "pct_votes": 14.434751761613752
+    },
+    {
+     "name": "Paul Donahue",
+     "votes": 8088,
+     "winner": false,
+     "pct_ballots": 28.56335640627207,
+     "pct_votes": 13.041585371752907
+    },
+    {
+     "name": "James Kuszmaul",
+     "votes": 7270,
+     "winner": false,
+     "pct_ballots": 25.674530300889955,
+     "pct_votes": 11.722592192463356
+    },
+    {
+     "name": "Alex Amoroso",
+     "votes": 4781,
+     "winner": false,
+     "pct_ballots": 16.884446955784714,
+     "pct_votes": 7.709176516116549
+    },
+    {
+     "name": "Samuel Ali",
+     "votes": 2611,
+     "winner": false,
+     "pct_ballots": 9.220935160333381,
+     "pct_votes": 4.210135930470678
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 62017,
+   "undervotes": 22724,
+   "overvotes": 207,
+   "ballots_cast": 28316,
+   "margin": 548,
+   "pct": 1.9353015962706597,
+   "site_pct": 0.8836286824580357,
+   "tier": 0,
+   "last_winner": "Silja Paymer",
+   "first_loser": "Robert Cox",
+   "key": "84",
+   "precincts_reporting": "17",
+   "precincts_total": "17"
+  },
+  {
+   "type": "candidate",
+   "name": "Santa Clara Valley Water, District 6",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Phuong Tran Nguyen",
+     "votes": 28198,
+     "winner": true,
+     "pct_ballots": 44.239790395205446,
+     "pct_votes": 51.220664099396934
+    },
+    {
+     "name": "Milan Balinton",
+     "votes": 26854,
+     "winner": false,
+     "pct_ballots": 42.131191264375026,
+     "pct_votes": 48.779335900603066
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 55052,
+   "undervotes": 8664,
+   "overvotes": 23,
+   "ballots_cast": 63739,
+   "margin": 1344,
+   "pct": 2.108599130830418,
+   "site_pct": 2.4413281987938675,
+   "tier": 0,
+   "last_winner": "Phuong Tran Nguyen",
+   "first_loser": "Milan Balinton",
+   "key": "97",
+   "precincts_reporting": "82",
+   "precincts_total": "82"
+  },
+  {
+   "type": "candidate",
+   "name": "Los Altos SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Bryan Harvey Johnson",
+     "votes": 11074,
+     "winner": true,
+     "pct_ballots": 52.208759605864884,
+     "pct_votes": 27.834611034309415
+    },
+    {
+     "name": "Vaishali \"Shali\" Sirkay",
+     "votes": 10430,
+     "winner": true,
+     "pct_ballots": 49.172599123096504,
+     "pct_votes": 26.215910519039838
+    },
+    {
+     "name": "David Poll",
+     "votes": 9373,
+     "winner": true,
+     "pct_ballots": 44.189335722031025,
+     "pct_votes": 23.55913032549956
+    },
+    {
+     "name": "Brandon Stroy",
+     "votes": 8908,
+     "winner": false,
+     "pct_ballots": 41.9970769883551,
+     "pct_votes": 22.390348121151188
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 39785,
+   "undervotes": 23818,
+   "overvotes": 30,
+   "ballots_cast": 21211,
+   "margin": 465,
+   "pct": 2.192258733675923,
+   "site_pct": 1.1687822043483724,
+   "tier": 0,
+   "last_winner": "David Poll",
+   "first_loser": "Brandon Stroy",
+   "key": "60",
+   "precincts_reporting": "20",
+   "precincts_total": "20"
+  },
+  {
+   "type": "candidate",
+   "name": "Town of Los Gatos Council",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Rob Moore",
+     "votes": 8598,
+     "winner": true,
+     "pct_ballots": 54.369545971923614,
+     "pct_votes": 24.52927079767203
+    },
+    {
+     "name": "Jeff Suzuki",
+     "votes": 6850,
+     "winner": true,
+     "pct_ballots": 43.31604907044391,
+     "pct_votes": 19.542394157252083
+    },
+    {
+     "name": "Rob Stump",
+     "votes": 5997,
+     "winner": true,
+     "pct_ballots": 37.922094346781336,
+     "pct_votes": 17.108866826429306
+    },
+    {
+     "name": "Mary Badame",
+     "votes": 5545,
+     "winner": false,
+     "pct_ballots": 35.063867459213355,
+     "pct_votes": 15.819354102476321
+    },
+    {
+     "name": "Steve Raspe",
+     "votes": 4643,
+     "winner": false,
+     "pct_ballots": 29.360060705703805,
+     "pct_votes": 13.246034463083419
+    },
+    {
+     "name": "Heidi Owens",
+     "votes": 3419,
+     "winner": false,
+     "pct_ballots": 21.620083470342735,
+     "pct_votes": 9.754079653086842
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 35052,
+   "undervotes": 12348,
+   "overvotes": 42,
+   "ballots_cast": 15814,
+   "margin": 452,
+   "pct": 2.858226887567978,
+   "site_pct": 1.2895127239529842,
+   "tier": 0,
+   "last_winner": "Rob Stump",
+   "first_loser": "Mary Badame",
+   "key": "78",
+   "precincts_reporting": "15",
+   "precincts_total": "15"
+  },
+  {
+   "type": "candidate",
+   "name": "San José Unified SD, Trustee Area 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Jose Magana",
+     "votes": 6227,
+     "winner": true,
+     "pct_ballots": 35.74626865671642,
+     "pct_votes": 42.86796089770068
+    },
+    {
+     "name": "Tomara Hall",
+     "votes": 5715,
+     "winner": false,
+     "pct_ballots": 32.80711825487945,
+     "pct_votes": 39.34324659231722
+    },
+    {
+     "name": "Carson Dance",
+     "votes": 2584,
+     "winner": false,
+     "pct_ballots": 14.833524684270953,
+     "pct_votes": 17.788792509982102
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 14526,
+   "undervotes": 2853,
+   "overvotes": 41,
+   "ballots_cast": 17420,
+   "margin": 512,
+   "pct": 2.939150401836969,
+   "site_pct": 3.5247143053834504,
+   "tier": 0,
+   "last_winner": "Jose Magana",
+   "first_loser": "Tomara Hall",
+   "key": "43",
+   "precincts_reporting": "21",
+   "precincts_total": "21"
+  },
+  {
+   "type": "measure",
+   "name": "Measure J - City of Palo Alto, Transactions and Use Tax - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 51.63205828779599,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 14173,
+     "winner": true,
+     "pct_ballots": 48.13707842271508,
+     "pct_votes": 51.63205828779599
+    },
+    {
+     "name": "No",
+     "votes": 13277,
+     "winner": false,
+     "pct_ballots": 45.09391026729613,
+     "pct_votes": 48.36794171220401
+    }
+   ],
+   "candidate_votes": 27450,
+   "undervotes": 1987,
+   "overvotes": 6,
+   "ballots_cast": 29443,
+   "margin": 896,
+   "pct": 3.043168155418945,
+   "site_pct": 1.6320582877959922,
+   "tier": 0,
+   "key": "125",
+   "precincts_reporting": "22",
+   "precincts_total": "22"
+  },
+  {
+   "type": "candidate",
+   "name": "Mountain View Whisman SD",
+   "vote_for": 2,
+   "rows": [
+    {
+     "name": "Devon Conley",
+     "votes": 11419,
+     "winner": true,
+     "pct_ballots": 46.537881566613684,
+     "pct_votes": 33.45540841439119
+    },
+    {
+     "name": "William Lambert",
+     "votes": 8988,
+     "winner": true,
+     "pct_ballots": 36.63039491380364,
+     "pct_votes": 26.333059885151762
+    },
+    {
+     "name": "Sundar Subbarayan",
+     "votes": 8007,
+     "winner": false,
+     "pct_ballots": 32.63235114317154,
+     "pct_votes": 23.458924176725652
+    },
+    {
+     "name": "Quintin Riis",
+     "votes": 5718,
+     "winner": false,
+     "pct_ballots": 23.303582345029955,
+     "pct_votes": 16.752607523731395
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 34132,
+   "undervotes": 14882,
+   "overvotes": 60,
+   "ballots_cast": 24537,
+   "margin": 981,
+   "pct": 3.9980437706321066,
+   "site_pct": 2.8741357084261105,
+   "tier": 0,
+   "last_winner": "William Lambert",
+   "first_loser": "Sundar Subbarayan",
+   "key": "61",
+   "precincts_reporting": "19",
+   "precincts_total": "19"
+  },
+  {
+   "type": "measure",
+   "name": "Measure A - City of Morgan Hill, Elected City Treasurer to an Appointive Position - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": false,
+   "yes_share": 47.67785701861193,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 8223,
+     "winner": false,
+     "pct_ballots": 42.67697737180818,
+     "pct_votes": 47.67785701861193
+    },
+    {
+     "name": "No",
+     "votes": 9024,
+     "winner": true,
+     "pct_ballots": 46.83412912601204,
+     "pct_votes": 52.32214298138807
+    }
+   ],
+   "candidate_votes": 17247,
+   "undervotes": 2017,
+   "overvotes": 4,
+   "ballots_cast": 19268,
+   "margin": 801,
+   "pct": 4.157151754203861,
+   "site_pct": -2.322142981388069,
+   "tier": 0,
+   "key": "116",
+   "precincts_reporting": "17",
+   "precincts_total": "17"
+  },
+  {
+   "type": "candidate",
+   "name": "City of San José Council, District 5",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Peter Ortiz",
+     "votes": 11755,
+     "winner": true,
+     "pct_ballots": 47.3877287752963,
+     "pct_votes": 52.909933834451095
+    },
+    {
+     "name": "Nora Campos",
+     "votes": 10462,
+     "winner": false,
+     "pct_ballots": 42.17528017415142,
+     "pct_votes": 47.090066165548905
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 22217,
+   "undervotes": 2582,
+   "overvotes": 7,
+   "ballots_cast": 24806,
+   "margin": 1293,
+   "pct": 5.212448601144884,
+   "site_pct": 5.819867668902192,
+   "tier": 0,
+   "last_winner": "Peter Ortiz",
+   "first_loser": "Nora Campos",
+   "key": "86",
+   "precincts_reporting": "40",
+   "precincts_total": "40"
+  },
+  {
+   "type": "candidate",
+   "name": "City of San José Council, District 9",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Genny Altwer",
+     "votes": 17140,
+     "winner": true,
+     "pct_ballots": 46.27929582028297,
+     "pct_votes": 53.51567378543774
+    },
+    {
+     "name": "Gordon Chester",
+     "votes": 14888,
+     "winner": false,
+     "pct_ballots": 40.1987255643158,
+     "pct_votes": 46.48432621456226
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 32028,
+   "undervotes": 5003,
+   "overvotes": 5,
+   "ballots_cast": 37036,
+   "margin": 2252,
+   "pct": 6.080570255967167,
+   "site_pct": 7.031347570875484,
+   "tier": 0,
+   "last_winner": "Genny Altwer",
+   "first_loser": "Gordon Chester",
+   "key": "88",
+   "precincts_reporting": "33",
+   "precincts_total": "33"
+  },
+  {
+   "type": "candidate",
+   "name": "Saratoga Union SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Eric Cao",
+     "votes": 5092,
+     "winner": true,
+     "pct_ballots": 49.25517508222093,
+     "pct_votes": 26.443705857914416
+    },
+    {
+     "name": "Anna Goldberg",
+     "votes": 4779,
+     "winner": true,
+     "pct_ballots": 46.227510156703424,
+     "pct_votes": 24.818238471125884
+    },
+    {
+     "name": "Vidya R. Vineet",
+     "votes": 3875,
+     "winner": true,
+     "pct_ballots": 37.483072160959566,
+     "pct_votes": 20.1235978396344
+    },
+    {
+     "name": "Farnoush Drexel",
+     "votes": 3228,
+     "winner": false,
+     "pct_ballots": 31.22460824143935,
+     "pct_votes": 16.763606148732862
+    },
+    {
+     "name": "Catalina Rupert",
+     "votes": 2282,
+     "winner": false,
+     "pct_ballots": 22.073902108725093,
+     "pct_votes": 11.850851682592438
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 19256,
+   "undervotes": 11728,
+   "overvotes": 30,
+   "ballots_cast": 10338,
+   "margin": 647,
+   "pct": 6.258463919520216,
+   "site_pct": 3.3599916909015373,
+   "tier": 0,
+   "last_winner": "Vidya R. Vineet",
+   "first_loser": "Farnoush Drexel",
+   "key": "66",
+   "precincts_reporting": "20",
+   "precincts_total": "20"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Cupertino Council",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "John Tang",
+     "votes": 9018,
+     "winner": true,
+     "pct_ballots": 43.008393742846245,
+     "pct_votes": 17.391136652910095
+    },
+    {
+     "name": "J.R. Fruen",
+     "votes": 8469,
+     "winner": true,
+     "pct_ballots": 40.39011827546738,
+     "pct_votes": 16.332394800786826
+    },
+    {
+     "name": "Seema Sharma Lindskog",
+     "votes": 8380,
+     "winner": true,
+     "pct_ballots": 39.965661961083555,
+     "pct_votes": 16.160759054267753
+    },
+    {
+     "name": "Tracy Kosolcharoen",
+     "votes": 7059,
+     "winner": false,
+     "pct_ballots": 33.66558565433041,
+     "pct_votes": 13.61322173795657
+    },
+    {
+     "name": "Santosh Rao",
+     "votes": 6979,
+     "winner": false,
+     "pct_ballots": 33.28405188859214,
+     "pct_votes": 13.458942415242797
+    },
+    {
+     "name": "Gopal Kumarappan",
+     "votes": 6426,
+     "winner": false,
+     "pct_ballots": 30.646699732926365,
+     "pct_votes": 12.39248659698384
+    },
+    {
+     "name": "Mark Fantozzi",
+     "votes": 3108,
+     "winner": false,
+     "pct_ballots": 14.822586798931706,
+     "pct_votes": 5.993751687430092
+    },
+    {
+     "name": "J.Z. Wang",
+     "votes": 2415,
+     "winner": false,
+     "pct_ballots": 11.51755055322396,
+     "pct_votes": 4.657307054422031
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 51854,
+   "undervotes": 10957,
+   "overvotes": 93,
+   "ballots_cast": 20968,
+   "margin": 1321,
+   "pct": 6.300076306753148,
+   "site_pct": 2.5475373163111814,
+   "tier": 0,
+   "last_winner": "Seema Sharma Lindskog",
+   "first_loser": "Tracy Kosolcharoen",
+   "key": "71",
+   "precincts_reporting": "24",
+   "precincts_total": "24"
+  },
+  {
+   "type": "candidate",
+   "name": "Berryessa Union SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Jaria Jaug",
+     "votes": 13689,
+     "winner": true,
+     "pct_ballots": 53.70762711864407,
+     "pct_votes": 35.8332024501335
+    },
+    {
+     "name": "Thelma B. Boac",
+     "votes": 8766,
+     "winner": true,
+     "pct_ballots": 34.39265536723164,
+     "pct_votes": 22.946442594628554
+    },
+    {
+     "name": "Shanna Brewer",
+     "votes": 8728,
+     "winner": true,
+     "pct_ballots": 34.243565599497806,
+     "pct_votes": 22.846971362755877
+    },
+    {
+     "name": "Jamal Khan",
+     "votes": 7019,
+     "winner": false,
+     "pct_ballots": 27.538449466415567,
+     "pct_votes": 18.373383592482067
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 38202,
+   "undervotes": 38241,
+   "overvotes": 21,
+   "ballots_cast": 25488,
+   "margin": 1709,
+   "pct": 6.705116133082234,
+   "site_pct": 4.473587770273808,
+   "tier": 0,
+   "last_winner": "Shanna Brewer",
+   "first_loser": "Jamal Khan",
+   "key": "54",
+   "precincts_reporting": "30",
+   "precincts_total": "30"
+  },
+  {
+   "type": "candidate",
+   "name": "West Valley-Mission CCD, Trustee Area 7",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Susan Oster Fish",
+     "votes": 11595,
+     "winner": true,
+     "pct_ballots": 43.168279970215934,
+     "pct_votes": 54.212642603328966
+    },
+    {
+     "name": "Doug Robb",
+     "votes": 9793,
+     "winner": false,
+     "pct_ballots": 36.45941921072227,
+     "pct_votes": 45.787357396671034
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 21388,
+   "undervotes": 5464,
+   "overvotes": 8,
+   "ballots_cast": 26860,
+   "margin": 1802,
+   "pct": 6.708860759493671,
+   "site_pct": 8.42528520665794,
+   "tier": 0,
+   "last_winner": "Susan Oster Fish",
+   "first_loser": "Doug Robb",
+   "key": "33",
+   "precincts_reporting": "34",
+   "precincts_total": "34"
+  },
+  {
+   "type": "candidate",
+   "name": "Oak Grove SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Sophie Freestone",
+     "votes": 3050,
+     "winner": true,
+     "pct_ballots": 45.94065371290857,
+     "pct_votes": 54.425410421127765
+    },
+    {
+     "name": "Kaushik C. Joglekar",
+     "votes": 2554,
+     "winner": false,
+     "pct_ballots": 38.46964904353065,
+     "pct_votes": 45.574589578872235
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5604,
+   "undervotes": 1031,
+   "overvotes": 4,
+   "ballots_cast": 6639,
+   "margin": 496,
+   "pct": 7.471004669377918,
+   "site_pct": 8.850820842255532,
+   "tier": 0,
+   "last_winner": "Sophie Freestone",
+   "first_loser": "Kaushik C. Joglekar",
+   "key": "63",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
+  },
+  {
+   "type": "candidate",
+   "name": "Cupertino Sanitary District",
+   "vote_for": 2,
+   "rows": [
+    {
+     "name": "Patrick Shupui Kwok",
+     "votes": 10942,
+     "winner": true,
+     "pct_ballots": 48.76548712006418,
+     "pct_votes": 38.58659237578023
+    },
+    {
+     "name": "Gilbert Wong",
+     "votes": 9590,
+     "winner": true,
+     "pct_ballots": 42.73999465192976,
+     "pct_votes": 33.81881017032831
+    },
+    {
+     "name": "Taghi Saadati",
+     "votes": 7825,
+     "winner": false,
+     "pct_ballots": 34.873874676887425,
+     "pct_votes": 27.594597453891456
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 28357,
+   "undervotes": 16513,
+   "overvotes": 6,
+   "ballots_cast": 22438,
+   "margin": 1765,
+   "pct": 7.866119975042339,
+   "site_pct": 6.224212716436859,
+   "tier": 0,
+   "last_winner": "Gilbert Wong",
+   "first_loser": "Taghi Saadati",
+   "key": "99",
+   "precincts_reporting": "27",
+   "precincts_total": "27"
+  },
+  {
+   "type": "candidate",
+   "name": "Morgan Hill Unified SD, Trustee Area 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Gabriela \"Gabby\" Winter",
+     "votes": 2187,
+     "winner": true,
+     "pct_ballots": 46.86093850439254,
+     "pct_votes": 54.71603702777083
+    },
+    {
+     "name": "John T. Horner",
+     "votes": 1810,
+     "winner": false,
+     "pct_ballots": 38.78294407542318,
+     "pct_votes": 45.28396297222917
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3997,
+   "undervotes": 668,
+   "overvotes": 2,
+   "ballots_cast": 4667,
+   "margin": 377,
+   "pct": 8.07799442896936,
+   "site_pct": 9.432074055541657,
+   "tier": 0,
+   "last_winner": "Gabriela \"Gabby\" Winter",
+   "first_loser": "John T. Horner",
+   "key": "39",
+   "precincts_reporting": "9",
+   "precincts_total": "9"
+  },
+  {
+   "type": "candidate",
+   "name": "Milpitas Unified SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Chris Norwood",
+     "votes": 12650,
+     "winner": true,
+     "pct_ballots": 60.20942408376963,
+     "pct_votes": 33.52591964380367
+    },
+    {
+     "name": "Kelly Yip-Chuan",
+     "votes": 11807,
+     "winner": true,
+     "pct_ballots": 56.19704902427416,
+     "pct_votes": 31.29174175765928
+    },
+    {
+     "name": "Franchesca Lacanlale",
+     "votes": 7488,
+     "winner": true,
+     "pct_ballots": 35.64017134697763,
+     "pct_votes": 19.845224212869713
+    },
+    {
+     "name": "Anuradha Sankaran",
+     "votes": 5787,
+     "winner": false,
+     "pct_ballots": 27.5440266539743,
+     "pct_votes": 15.337114385667338
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 37732,
+   "undervotes": 25283,
+   "overvotes": 15,
+   "ballots_cast": 21010,
+   "margin": 1701,
+   "pct": 8.096144693003332,
+   "site_pct": 4.508109827202374,
+   "tier": 0,
+   "last_winner": "Franchesca Lacanlale",
+   "first_loser": "Anuradha Sankaran",
+   "key": "37",
+   "precincts_reporting": "18",
+   "precincts_total": "18"
+  },
+  {
+   "type": "measure",
+   "name": "Measure O - Alum Rock Union School District, Parcel Tax - 2/3rds (66.67%) Vote Required",
+   "threshold": 0.6666666666666666,
+   "threshold_label": "two-thirds",
+   "passing": true,
+   "yes_share": 72.49912590808438,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 18662,
+     "winner": true,
+     "pct_ballots": 67.76325344952797,
+     "pct_votes": 72.49912590808438
+    },
+    {
+     "name": "No",
+     "votes": 7079,
+     "winner": false,
+     "pct_ballots": 25.704429920116194,
+     "pct_votes": 27.50087409191562
+    }
+   ],
+   "candidate_votes": 25741,
+   "undervotes": 1799,
+   "overvotes": 0,
+   "ballots_cast": 27540,
+   "margin": 2252,
+   "pct": 8.177196804647785,
+   "site_pct": 5.832459241417723,
+   "tier": 0,
+   "key": "130",
+   "precincts_reporting": "49",
+   "precincts_total": "49"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Santa Clara Council, District 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Eric Crutchlow",
+     "votes": 2586,
+     "winner": true,
+     "pct_ballots": 45.58434690639873,
+     "pct_votes": 54.951126221844454
+    },
+    {
+     "name": "Kyle Madej",
+     "votes": 2120,
+     "winner": false,
+     "pct_ballots": 37.369998237264234,
+     "pct_votes": 45.048873778155546
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4706,
+   "undervotes": 965,
+   "overvotes": 2,
+   "ballots_cast": 5673,
+   "margin": 466,
+   "pct": 8.214348669134496,
+   "site_pct": 9.902252443688909,
+   "tier": 0,
+   "last_winner": "Eric Crutchlow",
+   "first_loser": "Kyle Madej",
+   "key": "91",
+   "precincts_reporting": "5",
+   "precincts_total": "5"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Los Altos Council, D2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Anky van Deursen",
+     "votes": 1629,
+     "winner": true,
+     "pct_ballots": 49.0072202166065,
+     "pct_votes": 54.5911528150134
+    },
+    {
+     "name": "Lynette Lee Eng",
+     "votes": 1355,
+     "winner": false,
+     "pct_ballots": 40.76413959085439,
+     "pct_votes": 45.4088471849866
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 2984,
+   "undervotes": 340,
+   "overvotes": 0,
+   "ballots_cast": 3324,
+   "margin": 274,
+   "pct": 8.243080625752105,
+   "site_pct": 9.182305630026809,
+   "tier": 0,
+   "last_winner": "Anky van Deursen",
+   "first_loser": "Lynette Lee Eng",
+   "key": "75",
+   "precincts_reporting": "2",
+   "precincts_total": "2"
+  },
+  {
+   "type": "candidate",
+   "name": "Mayor, City of Morgan Hill",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Mark Turner",
+     "votes": 8824,
+     "winner": true,
+     "pct_ballots": 45.43769309989701,
+     "pct_votes": 48.41700960219479
+    },
+    {
+     "name": "Deborah M. Africa",
+     "votes": 7049,
+     "winner": false,
+     "pct_ballots": 36.29763130792997,
+     "pct_votes": 38.67764060356653
+    },
+    {
+     "name": "Kristopher L. Clayton",
+     "votes": 2102,
+     "winner": false,
+     "pct_ballots": 10.823892893923789,
+     "pct_votes": 11.53360768175583
+    },
+    {
+     "name": "Jacob Montoya",
+     "votes": 125,
+     "winner": false,
+     "pct_ballots": 0.6436663233779608,
+     "pct_votes": 0.6858710562414266
+    },
+    {
+     "name": "Write-in",
+     "votes": 125,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.6436663233779608,
+     "pct_votes": 0.6858710562414266
+    }
+   ],
+   "candidate_votes": 18225,
+   "undervotes": 1188,
+   "overvotes": 7,
+   "ballots_cast": 19420,
+   "margin": 1775,
+   "pct": 9.140061791967044,
+   "site_pct": 9.739368998628258,
+   "tier": 0,
+   "last_winner": "Mark Turner",
+   "first_loser": "Deborah M. Africa",
+   "key": "81",
+   "precincts_reporting": "17",
+   "precincts_total": "17"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Santa Clara Council, District 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Kimberley Williams",
+     "votes": 2730,
+     "winner": true,
+     "pct_ballots": 47.02842377260982,
+     "pct_votes": 55.7711950970378
+    },
+    {
+     "name": "Yvonne Inciarte",
+     "votes": 2165,
+     "winner": false,
+     "pct_ballots": 37.295434969853574,
+     "pct_votes": 44.2288049029622
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4895,
+   "undervotes": 905,
+   "overvotes": 5,
+   "ballots_cast": 5805,
+   "margin": 565,
+   "pct": 9.732988802756244,
+   "site_pct": 11.542390194075587,
+   "tier": 0,
+   "last_winner": "Kimberley Williams",
+   "first_loser": "Yvonne Inciarte",
+   "key": "90",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
+  },
+  {
+   "type": "candidate",
+   "name": "Palo Alto Unified SD",
+   "vote_for": 2,
+   "rows": [
+    {
+     "name": "Linda Henigin",
+     "votes": 17273,
+     "winner": true,
+     "pct_ballots": 50.90775125257884,
+     "pct_votes": 36.91364092919881
+    },
+    {
+     "name": "Avery Wang",
+     "votes": 16473,
+     "winner": true,
+     "pct_ballots": 48.5499557913351,
+     "pct_votes": 35.20398350180582
+    },
+    {
+     "name": "John Craig",
+     "votes": 13047,
+     "winner": false,
+     "pct_ballots": 38.4526967285588,
+     "pct_votes": 27.882375568995364
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 46793,
+   "undervotes": 21047,
+   "overvotes": 20,
+   "ballots_cast": 33930,
+   "margin": 3426,
+   "pct": 10.097259062776304,
+   "site_pct": 7.321607932810463,
+   "tier": 0,
+   "last_winner": "Avery Wang",
+   "first_loser": "John Craig",
+   "key": "42",
+   "precincts_reporting": "22",
+   "precincts_total": "22"
+  },
+  {
+   "type": "candidate",
+   "name": "San José-Evergreen CCD, Trustee Area 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Karen Martinez",
+     "votes": 14363,
+     "winner": true,
+     "pct_ballots": 49.42532690984171,
+     "pct_votes": 55.83067713597139
+    },
+    {
+     "name": "Scott Hung Pham",
+     "votes": 11363,
+     "winner": false,
+     "pct_ballots": 39.10185822436338,
+     "pct_votes": 44.16932286402861
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 25726,
+   "undervotes": 3323,
+   "overvotes": 11,
+   "ballots_cast": 29060,
+   "margin": 3000,
+   "pct": 10.323468685478321,
+   "site_pct": 11.661354271942782,
+   "tier": 0,
+   "last_winner": "Karen Martinez",
+   "first_loser": "Scott Hung Pham",
+   "key": "31",
+   "precincts_reporting": "47",
+   "precincts_total": "47"
+  },
+  {
+   "type": "candidate",
+   "name": "Cambrian SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Debora Bodenheimer",
+     "votes": 6265,
+     "winner": true,
+     "pct_ballots": 50.71642515988019,
+     "pct_votes": 31.869976599857566
+    },
+    {
+     "name": "Carol Presunka",
+     "votes": 5723,
+     "winner": true,
+     "pct_ballots": 46.32882700558569,
+     "pct_votes": 29.11282938243972
+    },
+    {
+     "name": "Sergio Martínez",
+     "votes": 4503,
+     "winner": true,
+     "pct_ballots": 36.452683558649724,
+     "pct_votes": 22.906704649506562
+    },
+    {
+     "name": "Harmony ″Jay″ McMillin",
+     "votes": 3167,
+     "winner": false,
+     "pct_ballots": 25.63749696430017,
+     "pct_votes": 16.110489368196156
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 19658,
+   "undervotes": 17380,
+   "overvotes": 21,
+   "ballots_cast": 12353,
+   "margin": 1336,
+   "pct": 10.815186594349552,
+   "site_pct": 6.796215281310408,
+   "tier": 0,
+   "last_winner": "Sergio Martínez",
+   "first_loser": "Harmony ″Jay″ McMillin",
+   "key": "55",
+   "precincts_reporting": "13",
+   "precincts_total": "13"
+  },
+  {
+   "type": "candidate",
+   "name": "East Side Union HSD, TA 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Lorena Chavez",
+     "votes": 13355,
+     "winner": true,
+     "pct_ballots": 44.05409863104074,
+     "pct_votes": 50.843263410362816
+    },
+    {
+     "name": "Tony Lam",
+     "votes": 10035,
+     "winner": false,
+     "pct_ballots": 33.10242454230579,
+     "pct_votes": 38.20382990063578
+    },
+    {
+     "name": "Mahbub Khan",
+     "votes": 2877,
+     "winner": false,
+     "pct_ballots": 9.490351311232063,
+     "pct_votes": 10.95290668900141
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 26267,
+   "undervotes": 3976,
+   "overvotes": 72,
+   "ballots_cast": 30315,
+   "margin": 3320,
+   "pct": 10.951674088734949,
+   "site_pct": 12.639433509727034,
+   "tier": 0,
+   "last_winner": "Lorena Chavez",
+   "first_loser": "Tony Lam",
+   "key": "47",
+   "precincts_reporting": "33",
+   "precincts_total": "33"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Gilroy Council, District 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Diana Sanchez Bentz",
+     "votes": 1138,
+     "winner": true,
+     "pct_ballots": 52.88104089219331,
+     "pct_votes": 56.560636182902584
+    },
+    {
+     "name": "Fred Tovar",
+     "votes": 874,
+     "winner": false,
+     "pct_ballots": 40.613382899628256,
+     "pct_votes": 43.439363817097416
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 2012,
+   "undervotes": 139,
+   "overvotes": 1,
+   "ballots_cast": 2152,
+   "margin": 264,
+   "pct": 12.267657992565056,
+   "site_pct": 13.121272365805169,
+   "tier": 0,
+   "last_winner": "Diana Sanchez Bentz",
+   "first_loser": "Fred Tovar",
+   "key": "72",
+   "precincts_reporting": "2",
+   "precincts_total": "2"
+  },
+  {
+   "type": "candidate",
+   "name": "Santa Clara Valley Water, District 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "John L. Varela",
+     "votes": 48109,
+     "winner": true,
+     "pct_ballots": 46.881638698863746,
+     "pct_votes": 58.00178433641975
+    },
+    {
+     "name": "Jimmy Forbis",
+     "votes": 34835,
+     "winner": false,
+     "pct_ballots": 33.94628622658793,
+     "pct_votes": 41.99821566358025
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 82944,
+   "undervotes": 19646,
+   "overvotes": 28,
+   "ballots_cast": 102618,
+   "margin": 13274,
+   "pct": 12.935352472275818,
+   "site_pct": 16.003568672839506,
+   "tier": 0,
+   "last_winner": "John L. Varela",
+   "first_loser": "Jimmy Forbis",
+   "key": "96",
+   "precincts_reporting": "151",
+   "precincts_total": "151"
+  },
+  {
+   "type": "candidate",
+   "name": "Foothill-De Anza CCD, Trustee Area 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "William \"Bill\" Wilson",
+     "votes": 15132,
+     "winner": true,
+     "pct_ballots": 48.78457669740151,
+     "pct_votes": 58.01479891116819
+    },
+    {
+     "name": "Liangfang \"Liang\" Chao",
+     "votes": 10951,
+     "winner": false,
+     "pct_ballots": 35.30530659616996,
+     "pct_votes": 41.98520108883181
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 26083,
+   "undervotes": 4920,
+   "overvotes": 15,
+   "ballots_cast": 31018,
+   "margin": 4181,
+   "pct": 13.479270101231544,
+   "site_pct": 16.029597822336388,
+   "tier": 0,
+   "last_winner": "William \"Bill\" Wilson",
+   "first_loser": "Liangfang \"Liang\" Chao",
+   "key": "29",
+   "precincts_reporting": "33",
+   "precincts_total": "33"
+  },
+  {
+   "type": "candidate",
+   "name": "Santa Clara Valley Water, District 7",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Pete Dailey",
+     "votes": 52195,
+     "winner": true,
+     "pct_ballots": 46.03342593817524,
+     "pct_votes": 58.609189723320156
+    },
+    {
+     "name": "Rebecca Eisenberg",
+     "votes": 36861,
+     "winner": false,
+     "pct_ballots": 32.509591215769284,
+     "pct_votes": 41.390810276679844
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 89056,
+   "undervotes": 24284,
+   "overvotes": 45,
+   "ballots_cast": 113385,
+   "margin": 15334,
+   "pct": 13.523834722405962,
+   "site_pct": 17.218379446640316,
+   "tier": 0,
+   "last_winner": "Pete Dailey",
+   "first_loser": "Rebecca Eisenberg",
+   "key": "98",
+   "precincts_reporting": "120",
+   "precincts_total": "120"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Gilroy Council, District 5",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Christina Tovar",
+     "votes": 1549,
+     "winner": true,
+     "pct_ballots": 46.925174189639506,
+     "pct_votes": 49.409888357256776
+    },
+    {
+     "name": "Tom Cline",
+     "votes": 1096,
+     "winner": false,
+     "pct_ballots": 33.20205998182369,
+     "pct_votes": 34.96012759170654
+    },
+    {
+     "name": "Joseph Garcia",
+     "votes": 490,
+     "winner": false,
+     "pct_ballots": 14.843986670705847,
+     "pct_votes": 15.629984051036683
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3135,
+   "undervotes": 164,
+   "overvotes": 2,
+   "ballots_cast": 3301,
+   "margin": 453,
+   "pct": 13.723114207815813,
+   "site_pct": 14.44976076555024,
+   "tier": 0,
+   "last_winner": "Christina Tovar",
+   "first_loser": "Tom Cline",
+   "key": "73",
+   "precincts_reporting": "3",
+   "precincts_total": "3"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Morgan Hill Council, District D",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Dolores Alvarado",
+     "votes": 2750,
+     "winner": true,
+     "pct_ballots": 49.56741167988464,
+     "pct_votes": 58.49819187406935
+    },
+    {
+     "name": "Marilyn Librers",
+     "votes": 1951,
+     "winner": false,
+     "pct_ballots": 35.16582552271089,
+     "pct_votes": 41.50180812593065
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4701,
+   "undervotes": 847,
+   "overvotes": 0,
+   "ballots_cast": 5548,
+   "margin": 799,
+   "pct": 14.401586157173757,
+   "site_pct": 16.996383748138694,
+   "tier": 0,
+   "last_winner": "Dolores Alvarado",
+   "first_loser": "Marilyn Librers",
+   "key": "83",
+   "precincts_reporting": "4",
+   "precincts_total": "4"
+  },
+  {
+   "type": "candidate",
+   "name": "Campbell Union SD, TA 5",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Vartika Chandra",
+     "votes": 4104,
+     "winner": true,
+     "pct_ballots": 48.447644906150394,
+     "pct_votes": 58.83870967741935
+    },
+    {
+     "name": "Sam Krow-Lucal",
+     "votes": 2871,
+     "winner": false,
+     "pct_ballots": 33.89210246724117,
+     "pct_votes": 41.16129032258065
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 6975,
+   "undervotes": 1496,
+   "overvotes": 0,
+   "ballots_cast": 8471,
+   "margin": 1233,
+   "pct": 14.55554243890922,
+   "site_pct": 17.677419354838708,
+   "tier": 0,
+   "last_winner": "Vartika Chandra",
+   "first_loser": "Sam Krow-Lucal",
+   "key": "57",
+   "precincts_reporting": "10",
+   "precincts_total": "10"
+  },
+  {
+   "type": "candidate",
+   "name": "Morgan Hill Unified SD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Art Cohen",
+     "votes": 1512,
+     "winner": true,
+     "pct_ballots": 39.84189723320158,
+     "pct_votes": 47.412982126058324
+    },
+    {
+     "name": "Sarah Northrup Gadus",
+     "votes": 952,
+     "winner": false,
+     "pct_ballots": 25.085638998682477,
+     "pct_votes": 29.852618375666353
+    },
+    {
+     "name": "Cesar Gamboa",
+     "votes": 725,
+     "winner": false,
+     "pct_ballots": 19.104084321475625,
+     "pct_votes": 22.734399498275323
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3189,
+   "undervotes": 603,
+   "overvotes": 3,
+   "ballots_cast": 3795,
+   "margin": 560,
+   "pct": 14.756258234519104,
+   "site_pct": 17.56036375039197,
+   "tier": 0,
+   "last_winner": "Art Cohen",
+   "first_loser": "Sarah Northrup Gadus",
+   "key": "40",
+   "precincts_reporting": "7",
+   "precincts_total": "7"
+  },
+  {
+   "type": "candidate",
+   "name": "Santa Clara County BOE, Trustee Area 7",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Raeena S. Lari",
+     "votes": 48198,
+     "winner": true,
+     "pct_ballots": 48.37748045247869,
+     "pct_votes": 59.016995640887494
+    },
+    {
+     "name": "Karla Dominguez Vega",
+     "votes": 33470,
+     "winner": false,
+     "pct_ballots": 33.594636099930746,
+     "pct_votes": 40.983004359112506
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 81668,
+   "undervotes": 17913,
+   "overvotes": 48,
+   "ballots_cast": 99629,
+   "margin": 14728,
+   "pct": 14.782844352547952,
+   "site_pct": 18.03399128177499,
+   "tier": 0,
+   "last_winner": "Raeena S. Lari",
+   "first_loser": "Karla Dominguez Vega",
+   "key": "28",
+   "precincts_reporting": "113",
+   "precincts_total": "113"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Campbell Council, District 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Dan Furtado",
+     "votes": 1798,
+     "winner": true,
+     "pct_ballots": 52.05558772437753,
+     "pct_votes": 58.39558298148749
+    },
+    {
+     "name": "Joseph \"Joe\" Brenner",
+     "votes": 1281,
+     "winner": false,
+     "pct_ballots": 37.087434858135495,
+     "pct_votes": 41.60441701851251
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3079,
+   "undervotes": 374,
+   "overvotes": 1,
+   "ballots_cast": 3454,
+   "margin": 517,
+   "pct": 14.968152866242038,
+   "site_pct": 16.791165962974993,
+   "tier": 0,
+   "last_winner": "Dan Furtado",
+   "first_loser": "Joseph \"Joe\" Brenner",
+   "key": "68",
+   "precincts_reporting": "4",
+   "precincts_total": "4"
+  },
+  {
+   "type": "candidate",
+   "name": "Evergreen SD",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Monte Wright",
+     "votes": 16958,
+     "winner": true,
+     "pct_ballots": 48.00022644286563,
+     "pct_votes": 27.15365400627682
+    },
+    {
+     "name": "Mary Hiền Pollett",
+     "votes": 13164,
+     "winner": true,
+     "pct_ballots": 37.26117354015115,
+     "pct_votes": 21.0785883558573
+    },
+    {
+     "name": "Johnny Ray Reyna",
+     "votes": 12817,
+     "winner": true,
+     "pct_ballots": 36.27897761046166,
+     "pct_votes": 20.522961634535324
+    },
+    {
+     "name": "Corinna Diener",
+     "votes": 7486,
+     "winner": false,
+     "pct_ballots": 21.189391151745024,
+     "pct_votes": 11.986805866905783
+    },
+    {
+     "name": "Thong Quang La",
+     "votes": 6096,
+     "winner": false,
+     "pct_ballots": 17.254946361346203,
+     "pct_votes": 9.761096522128994
+    },
+    {
+     "name": "Magaly Fernández",
+     "votes": 5931,
+     "winner": false,
+     "pct_ballots": 16.787907950975118,
+     "pct_votes": 9.496893614295779
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 62452,
+   "undervotes": 43421,
+   "overvotes": 114,
+   "ballots_cast": 35329,
+   "margin": 5331,
+   "pct": 15.089586458716635,
+   "site_pct": 8.53615576762954,
+   "tier": 0,
+   "last_winner": "Johnny Ray Reyna",
+   "first_loser": "Corinna Diener",
+   "key": "58",
+   "precincts_reporting": "30",
+   "precincts_total": "30"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Palo Alto Council",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Bryna Chang",
+     "votes": 15299,
+     "winner": true,
+     "pct_ballots": 51.90324331659655,
+     "pct_votes": 23.46292462234491
+    },
+    {
+     "name": "Vicki Veenker",
+     "votes": 14186,
+     "winner": true,
+     "pct_ballots": 48.127289998642965,
+     "pct_votes": 21.756000306724946
+    },
+    {
+     "name": "Ed Lauing",
+     "votes": 13902,
+     "winner": true,
+     "pct_ballots": 47.1637942733071,
+     "pct_votes": 21.320450885668276
+    },
+    {
+     "name": "Yu \"Yudy\" Deng",
+     "votes": 9388,
+     "winner": false,
+     "pct_ballots": 31.849640385398292,
+     "pct_votes": 14.397668890422514
+    },
+    {
+     "name": "Brian Hamachek",
+     "votes": 4476,
+     "winner": false,
+     "pct_ballots": 15.185235445786402,
+     "pct_votes": 6.864504255808604
+    },
+    {
+     "name": "Raymond L. Goins",
+     "votes": 3975,
+     "winner": false,
+     "pct_ballots": 13.485547564119962,
+     "pct_votes": 6.096158270071314
+    },
+    {
+     "name": "Gary Gechlik",
+     "votes": 2315,
+     "winner": false,
+     "pct_ballots": 7.853847197720179,
+     "pct_votes": 3.550341231500652
+    },
+    {
+     "name": "Henry Etzkowitz",
+     "votes": 1664,
+     "winner": false,
+     "pct_ballots": 5.645270728728457,
+     "pct_votes": 2.551951537458784
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 65205,
+   "undervotes": 23133,
+   "overvotes": 90,
+   "ballots_cast": 29476,
+   "margin": 4514,
+   "pct": 15.314153887908807,
+   "site_pct": 6.922781995245764,
+   "tier": 0,
+   "last_winner": "Ed Lauing",
+   "first_loser": "Yu \"Yudy\" Deng",
+   "key": "85",
+   "precincts_reporting": "22",
+   "precincts_total": "22"
+  },
+  {
+   "type": "candidate",
+   "name": "San José Unified SD, Trustee Area 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Mary J. Grunthaner",
+     "votes": 9943,
+     "winner": true,
+     "pct_ballots": 50.65464363951297,
+     "pct_votes": 59.20919430715179
+    },
+    {
+     "name": "Michael Melillo",
+     "votes": 6850,
+     "winner": false,
+     "pct_ballots": 34.89734576392073,
+     "pct_votes": 40.79080569284821
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 16793,
+   "undervotes": 2832,
+   "overvotes": 4,
+   "ballots_cast": 19629,
+   "margin": 3093,
+   "pct": 15.757297875592236,
+   "site_pct": 18.418388614303577,
+   "tier": 0,
+   "last_winner": "Mary J. Grunthaner",
+   "first_loser": "Michael Melillo",
+   "key": "44",
+   "precincts_reporting": "21",
+   "precincts_total": "21"
+  },
+  {
+   "type": "candidate",
+   "name": "Town of Los Altos Hills Council",
+   "vote_for": 2,
+   "rows": [
+    {
+     "name": "Jim Waschura",
+     "votes": 2486,
+     "winner": true,
+     "pct_ballots": 56.706204379562045,
+     "pct_votes": 40.10324245846104
+    },
+    {
+     "name": "Jasmeen Pombra",
+     "votes": 2216,
+     "winner": true,
+     "pct_ballots": 50.54744525547445,
+     "pct_votes": 35.747701242135825
+    },
+    {
+     "name": "Indu Kadambi",
+     "votes": 1497,
+     "winner": false,
+     "pct_ballots": 34.14689781021898,
+     "pct_votes": 24.149056299403128
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 6199,
+   "undervotes": 2567,
+   "overvotes": 2,
+   "ballots_cast": 4384,
+   "margin": 719,
+   "pct": 16.400547445255473,
+   "site_pct": 11.5986449427327,
+   "tier": 0,
+   "last_winner": "Jasmeen Pombra",
+   "first_loser": "Indu Kadambi",
+   "key": "77",
+   "precincts_reporting": "6",
+   "precincts_total": "6"
+  },
+  {
+   "type": "candidate",
+   "name": "Campbell Union SD, TA 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Chris Miller",
+     "votes": 3041,
+     "winner": true,
+     "pct_ballots": 50.41445623342175,
+     "pct_votes": 59.909377462568955
+    },
+    {
+     "name": "Mohit Vora",
+     "votes": 2035,
+     "winner": false,
+     "pct_ballots": 33.7367374005305,
+     "pct_votes": 40.090622537431045
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5076,
+   "undervotes": 952,
+   "overvotes": 4,
+   "ballots_cast": 6032,
+   "margin": 1006,
+   "pct": 16.677718832891248,
+   "site_pct": 19.818754925137902,
+   "tier": 0,
+   "last_winner": "Chris Miller",
+   "first_loser": "Mohit Vora",
+   "key": "56",
+   "precincts_reporting": "8",
+   "precincts_total": "8"
+  },
+  {
+   "type": "candidate",
+   "name": "Oak Grove SD, Trustee Area 2",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Diego Martinez",
+     "votes": 3154,
+     "winner": true,
+     "pct_ballots": 50.20694046482012,
+     "pct_votes": 60.15639900820141
+    },
+    {
+     "name": "Victor A. Ramirez",
+     "votes": 2089,
+     "winner": false,
+     "pct_ballots": 33.253740846864055,
+     "pct_votes": 39.84360099179859
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5243,
+   "undervotes": 1032,
+   "overvotes": 7,
+   "ballots_cast": 6282,
+   "margin": 1065,
+   "pct": 16.953199617956066,
+   "site_pct": 20.312798016402823,
+   "tier": 0,
+   "last_winner": "Diego Martinez",
+   "first_loser": "Victor A. Ramirez",
+   "key": "62",
+   "precincts_reporting": "6",
+   "precincts_total": "6"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Gilroy Council, District 6",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Rebeca G. Armendáriz",
+     "votes": 1137,
+     "winner": true,
+     "pct_ballots": 48.17796610169491,
+     "pct_votes": 51.51789759855007
+    },
+    {
+     "name": "Elizabeth Bracco",
+     "votes": 715,
+     "winner": false,
+     "pct_ballots": 30.296610169491526,
+     "pct_votes": 32.396918894426825
+    },
+    {
+     "name": "Brad Starks",
+     "votes": 355,
+     "winner": false,
+     "pct_ballots": 15.042372881355933,
+     "pct_votes": 16.085183507023107
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 2207,
+   "undervotes": 153,
+   "overvotes": 0,
+   "ballots_cast": 2360,
+   "margin": 422,
+   "pct": 17.88135593220339,
+   "site_pct": 19.120978704123246,
+   "tier": 0,
+   "last_winner": "Rebeca G. Armendáriz",
+   "first_loser": "Elizabeth Bracco",
+   "key": "74",
+   "precincts_reporting": "3",
+   "precincts_total": "3"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Saratoga Council",
+   "vote_for": 3,
+   "rows": [
+    {
+     "name": "Ping Li",
+     "votes": 8934,
+     "winner": true,
+     "pct_ballots": 58.9003164556962,
+     "pct_votes": 31.604641290505164
+    },
+    {
+     "name": "Jeri Bromley",
+     "votes": 7890,
+     "winner": true,
+     "pct_ballots": 52.017405063291136,
+     "pct_votes": 27.91141927267582
+    },
+    {
+     "name": "Bill Dalton",
+     "votes": 7091,
+     "winner": true,
+     "pct_ballots": 46.749736286919834,
+     "pct_votes": 25.084901655582282
+    },
+    {
+     "name": "Glenn K. Hendricks",
+     "votes": 4353,
+     "winner": false,
+     "pct_ballots": 28.69857594936709,
+     "pct_votes": 15.399037781236734
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 28268,
+   "undervotes": 17218,
+   "overvotes": 18,
+   "ballots_cast": 15168,
+   "margin": 2738,
+   "pct": 18.051160337552744,
+   "site_pct": 9.68586387434555,
+   "tier": 0,
+   "last_winner": "Bill Dalton",
+   "first_loser": "Glenn K. Hendricks",
+   "key": "92",
+   "precincts_reporting": "17",
+   "precincts_total": "17"
+  },
+  {
+   "type": "measure",
+   "name": "Measure D - City of Los Altos, Citizen-Sponsored Initiative, Los Altos Downtown Parking Plaza Ordinance - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": false,
+   "yes_share": 40.23373383231567,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 6128,
+     "winner": false,
+     "pct_ballots": 38.08813475045062,
+     "pct_votes": 40.23373383231567
+    },
+    {
+     "name": "No",
+     "votes": 9103,
+     "winner": true,
+     "pct_ballots": 56.57902915035117,
+     "pct_votes": 59.76626616768433
+    }
+   ],
+   "candidate_votes": 15231,
+   "undervotes": 856,
+   "overvotes": 2,
+   "ballots_cast": 16089,
+   "margin": 2975,
+   "pct": 18.490894399900554,
+   "site_pct": -9.766266167684329,
+   "tier": 0,
+   "key": "119",
+   "precincts_reporting": "14",
+   "precincts_total": "14"
+  },
+  {
+   "type": "candidate",
+   "name": "City of San José Council, District 7",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Bien Doan",
+     "votes": 12715,
+     "winner": true,
+     "pct_ballots": 53.36607067909007,
+     "pct_votes": 60.71240987442105
+    },
+    {
+     "name": "Van Le",
+     "votes": 8228,
+     "winner": false,
+     "pct_ballots": 34.533702677747,
+     "pct_votes": 39.28759012557895
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 20943,
+   "undervotes": 2857,
+   "overvotes": 26,
+   "ballots_cast": 23826,
+   "margin": 4487,
+   "pct": 18.83236800134307,
+   "site_pct": 21.424819748842094,
+   "tier": 0,
+   "last_winner": "Bien Doan",
+   "first_loser": "Van Le",
+   "key": "87",
+   "precincts_reporting": "24",
+   "precincts_total": "24"
+  },
+  {
+   "type": "measure",
+   "name": "Measure I - City of Sunnyvale, Charter Amendment, Elections to Fill Council Vacancies - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 62.19421604036989,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 24280,
+     "winner": true,
+     "pct_ballots": 53.88371060807812,
+     "pct_votes": 62.19421604036989
+    },
+    {
+     "name": "No",
+     "votes": 14759,
+     "winner": false,
+     "pct_ballots": 32.75410563692854,
+     "pct_votes": 37.80578395963011
+    }
+   ],
+   "candidate_votes": 39039,
+   "undervotes": 6020,
+   "overvotes": 1,
+   "ballots_cast": 45060,
+   "margin": 9521,
+   "pct": 21.12960497114958,
+   "site_pct": 12.194216040369888,
+   "tier": 0,
+   "key": "124",
+   "precincts_reporting": "49",
+   "precincts_total": "49"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Morgan Hill Council, District B",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Steven Hayes",
+     "votes": 2940,
+     "winner": true,
+     "pct_ballots": 56.78964651342476,
+     "pct_votes": 62.874251497005986
+    },
+    {
+     "name": "Yvonne Martinez Beltran",
+     "votes": 1736,
+     "winner": false,
+     "pct_ballots": 33.532934131736525,
+     "pct_votes": 37.125748502994014
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 4676,
+   "undervotes": 501,
+   "overvotes": 0,
+   "ballots_cast": 5177,
+   "margin": 1204,
+   "pct": 23.256712381688235,
+   "site_pct": 25.748502994011975,
+   "tier": 0,
+   "last_winner": "Steven Hayes",
+   "first_loser": "Yvonne Martinez Beltran",
+   "key": "82",
+   "precincts_reporting": "5",
+   "precincts_total": "5"
+  },
+  {
+   "type": "candidate",
+   "name": "Mountain View-Los Altos Union HSD, TA 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Thida Cornes",
+     "votes": 3991,
+     "winner": true,
+     "pct_ballots": 45.52298391696133,
+     "pct_votes": 56.97359029264811
+    },
+    {
+     "name": "Sanjay Dave",
+     "votes": 1792,
+     "winner": false,
+     "pct_ballots": 20.440287441542146,
+     "pct_votes": 25.581727337615987
+    },
+    {
+     "name": "Catherine Vonnegut",
+     "votes": 1222,
+     "winner": false,
+     "pct_ballots": 13.938633512033762,
+     "pct_votes": 17.444682369735904
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 7005,
+   "undervotes": 1727,
+   "overvotes": 35,
+   "ballots_cast": 8767,
+   "margin": 2199,
+   "pct": 25.082696475419187,
+   "site_pct": 31.39186295503212,
+   "tier": 0,
+   "last_winner": "Thida Cornes",
+   "first_loser": "Sanjay Dave",
+   "key": "51",
+   "precincts_reporting": "4",
+   "precincts_total": "4"
+  },
+  {
+   "type": "candidate",
+   "name": "Midpeninsula Regional Open Space District, Ward 1",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Craig Gleason",
+     "votes": 24148,
+     "winner": true,
+     "pct_ballots": 50.551612970755095,
+     "pct_votes": 68.11847672778562
+    },
+    {
+     "name": "Tina Marie To",
+     "votes": 11302,
+     "winner": false,
+     "pct_ballots": 23.659695618497352,
+     "pct_votes": 31.881523272214388
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 35450,
+   "undervotes": 12307,
+   "overvotes": 12,
+   "ballots_cast": 47769,
+   "margin": 12846,
+   "pct": 26.89191735225774,
+   "site_pct": 36.236953455571225,
+   "tier": 0,
+   "last_winner": "Craig Gleason",
+   "first_loser": "Tina Marie To",
+   "key": "100",
+   "precincts_reporting": "68",
+   "precincts_total": "68"
+  },
+  {
+   "type": "candidate",
+   "name": "Morgan Hill Unified SD, Trustee Area 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Glen R. Webb",
+     "votes": 2400,
+     "winner": true,
+     "pct_ballots": 56.63048607833884,
+     "pct_votes": 66.31666206134291
+    },
+    {
+     "name": "Claudia Ortiz",
+     "votes": 1219,
+     "winner": false,
+     "pct_ballots": 28.763567720622934,
+     "pct_votes": 33.68333793865709
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 3619,
+   "undervotes": 618,
+   "overvotes": 1,
+   "ballots_cast": 4238,
+   "margin": 1181,
+   "pct": 27.866918357715903,
+   "site_pct": 32.63332412268583,
+   "tier": 0,
+   "last_winner": "Glen R. Webb",
+   "first_loser": "Claudia Ortiz",
+   "key": "41",
+   "precincts_reporting": "5",
+   "precincts_total": "5"
+  },
+  {
+   "type": "candidate",
+   "name": "Alum Rock Union SD, TA 5",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Jenny Ludwig",
+     "votes": 3488,
+     "winner": true,
+     "pct_ballots": 51.1137162954279,
+     "pct_votes": 59.078590785907856
+    },
+    {
+     "name": "Línda Lo Chávez",
+     "votes": 1488,
+     "winner": false,
+     "pct_ballots": 21.805392731535758,
+     "pct_votes": 25.203252032520325
+    },
+    {
+     "name": "Manisha Kand",
+     "votes": 928,
+     "winner": false,
+     "pct_ballots": 13.599062133645955,
+     "pct_votes": 15.718157181571815
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5904,
+   "undervotes": 917,
+   "overvotes": 3,
+   "ballots_cast": 6824,
+   "margin": 2000,
+   "pct": 29.308323563892145,
+   "site_pct": 33.87533875338753,
+   "tier": 0,
+   "last_winner": "Jenny Ludwig",
+   "first_loser": "Línda Lo Chávez",
+   "key": "53",
+   "precincts_reporting": "22",
+   "precincts_total": "22"
+  },
+  {
+   "type": "measure",
+   "name": "Measure B - City of Gilroy, Transient Occupancy Tax - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 65.7984496124031,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 12732,
+     "winner": true,
+     "pct_ballots": 63.24888226527571,
+     "pct_votes": 65.7984496124031
+    },
+    {
+     "name": "No",
+     "votes": 6618,
+     "winner": false,
+     "pct_ballots": 32.87630402384501,
+     "pct_votes": 34.201550387596896
+    }
+   ],
+   "candidate_votes": 19350,
+   "undervotes": 778,
+   "overvotes": 2,
+   "ballots_cast": 20130,
+   "margin": 6114,
+   "pct": 30.372578241430702,
+   "site_pct": 15.798449612403104,
+   "tier": 0,
+   "key": "117",
+   "precincts_reporting": "18",
+   "precincts_total": "18"
+  },
+  {
+   "type": "candidate",
+   "name": "Oak Grove SD, Trustee Area 5",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Paul Chun",
+     "votes": 3471,
+     "winner": true,
+     "pct_ballots": 49.451488816070665,
+     "pct_votes": 61.04467112205417
+    },
+    {
+     "name": "Casino Fajardo",
+     "votes": 1323,
+     "winner": false,
+     "pct_ballots": 18.848838865935317,
+     "pct_votes": 23.267674991206473
+    },
+    {
+     "name": "Pradeep Kumar",
+     "votes": 892,
+     "winner": false,
+     "pct_ballots": 12.708363014674456,
+     "pct_votes": 15.68765388673936
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 5686,
+   "undervotes": 1328,
+   "overvotes": 5,
+   "ballots_cast": 7019,
+   "margin": 2148,
+   "pct": 30.602649950135348,
+   "site_pct": 37.7769961308477,
+   "tier": 0,
+   "last_winner": "Paul Chun",
+   "first_loser": "Casino Fajardo",
+   "key": "64",
+   "precincts_reporting": "10",
+   "precincts_total": "10"
+  },
+  {
+   "type": "candidate",
+   "name": "City of Campbell Council, District 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Davis Stuart Fields",
+     "votes": 1947,
+     "winner": true,
+     "pct_ballots": 57.63765541740675,
+     "pct_votes": 68.7014820042343
+    },
+    {
+     "name": "Joseph I. Guardado",
+     "votes": 887,
+     "winner": false,
+     "pct_ballots": 26.25814091178212,
+     "pct_votes": 31.298517995765703
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 2834,
+   "undervotes": 543,
+   "overvotes": 1,
+   "ballots_cast": 3378,
+   "margin": 1060,
+   "pct": 31.37951450562463,
+   "site_pct": 37.402964008468594,
+   "tier": 0,
+   "last_winner": "Davis Stuart Fields",
+   "first_loser": "Joseph I. Guardado",
+   "key": "69",
+   "precincts_reporting": "3",
+   "precincts_total": "3"
+  },
+  {
+   "type": "measure",
+   "name": "Measure P - Alum Rock Union School District, School Bond - 55% Vote Required",
+   "threshold": 0.55,
+   "threshold_label": "55%",
+   "passing": true,
+   "yes_share": 73.7905285910788,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 18776,
+     "winner": true,
+     "pct_ballots": 68.17719680464778,
+     "pct_votes": 73.7905285910788
+    },
+    {
+     "name": "No",
+     "votes": 6669,
+     "winner": false,
+     "pct_ballots": 24.215686274509803,
+     "pct_votes": 26.209471408921203
+    }
+   ],
+   "candidate_votes": 25445,
+   "undervotes": 2095,
+   "overvotes": 0,
+   "ballots_cast": 27540,
+   "margin": 8693,
+   "pct": 31.56499636891794,
+   "site_pct": 18.79052859107879,
+   "tier": 0,
+   "key": "131",
+   "precincts_reporting": "49",
+   "precincts_total": "49"
+  },
+  {
+   "type": "candidate",
+   "name": "Gavilan Joint CCD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Gabriel Gutierrez",
+     "votes": 7730,
+     "winner": true,
+     "pct_ballots": 57.38252542498701,
+     "pct_votes": 70.91092560315568
+    },
+    {
+     "name": "Shahida S. Merchant",
+     "votes": 3171,
+     "winner": false,
+     "pct_ballots": 23.53945512582585,
+     "pct_votes": 29.089074396844325
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 10901,
+   "undervotes": 2568,
+   "overvotes": 2,
+   "ballots_cast": 13471,
+   "margin": 4559,
+   "pct": 33.84307029916116,
+   "site_pct": 41.82185120631135,
+   "tier": 0,
+   "last_winner": "Gabriel Gutierrez",
+   "first_loser": "Shahida S. Merchant",
+   "key": "30",
+   "precincts_reporting": "20",
+   "precincts_total": "20"
+  },
+  {
+   "type": "candidate",
+   "name": "Fremont Union HSD, TA 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Naomi Nakano-Matsumoto",
+     "votes": 8211,
+     "winner": true,
+     "pct_ballots": 58.96588868940754,
+     "pct_votes": 72.74096385542168
+    },
+    {
+     "name": "Ilanit Eliaz",
+     "votes": 3077,
+     "winner": false,
+     "pct_ballots": 22.096947935368043,
+     "pct_votes": 27.259036144578314
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 11288,
+   "undervotes": 2634,
+   "overvotes": 3,
+   "ballots_cast": 13925,
+   "margin": 5134,
+   "pct": 36.8689407540395,
+   "site_pct": 45.48192771084337,
+   "tier": 0,
+   "last_winner": "Naomi Nakano-Matsumoto",
+   "first_loser": "Ilanit Eliaz",
+   "key": "49",
+   "precincts_reporting": "16",
+   "precincts_total": "16"
+  },
+  {
+   "type": "measure",
+   "name": "Measure H - City of Sunnyvale, City Manager Settlement Authority - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 71.09153427201767,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 28325,
+     "winner": true,
+     "pct_ballots": 62.860630270750114,
+     "pct_votes": 71.09153427201767
+    },
+    {
+     "name": "No",
+     "votes": 11518,
+     "winner": false,
+     "pct_ballots": 25.561473590767864,
+     "pct_votes": 28.908465727982332
+    }
+   ],
+   "candidate_votes": 39843,
+   "undervotes": 5213,
+   "overvotes": 4,
+   "ballots_cast": 45060,
+   "margin": 16807,
+   "pct": 37.29915667998225,
+   "site_pct": 21.091534272017668,
+   "tier": 0,
+   "key": "123",
+   "precincts_reporting": "49",
+   "precincts_total": "49"
+  },
+  {
+   "type": "measure",
+   "name": "Measure E - City of Mountain View, Charter Amendment, Modernize and Clarify Its Provisions - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 71.32166705042597,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 18585,
+     "winner": true,
+     "pct_ballots": 65.67369871726916,
+     "pct_votes": 71.32166705042597
+    },
+    {
+     "name": "No",
+     "votes": 7473,
+     "winner": false,
+     "pct_ballots": 26.40729354394148,
+     "pct_votes": 28.678332949574028
+    }
+   ],
+   "candidate_votes": 26058,
+   "undervotes": 2239,
+   "overvotes": 2,
+   "ballots_cast": 28299,
+   "margin": 11112,
+   "pct": 39.266405173327676,
+   "site_pct": 21.321667050425972,
+   "tier": 0,
+   "key": "120",
+   "precincts_reporting": "17",
+   "precincts_total": "17"
+  },
+  {
+   "type": "candidate",
+   "name": "Gilroy Unified SD, Trustee Area 4",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Jane Stevens",
+     "votes": 1837,
+     "winner": true,
+     "pct_ballots": 65.35040910707933,
+     "pct_votes": 72.23751474636256
+    },
+    {
+     "name": "Trevor Scott Van Laar",
+     "votes": 706,
+     "winner": false,
+     "pct_ballots": 25.11561721807186,
+     "pct_votes": 27.762485253637436
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 2543,
+   "undervotes": 268,
+   "overvotes": 0,
+   "ballots_cast": 2811,
+   "margin": 1131,
+   "pct": 40.23479188900747,
+   "site_pct": 44.47502949272513,
+   "tier": 0,
+   "last_winner": "Jane Stevens",
+   "first_loser": "Trevor Scott Van Laar",
+   "key": "36",
+   "precincts_reporting": "3",
+   "precincts_total": "3"
+  },
+  {
+   "type": "measure",
+   "name": "Measure K - City of Milpitas, Business Tax Modernization - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 73.70606705155474,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 14554,
+     "winner": true,
+     "pct_ballots": 68.97957249158728,
+     "pct_votes": 73.70606705155474
+    },
+    {
+     "name": "No",
+     "votes": 5192,
+     "winner": false,
+     "pct_ballots": 24.60780131759799,
+     "pct_votes": 26.293932948445256
+    }
+   ],
+   "candidate_votes": 19746,
+   "undervotes": 1352,
+   "overvotes": 1,
+   "ballots_cast": 21099,
+   "margin": 9362,
+   "pct": 44.37177117398929,
+   "site_pct": 23.70606705155474,
+   "tier": 0,
+   "key": "126",
+   "precincts_reporting": "14",
+   "precincts_total": "14"
+  },
+  {
+   "type": "measure",
+   "name": "Measure C - City of Santa Clara, Public Works Charter Amendment - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 75.0644725531131,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 24450,
+     "winner": true,
+     "pct_ballots": 67.08555122647203,
+     "pct_votes": 75.0644725531131
+    },
+    {
+     "name": "No",
+     "votes": 8122,
+     "winner": false,
+     "pct_ballots": 22.285024419689403,
+     "pct_votes": 24.935527446886898
+    }
+   ],
+   "candidate_votes": 32572,
+   "undervotes": 3873,
+   "overvotes": 1,
+   "ballots_cast": 36446,
+   "margin": 16328,
+   "pct": 44.800526806782635,
+   "site_pct": 25.064472553113106,
+   "tier": 0,
+   "key": "118",
+   "precincts_reporting": "37",
+   "precincts_total": "37"
+  },
+  {
+   "type": "candidate",
+   "name": "West Valley-Mission CCD, Trustee Area 3",
+   "vote_for": 1,
+   "rows": [
+    {
+     "name": "Anne J. Kepner",
+     "votes": 12896,
+     "winner": true,
+     "pct_ballots": 64.76821857264828,
+     "pct_votes": 77.70078929927095
+    },
+    {
+     "name": "Colin Lee Elliott Glaves",
+     "votes": 3701,
+     "winner": false,
+     "pct_ballots": 18.587715333232886,
+     "pct_votes": 22.29921070072905
+    },
+    {
+     "name": "Write-in",
+     "votes": 0,
+     "winner": false,
+     "write_in": true,
+     "pct_ballots": 0.0,
+     "pct_votes": 0.0
+    }
+   ],
+   "candidate_votes": 16597,
+   "undervotes": 3309,
+   "overvotes": 5,
+   "ballots_cast": 19911,
+   "margin": 9195,
+   "pct": 46.1805032394154,
+   "site_pct": 55.4015785985419,
+   "tier": 0,
+   "last_winner": "Anne J. Kepner",
+   "first_loser": "Colin Lee Elliott Glaves",
+   "key": "32",
+   "precincts_reporting": "23",
+   "precincts_total": "23"
+  },
+  {
+   "type": "measure",
+   "name": "Measure G - City of Sunnyvale, Charter Amendment, Public Works Contracts - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 77.41218970441065,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 31715,
+     "winner": true,
+     "pct_ballots": 70.38393253439858,
+     "pct_votes": 77.41218970441065
+    },
+    {
+     "name": "No",
+     "votes": 9254,
+     "winner": false,
+     "pct_ballots": 20.53706169551709,
+     "pct_votes": 22.58781029558935
+    }
+   ],
+   "candidate_votes": 40969,
+   "undervotes": 4089,
+   "overvotes": 2,
+   "ballots_cast": 45060,
+   "margin": 22461,
+   "pct": 49.84687083888149,
+   "site_pct": 27.41218970441065,
+   "tier": 0,
+   "key": "122",
+   "precincts_reporting": "49",
+   "precincts_total": "49"
+  },
+  {
+   "type": "measure",
+   "name": "Measure F - City of Mountain View, Transient Occupancy Tax - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 79.44059649521215,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 20989,
+     "winner": true,
+     "pct_ballots": 74.16869854058447,
+     "pct_votes": 79.44059649521215
+    },
+    {
+     "name": "No",
+     "votes": 5432,
+     "winner": false,
+     "pct_ballots": 19.195024559171703,
+     "pct_votes": 20.55940350478786
+    }
+   ],
+   "candidate_votes": 26421,
+   "undervotes": 1875,
+   "overvotes": 3,
+   "ballots_cast": 28299,
+   "margin": 15557,
+   "pct": 54.97367398141277,
+   "site_pct": 29.440596495212148,
+   "tier": 0,
+   "key": "121",
+   "precincts_reporting": "17",
+   "precincts_total": "17"
+  },
+  {
+   "type": "measure",
+   "name": "Measure L - City of Cupertino, General Plan Amendment - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 88.00723182000803,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 17524,
+     "winner": true,
+     "pct_ballots": 83.65476417796448,
+     "pct_votes": 88.00723182000803
+    },
+    {
+     "name": "No",
+     "votes": 2388,
+     "winner": false,
+     "pct_ballots": 11.399656291770098,
+     "pct_votes": 11.992768179991964
+    }
+   ],
+   "candidate_votes": 19912,
+   "undervotes": 1032,
+   "overvotes": 4,
+   "ballots_cast": 20948,
+   "margin": 15136,
+   "pct": 72.25510788619438,
+   "site_pct": 38.00723182000803,
+   "tier": 0,
+   "key": "127",
+   "precincts_reporting": "24",
+   "precincts_total": "24"
+  },
+  {
+   "type": "measure",
+   "name": "Measure S - El Camino Healthcare District, Limit Number of Terms for Directors - Majority Vote Required",
+   "threshold": 0.5,
+   "threshold_label": "majority",
+   "passing": true,
+   "yes_share": 91.67496089862078,
+   "rows": [
+    {
+     "name": "Yes",
+     "votes": 64475,
+     "winner": true,
+     "pct_ballots": 81.39344055343753,
+     "pct_votes": 91.67496089862078
+    },
+    {
+     "name": "No",
+     "votes": 5855,
+     "winner": false,
+     "pct_ballots": 7.391370212336203,
+     "pct_votes": 8.325039101379213
+    }
+   ],
+   "candidate_votes": 70330,
+   "undervotes": 8878,
+   "overvotes": 6,
+   "ballots_cast": 79214,
+   "margin": 58620,
+   "pct": 74.00207034110132,
+   "site_pct": 41.67496089862078,
+   "tier": 0,
+   "key": "134",
+   "precincts_reporting": "73",
+   "precincts_total": "73"
+  }
+ ],
+ "excluded": [
+  {
+   "name": "Governor",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Lieutenant Governor",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Secretary of State",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Controller",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Treasurer",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Attorney General",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Insurance Commissioner",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member, State Board of Equalization, District 2",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "US Representative, District 16",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "US Representative, District 17",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "US Representative, District 18",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "US Representative, District 19",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Senator, District 10",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member of the State Assembly, District 23",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member of the State Assembly, District 24",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member of the State Assembly, District 25",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member of the State Assembly, District 26",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member of the State Assembly, District 28",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Member of the State Assembly, District 29",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice of Supreme Court JOSHUA GROBAN",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice of Supreme Court KELLI M. EVANS",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice, Court of Appeal Sixth Appellate District CHARLES E. WILSON II",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice, Court of Appeal Sixth Appellate District FREDERICK S. CHUNG",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice, Court of Appeal Sixth Appellate District CHARLES F. ADAMS",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice, Court of Appeal Sixth Appellate District ALLISON MARSTON DANNER",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Associate Justice, Court of Appeal Sixth Appellate District DANIEL H. BROMBERG",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Superintendent of Public Instruction",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Yosemite CCD, Trustee Area 4",
+   "reason": "crosses county lines (config list)"
+  },
+  {
+   "name": "State Proposition 1 - The Veterans and Affordable Housing Bond Act of 2026",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 2 - Save for California's Future Act",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 3 - Provides Permanent Funding for Schools and Healthcare by Extending Existing Tax on High Incomes",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 4 - Political Reform Act of 1974, Public Campaign Financing: California Fair Elections Act of 2026",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 5 - Elections: Recall of State Officers",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 37 - Creates Loan Program for Middle-Income Buyers of Qualified New Homes",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 38 - Authorizes Bonds for Immunology Research",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 39 - Establishes Additional Voter Identification and Citizenship Verification Requirements",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 40 - Imposes One-Time Tax on Certain Individuals and Trusts",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 41 - New State Special Taxes: Requires Audits of Programs Funded and Prohibits Exclusions from Existing Vot...",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 42 - Prohibits New State Personal Property Taxes and Certain Retroactive State Taxes",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 43 - Local Taxes: Limitation",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 44 - Requires Community Health Clinics Spend 90% of Revenue on Program Services",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "State Proposition 45 - Modifies Environmental Review for Certain Projects",
+   "reason": "statewide, congressional or legislative"
+  },
+  {
+   "name": "Measure RTM - Public Transit Revenue Measure District (PTRMD), Regional Transit Measure - Majority Vote Required",
+   "reason": "crosses county lines (config list)"
+  }
+ ],
+ "skipped": [
+  {
+   "name": "City of Campbell Council, District 5",
+   "reason": "uncontested"
+  },
+  {
+   "name": "City of Los Altos Council, D4",
+   "reason": "uncontested"
+  },
+  {
+   "name": "City of Sunnyvale Council, District 1",
+   "reason": "uncontested"
+  },
+  {
+   "name": "City of Sunnyvale Council, District 3",
+   "reason": "uncontested"
+  },
+  {
+   "name": "City of Sunnyvale Council, District 5",
+   "reason": "uncontested"
+  }
+ ]
+}
