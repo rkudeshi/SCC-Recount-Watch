@@ -16,7 +16,7 @@ h1{font-size:26px;margin:0 0 6px;line-height:1.2}
 h1 .pre{display:block;font-size:17px;font-weight:normal;color:var(--muted)}
 p{margin:4px 0}
 .muted{color:var(--muted);font-size:13px}
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.tiles{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;margin:12px 0}
 .tile{border-radius:4px;padding:10px;color:var(--fg);text-decoration:none;display:block}
 .tile b{display:block;font-size:30px;line-height:1.1}
 .tile span{font-size:14px;font-weight:600}
@@ -65,6 +65,8 @@ details.nc{margin:0}
 #ncall{font:inherit;font-size:13px;background:none;border:0;padding:0;color:var(--link);cursor:pointer;margin:0 0 6px}
 th small{font-size:11px}
 .sparkwrap{position:relative;max-width:440px;margin:6px 0 2px}
+.sparkwrap.wd{display:none}
+@media (min-width:560px){.sparkwrap.nw{display:none} .sparkwrap.wd{display:block;max-width:none}}
 .tip{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;background:var(--fg);color:var(--box);font-size:12px;padding:3px 7px;border-radius:3px;width:max-content;max-width:260px;pointer-events:none;z-index:2}
 .recap .nm{display:flex;flex-direction:column} .recap .nm small{color:var(--muted);font-size:12px}
 .cp{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:pre}
